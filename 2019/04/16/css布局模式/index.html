@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Allen" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/fav.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Happy+Monkey&display=swap" ">
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>CSS3布局模式 | Allen - Practice makes perfect.</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Allen</a></h1>
+        <h2 class="subtitle">Practice makes perfect.</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">Undefined Script Works!</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/04/16/css布局模式/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/12.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Allen">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">CSS3布局模式</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-04-16T20:27:16+08:00">2019-04-16 20:27:16</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="CSS3新布局模式"><a href="#CSS3新布局模式" class="headerlink" title="CSS3新布局模式"></a>CSS3新布局模式</h1><h1 id="一、多列布局"><a href="#一、多列布局" class="headerlink" title="一、多列布局"></a>一、多列布局</h1><p>适用：</p>
+<ol>
+<li>针对文字排版</li>
+<li>针对瀑布流</li>
+</ol>
+<p>补充：(横向布局方法)</p>
+<ol>
+<li>display:table/table-row/table-cell<br>以表格特征显示/以表格行特征显示/以单元格特征显示</li>
+<li>min-width/min-height:最小宽度/最小高度</li>
+<li>display:inline-block;</li>
+<li>浮动方式:比较复杂，不便于文字排版维护<br>涉及属性：</li>
+</ol>
+<p><strong>1.column-width:每一列的列宽</strong><br><strong>2.column-count:强调列数，可单独使用，指定劣势，列宽自动分配。</strong></p>
+<a id="more"></a>
+
+<p>==note：当与其他属性配合使用时，其不再代表具体的值，而代表一个范围，如下：向下取整==<br>if((列宽<em>列数)&lt;(可用区域-间隔)){<br>按指定列数显示<br>按指定间隔显示<br>列宽自动分配<br>}else{<br>按指定列宽“可用”最大列数（列数小于指定列数）显示，列宽值自动分配，且&gt;=指定列宽<br>}<br>*</em>3.column-gap:列间隔**<br><strong>4.column-rule:间隔线，使用同：border</strong><br><strong>5.column-span:跨列显示，值为all，该属性火狐不支持</strong><br><strong>6.column-fill:auto/balance,但所有浏览器暂不支持</strong><br>http:// dummy images.com</p>
+<h1 id="二、伸缩盒布局"><a href="#二、伸缩盒布局" class="headerlink" title="二、伸缩盒布局"></a>二、伸缩盒布局</h1><p>作用：解决子盒子的位置关系与规格计算，合理利用剩余空间</p>
+<p>设置方法：display:box;</p>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line"><span class="attribute">display</span>:-webkit-box;</span><br><span class="line"><span class="attribute">display</span>:-moz-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>note:</strong></p>
+<ol>
+<li>强调私有属性值写法:display:-webkit-box;</li>
+<li>块元素默认横向排列，且宽度丢失，高度参照外层容器；</li>
+<li>兼容性中display的兼容代码在冒号后面</li>
+</ol>
+<h2 id="1-显示方向控制"><a href="#1-显示方向控制" class="headerlink" title="1.显示方向控制:"></a>1.显示方向控制:</h2><p>==box-orient:horizeontal(横向) / vertical(纵向)要加前缀==</p>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line"><span class="attribute">-webkit-box-orient</span>:vertical;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-宽度控制："><a href="#2-宽度控制：" class="headerlink" title="2.宽度控制："></a>2.宽度控制：</h2><p>如果不设宽，以最小内容宽或最大父层宽为参照;</p>
+<h3 id="弹性布局："><a href="#弹性布局：" class="headerlink" title="弹性布局："></a>弹性布局：</h3><p>==为子盒子指定box-flex,值至少为1，==可具备自动伸缩功能，瓜分伸缩容器剩余空间；</p>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-box-flex</span>: 1;</span><br><span class="line"><span class="selector-tag">-moz-box-flex</span><span class="selector-pseudo">:1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如有内容，按内容多少决定；</p>
+<h3 id="问题1如果忽略内容，强制按比例分配？"><a href="#问题1如果忽略内容，强制按比例分配？" class="headerlink" title="问题1如果忽略内容，强制按比例分配？"></a>问题1如果忽略内容，强制按比例分配？</h3><p>为子盒子指定width：0；</p>
+<p>默认状态下：<br>子盒大小=上层大小*当前子盒的box-flex值/所有子盒box-flex之和</p>
+<h3 id="问题2：弹性与固定混用"><a href="#问题2：弹性与固定混用" class="headerlink" title="问题2：弹性与固定混用"></a>问题2：弹性与固定混用</h3><p>子盒宽=width+（父层宽-width）/所有子盒box-flex之和*自身flex值</p>
+<h2 id="3-高度控制"><a href="#3-高度控制" class="headerlink" title="3.高度控制"></a>3.高度控制</h2><ol>
+<li>默认以内容高为准</li>
+<li>box-flex可实现比例分配</li>
+<li>固定与比例混用</li>
+<li>如果使用侧轴对齐时，高度变为最小高度<h2 id="4-顺序控制："><a href="#4-顺序控制：" class="headerlink" title="4.顺序控制："></a>4.顺序控制：</h2>box-ordinal-group:后面跟的数值；数值越小越优先进行显示，不接受负值。<br>优点：不破坏html结构<br>box-direction:强调所有子元素正序或倒序显示。使用外层容器。</li>
+</ol>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-box-direction</span>:</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-对齐控制："><a href="#5-对齐控制：" class="headerlink" title="5.对齐控制："></a>5.对齐控制：</h2><p>（横）box-pack：start起点对齐；/end终点对齐/center/居中对齐/justify<br>（纵）box-align：start/end/center/baseline基线对齐/stretch纵向伸展对齐<br>baseline:基线对齐，是子元素第一行内容的底部；<br>stretch:尽可能与外层容器等高；</p>
+<h1 id="三、弹性盒布局"><a href="#三、弹性盒布局" class="headerlink" title="三、弹性盒布局"></a>三、弹性盒布局</h1><p>特性：<br>是CSS3中BOX升级后的布局，display:box–flexbox–flex</p>
+<ol>
+<li>组成：一个伸缩容器与多个伸缩项目（子元素）</li>
+<li>定义方法：display:flex; display:-webkit-flex；  display：flex；</li>
+<li>android:支持box</li>
+<li>safir：box flex</li>
+<li>moz：flex<br>声明后特性：columns/floa/clear/vertical-aligh均无效果<br>项数量：任意；<br>影响：对容器外和项目内均无影响；<br>行个数：只能有一个；<br>显示顺序：左到右上到下；<h3 id="box、flex与column区别？"><a href="#box、flex与column区别？" class="headerlink" title="box、flex与column区别？"></a>box、flex与column区别？</h3>column：列宽统一，列间统一；没有对齐属性<br>box/flex:列宽自定义，间距可调，对齐属性全面<h2 id="3-定义伸缩方向"><a href="#3-定义伸缩方向" class="headerlink" title="3.定义伸缩方向"></a>3.定义伸缩方向</h2>作用：创建主轴<br>属性及值：flex-direction：row 横向；/row-reverse 横逆向/ column：纵向   /   column-reverse：纵逆向<br>与box对应关系<br>flex-direction==box-orient+box-direction<h2 id="4-定义行数（是否换行及换行方式）"><a href="#4-定义行数（是否换行及换行方式）" class="headerlink" title="4.定义行数（是否换行及换行方式）"></a>4.定义行数（是否换行及换行方式）</h2>（box下只有单行）<br>属性及值：flex-wrap<br>nowrap:默认值，强制不换行<br>wrap-reverse：反向换行<br>note：简写</li>
+</ol>
+<p><strong>flex-flow：方向     换行；例：flex-flow：row-reverse  wrap-reverse；</strong></p>
+<h2 id="5-定义对齐方式"><a href="#5-定义对齐方式" class="headerlink" title="5.定义对齐方式"></a>5.定义对齐方式</h2><p>适用对象与作用：适用于伸缩容器，用于在多余空间上的位置分配。</p>
+<ol>
+<li>主轴对齐(水平对齐)：justifiy-content：flex-start/flex-end/center/space-between/space-around；<br>参数说明如下：<br>flex-start<br>弹性项目向行头紧挨着填充。这个是默认值。第一个弹性项的main-start外边距边线被放置在该行的main-start边线，而后续弹性项依次平齐摆放。<br>flex-end<br>弹性项目向行尾紧挨着填充。第一个弹性项的main-end外边距边线被放置在该行的main-end边线，而后续弹性项依次平齐摆放。<br>center<br>弹性项目居中紧挨着填充。（如果剩余的自由空间是负的，则弹性项目将在两个方向上同时溢出）。<br>space-between<br>弹性项目平均分布在该行上。如果剩余空间为负或者只有一个弹性项，则该值等同于flex-start。否则，第1个弹性项的外边距和行的main-start边线对齐，而最后1个弹性项的外边距和行的main-end边线对齐，然后剩余的弹性项分布在该行上，相邻项目的间隔相等。<br>space-around<br>弹性项目平均分布在该行上，两边留有一半的间隔空间。如果剩余空间为负或者只有一个弹性项，则该值等同于center。否则，弹性项目沿该行分布，且彼此间隔相等（比如是20px），同时首尾两边和弹性容器之间留有一半的间隔（1/2*20px=10px）</li>
+<li>侧轴对齐（垂直对齐）：align-items：flex-end/flex-strat/center/baseline/stretch</li>
+<li>伸缩行对齐（多行元素的垂直对齐关系）：</li>
+<li>align-content:flex-start/flx-end/center/stretch/space-between/space-around<br>———以下属性为单独项目的控制属性<h2 id="6-定义伸缩项目"><a href="#6-定义伸缩项目" class="headerlink" title="6.定义伸缩项目"></a>6.定义伸缩项目</h2>适用对象：适用于伸缩项目（子元素）</li>
+<li>显示位置：oreder：无单位属性值 =box-ordinal-group <strong>order：1//第一个显示</strong></li>
+<li>伸缩空间（如何瓜分）：flex-grow：1无单位取值，强调份数，</li>
+<li>收缩空间（如何压缩）：flex-shrink:1</li>
+<li>伸缩基准值：flex-basis:100px(数值加单位)该属性与宽度冲突，会覆盖原有宽度值。所有缩放动作以该属性值为基础。与先后顺序无关。</li>
+<li>对齐方式（垂直方向）：对象为单独子元素<br>align-self<h1 id="四、媒体查询"><a href="#四、媒体查询" class="headerlink" title="四、媒体查询"></a>四、媒体查询</h1>重点：</li>
+<li>了解CSS3设备类型</li>
+<li>如何使用媒体查询规则</li>
+<li>设计并制作响应式页面<h2 id="一、了解媒体查询"><a href="#一、了解媒体查询" class="headerlink" title="一、了解媒体查询"></a>一、了解媒体查询</h2></li>
+<li>CSS2时代：媒体类型(media type)<br>作用：针对指定媒体类型进行css开发<br>note：常用媒体类型<br>all 所有设备   screen  电脑屏幕  tv     电视    projection   投影设备     print  打印设备<br>handheld   手持设备        braille   触摸设备    speech   语音设备<h2 id="CSS3时代：针对不同媒体，精确匹配条件自动附加相关样式-medai-queries"><a href="#CSS3时代：针对不同媒体，精确匹配条件自动附加相关样式-medai-queries" class="headerlink" title="CSS3时代：针对不同媒体，精确匹配条件自动附加相关样式(medai queries)"></a>CSS3时代：针对不同媒体，精确匹配条件自动附加相关样式(medai queries)</h2>@media screen and (min-width:800px){}<h2 id="二、媒体查询规则"><a href="#二、媒体查询规则" class="headerlink" title="二、媒体查询规则"></a>二、媒体查询规则</h2>使用方法：<br>@media [not|only] 媒体类型 [and 查询规则…]{CSS代码}<h2 id="note："><a href="#note：" class="headerlink" title="note："></a>note：</h2></li>
+<li>not and (only)</li>
+<li>部分接受min 与max，代表大于等于或小于等于，避免使用&amp;lt；&amp;gt；</li>
+<li>not 只能针对它所在的整个查询进行取反</li>
+<li>media语句中包含一种媒体类型，如果媒体类型没有指定，则<h2 id="常用媒体规则："><a href="#常用媒体规则：" class="headerlink" title="常用媒体规则："></a>常用媒体规则：</h2>width：显示宽<br>height：显示高<br>device-width：设备宽度<br>deviece-height：设备高度<br>orientation：横屏|纵屏  （landspace| protrait）<br>color：彩色设备<br>aspect-ratio：显示宽高比<br>device-asepect-ratio：设备宽高比<br>resolution：分辨率</li>
+</ol>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/CSS/" rel="tag"><i class="fas fa-tags"></i>CSS</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/03/29/3-29ppt模板分享/" rel="next" title="PPT模板"><i class="fas fa-angle-left"></i><span class="nav-title">PPT模板</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/05/12/5-12/" rel="prev" title="JS随记"><span class="nav-title">JS随记</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/12.png" alt>
+  
+  <h1 class="author-name"></h1>
+  <h2 class="author-description">Either stand out or kicked out.</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">45</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">18</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">38</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#CSS3新布局模式"><span class="toc-text">CSS3新布局模式</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#一、多列布局"><span class="toc-text">一、多列布局</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#二、伸缩盒布局"><span class="toc-text">二、伸缩盒布局</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#1-显示方向控制"><span class="toc-text">1.显示方向控制:</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#2-宽度控制："><span class="toc-text">2.宽度控制：</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#弹性布局："><span class="toc-text">弹性布局：</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#问题1如果忽略内容，强制按比例分配？"><span class="toc-text">问题1如果忽略内容，强制按比例分配？</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#问题2：弹性与固定混用"><span class="toc-text">问题2：弹性与固定混用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#3-高度控制"><span class="toc-text">3.高度控制</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#4-顺序控制："><span class="toc-text">4.顺序控制：</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#5-对齐控制："><span class="toc-text">5.对齐控制：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#三、弹性盒布局"><span class="toc-text">三、弹性盒布局</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#box、flex与column区别？"><span class="toc-text">box、flex与column区别？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#3-定义伸缩方向"><span class="toc-text">3.定义伸缩方向</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#4-定义行数（是否换行及换行方式）"><span class="toc-text">4.定义行数（是否换行及换行方式）</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#5-定义对齐方式"><span class="toc-text">5.定义对齐方式</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#6-定义伸缩项目"><span class="toc-text">6.定义伸缩项目</span></a></li></ol><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#四、媒体查询"><span class="toc-text">四、媒体查询</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#一、了解媒体查询"><span class="toc-text">一、了解媒体查询</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#CSS3时代：针对不同媒体，精确匹配条件自动附加相关样式-medai-queries"><span class="toc-text">CSS3时代：针对不同媒体，精确匹配条件自动附加相关样式(medai queries)</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#二、媒体查询规则"><span class="toc-text">二、媒体查询规则</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#note："><span class="toc-text">note：</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#常用媒体规则："><span class="toc-text">常用媒体规则：</span></a></li></ol></li></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/huanjungege" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author"></span><span class="year"><i class="far fa-copyright"></i>2020</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
