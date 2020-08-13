@@ -91,7 +91,7 @@
       if (els.length) {
         // Enabled Hexo highlight line number.
         $(els).each(function (i, e) {
-          $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before("<button class=\"copy button\">Copy</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -107,7 +107,7 @@
         els = $(".post pre code");
         $(els).each(function (i, e) {
           // Add button before pre, not code.
-          $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).parent().before("<button class=\"copy button\">Copy</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -123,11 +123,11 @@
         e.clearSelection();
         var trigger = e.trigger;
         // Change button text as a user tip.
-        trigger.innerHTML = "已复制";
+        trigger.innerHTML = "Copied";
         $(trigger).addClass("copied");
         // Change button text back;
         setTimeout(function () {
-          trigger.innerHTML = "复制";
+          trigger.innerHTML = "Copy";
           $(trigger).removeClass("copied");
         }, 1500);
       });
@@ -153,16 +153,16 @@
       
     </div>
     <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
       <ul id="menu" role="menubar" aria-hidden="false">
         
-        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">Home</span></a></li>
         
-        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">Archives</span></a></li>
         
-        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">Categories</span></a></li>
         
-        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">Tags</span></a></li>
         
         <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">Undefined Script Works!</span></a></li>
         
@@ -179,6 +179,62 @@
             
 
 <div id="index" class="index page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2020/02/27/2020-02-27/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/12.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Allen">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/02/27/2020-02-27/" itemprop="url">TCP/IP协议</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-02-27T14:14:53+08:00">2020-02-27 14:14:53</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>TCP/IP协议 族各层的作用</p>
+<ul>
+<li><p>应用层：决定了用户提供应用服务时 通信的活动，比如FTP(文件传输协议)，DNS(域名系统)，HTTP</p>
+</li>
+<li><p>传输层：传输层对应上层应用层，提供处于网络连接中两台计算机之间的数据传输，传输层有两个性质不同的协议，TCP(传输控制协议)，UDP(用户数据报协议)</p></li></ul>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/HTTP/" rel="tag"><i class="fas fa-tags"></i>HTTP</a>
+        
+        <a class="post-tag button" href="/tags/TCP-IP/" rel="tag"><i class="fas fa-tags"></i>TCP/IP</a>
+        
+      </div>
+      
+    </footer>
+  </article>
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
@@ -707,59 +763,9 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/08/27/8-27bootstrap/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Allen">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/08/27/8-27bootstrap/" itemprop="url">bootstrap</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-08-27T11:16:42+08:00">2019-08-27 11:16:42</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h2 id="Bootstrap-是最受欢迎的-HTML、CSS-和-JS-框架，用于开发响应式布局、移动设备优先的-WEB-项目。"><a href="#Bootstrap-是最受欢迎的-HTML、CSS-和-JS-框架，用于开发响应式布局、移动设备优先的-WEB-项目。" class="headerlink" title="Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。"></a>Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。</h2>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/UI-框架/" rel="tag"><i class="fas fa-tags"></i>UI 框架</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left" aria-label="Previous Page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-right" aria-label="Next Page"></i></a>
   </nav>
   
   
@@ -773,7 +779,7 @@
   
   <div class="search">
     <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
     </div>
   </div>
   <div class="search-result-box" id="search-result"></div>
@@ -791,21 +797,21 @@
     
     
     <div class="archives-count count-block">
-      <div class="site-count-title">归档</div>
-      <div><a href="/archives/">45</a></div>
+      <div class="site-count-title">Archives</div>
+      <div><a href="/archives/">46</a></div>
     </div>
     
     
     
     <div class="categories-count count-block">
-      <div class="site-count-title">分类</div>
+      <div class="site-count-title">Categories</div>
       <div><a href="/categories/">18</a></div>
     </div>
     
     
     
     <div class="tags-count count-block">
-      <div class="site-count-title">标签</div>
+      <div class="site-count-title">Tags</div>
       <div><a href="/tags/">38</a></div>
     </div>
     
@@ -826,7 +832,7 @@
     
     <hr>
     <div class="social-link sidebar-item">
-      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <div><i class="far fa-address-card"></i>Social Links<p></p></div>
       <ul>
         
         <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
@@ -841,7 +847,7 @@
     
     <hr>
     <div class="blogroll sidebar-item">
-      <div><i class="fas fa-link"></i>友情链接</div>
+      <div><i class="fas fa-link"></i>Blogroll</div>
       <ul>
         
         <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
@@ -865,7 +871,7 @@
 <footer id="footer" class="footer" style="background: #33363b;">
   <div class="container">
     <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
     </div>
     <div class="footer-container">
       <div class="footer-left">
@@ -874,7 +880,7 @@
         </div>
         
         <div class="busuanzi">
-          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="Site Visit Count" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="Site User Count" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="Page Click Count" aria-hidden="false"></span></span>
         </div>
         
       </div>
@@ -885,7 +891,7 @@
           
         </div>
         <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
         </div>
       </div>
     </div>

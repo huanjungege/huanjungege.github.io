@@ -6,10 +6,32 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.aiabby.top/"/>
-  <updated>2020-08-02T11:30:26.000Z</updated>
+  <updated>2020-08-13T14:27:57.000Z</updated>
   <id>http://www.aiabby.top/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测试</title>
+    <link href="http://www.aiabby.top/2020/08/13/%E6%B5%8B%E8%AF%95/"/>
+    <id>http://www.aiabby.top/2020/08/13/%E6%B5%8B%E8%AF%95/</id>
+    <published>2020-08-13T14:26:36.000Z</published>
+    <updated>2020-08-13T14:27:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="this-is-temp"><a href="#this-is-temp" class="headerlink" title="this is temp"></a>this is temp</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;this-is-temp&quot;&gt;&lt;a href=&quot;#this-is-temp&quot; class=&quot;headerlink&quot; title=&quot;this is temp&quot;&gt;&lt;/a&gt;this is temp&lt;/h2&gt;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>8-1记this的指向</title>
@@ -533,35 +555,6 @@
     
     
       <category term="Git" scheme="http://www.aiabby.top/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP/IP协议</title>
-    <link href="http://www.aiabby.top/2020/02/27/2020-02-27/"/>
-    <id>http://www.aiabby.top/2020/02/27/2020-02-27/</id>
-    <published>2020-02-27T06:14:53.000Z</published>
-    <updated>2020-03-05T13:24:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>TCP/IP协议 族各层的作用</p><ul><li><p>应用层：决定了用户提供应用服务时 通信的活动，比如FTP(文件传输协议)，DNS(域名系统)，HTTP</p></li><li><p>传输层：传输层对应上层应用层，提供处于网络连接中两台计算机之间的数据传输，传输层有两个性质不同的协议，TCP(传输控制协议)，UDP(用户数据报协议)</p><a id="more"></a></li><li><p>网络层：用来处理网络上流动的数据包，数据包是网络传输的最小数据单位。该层规定了通过怎样的路径到达对方计算机，并把数据传给对方。</p></li><li><p>链路层：用来 处理连接网络的硬件部分，包括操作系统，网卡，硬件的设备驱动等</p><img src="/2020/02/27/2020-02-27/1.png"></li></ul><h3 id="确保可靠性的TCP协议"><a href="#确保可靠性的TCP协议" class="headerlink" title="确保可靠性的TCP协议"></a>确保可靠性的TCP协议</h3><p>TCP协议位于传输层，为了能够更容易的传输大数据将数据进行分割，并且要确保数据最终能否送达到对方，为列准确无误地将数据送达目标处，采用 了<strong>三次握手策略</strong></p><p>DNS服务是和HTTP协议一样位于应用层的协议，提供域名到ip地址之间的解析服务，由于用户通常适应字母配合数字进行记忆，但是计算机却更适合理解ip地址的一组纯数字，所以DNS服务应运而生，<strong>DNS协议通过 用户传入的域名进行查找对应的ip地址，或通过ip地址反向查找域名</strong></p><h3 id="URI与URL"><a href="#URI与URL" class="headerlink" title="URI与URL"></a>URI与URL</h3><p>URI(统一资源标识符)，标识某以互联网资源，而URL(统一资源定位符)，URI用字符串标识某一互联网资源，而URL表示资源的地址，可以说URL是URI的子集</p><p>URI：<a href="http://www.ietf.com/rfc/...txt" target="_blank" rel="noopener">http://www.ietf.com/rfc/...txt</a>  包括协议，登录信息，服务器地址，服务器端口号等</p><p>URL:<a href="http://ietf.com" target="_blank" rel="noopener">http://ietf.com</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;TCP/IP协议 族各层的作用&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;应用层：决定了用户提供应用服务时 通信的活动，比如FTP(文件传输协议)，DNS(域名系统)，HTTP&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;传输层：传输层对应上层应用层，提供处于网络连接中两台计算机之间的数据传输，传输层有两个性质不同的协议，TCP(传输控制协议)，UDP(用户数据报协议)&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="网络" scheme="http://www.aiabby.top/categories/%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="HTTP" scheme="http://www.aiabby.top/tags/HTTP/"/>
-    
-      <category term="TCP/IP" scheme="http://www.aiabby.top/tags/TCP-IP/"/>
     
   </entry>
   

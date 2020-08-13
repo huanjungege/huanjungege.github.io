@@ -647,20 +647,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PPT模板</title>
-    <url>/2019/03/29/3-29ppt%E6%A8%A1%E6%9D%BF%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<h1 id="ppt模板"><a href="#ppt模板" class="headerlink" title="ppt模板"></a>ppt模板</h1><p><a href="https://pan.baidu.com/s/1tequzqrq0m7ok2BALQ2oow" target="_blank" rel="noopener">点这里哦！提取码twyn</a></p>
-<img src="/2019/03/29/3-29ppt模板分享/base.jpg">
-
-]]></content>
-      <categories>
-        <category>资源</category>
-      </categories>
-      <tags>
-        <tag>resource</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>passport验证token</title>
     <url>/2020/03/06/2020-03-06-passport/</url>
     <content><![CDATA[<p>1关于token：</p>
@@ -692,6 +678,20 @@
       </tags>
   </entry>
   <entry>
+    <title>PPT模板</title>
+    <url>/2019/03/29/3-29ppt%E6%A8%A1%E6%9D%BF%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<h1 id="ppt模板"><a href="#ppt模板" class="headerlink" title="ppt模板"></a>ppt模板</h1><p><a href="https://pan.baidu.com/s/1tequzqrq0m7ok2BALQ2oow" target="_blank" rel="noopener">点这里哦！提取码twyn</a></p>
+<img src="/2019/03/29/3-29ppt模板分享/base.jpg">
+
+]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>resource</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS随记</title>
     <url>/2019/05/12/5-12/</url>
     <content><![CDATA[<h1 id="如何交换两个数"><a href="#如何交换两个数" class="headerlink" title="如何交换两个数"></a>如何交换两个数</h1><a id="more"></a>
@@ -703,6 +703,42 @@
 <figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var num;</span><br><span class="line">console.log(num+10);//NaN---not an number---&gt;不是一个数字</span><br></pre></td></tr></table></figure>
 
 <h2 id="如何获取变量的数据类型"><a href="#如何获取变量的数据类型" class="headerlink" title="如何获取变量的数据类型"></a>如何获取变量的数据类型</h2><p>typeof 变量名<br>typeof (变量名)<br>console.log(typeof num);//number</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>5-15数组案例</title>
+    <url>/2019/05/15/5-15%E6%95%B0%E7%BB%84%E6%A1%88%E4%BE%8B/</url>
+    <content><![CDATA[<p>案例</p>
+<a id="more"></a>
+
+<ol>
+<li><p>求数组中所有元素的和</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>];</span><br><span class="line"><span class="keyword">var</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span> <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    sum+=arr[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>求数组中所有元素的平均值</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>];</span><br><span class="line"><span class="keyword">var</span> sum=<span class="number">0</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    sum+=arr[i];</span><br><span class="line">    x=sum/arr.length;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>求数组中所有元素的最大值</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>];</span><br><span class="line"><span class="comment">//假设max是数组中最大的值</span></span><br><span class="line"><span class="keyword">var</span> max=arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span> <span class="keyword">in</span> arr)&#123;</span><br><span class="line"><span class="comment">//将max与数组中的值挨个比较，max较小就将对比的值赋给max</span></span><br><span class="line">    <span class="keyword">if</span>(max&lt;arr[i])&#123;</span><br><span class="line">        max=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(max);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>倒序输出数组</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=arr.length<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提示用户输入班级人数，求总成绩，平均值，最高分，最低分</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//提示用户输入人数，并转成数字类型</span></span><br><span class="line">      <span class="keyword">var</span> perCount = <span class="built_in">parseInt</span>(prompt(<span class="string">"请输入班级人数"</span>));</span><br><span class="line">      <span class="comment">//定义数组存储班级的每个人的成绩</span></span><br><span class="line">      <span class="keyword">var</span> perScores = [];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; perCount; i++) &#123;</span><br><span class="line">          perScores[perScores.length] = <span class="built_in">parseInt</span>(prompt(<span class="string">"请输入第"</span> + (i + <span class="number">1</span>) + <span class="string">"个人"</span>));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//求总成绩</span></span><br><span class="line">      <span class="keyword">var</span> sum = <span class="number">0</span>,</span><br><span class="line">          avg = <span class="number">0</span>,</span><br><span class="line">          max = <span class="number">0</span>,</span><br><span class="line">          min = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; perScores.length; i++) &#123;</span><br><span class="line">   </span><br><span class="line">          sum += perScores[i];</span><br><span class="line">          avg = sum / perScores.length;</span><br><span class="line">          <span class="comment">//最大值</span></span><br><span class="line">          max = perScores[<span class="number">0</span>];</span><br><span class="line">   </span><br><span class="line">          <span class="keyword">if</span> (max &lt; perScores[i]) &#123;</span><br><span class="line">              max = perScores[i];</span><br><span class="line">          &#125;</span><br><span class="line">          min=perScores[<span class="number">0</span>];</span><br><span class="line">          <span class="keyword">if</span>(min&gt;perCount[i])&#123;</span><br><span class="line">              min=perScores[i];</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(sum);</span><br><span class="line">      <span class="built_in">console</span>.log(avg);</span><br><span class="line">      <span class="built_in">console</span>.log(min);</span><br><span class="line">      <span class="built_in">console</span>.log(max);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>冒泡排序</strong></p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">2</span>,<span class="number">30</span>,<span class="number">20</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length<span class="number">-1</span>;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;arr.length<span class="number">-1</span>-i;j++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">        <span class="keyword">var</span> temp=arr[j];</span><br><span class="line">        arr[j]=arr[j+<span class="number">1</span>];</span><br><span class="line">        arr[j+<span class="number">1</span>]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -845,42 +881,6 @@
       </tags>
   </entry>
   <entry>
-    <title>5-15数组案例</title>
-    <url>/2019/05/15/5-15%E6%95%B0%E7%BB%84%E6%A1%88%E4%BE%8B/</url>
-    <content><![CDATA[<p>案例</p>
-<a id="more"></a>
-
-<ol>
-<li><p>求数组中所有元素的和</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>];</span><br><span class="line"><span class="keyword">var</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span> <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    sum+=arr[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>求数组中所有元素的平均值</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>];</span><br><span class="line"><span class="keyword">var</span> sum=<span class="number">0</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    sum+=arr[i];</span><br><span class="line">    x=sum/arr.length;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>求数组中所有元素的最大值</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>];</span><br><span class="line"><span class="comment">//假设max是数组中最大的值</span></span><br><span class="line"><span class="keyword">var</span> max=arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span> <span class="keyword">in</span> arr)&#123;</span><br><span class="line"><span class="comment">//将max与数组中的值挨个比较，max较小就将对比的值赋给max</span></span><br><span class="line">    <span class="keyword">if</span>(max&lt;arr[i])&#123;</span><br><span class="line">        max=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(max);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>倒序输出数组</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=arr.length<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提示用户输入班级人数，求总成绩，平均值，最高分，最低分</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//提示用户输入人数，并转成数字类型</span></span><br><span class="line">      <span class="keyword">var</span> perCount = <span class="built_in">parseInt</span>(prompt(<span class="string">"请输入班级人数"</span>));</span><br><span class="line">      <span class="comment">//定义数组存储班级的每个人的成绩</span></span><br><span class="line">      <span class="keyword">var</span> perScores = [];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; perCount; i++) &#123;</span><br><span class="line">          perScores[perScores.length] = <span class="built_in">parseInt</span>(prompt(<span class="string">"请输入第"</span> + (i + <span class="number">1</span>) + <span class="string">"个人"</span>));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//求总成绩</span></span><br><span class="line">      <span class="keyword">var</span> sum = <span class="number">0</span>,</span><br><span class="line">          avg = <span class="number">0</span>,</span><br><span class="line">          max = <span class="number">0</span>,</span><br><span class="line">          min = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; perScores.length; i++) &#123;</span><br><span class="line">   </span><br><span class="line">          sum += perScores[i];</span><br><span class="line">          avg = sum / perScores.length;</span><br><span class="line">          <span class="comment">//最大值</span></span><br><span class="line">          max = perScores[<span class="number">0</span>];</span><br><span class="line">   </span><br><span class="line">          <span class="keyword">if</span> (max &lt; perScores[i]) &#123;</span><br><span class="line">              max = perScores[i];</span><br><span class="line">          &#125;</span><br><span class="line">          min=perScores[<span class="number">0</span>];</span><br><span class="line">          <span class="keyword">if</span>(min&gt;perCount[i])&#123;</span><br><span class="line">              min=perScores[i];</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(sum);</span><br><span class="line">      <span class="built_in">console</span>.log(avg);</span><br><span class="line">      <span class="built_in">console</span>.log(min);</span><br><span class="line">      <span class="built_in">console</span>.log(max);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>冒泡排序</strong></p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">10</span>,<span class="number">2</span>,<span class="number">30</span>,<span class="number">20</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length<span class="number">-1</span>;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;arr.length<span class="number">-1</span>-i;j++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">        <span class="keyword">var</span> temp=arr[j];</span><br><span class="line">        arr[j]=arr[j+<span class="number">1</span>];</span><br><span class="line">        arr[j+<span class="number">1</span>]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JS</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>5-16函数</title>
     <url>/2019/05/16/5-16%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>函数定义方式如下：</p>
@@ -942,6 +942,53 @@
       </categories>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>6-19CSS相关问题</title>
+    <url>/2020/06/19/6-19/</url>
+    <content><![CDATA[<ul>
+<li><p>text-indent:-999px;当做一个a链接的图片按钮时，可以用于在添加完图片时将原本的字隐藏，只显示图片作为链接按钮</p>
+<img src="/2020/06/19/6-19/1.png">
+
+<a id="more"></a>
+</li>
+<li><p>content用于在元素的::before和::after伪元素中插入内容。例如在自定义复选框样式时，</p>
+<img src="/2020/06/19/6-19/2.png">
+
+<p>使用label覆盖input，设置label的样式通过content设置在点击状态时显示背景图片</p>
+</li>
+<li><p>label标签表示用户界面中某个元素的说明。将一个 <code>&lt;label&gt;</code> 和一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">``</a> 元素相关联主要有这些优点：</p>
+<ul>
+<li>标签文本不仅与其相应的文本输入元素在视觉上相关联，程序中也是如此。 这意味着，当用户聚焦到这个表单输入元素时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。</li>
+<li>你可以点击关联的标签来聚焦或者激活这个输入元素，就像直接点击输入元素一样。这扩大了元素的可点击区域，让包括使用触屏设备在内的用户更容易激活这个元素。</li>
+</ul>
+<p>将一个 <code>&lt;label&gt;</code> 和一个 <code>&lt;input&gt;</code> 元素匹配在一起，你需要给 <code>&lt;input&gt;</code> 一个 <code>id</code> 属性。而 <code>&lt;label&gt;</code> 需要一个 <code>for</code> 属性，其值和  <code>&lt;input&gt;</code> 的 <code>id</code> 一样。</p>
+<p>另外，你也可以将 <code>&lt;input&gt;</code> 直接放在 <code>&lt;label&gt;</code> 里，此时则不需要 <code>for</code> 和 <code>id</code> 属性，因为关联已隐含存在</p>
+</li>
+<li><p>给父元素overflow：hidden；zoom：1；清除浮动。</p>
+</li>
+<li><p>移动端布局</p>
+<ol>
+<li>做移动端的两种方式，一个项目分为PC端适配和移动端布局，判断设备进行切换</li>
+<li>一种PC移动端同时适配的响应式页面，适应pc页面和移动端页面，</li>
+<li>@media screen and(max-width:300px)当页面宽度小于300像素时，使用此内容中的样式</li>
+<li>宽度设为100%，盒子自动继承父盒子宽度</li>
+</ol>
+<p>轮播图</p>
+<figure class="hljs highlight"><table><tr><td class="code"><pre><span class="line">&lt;div class="btnList"&gt;</span><br><span class="line">            &lt;div class="btn pre"&gt;&lt;&lt;/div&gt;</span><br><span class="line">            &lt;div class="btn next"&gt;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"><span class="selector-class">.swiper</span> <span class="selector-class">.btn</span><span class="selector-class">.pre</span>&#123;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">60px</span>;<span class="attribute">line-height</span>: <span class="number">60px</span>;<span class="attribute">text-align</span>: center;<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);<span class="attribute">color</span>: <span class="number">#ffffff</span>;<span class="attribute">position</span>: absolute;<span class="attribute">top</span>: <span class="built_in">calc</span>(<span class="number">50%</span> - <span class="number">30px</span>);<span class="attribute">font-size</span>: <span class="number">35px</span>;&#125;</span><br><span class="line"></span><br><span class="line">.swiper .btn.next&#123;width: 100px;height: 60px;line-height: 60px;text-align: center;background-color: rgba(0,0, 0, 0.6);color: #ffffff;position: absolute;right: 0;;top: calc(50% - 30px);font-size: 35px;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="hljs highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> preBtn = <span class="built_in">document</span>.querySelector(<span class="string">".swiper .pre"</span>);</span><br><span class="line">        <span class="keyword">var</span> nextBtn = <span class="built_in">document</span>.querySelector(<span class="string">".swiper .next"</span>);</span><br><span class="line">        <span class="keyword">var</span> imgListDivs = <span class="built_in">document</span>.querySelectorAll(<span class="string">".swiper .imgItems"</span>);</span><br><span class="line">        <span class="comment">// 图片数组的索引</span></span><br><span class="line">        <span class="keyword">var</span> currentImg = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 点击事件</span></span><br><span class="line">        nextBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            currentImg = currentImg + <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 点击到最后一张图片，回到起点</span></span><br><span class="line">            <span class="keyword">if</span>(currentImg&gt;=imgListDivs.length)&#123;</span><br><span class="line">                currentImg= <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 初始化，将所有的img列表的active去掉</span></span><br><span class="line">            imgListDivs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,i</span>)</span>&#123;</span><br><span class="line">                item.classList.remove(<span class="string">"active"</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="comment">// 点击后索引加1，active移动到下一个元素显示下一张图片</span></span><br><span class="line">            imgListDivs[currentImg].classList.add(<span class="string">"active"</span>)</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        preBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            currentImg = currentImg - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(currentImg&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                currentImg= imgListDivs.length<span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 初始化，将所有的img列表的active去掉</span></span><br><span class="line">            imgListDivs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,i</span>)</span>&#123;</span><br><span class="line">                item.classList.remove(<span class="string">"active"</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            imgListDivs[currentImg].classList.add(<span class="string">"active"</span>)</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS3</tag>
       </tags>
   </entry>
   <entry>
@@ -1015,53 +1062,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>6-19CSS相关问题</title>
-    <url>/2020/06/19/6-19/</url>
-    <content><![CDATA[<ul>
-<li><p>text-indent:-999px;当做一个a链接的图片按钮时，可以用于在添加完图片时将原本的字隐藏，只显示图片作为链接按钮</p>
-<img src="/2020/06/19/6-19/1.png">
-
-<a id="more"></a>
-</li>
-<li><p>content用于在元素的::before和::after伪元素中插入内容。例如在自定义复选框样式时，</p>
-<img src="/2020/06/19/6-19/2.png">
-
-<p>使用label覆盖input，设置label的样式通过content设置在点击状态时显示背景图片</p>
-</li>
-<li><p>label标签表示用户界面中某个元素的说明。将一个 <code>&lt;label&gt;</code> 和一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">``</a> 元素相关联主要有这些优点：</p>
-<ul>
-<li>标签文本不仅与其相应的文本输入元素在视觉上相关联，程序中也是如此。 这意味着，当用户聚焦到这个表单输入元素时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。</li>
-<li>你可以点击关联的标签来聚焦或者激活这个输入元素，就像直接点击输入元素一样。这扩大了元素的可点击区域，让包括使用触屏设备在内的用户更容易激活这个元素。</li>
-</ul>
-<p>将一个 <code>&lt;label&gt;</code> 和一个 <code>&lt;input&gt;</code> 元素匹配在一起，你需要给 <code>&lt;input&gt;</code> 一个 <code>id</code> 属性。而 <code>&lt;label&gt;</code> 需要一个 <code>for</code> 属性，其值和  <code>&lt;input&gt;</code> 的 <code>id</code> 一样。</p>
-<p>另外，你也可以将 <code>&lt;input&gt;</code> 直接放在 <code>&lt;label&gt;</code> 里，此时则不需要 <code>for</code> 和 <code>id</code> 属性，因为关联已隐含存在</p>
-</li>
-<li><p>给父元素overflow：hidden；zoom：1；清除浮动。</p>
-</li>
-<li><p>移动端布局</p>
-<ol>
-<li>做移动端的两种方式，一个项目分为PC端适配和移动端布局，判断设备进行切换</li>
-<li>一种PC移动端同时适配的响应式页面，适应pc页面和移动端页面，</li>
-<li>@media screen and(max-width:300px)当页面宽度小于300像素时，使用此内容中的样式</li>
-<li>宽度设为100%，盒子自动继承父盒子宽度</li>
-</ol>
-<p>轮播图</p>
-<figure class="hljs highlight"><table><tr><td class="code"><pre><span class="line">&lt;div class="btnList"&gt;</span><br><span class="line">            &lt;div class="btn pre"&gt;&lt;&lt;/div&gt;</span><br><span class="line">            &lt;div class="btn next"&gt;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"><span class="selector-class">.swiper</span> <span class="selector-class">.btn</span><span class="selector-class">.pre</span>&#123;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">60px</span>;<span class="attribute">line-height</span>: <span class="number">60px</span>;<span class="attribute">text-align</span>: center;<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);<span class="attribute">color</span>: <span class="number">#ffffff</span>;<span class="attribute">position</span>: absolute;<span class="attribute">top</span>: <span class="built_in">calc</span>(<span class="number">50%</span> - <span class="number">30px</span>);<span class="attribute">font-size</span>: <span class="number">35px</span>;&#125;</span><br><span class="line"></span><br><span class="line">.swiper .btn.next&#123;width: 100px;height: 60px;line-height: 60px;text-align: center;background-color: rgba(0,0, 0, 0.6);color: #ffffff;position: absolute;right: 0;;top: calc(50% - 30px);font-size: 35px;&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="hljs highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> preBtn = <span class="built_in">document</span>.querySelector(<span class="string">".swiper .pre"</span>);</span><br><span class="line">        <span class="keyword">var</span> nextBtn = <span class="built_in">document</span>.querySelector(<span class="string">".swiper .next"</span>);</span><br><span class="line">        <span class="keyword">var</span> imgListDivs = <span class="built_in">document</span>.querySelectorAll(<span class="string">".swiper .imgItems"</span>);</span><br><span class="line">        <span class="comment">// 图片数组的索引</span></span><br><span class="line">        <span class="keyword">var</span> currentImg = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 点击事件</span></span><br><span class="line">        nextBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            currentImg = currentImg + <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 点击到最后一张图片，回到起点</span></span><br><span class="line">            <span class="keyword">if</span>(currentImg&gt;=imgListDivs.length)&#123;</span><br><span class="line">                currentImg= <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 初始化，将所有的img列表的active去掉</span></span><br><span class="line">            imgListDivs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,i</span>)</span>&#123;</span><br><span class="line">                item.classList.remove(<span class="string">"active"</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="comment">// 点击后索引加1，active移动到下一个元素显示下一张图片</span></span><br><span class="line">            imgListDivs[currentImg].classList.add(<span class="string">"active"</span>)</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        preBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            currentImg = currentImg - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(currentImg&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                currentImg= imgListDivs.length<span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 初始化，将所有的img列表的active去掉</span></span><br><span class="line">            imgListDivs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,i</span>)</span>&#123;</span><br><span class="line">                item.classList.remove(<span class="string">"active"</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            imgListDivs[currentImg].classList.add(<span class="string">"active"</span>)</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS3</tag>
       </tags>
   </entry>
   <entry>
@@ -1778,38 +1778,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue02-组件</title>
-    <url>/2020/05/14/Vue02/</url>
-    <content><![CDATA[<h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><p>从概念上说，组件可以拓展HTML元素，封装复用性高的代码。组件是我们自定义的元素，Vue为其添加 了特殊的功能。在特殊情况下，组件也可以是原生的元素。</p>
-<h3 id="为什么使用组件"><a href="#为什么使用组件" class="headerlink" title="为什么使用组件"></a>为什么使用组件</h3><p>input是一个简单常用的搜索框，很多项目会多次使用，通常情况下，复制粘贴会更加简单，这需要了粘一个那需要了，粘一个，但当需要为这些搜索框添加一个Enter事件或添加一个类时，工作量会非常大，若是使用组件，只需要修改一次。</p>
-<p>组件的目的就是<strong>让代码复用更强</strong>，通过多种组件的组合形式完整的功能，同时功能的存在不需要额外增加多余的代码。</p>
-<a id="more"></a>
-
-<h3 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h3><p>父组件向子组件传值</p>
-<figure class="hljs highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;son v-bind:parentsmsg=<span class="string">"msg"</span>&gt;&lt;<span class="regexp">/son&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data:&#123;</span><br><span class="line">    msg:<span class="string">"父亲的数据"</span></span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    son:&#123;</span><br><span class="line">        template:<span class="string">'&lt;h1&gt;子组件数据++&#123;&#123; parentsmsg&#125;&#125;&lt;/h1&gt;'</span>,</span><br><span class="line">        props:[<span class="string">'parentsmsg'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用props传来的值可以直接使用，props的数据传输是单向的，也就是说，父组件给子组件传值，子组件只能调用不能修改。</p>
-<p>如果必须要修改，可以使用以下两个方法。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.在组件内部定义数据</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">data()&#123;</span><br><span class="line"><span class="keyword">return</span>&#123;</span><br><span class="line">  local_title:<span class="keyword">this</span>.title</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.使用计算属性</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">computed:&#123;</span><br><span class="line">    local_title:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.title.trim(<span class="string">``</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="子组件向父组件传值使用自定义事件"><a href="#子组件向父组件传值使用自定义事件" class="headerlink" title="子组件向父组件传值使用自定义事件"></a>子组件向父组件传值使用自定义事件</h4><figure class="hljs highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;&#123; new data&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">son</span> @<span class="attr">event1</span>=<span class="string">"change($event)"</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">        //event为</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>js</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> son = &#123;</span><br><span class="line">    template:<span class="string">"#temp1"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            data1:<span class="string">'子组件中的数据'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        toparents:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.$emit(<span class="string">'event1'</span>,<span class="keyword">this</span>.data1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//event1为要触发的事件，this.data1是传的值</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.newdata = data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;</span><br><span class="line">        son</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>首先在父组件调用子组件时将函数绑定，之后在子组件中使用$emit调用函数，并且可以传参，完成子组件向父组件的通信。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>框架</tag>
-        <tag>组件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LESS</title>
     <url>/2019/03/11/LESS/</url>
     <content><![CDATA[<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><a id="more"></a>
@@ -1942,6 +1910,38 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue02-组件</title>
+    <url>/2020/05/14/Vue02/</url>
+    <content><![CDATA[<h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><p>从概念上说，组件可以拓展HTML元素，封装复用性高的代码。组件是我们自定义的元素，Vue为其添加 了特殊的功能。在特殊情况下，组件也可以是原生的元素。</p>
+<h3 id="为什么使用组件"><a href="#为什么使用组件" class="headerlink" title="为什么使用组件"></a>为什么使用组件</h3><p>input是一个简单常用的搜索框，很多项目会多次使用，通常情况下，复制粘贴会更加简单，这需要了粘一个那需要了，粘一个，但当需要为这些搜索框添加一个Enter事件或添加一个类时，工作量会非常大，若是使用组件，只需要修改一次。</p>
+<p>组件的目的就是<strong>让代码复用更强</strong>，通过多种组件的组合形式完整的功能，同时功能的存在不需要额外增加多余的代码。</p>
+<a id="more"></a>
+
+<h3 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h3><p>父组件向子组件传值</p>
+<figure class="hljs highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;son v-bind:parentsmsg=<span class="string">"msg"</span>&gt;&lt;<span class="regexp">/son&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data:&#123;</span><br><span class="line">    msg:<span class="string">"父亲的数据"</span></span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    son:&#123;</span><br><span class="line">        template:<span class="string">'&lt;h1&gt;子组件数据++&#123;&#123; parentsmsg&#125;&#125;&lt;/h1&gt;'</span>,</span><br><span class="line">        props:[<span class="string">'parentsmsg'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用props传来的值可以直接使用，props的数据传输是单向的，也就是说，父组件给子组件传值，子组件只能调用不能修改。</p>
+<p>如果必须要修改，可以使用以下两个方法。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.在组件内部定义数据</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">data()&#123;</span><br><span class="line"><span class="keyword">return</span>&#123;</span><br><span class="line">  local_title:<span class="keyword">this</span>.title</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.使用计算属性</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">computed:&#123;</span><br><span class="line">    local_title:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.title.trim(<span class="string">``</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="子组件向父组件传值使用自定义事件"><a href="#子组件向父组件传值使用自定义事件" class="headerlink" title="子组件向父组件传值使用自定义事件"></a>子组件向父组件传值使用自定义事件</h4><figure class="hljs highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;&#123; new data&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">son</span> @<span class="attr">event1</span>=<span class="string">"change($event)"</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">        //event为</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>js</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> son = &#123;</span><br><span class="line">    template:<span class="string">"#temp1"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            data1:<span class="string">'子组件中的数据'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        toparents:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.$emit(<span class="string">'event1'</span>,<span class="keyword">this</span>.data1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//event1为要触发的事件，this.data1是传的值</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.newdata = data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;</span><br><span class="line">        son</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>首先在父组件调用子组件时将函数绑定，之后在子组件中使用$emit调用函数，并且可以传参，完成子组件向父组件的通信。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>框架</tag>
+        <tag>组件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VueRouter1</title>
     <url>/2020/07/21/VueRouter/</url>
     <content><![CDATA[<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><h2 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h2><p><code>vue-router</code>默认是hash模式，使用这种模式后端不需要额外的处理，前端路由主要通过URL中的hash(#号)来实现不同页面之间的切换，并不会向后端发送请求，并且HTTP请求中不会包含hash相关的内容，</p>
@@ -1995,37 +1995,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Cookie与session</title>
-    <url>/2020/07/13/cookie%E4%B8%8Esession/</url>
-    <content><![CDATA[<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于<a href="https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的HTTP协议记录稳定的状态信息成为了可能。</p>
-<a id="more"></a>
-
-<p>客户端浏览器会将Cookie存储起来，当再次请求该网站时，浏览器将请求地址和Cookie一同交给服务器，服务器检查Cookie来辨认用户的状态。</p>
-<p>如果没有Cookie，那么在我们购物时会出现这样的场景。</p>
-<p>输入用户名和密码，跳转到主页<br>C：点击添加购物车<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：于是很憋屈地再次输入用户名和密码，打算再点击添加购物车的按钮<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：…….</p>
-<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session是另一种记录服务器和客户端会话状态的机制。</p>
-<p>当第一次请求时服务器会创建Session返回SessionID给浏览器，当第二次请求时，浏览器会将SessionID传递给服务器进行验证。</p>
-<p><strong>Cookie是客户端保存的用户信息的一种机制，用来记录 用户信息，可以说它是实现Session的一种方式。</strong></p>
-<h2 id="session的实现方式"><a href="#session的实现方式" class="headerlink" title="session的实现方式"></a>session的实现方式</h2><p>1、借助Cookie的sessionId发送的方式</p>
-<p>2、通过LocalStorage的方式</p>
-<p>3、URL回写的方式，这是客户端禁止接收Cookie之后的方法。</p>
-<p>4、隐藏表单字段（hidden）</p>
-<h2 id="Cookie与session的区别"><a href="#Cookie与session的区别" class="headerlink" title="Cookie与session的区别"></a>Cookie与session的区别</h2><ul>
-<li><strong>安全性：</strong> Session 比 Cookie 安全，Session 是存储在服务器端的，Cookie 是存储在客户端的。</li>
-<li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li>
-<li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li>
-<li><strong>存储大小不同：</strong> 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>网络</category>
-      </categories>
-      <tags>
-        <tag>Cookie</tag>
-        <tag>session</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>apply与call、bind的区别</title>
     <url>/2019/07/04/apply%E4%B8%8Ecall%E3%80%81bind%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<h1 id="apply和call"><a href="#apply和call" class="headerlink" title="apply和call()"></a>apply和call()</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
@@ -2063,6 +2032,37 @@
       </categories>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cookie与session</title>
+    <url>/2020/07/13/cookie%E4%B8%8Esession/</url>
+    <content><![CDATA[<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于<a href="https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的HTTP协议记录稳定的状态信息成为了可能。</p>
+<a id="more"></a>
+
+<p>客户端浏览器会将Cookie存储起来，当再次请求该网站时，浏览器将请求地址和Cookie一同交给服务器，服务器检查Cookie来辨认用户的状态。</p>
+<p>如果没有Cookie，那么在我们购物时会出现这样的场景。</p>
+<p>输入用户名和密码，跳转到主页<br>C：点击添加购物车<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：于是很憋屈地再次输入用户名和密码，打算再点击添加购物车的按钮<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：…….</p>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session是另一种记录服务器和客户端会话状态的机制。</p>
+<p>当第一次请求时服务器会创建Session返回SessionID给浏览器，当第二次请求时，浏览器会将SessionID传递给服务器进行验证。</p>
+<p><strong>Cookie是客户端保存的用户信息的一种机制，用来记录 用户信息，可以说它是实现Session的一种方式。</strong></p>
+<h2 id="session的实现方式"><a href="#session的实现方式" class="headerlink" title="session的实现方式"></a>session的实现方式</h2><p>1、借助Cookie的sessionId发送的方式</p>
+<p>2、通过LocalStorage的方式</p>
+<p>3、URL回写的方式，这是客户端禁止接收Cookie之后的方法。</p>
+<p>4、隐藏表单字段（hidden）</p>
+<h2 id="Cookie与session的区别"><a href="#Cookie与session的区别" class="headerlink" title="Cookie与session的区别"></a>Cookie与session的区别</h2><ul>
+<li><strong>安全性：</strong> Session 比 Cookie 安全，Session 是存储在服务器端的，Cookie 是存储在客户端的。</li>
+<li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li>
+<li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li>
+<li><strong>存储大小不同：</strong> 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>Cookie</tag>
+        <tag>session</tag>
       </tags>
   </entry>
   <entry>
@@ -2338,6 +2338,36 @@
       </tags>
   </entry>
   <entry>
+    <title>vue项目问题</title>
+    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
+<img src="/2020/06/01/vue项目问题/7.png">
+
+<a id="more"></a>
+
+<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
+<img src="/2020/06/01/vue项目问题/3.png">
+
+<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
+<p>更换浏览器发现同样错误</p>
+<img src="/2020/06/01/vue项目问题/8.png">
+
+<p>当发送请求时</p>
+<img src="/2020/06/01/vue项目问题/88.png">
+
+<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>框架</tag>
+        <tag>bug</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序</title>
     <url>/2020/05/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
     <content><![CDATA[<ol>
@@ -2391,36 +2421,6 @@
       </tags>
   </entry>
   <entry>
-    <title>vue项目问题</title>
-    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
-<img src="/2020/06/01/vue项目问题/7.png">
-
-<a id="more"></a>
-
-<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
-<img src="/2020/06/01/vue项目问题/3.png">
-
-<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
-<p>更换浏览器发现同样错误</p>
-<img src="/2020/06/01/vue项目问题/8.png">
-
-<p>当发送请求时</p>
-<img src="/2020/06/01/vue项目问题/88.png">
-
-<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>框架</tag>
-        <tag>bug</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>更改github用户名导致hexo博客无法更新</title>
     <url>/2020/02/20/%E6%9B%B4%E6%94%B9github%E7%94%A8%E6%88%B7%E5%90%8D/</url>
     <content><![CDATA[<p>1 关于Github更改用户名字的问题，一直以来感觉自己的github名字起的比较幼稚，所以今天看着弹出来的一堆警告狠下心来改掉了用户名。</p>
@@ -2449,5 +2449,10 @@
       <tags>
         <tag>Git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>测试</title>
+    <url>/2020/08/13/%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h2 id="this-is-temp"><a href="#this-is-temp" class="headerlink" title="this is temp"></a>this is temp</h2>]]></content>
   </entry>
 </search>
