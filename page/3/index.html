@@ -1,897 +1,959 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#33363b">
-    <meta name="msapplication-TileColor" content="#33363b">
-    
-    
-    
-    
-    <meta name="keywords" content="Life, ARIA, Hexo">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
     
     
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-    
-    
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
-    
-    
-    <link rel="manifest" href="/favicons/site.webmanifest">
-    
-    
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Yo_huanjun" type="application/atom+xml">
-    
-    
-    <link rel="shortcut icon" type="image/x-icon" href="/favicons/fav.ico">
-    
-    
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Happy+Monkey&display=swap" ">
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
-    
-    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
-    
-    
-<link rel="stylesheet" type="text/css" href="/css/page.css">
-<link rel="stylesheet" type="text/css" href="/css/post.css">
+    <!--Simple SEO-->
 
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
-    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script defer type="text/javascript" src="/js/util.js"></script>
-    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
-    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
-    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
-    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+<meta name="description" content="Either" stand out or kicked out.>
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>Yo_huanjun</title>
+
+<link rel="alternate" href="/atom.xml" title="Yo_huanjun" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
     
-    <script defer src="/js/busuanzi.pure.mini.js"></script>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/article-exp.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
     
     
-    <script defer type="text/javascript" src="/js/search.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var searchPath = "search.xml";
-      if (searchPath.length === 0) {
-        searchPath = "search.xml";
-      }
-      var path = "/" + searchPath;
-      searchFunc(path, "search-input", "search-result");
-    });
-    </script>
-    
-    
-    <script defer type="text/javascript" src="/js/index.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var cb = null;
-      var els = $(".post figure.highlight");
-      if (els.length) {
-        // Enabled Hexo highlight line number.
-        $(els).each(function (i, e) {
-          $(e).before("<button class=\"copy button\">复制</button>");
-        });
-        cb = new ClipboardJS("button.copy", {
-          "target": function (trigger) {
-              // Get target element by DOM API.
-              // nextElementSibling is figure,highlight.
-              // And following is the sequence of Hexo's internal
-              // highlight layout with line number.
-              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
-          }
-        });
-      } else {
-        // Disabled Hexo highlight line number.
-        els = $(".post pre code");
-        $(els).each(function (i, e) {
-          // Add button before pre, not code.
-          $(e).parent().before("<button class=\"copy button\">复制</button>");
-        });
-        cb = new ClipboardJS("button.copy", {
-          "target": function (trigger) {
-              // Get target element by DOM API.
-              // nextElementSibling is figure,highlight.
-              // And following is the sequence of Hexo's internal
-              // highlight layout without line number.
-              return trigger.nextElementSibling.firstChild;
-          }
-        });
-      }
-      cb.on("success", function (e) {
-        e.clearSelection();
-        var trigger = e.trigger;
-        // Change button text as a user tip.
-        trigger.innerHTML = "已复制";
-        $(trigger).addClass("copied");
-        // Change button text back;
-        setTimeout(function () {
-          trigger.innerHTML = "复制";
-          $(trigger).removeClass("copied");
-        }, 1500);
-      });
-    });
-    </script>
-    
-    <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Yo_huanjun - Practice makes perfect.</title>
-  </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
-    
-<header id="header" class="header" style="background: #33363b;">
-  <div class="container">
-    <div class="header-container">
-      <div class="header-title">
-        <h1 class="title"><a href="/">Yo_huanjun</a></h1>
+</head>
+</html>
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">Yo_huanjun</h1>
+        </a>
+        
         <h2 class="subtitle">Practice makes perfect.</h2>
-      </div>
-      
-      <div class="logo">
-        <img src="/images/logo.png" alt="logo">
-      </div>
-      
+        
     </div>
-    <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
-      <ul id="menu" role="menubar" aria-hidden="false">
+    <ul id="nav">
         
-        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
         
-        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
         
-        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
-        
-        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
-        
-        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">Undefined Script Works!</span></a></li>
-        
-      </ul>
-    </nav>
-  </div>
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>Search</a></li>
+    </ul>
 </header>
 
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+# <p>主题ylion v0.0.0版本即将上线，敬请期待~！
+# 主题作者：<a href="https://github.com/GeekaholicLin"
+# title="fork me" target="_blank">Geekaholic</a></p>
+    </div>
+</li>
 
-    <main id="main" class="main">
-      <div class="container">
-        <div class="main-container">
-          <div class="content">
-            
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">Categories</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">33</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Ajax/"><i class="fa" aria-hidden="true">Ajax</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Bootstrap/"><i class="fa" aria-hidden="true">Bootstrap</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/CSS/"><i class="fa" aria-hidden="true">CSS</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/JQuery/"><i class="fa" aria-hidden="true">JQuery</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/JS/"><i class="fa" aria-hidden="true">JS</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Vue/"><i class="fa" aria-hidden="true">Vue</i></a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Vue-elementUi/"><i class="fa" aria-hidden="true">Vue-elementUi</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/js/"><i class="fa" aria-hidden="true">js</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/rem/"><i class="fa" aria-hidden="true">rem</i></a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/Node/"><i class="fa" aria-hidden="true">Node</i></a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信小程序/"><i class="fa" aria-hidden="true">微信小程序</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/"><i class="fa" aria-hidden="true">网络</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/"><i class="fa" aria-hidden="true">计算机</i></a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/Git/"><i class="fa" aria-hidden="true">Git</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/资源/"><i class="fa" aria-hidden="true">资源</i></a><span class="category-list-count">1</span></li></ul>
+</li>
 
-<div id="index" class="index page">
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2020/02/20/2020-02-20-1/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/02/20/2020-02-20-1/" itemprop="url">写给自己看的flex布局</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-02-20T18:58:23+08:00">2020-02-20 18:58:23</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h5 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h5><p>flex布局相关的属性分两组，一组作用在flex容器上，还有一组作用在flex子项上</p>
-<table>
-<thead>
-<tr>
-<th align="center">作用在flex容器上</th>
-<th align="center">作用在flex子项上</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">flex-direction</td>
-<td align="center">order</td>
-</tr>
-<tr>
-<td align="center">flex-wrap</td>
-<td align="center">flex-grow</td>
-</tr>
-<tr>
-<td align="center">flex-flow</td>
-<td align="center">flex-shrink</td>
-</tr>
-<tr>
-<td align="center">justify-content</td>
-<td align="center">flex-basis</td>
-</tr>
-<tr>
-<td align="center">align-items</td>
-<td align="center">flex</td>
-</tr>
-<tr>
-<td align="center">align-content</td>
-<td align="center">align-self</td>
-</tr>
-</tbody></table>
-<p>flex有很多属性，和平时使用的css不同的是它控制的是一个容器和容器内的所有子项，通常不是针对某一个子元素，所以在最开始的时候总是习惯的想要对某一个元素进行时会纠结不清到底使用哪个属性。</p>
-<p>最后认为搞清楚flex布局最重要的也就是明白控制元素的主轴</p>
-<img src="/2020/02/20/2020-02-20-1/41.png">
 
-<p>也就是使用<code>flex-direction</code>控制主轴方向，通常默认主轴水平方向，那么使用<code>justify-content</code>去控制子项在水平方向的对齐方式是便是控制子项在X轴上的对齐方式。当<code>flex-direction</code>:column;时，主轴由原来的X轴变为Y轴，那么<code>justify-content</code>控制的便是纵向的布局，而不是一味的认为控制当前页面的横向布局。</p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/Flex/" rel="tag"><i class="fas fa-tags"></i>Flex</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2020/02/20/更改github用户名/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/02/20/更改github用户名/" itemprop="url">更改github用户名导致hexo博客无法更新</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-02-20T14:42:49+08:00">2020-02-20 14:42:49</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <p>1 关于Github更改用户名字的问题，一直以来感觉自己的github名字起的比较幼稚，所以今天看着弹出来的一堆警告狠下心来改掉了用户名。</p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/Git/" rel="tag"><i class="fas fa-tags"></i>Git</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/11/27/2019-11-27-js作用域/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/11/27/2019-11-27-js作用域/" itemprop="url">2019-11-27-js作用域</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-11-27T13:10:57+08:00">2019-11-27 13:10:57</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="关于函数作用域"><a href="#关于函数作用域" class="headerlink" title="关于函数作用域"></a>关于函数作用域</h1><p>几乎所有编程语言的基本功能之一就是<strong>能够存储变量当中的值</strong>，并且能在这之后进行访问和修改，那么变量存储在哪里？程序需要的时候如何找到他们。</p>
-<p>事实上js也是一门编译语言，并且大部分情况下编译发生在代码执行前的几微秒（甚至更短）。</p>
-<h2 id="关于编译原理"><a href="#关于编译原理" class="headerlink" title="关于编译原理"></a>关于编译原理</h2>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/11/11/2019-11-11-Vue-01/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/11/11/2019-11-11-Vue-01/" itemprop="url">2019-11-11-Vue-01</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-11-11T10:25:56+08:00">2019-11-11 10:25:56</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Vue-js是什么"><a href="#Vue-js是什么" class="headerlink" title="Vue.js是什么"></a>Vue.js是什么</h1><p><code>Vue</code>是一套用于构建用户界面的<strong>渐进式框架</strong>。与其它大型框架不同的是，<code>Vue</code> 被设计为可以自底向上逐层应用。<code>Vue</code> 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">现代化的工具链</a>以及各种<a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">支持类库</a>结合使用时，<code>Vue</code> 也完全能够为复杂的单页应用提供驱动。</p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/框架/" rel="tag"><i class="fas fa-tags"></i>框架</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/10/31/2019-10-31-函数表达式/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/31/2019-10-31-函数表达式/" itemprop="url">Js函数表达式</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-31T08:15:01+08:00">2019-10-31 08:15:01</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <img src="/2019/10/31/2019-10-31-函数表达式/48.jpg">
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/闭包/" rel="tag"><i class="fas fa-tags"></i>闭包</a>
-        
-        <a class="post-tag button" href="/tags/递归/" rel="tag"><i class="fas fa-tags"></i>递归</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/10/29/2019-10-29-js面向对象/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/29/2019-10-29-js面向对象/" itemprop="url">js中面向对象程序设计</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-29T19:10:13+08:00">2019-10-29 19:10:13</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><p>原型模式</p>
-<p>我们所创建的每个函数都有一个<code>prototype</code>(原型)属性，这个属性是一个指针，指向一个对象，意思就是所有对象都可以共享它所包含的属性和方法</p>
-<img src="/2019/10/29/2019-10-29-js面向对象/03.jpg">
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/原型/" rel="tag"><i class="fas fa-tags"></i>原型</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/10/28/2019-10-28-Array/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/28/2019-10-28-Array/" itemprop="url">Js中的Array类型总结</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-28T07:17:27+08:00">2019-10-28 07:17:27</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Js中的Array类型"><a href="#Js中的Array类型" class="headerlink" title="Js中的Array类型"></a>Js中的Array类型</h1><p>序：除了Object类型之外，Array类型恐怕是ECAMAScript中最常用的类型了，特点：有序列表，并且数组的每一项都可以保存任意数据类型的数据，数组的大小可以动态的调整。</p>
-<h2 id="创建数组的方式"><a href="#创建数组的方式" class="headerlink" title="创建数组的方式"></a>创建数组的方式</h2><h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>使用Array构造函数:</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br></pre></td></tr></table></figure>
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">Archives</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/"><i class="fa" aria-hidden="true">August 2020</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/"><i class="fa" aria-hidden="true">July 2020</i></a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/"><i class="fa" aria-hidden="true">June 2020</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/"><i class="fa" aria-hidden="true">May 2020</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/"><i class="fa" aria-hidden="true">March 2020</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/"><i class="fa" aria-hidden="true">February 2020</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">November 2019</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/"><i class="fa" aria-hidden="true">October 2019</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/"><i class="fa" aria-hidden="true">August 2019</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/"><i class="fa" aria-hidden="true">July 2019</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/"><i class="fa" aria-hidden="true">June 2019</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/"><i class="fa" aria-hidden="true">May 2019</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/"><i class="fa" aria-hidden="true">April 2019</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/"><i class="fa" aria-hidden="true">March 2019</i></a><span class="archive-list-count">3</span></li></ul>
+</li>
 
-<ol>
-<li>如果预先知道数组保存项的数量，可以给数组传递数量</li>
-</ol>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);  <span class="comment">//创建数组项数为20的数组</span></span><br></pre></td></tr></table></figure>
 
-<p>2.直接 向数组传递要传入的值</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"1"</span>,<span class="string">"2"</span>);</span><br></pre></td></tr></table></figure>
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts">
+    <h3 class="fa fa-thermometer-3 widget-title">Popular Posts</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
 
-<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/Array/" rel="tag"><i class="fas fa-tags"></i>Array</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/10/22/2019-10-22-node-02/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/22/2019-10-22-node-02/" itemprop="url">Node学习入门2</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-22T14:40:46+08:00">2019-10-22 14:40:46</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/Node/" itemprop="url" rel="index"><span itemprop="name">Node</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h2 id="Node安装检测"><a href="#Node安装检测" class="headerlink" title="Node安装检测"></a>Node安装检测</h2><p>cmd中输入<code>node --version</code>/<code>node -v</code>检测版本号</p>
-<img src="/2019/10/22/2019-10-22-node-02/01.png">
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/Nodejs/" rel="tag"><i class="fas fa-tags"></i>Nodejs</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/10/22/2019-10-22-node-01/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/22/2019-10-22-node-01/" itemprop="url">Nodejs入门介绍</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-22T10:47:26+08:00">2019-10-22 10:47:26</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/Node/" itemprop="url" rel="index"><span itemprop="name">Node</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><h2 id="Node-js是什么"><a href="#Node-js是什么" class="headerlink" title="Node.js是什么?"></a><code>Node.js</code>是什么?</h2><p>在node官网的介绍中看到</p>
-<ol>
-<li><strong>Node.js® is a JavaScript runtime built on <a href="https://v8.dev/" target="_blank" rel="noopener">Chrome’s V8 JavaScript engine</a>.</strong></li>
-</ol>
-<ul>
-<li>Nodejs不是一门语言，不是库和框架，是一个<code>Javascript</code>运行环境</li>
-<li>以前只有浏览器可以解析执行Javascript代码，由于Node的出现现在js可以脱离浏览器运行</li>
-<li>Node中没有BOM和DOM，在Ecmascript的基础上增加了一些服务器级别的操作API</li>
-<li>例如：文件读写，网络服务的构建，网络通信，http服务器</li>
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/Vuex/" style="font-size: 0.14rem; color: #69c">Vuex</a> <a href="/tags/javaScript/" style="font-size: 0.2rem; color: #0a407c">javaScript</a> <a href="/tags/Nodejs/" style="font-size: 0.16rem; color: #4f83b8">Nodejs</a> <a href="/tags/Array/" style="font-size: 0.14rem; color: #69c">Array</a> <a href="/tags/框架/" style="font-size: 0.18rem; color: #215690">框架</a> <a href="/tags/原型/" style="font-size: 0.14rem; color: #69c">原型</a> <a href="/tags/闭包/" style="font-size: 0.14rem; color: #69c">闭包</a> <a href="/tags/递归/" style="font-size: 0.14rem; color: #69c">递归</a> <a href="/tags/Flex/" style="font-size: 0.14rem; color: #69c">Flex</a> <a href="/tags/HTTP/" style="font-size: 0.14rem; color: #69c">HTTP</a> <a href="/tags/TCP-IP/" style="font-size: 0.14rem; color: #69c">TCP/IP</a> <a href="/tags/Git/" style="font-size: 0.17rem; color: #386da4">Git</a> <a href="/tags/token/" style="font-size: 0.14rem; color: #69c">token</a> <a href="/tags/resource/" style="font-size: 0.14rem; color: #69c">resource</a> <a href="/tags/javascript/" style="font-size: 0.18rem; color: #215690">javascript</a> <a href="/tags/javascript-Array/" style="font-size: 0.14rem; color: #69c">javascript  Array</a> <a href="/tags/Linux/" style="font-size: 0.14rem; color: #69c">Linux</a> <a href="/tags/CentOs/" style="font-size: 0.14rem; color: #69c">CentOs</a> <a href="/tags/CSS3/" style="font-size: 0.14rem; color: #69c">CSS3</a> <a href="/tags/jQuery/" style="font-size: 0.18rem; color: #215690">jQuery</a> <a href="/tags/层叠/" style="font-size: 0.14rem; color: #69c">层叠</a> <a href="/tags/组件库/" style="font-size: 0.16rem; color: #4f83b8">组件库</a> <a href="/tags/JS/" style="font-size: 0.14rem; color: #69c">JS</a> <a href="/tags/模拟数据/" style="font-size: 0.14rem; color: #69c">模拟数据</a> <a href="/tags/UI-框架/" style="font-size: 0.14rem; color: #69c">UI 框架</a> <a href="/tags/Ajax/" style="font-size: 0.17rem; color: #386da4">Ajax</a> <a href="/tags/CSS-LESS/" style="font-size: 0.14rem; color: #69c">CSS LESS</a> <a href="/tags/组件/" style="font-size: 0.14rem; color: #69c">组件</a> <a href="/tags/Router/" style="font-size: 0.14rem; color: #69c">Router</a> <a href="/tags/CSS/" style="font-size: 0.14rem; color: #69c">CSS</a> <a href="/tags/Cookie/" style="font-size: 0.14rem; color: #69c">Cookie</a> <a href="/tags/session/" style="font-size: 0.14rem; color: #69c">session</a> <a href="/tags/选择器/" style="font-size: 0.14rem; color: #69c">选择器</a> <a href="/tags/样式/" style="font-size: 0.14rem; color: #69c">样式</a> <a href="/tags/DOM/" style="font-size: 0.14rem; color: #69c">DOM</a> <a href="/tags/thinkJS/" style="font-size: 0.14rem; color: #69c">thinkJS</a> <a href="/tags/bug/" style="font-size: 0.14rem; color: #69c">bug</a> <a href="/tags/小程序/" style="font-size: 0.14rem; color: #69c">小程序</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">Friends</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
 </ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/Nodejs/" rel="tag"><i class="fas fa-tags"></i>Nodejs</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/08/27/8-27bootstrap/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/08/27/8-27bootstrap/" itemprop="url">bootstrap</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-08-27T11:16:42+08:00">2019-08-27 11:16:42</time></span>
+
+
+        <ul id="main">
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2020/02/20/2020-02-20-1/">
+        <div class="article-img img-ajax" data-src= /2020/02/20/2020-02-20-1/41.png>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2020/02/20/2020-02-20-1/">
+                <h2 class="article-title">写给自己看的flex布局</h2>
+            </a>
+            
+            <p class="article-content">
+                flex布局flex布局相关的属性分两组，一组作用在flex容器上，还有一组作用在flex子项上
+
+
+
+作用在flex容器上
+作用在flex子项上
+
+
+
+flex-direction
+order
+
+
+flex-wrap
+flex-grow
+
+
+flex-flow
+flex-shrink
+
+
+justify-content
+flex-basis
+
+
+align-items
+flex
+
+
+align-content
+align-self
+
+
+flex有很多属性，和平时使用的css不同的是它控制的是一个容器和容器内的所有子项，通常不是针对某一个子元素，所以在最开始的时候总是习惯的想要对某一个元素进行时会纠结不清到底使用哪个属性。
+最后认为搞清楚flex布局最重要的也就是明白控制元素的主轴
+
+
+也就是使用flex-direction控制主轴方向，通常默认主轴水平方向，那么使用justify-...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>前端</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            Flex
+            
         </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h2 id="Bootstrap-是最受欢迎的-HTML、CSS-和-JS-框架，用于开发响应式布局、移动设备优先的-WEB-项目。"><a href="#Bootstrap-是最受欢迎的-HTML、CSS-和-JS-框架，用于开发响应式布局、移动设备优先的-WEB-项目。" class="headerlink" title="Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。"></a>Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。</h2>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/UI-框架/" rel="tag"><i class="fas fa-tags"></i>UI 框架</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-  
-  
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2020/02/20</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="写给自己看的flex布局"
+              data-leadcloud-url="/2020/02/20/2020-02-20-1/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2020/02/20/2020-02-20-1/" class="read-article">Read</a>
+    
 </div>
 
-          </div>
-          
-          
-          
-<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
-  
-  <div class="search">
-    <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
-    </div>
-  </div>
-  <div class="search-result-box" id="search-result"></div>
-  
-  
-<div class="info sidebar-item" id="info">
-  
-  <img class="author-avatar" src="/images/12.png" alt>
-  
-  <h1 class="author-name"></h1>
-  <h2 class="author-description">Either stand out or kicked out.</h2>
-  <div class="site-count">
+        </div>
+        
+    </li>
     
     
+    <li  class="article-excerpt-wrap " _href = "/2020/02/20/更改github用户名/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2020/02/20/更改github用户名/">
+                <h2 class="article-title">更改github用户名导致hexo博客无法更新</h2>
+            </a>
+            
+            <p class="article-content">
+                1 关于Github更改用户名字的问题，一直以来感觉自己的github名字起的比较幼稚，所以今天看着弹出来的一堆警告狠下心来改掉了用户名。
+
+
+那么现在更改名字过后本地的库还存在但是需要手动更改所有项目的远程地址，我们可以通过以下途径看到他们：
+1git remote -v
+
+之后删除掉旧的远程地址：
+1git remote rm git@github.com:old_account/res.git
+
+最后，添加新的远程地址
+1git remote add origin git@github.com:new_account/res.git
+
+但是更改过后发现通过hexo搭建的博客无法更新的问题，找来找去发现了问题
+
+
+
+
+需要将hexo中的配置地址更改，并且远程库的名字也要更改为新的名字
+
+            </p>
+            <div class="article-meta">
     
     
-    <div class="archives-count count-block">
-      <div class="site-count-title">归档</div>
-      <div><a href="/archives/">45</a></div>
-    </div>
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Git</span>
+    </span>
     
     
-    
-    <div class="categories-count count-block">
-      <div class="site-count-title">分类</div>
-      <div><a href="/categories/">18</a></div>
-    </div>
-    
-    
-    
-    <div class="tags-count count-block">
-      <div class="site-count-title">标签</div>
-      <div><a href="/tags/">38</a></div>
-    </div>
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            Git
+            
+        </span>
+    </span>
     
     
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2020/02/20</span>
+    </span>
     
     
-  </div>
-  
-  <div class="rss">
-    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
-  </div>
-  
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="更改github用户名导致hexo博客无法更新"
+              data-leadcloud-url="/2020/02/20/更改github用户名/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2020/02/20/更改github用户名/" class="read-article">Read</a>
+    
 </div>
 
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/11/27/2019-11-27-js作用域/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/11/27/2019-11-27-js作用域/">
+                <h2 class="article-title">2019-11-27-js作用域</h2>
+            </a>
+            
+            <p class="article-content">
+                关于函数作用域几乎所有编程语言的基本功能之一就是能够存储变量当中的值，并且能在这之后进行访问和修改，那么变量存储在哪里？程序需要的时候如何找到他们。
+事实上js也是一门编译语言，并且大部分情况下编译发生在代码执行前的几微秒（甚至更短）。
+关于编译原理
 
-  <div class="sidebar-sticky">
+传统编译语言的流程中，程序的一段源代码在执行之前会有三个步骤，统称为“编译”。
+
+分词/词法分析
+这个过程会将由字符组成的字符串分解成（对编程语言来说）有意义的代码块，这些代 码块被称为词法单元（token）。例如，考虑程序 var a = 2;。这段程序通常会被分解成 为下面这些词法单元：var、a、=、2 、;。空格是否会被当作词法单元，取决于空格在 这门语言中是否具有意义。
+
+解析/语法分析
+这个过程是将词法单元流（数组）转换成一个由元素逐级嵌套所组成的代表了程序语法 结构的树。这个树被称为“抽象语法树”（Abstract Sy...
+            </p>
+            <div class="article-meta">
     
     
-    <hr>
-    <div class="social-link sidebar-item">
-      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
-      <ul>
-        
-        <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
-        
-        <li><i class="fab fa-github"></i><a href="https://github.com/huanjungege" target="_blank">GitHub</a></li>
-        
-        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
-        
-      </ul>
-    </div>
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>js</span>
+    </span>
     
     
-    <hr>
-    <div class="blogroll sidebar-item">
-      <div><i class="fas fa-link"></i>友情链接</div>
-      <ul>
-        
-        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
-        
-      </ul>
-    </div>
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            javaScript
+            
+        </span>
+    </span>
     
-  </div>
-</aside>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/11/27</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="2019-11-27-js作用域"
+              data-leadcloud-url="/2019/11/27/2019-11-27-js作用域/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/11/27/2019-11-27-js作用域/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/11/11/2019-11-11-Vue-01/">
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/11/11/2019-11-11-Vue-01/">
+                <h2 class="article-title">2019-11-11-Vue-01</h2>
+            </a>
+            
+            <p class="article-content">
+                Vue.js是什么Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
 
 
-          
-        </div>
-      </div>
-    </main>
+指令
+v-once指令:进行一次行插值，当数据改变时，插值处的内容不会更新
+
+v-html指令：输出html
+
+v-cloak指令：可以隐藏未编译的标签直到实例准备完毕。解决插值表达式问题
+12345[v-cloak]&#123;display: none&#125;&lt;div v-cloak&gt;    &#123;&#123; message &#125;&#125;&lt;/div&gt;//不会显示直到编译结束
+
+v-text指令：没有需要用v-cloak解决的插值闪烁问...
+            </p>
+            <div class="article-meta">
     
-<footer id="footer" class="footer" style="background: #33363b;">
-  <div class="container">
-    <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
-    </div>
-    <div class="footer-container">
-      <div class="footer-left">
-        <div class="copyright">
-          <span class="author"></span><span class="year"><i class="far fa-copyright"></i>2020</span>
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Vue</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            javaScript
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/11/11</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="2019-11-11-Vue-01"
+              data-leadcloud-url="/2019/11/11/2019-11-11-Vue-01/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/11/11/2019-11-11-Vue-01/" class="read-article">Read</a>
+    
+</div>
+
         </div>
         
-        <div class="busuanzi">
-          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/10/31/2019-10-31-函数表达式/">
+        <div class="article-img img-ajax" data-src= /2019/10/31/2019-10-31-函数表达式/48.jpg>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/10/31/2019-10-31-函数表达式/">
+                <h2 class="article-title">Js函数表达式</h2>
+            </a>
+            
+            <p class="article-content">
+                
+
+
+
+函数表达式递归递归函数是在一个函数通过名字调用自身的情况下构成的
+一个经典的递归阶乘函数
+1234567function f(num) &#123;    if(num &lt;= 1)&#123;        return 1;    &#125;else&#123;        return num * f(num-1);    &#125;&#125;
+
+arguments.callee是一个指向正在执行函数的指针，因此它可以实现对函数的递归调用
+1234567function f(num) &#123;    if(num &lt;= 1)&#123;        return 1;    &#125;else&#123;        return num * arguments.callee(num-1);    &#125;&#125;
+
+通过使用argu...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>js</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            javaScript
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/10/31</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="Js函数表达式"
+              data-leadcloud-url="/2019/10/31/2019-10-31-函数表达式/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/10/31/2019-10-31-函数表达式/" class="read-article">Read</a>
+    
+</div>
+
         </div>
         
-      </div>
-      <div class="footer-right">
-        <div class="custom-info">
-          
-          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
-          
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/10/29/2019-10-29-js面向对象/">
+        <div class="article-img img-ajax" data-src= /2019/10/29/2019-10-29-js面向对象/01.jpg>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
-        <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/10/29/2019-10-29-js面向对象/">
+                <h2 class="article-title">js中面向对象程序设计</h2>
+            </a>
+            
+            <p class="article-content">
+                面向对象原型模式
+我们所创建的每个函数都有一个prototype(原型)属性，这个属性是一个指针，指向一个对象，意思就是所有对象都可以共享它所包含的属性和方法
+
+
+
+
+1234567891011function Person() &#123;&#125;Person.prototype.name = "mike";Person.prototype.sayName = function() &#123;    alert(this.name);&#125;var person1 = new Person();preson1.sayName(); //mikevar person2 = new Person();person2.sayName(); //mikealert(person1.sayName == person2.sayName) // true
+
+理解原型对象
+
+
+
+事实上...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>js</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            javaScript
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/10/29</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="js中面向对象程序设计"
+              data-leadcloud-url="/2019/10/29/2019-10-29-js面向对象/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/10/29/2019-10-29-js面向对象/" class="read-article">Read</a>
+    
+</div>
+
         </div>
-      </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/10/28/2019-10-28-Array/">
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/10/28/2019-10-28-Array/">
+                <h2 class="article-title">Js中的Array类型总结</h2>
+            </a>
+            
+            <p class="article-content">
+                Js中的Array类型序：除了Object类型之外，Array类型恐怕是ECAMAScript中最常用的类型了，特点：有序列表，并且数组的每一项都可以保存任意数据类型的数据，数组的大小可以动态的调整。
+创建数组的方式第一种使用Array构造函数:
+1var arr = new Array();
+
+
+如果预先知道数组保存项的数量，可以给数组传递数量
+
+1var arr = new Array(20);  //创建数组项数为20的数组
+
+2.直接 向数组传递要传入的值
+1var arr = new Array("1","2");
+
+第二种
+
+使用数组字面量法
+12var colors = ["green","red","blue"];var colors = []; //空数组
+
+数组的length很有特点，它不是只读的，我们可以直接控制数组的length值，控制数组的末尾移除项或者添加...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>js</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            javaScript
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/10/28</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="Js中的Array类型总结"
+              data-leadcloud-url="/2019/10/28/2019-10-28-Array/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/10/28/2019-10-28-Array/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/10/22/2019-10-22-node-02/">
+        <div class="article-img img-ajax" data-src= /2019/10/22/2019-10-22-node-02/03.png>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/10/22/2019-10-22-node-02/">
+                <h2 class="article-title">Node学习入门2</h2>
+            </a>
+            
+            <p class="article-content">
+                Node安装检测cmd中输入node --version/node -v检测版本号
+
+
+
+
+HelloWorld
+创建编写Javascript脚本
+
+
+打开终端，定位到脚本文件所属目录（切换盘符输入d:,然后盘符内相关目录cd 03Nodejs学习记录及代码练习\01）
+
+输入node &lt;”00-helloworld.js”&gt;
+
+
+
+
+切记文件名字不要起node.js，并且最好不要起中文
+Node.js中有没有BOM、DOM
+新建js文件
+
+
+运行结果
+
+
+可以看到报了引用错误，window is not defined，可见Node.js中没有BOM和DOM
+
+
+Node的文件操作Node具有文件操作的能力，file-system文件系统，我们简写为fs
+在Node中进行文件操作必须引入文件系统
+读取文件123456789101112//使用require()方法引用f...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Node</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            javaScript
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/10/22</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="Node学习入门2"
+              data-leadcloud-url="/2019/10/22/2019-10-22-node-02/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/10/22/2019-10-22-node-02/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/10/22/2019-10-22-node-01/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/10/22/2019-10-22-node-01/">
+                <h2 class="article-title">Nodejs入门介绍</h2>
+            </a>
+            
+            <p class="article-content">
+                NodeNode.js是什么?在node官网的介绍中看到
+
+Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.
+
+
+Nodejs不是一门语言，不是库和框架，是一个Javascript运行环境
+以前只有浏览器可以解析执行Javascript代码，由于Node的出现现在js可以脱离浏览器运行
+Node中没有BOM和DOM，在Ecmascript的基础上增加了一些服务器级别的操作API
+例如：文件读写，网络服务的构建，网络通信，http服务器
+
+
+
+
+Node.js uses an event-driven, non-blocking I/O moedl  that makes it lightweight and efficent*
+
+
+event-driven:事件驱动
+non-blockin...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Node</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            javaScript
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/10/22</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="Nodejs入门介绍"
+              data-leadcloud-url="/2019/10/22/2019-10-22-node-01/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/10/22/2019-10-22-node-01/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/2019/08/27/8-27bootstrap/">
+        <div class="article-img img-ajax" data-src= /2019/08/27/8-27bootstrap/6.png>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/08/27/8-27bootstrap/">
+                <h2 class="article-title">bootstrap</h2>
+            </a>
+            
+            <p class="article-content">
+                BootstrapBootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。
+
+Bootstrap插件 全部依赖JQuery，因此JQuery必须在Bootstrap之前引入，这是一个基本模板
+12345678910111213141516171819202122232425262728&lt;!DOCTYPE html&gt;&lt;html lang="zh-CN"&gt;  &lt;head&gt;    &lt;meta charset="utf-8"&gt;    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;    &lt;meta name="viewport" content="width=device-width, initial-sc...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Bootstrap</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            UI 框架
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/08/27</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="bootstrap"
+              data-leadcloud-url="/2019/08/27/8-27bootstrap/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/08/27/8-27bootstrap/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+
+</ul>
+
+<div id="page-pagination">
+    <div id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </div>
-  </div>
+</div>
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
+        
+        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links"></a>&copy;2015 - 2020.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
 </footer>
 
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    
 
-  </body>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+    <script src="/js/highsong.js"></script>
+
+
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+<script src="/js/app.js"></script>
+
+
+</body>
 </html>
