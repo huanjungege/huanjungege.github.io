@@ -473,6 +473,20 @@
   </url>
   
   <url>
+    <loc>http://www.aiabby.top/tags/JavaScript/</loc>
+    <lastmod>2020-08-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.aiabby.top/tags/String/</loc>
+    <lastmod>2020-08-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.aiabby.top/tags/Linux/</loc>
     <lastmod>2020-08-16</lastmod>
     <changefreq>daily</changefreq>
@@ -488,20 +502,6 @@
   
   <url>
     <loc>http://www.aiabby.top/tags/jQuery/</loc>
-    <lastmod>2020-08-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.aiabby.top/tags/JavaScript/</loc>
-    <lastmod>2020-08-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.aiabby.top/tags/String/</loc>
     <lastmod>2020-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -620,14 +620,14 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/bug/</loc>
+    <loc>http://www.aiabby.top/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
     <lastmod>2020-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
+    <loc>http://www.aiabby.top/tags/bug/</loc>
     <lastmod>2020-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -741,14 +741,14 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/categories/%E5%89%8D%E7%AB%AF/Ajax/</loc>
+    <loc>http://www.aiabby.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/Linux/</loc>
     <lastmod>2020-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/Linux/</loc>
+    <loc>http://www.aiabby.top/categories/%E5%89%8D%E7%AB%AF/Ajax/</loc>
     <lastmod>2020-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -1065,6 +1065,61 @@
       </tags>
   </entry>
   <entry>
+    <title>字符串总结</title>
+    <url>/2019/07/22/7-22%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>String类型是字符串的对象包装类型，可以像下面这样使用String构造函数来创建</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringObject = <span class="keyword">new</span> string(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>ECMAScript中字符串是不可改变的，也就是说一旦创建他们的值就是不可改变的，要改变某个变量保存的字符串，首先要先销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量</p>
+<a id="more"></a>
+
+<h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可直接进行换行，解决了传统的拼接方式的繁琐</span></span><br><span class="line">$(<span class="string">'#result'</span>).append(<span class="string">`</span></span><br><span class="line"><span class="string">  There are &lt;b&gt;<span class="subst">$&#123;basket.count&#125;</span>&lt;/b&gt; items</span></span><br><span class="line"><span class="string">   in your basket, &lt;em&gt;<span class="subst">$&#123;basket.onSale&#125;</span>&lt;/em&gt;</span></span><br><span class="line"><span class="string">  are on sale!</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h2><h3 id="转化方法"><a href="#转化方法" class="headerlink" title="转化方法"></a>转化方法</h3><ol>
+<li>使用<code>toString()</code>基本每个值都有的方法，该方法不接受<strong>null和undefined</strong></li>
+<li>String(),属于强制转换，null和undefined返回他们本身</li>
+</ol>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="length-返回字符串长度"><a href="#length-返回字符串长度" class="headerlink" title=".length:返回字符串长度"></a><code>.length</code>:返回字符串长度</h4><h4 id="indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）"><a href="#indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）" class="headerlink" title="indexOf(searchString, ?position)返回字符串中指定文本的位置（也就是索引）"></a><code>indexOf(searchString, ?position)</code>返回字符串中指定文本的位置（也就是索引）</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可添加一个参数，搜索指定文本的位置，或通过第二个参数限定从第几个索引开始查找</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'The China full of name is China'</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>)) <span class="comment">//没设置索引时显示的位于索引4的China</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>, <span class="number">15</span>))<span class="comment">//索引开始的位置，第一个China被跳过</span></span><br><span class="line"><span class="comment">//当未查到文本时返回-1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="lastIndexOf-同理，从字符串后方开始查询"><a href="#lastIndexOf-同理，从字符串后方开始查询" class="headerlink" title="lastIndexOf()同理，从字符串后方开始查询"></a><code>lastIndexOf()</code>同理，从字符串后方开始查询</h4><h4 id="search-方法检索字符串中的字符串"><a href="#search-方法检索字符串中的字符串" class="headerlink" title="search()方法检索字符串中的字符串"></a><code>search()</code>方法检索字符串中的字符串</h4><p>和<code>indexOf()</code>类似，查找指定字符串的位置，不同的是，<code>search()</code>,不接受第二个参数，而<code>indexOf()</code>不接受正则匹配模式</p>
+<h4 id="提取部分字符串"><a href="#提取部分字符串" class="headerlink" title="提取部分字符串"></a>提取部分字符串</h4><p><code>slice(start, end)</code>,<code>substring(start, end)</code>,<code>substr(start, end)</code></p>
+<h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a><code>slice()</code></h5><p>截取指定位置，指定个数的字符串</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>,<span class="number">13</span>);<span class="comment">//Banana,截取索引7到13部分的字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>,<span class="number">-7</span>);<span class="comment">//Banana,从倒数第13截取到倒数第7位</span></span><br><span class="line"><span class="comment">//当只选择一个参数时，截取从参数索引位置开始后的所有剩余部分</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>)；<span class="comment">//Banana, Mango</span></span><br><span class="line"><span class="comment">//参数为负时，选取倒着数索引后的所有字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>)；<span class="comment">//Banana, Mango</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="substring-与slice-相似，但是不接受负值的索引"><a href="#substring-与slice-相似，但是不接受负值的索引" class="headerlink" title="substring()与slice()相似，但是不接受负值的索引"></a><code>substring()</code>与<code>slice()</code>相似，但是不接受负值的索引</h5><h5 id="substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"><a href="#substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度" class="headerlink" title="substr()也与slice()相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"></a><code>substr()</code>也与<code>slice()</code>相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度</h5><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//	从第七位索引，截取6位字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.substr(<span class="number">7</span>,<span class="number">6</span>);<span class="comment">//Banana</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串的替换方法reaplace"><a href="#字符串的替换方法reaplace" class="headerlink" title="字符串的替换方法reaplace()"></a>字符串的替换方法<code>reaplace()</code></h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//replace()不会改变原有的字符串，而是返回新的字符串，替换的的文本为第一次匹配到的文本，对大小写敏感</span></span><br><span class="line">str = <span class="string">"Please visit Microsoft!"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="string">"Microsoft"</span>, <span class="string">"W3School"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(n);<span class="comment">//Please visit W3School</span></span><br><span class="line"><span class="comment">//如需执行大小写不敏感的替换，请使用正则表达式 /i（大小写不敏感）：</span></span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="regexp">/MICROSOFT/i</span>, <span class="string">"W3School"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串大小写转换方法"><a href="#字符串大小写转换方法" class="headerlink" title="字符串大小写转换方法"></a>字符串大小写转换方法</h4><p><code>ECMAScript</code>中涉及字符串大小写转换的方法有四个：<code>toLowerCase()</code>、<code>toLocaleLowerCase()</code>、<code>toUpperCase()</code>和<code>toLocaleUpperCase()</code>其中<code>toLowerCase()</code>和 <code>toUpperCase()</code>是两个经典的方法</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"hello world"</span>;</span><br><span class="line">alert(stringValue.toLocaleUpperCase()); <span class="comment">// "HELLO WORLD";</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="concat-方法可用于代替加运算符"><a href="#concat-方法可用于代替加运算符" class="headerlink" title="concat() 方法可用于代替加运算符"></a><code>concat()</code> 方法可用于代替加运算符</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="string">"World!"</span>;</span><br><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span>.concat(<span class="string">" "</span>,<span class="string">"World!"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="trim-方法删除字符串两端的空白符"><a href="#trim-方法删除字符串两端的空白符" class="headerlink" title="trim()方法删除字符串两端的空白符"></a><code>trim()</code>方法删除字符串两端的空白符</h4><p>该方法最近常见的用法是在输入框，实现搜索匹配时，用于去除用户传值时产生的空格</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"       Hello World!        "</span>;</span><br><span class="line">alert(str.trim());</span><br></pre></td></tr></table></figure>
+
+<p><code>charAt()</code>返回指定位置的字符</p>
+<p><code>charCodeAt()</code>返回指定位置字符的Unicode 编码</p>
+<h2 id="fromCharCode-方法"><a href="#fromCharCode-方法" class="headerlink" title="fromCharCode()方法"></a><code>fromCharCode()</code>方法</h2><p>String构造函数本身还有一个静态方法，接收单一或多个字符编码，然后将他们转换成一个字符串。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">alert(<span class="built_in">String</span>.fromCharCode(<span class="number">104</span>,<span class="number">101</span>,<span class="number">108</span>,<span class="number">108</span>,<span class="number">111</span>));  <span class="comment">//"hello"</span></span><br><span class="line">这里传递的是字符串hello中每个字符的Unicode编码。</span><br></pre></td></tr></table></figure>
+
+<h3 id="padStart-amp-padEnd"><a href="#padStart-amp-padEnd" class="headerlink" title="padStart()&amp;padEnd()"></a><code>padStart()</code>&amp;<code>padEnd()</code></h3><p>这两个方法是在ES6中新增的语法，用于为字符串提供补全方法，</p>
+<p>例如：</p>
+<p>格式化时间后的字符串<code>3:18</code>3分18秒</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">formateTime(seconds) &#123;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> seconds.toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">3600</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> h = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">3600</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;h&#125;</span>:<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>padStart()</code>和<code>padEnd()</code>一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>String</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux</title>
     <url>/2019/06/05/6-5-linux-01/</url>
     <content><![CDATA[<h1 id="linux学习"><a href="#linux学习" class="headerlink" title="linux学习"></a>linux学习</h1><h2 id="学习linux的流程为："><a href="#学习linux的流程为：" class="headerlink" title="学习linux的流程为："></a>学习linux的流程为：</h2><ul>
@@ -1160,61 +1215,6 @@
       <tags>
         <tag>javaScript</tag>
         <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符串总结</title>
-    <url>/2019/07/22/7-22%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>String类型是字符串的对象包装类型，可以像下面这样使用String构造函数来创建</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringObject = <span class="keyword">new</span> string(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>ECMAScript中字符串是不可改变的，也就是说一旦创建他们的值就是不可改变的，要改变某个变量保存的字符串，首先要先销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量</p>
-<a id="more"></a>
-
-<h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可直接进行换行，解决了传统的拼接方式的繁琐</span></span><br><span class="line">$(<span class="string">'#result'</span>).append(<span class="string">`</span></span><br><span class="line"><span class="string">  There are &lt;b&gt;<span class="subst">$&#123;basket.count&#125;</span>&lt;/b&gt; items</span></span><br><span class="line"><span class="string">   in your basket, &lt;em&gt;<span class="subst">$&#123;basket.onSale&#125;</span>&lt;/em&gt;</span></span><br><span class="line"><span class="string">  are on sale!</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h2><h3 id="转化方法"><a href="#转化方法" class="headerlink" title="转化方法"></a>转化方法</h3><ol>
-<li>使用<code>toString()</code>基本每个值都有的方法，该方法不接受<strong>null和undefined</strong></li>
-<li>String(),属于强制转换，null和undefined返回他们本身</li>
-</ol>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="length-返回字符串长度"><a href="#length-返回字符串长度" class="headerlink" title=".length:返回字符串长度"></a><code>.length</code>:返回字符串长度</h4><h4 id="indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）"><a href="#indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）" class="headerlink" title="indexOf(searchString, ?position)返回字符串中指定文本的位置（也就是索引）"></a><code>indexOf(searchString, ?position)</code>返回字符串中指定文本的位置（也就是索引）</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可添加一个参数，搜索指定文本的位置，或通过第二个参数限定从第几个索引开始查找</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'The China full of name is China'</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>)) <span class="comment">//没设置索引时显示的位于索引4的China</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>, <span class="number">15</span>))<span class="comment">//索引开始的位置，第一个China被跳过</span></span><br><span class="line"><span class="comment">//当未查到文本时返回-1</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="lastIndexOf-同理，从字符串后方开始查询"><a href="#lastIndexOf-同理，从字符串后方开始查询" class="headerlink" title="lastIndexOf()同理，从字符串后方开始查询"></a><code>lastIndexOf()</code>同理，从字符串后方开始查询</h4><h4 id="search-方法检索字符串中的字符串"><a href="#search-方法检索字符串中的字符串" class="headerlink" title="search()方法检索字符串中的字符串"></a><code>search()</code>方法检索字符串中的字符串</h4><p>和<code>indexOf()</code>类似，查找指定字符串的位置，不同的是，<code>search()</code>,不接受第二个参数，而<code>indexOf()</code>不接受正则匹配模式</p>
-<h4 id="提取部分字符串"><a href="#提取部分字符串" class="headerlink" title="提取部分字符串"></a>提取部分字符串</h4><p><code>slice(start, end)</code>,<code>substring(start, end)</code>,<code>substr(start, end)</code></p>
-<h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a><code>slice()</code></h5><p>截取指定位置，指定个数的字符串</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>,<span class="number">13</span>);<span class="comment">//Banana,截取索引7到13部分的字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>,<span class="number">-7</span>);<span class="comment">//Banana,从倒数第13截取到倒数第7位</span></span><br><span class="line"><span class="comment">//当只选择一个参数时，截取从参数索引位置开始后的所有剩余部分</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>)；<span class="comment">//Banana, Mango</span></span><br><span class="line"><span class="comment">//参数为负时，选取倒着数索引后的所有字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>)；<span class="comment">//Banana, Mango</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="substring-与slice-相似，但是不接受负值的索引"><a href="#substring-与slice-相似，但是不接受负值的索引" class="headerlink" title="substring()与slice()相似，但是不接受负值的索引"></a><code>substring()</code>与<code>slice()</code>相似，但是不接受负值的索引</h5><h5 id="substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"><a href="#substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度" class="headerlink" title="substr()也与slice()相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"></a><code>substr()</code>也与<code>slice()</code>相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度</h5><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//	从第七位索引，截取6位字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.substr(<span class="number">7</span>,<span class="number">6</span>);<span class="comment">//Banana</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="字符串的替换方法reaplace"><a href="#字符串的替换方法reaplace" class="headerlink" title="字符串的替换方法reaplace()"></a>字符串的替换方法<code>reaplace()</code></h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//replace()不会改变原有的字符串，而是返回新的字符串，替换的的文本为第一次匹配到的文本，对大小写敏感</span></span><br><span class="line">str = <span class="string">"Please visit Microsoft!"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="string">"Microsoft"</span>, <span class="string">"W3School"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(n);<span class="comment">//Please visit W3School</span></span><br><span class="line"><span class="comment">//如需执行大小写不敏感的替换，请使用正则表达式 /i（大小写不敏感）：</span></span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="regexp">/MICROSOFT/i</span>, <span class="string">"W3School"</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="字符串大小写转换方法"><a href="#字符串大小写转换方法" class="headerlink" title="字符串大小写转换方法"></a>字符串大小写转换方法</h4><p><code>ECMAScript</code>中涉及字符串大小写转换的方法有四个：<code>toLowerCase()</code>、<code>toLocaleLowerCase()</code>、<code>toUpperCase()</code>和<code>toLocaleUpperCase()</code>其中<code>toLowerCase()</code>和 <code>toUpperCase()</code>是两个经典的方法</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"hello world"</span>;</span><br><span class="line">alert(stringValue.toLocaleUpperCase()); <span class="comment">// "HELLO WORLD";</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="concat-方法可用于代替加运算符"><a href="#concat-方法可用于代替加运算符" class="headerlink" title="concat() 方法可用于代替加运算符"></a><code>concat()</code> 方法可用于代替加运算符</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="string">"World!"</span>;</span><br><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span>.concat(<span class="string">" "</span>,<span class="string">"World!"</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="trim-方法删除字符串两端的空白符"><a href="#trim-方法删除字符串两端的空白符" class="headerlink" title="trim()方法删除字符串两端的空白符"></a><code>trim()</code>方法删除字符串两端的空白符</h4><p>该方法最近常见的用法是在输入框，实现搜索匹配时，用于去除用户传值时产生的空格</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"       Hello World!        "</span>;</span><br><span class="line">alert(str.trim());</span><br></pre></td></tr></table></figure>
-
-<p><code>charAt()</code>返回指定位置的字符</p>
-<p><code>charCodeAt()</code>返回指定位置字符的Unicode 编码</p>
-<h2 id="fromCharCode-方法"><a href="#fromCharCode-方法" class="headerlink" title="fromCharCode()方法"></a><code>fromCharCode()</code>方法</h2><p>String构造函数本身还有一个静态方法，接收单一或多个字符编码，然后将他们转换成一个字符串。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">alert(<span class="built_in">String</span>.fromCharCode(<span class="number">104</span>,<span class="number">101</span>,<span class="number">108</span>,<span class="number">108</span>,<span class="number">111</span>));  <span class="comment">//"hello"</span></span><br><span class="line">这里传递的是字符串hello中每个字符的Unicode编码。</span><br></pre></td></tr></table></figure>
-
-<h3 id="padStart-amp-padEnd"><a href="#padStart-amp-padEnd" class="headerlink" title="padStart()&amp;padEnd()"></a><code>padStart()</code>&amp;<code>padEnd()</code></h3><p>这两个方法是在ES6中新增的语法，用于为字符串提供补全方法，</p>
-<p>例如：</p>
-<p>格式化时间后的字符串<code>3:18</code>3分18秒</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">formateTime(seconds) &#123;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> seconds.toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">3600</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> h = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">3600</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;h&#125;</span>:<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>padStart()</code>和<code>padEnd()</code>一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JS</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>String</tag>
       </tags>
   </entry>
   <entry>
@@ -1556,6 +1556,64 @@
       </tags>
   </entry>
   <entry>
+    <title>记this的指向</title>
+    <url>/2020/08/01/8-1%E8%AE%B0this%E7%9A%84%E6%8C%87%E5%90%91/</url>
+    <content><![CDATA[<h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><p>this的指向在函数的定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，所以this的最终指向的是调用它的对象（理论上）</p>
+<p>第一个例子</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">app</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> user = <span class="string">"bpp"</span>; </span><br><span class="line">    <span class="built_in">console</span>.log(user);<span class="comment">//undefined</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//window</span></span><br><span class="line">&#125;</span><br><span class="line">app()在全局作用域<span class="built_in">window</span>中调用app()</span><br></pre></td></tr></table></figure>
+
+<p>此时this最终指向的是调用它的对象window，相当于<code>window.app()</code></p>
+<a id="more"></a>
+
+<p>第二个例子</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = &#123;</span><br><span class="line">    user: <span class="string">'name'</span>,</span><br><span class="line">    fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.user);<span class="comment">//name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">temp.fn()</span><br></pre></td></tr></table></figure>
+
+<p>此时因为是对象temp调用了fn，所以this指向它的调用者temp</p>
+<p>例子三证明了我们的this指向它的调用者是一个理论上的说法</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = &#123;</span><br><span class="line">    user: <span class="string">'name'</span>,</span><br><span class="line">    fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.user);<span class="comment">//name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.temp.fn()</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过window调用发现this没有指向window</strong></p>
+<p>例子四</p>
+<figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var temp = &#123;</span><br><span class="line">user:&apos;yy&apos;</span><br><span class="line">temp2：&#123;</span><br><span class="line"> user: &apos;name&apos;,</span><br><span class="line">    fn:function()&#123;</span><br><span class="line">        console.log(this.user);//name</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;  </span><br><span class="line">&#125;</span><br><span class="line">temp.temp2.fn()</span><br></pre></td></tr></table></figure>
+
+<p>这里的temp2是通过temp点出来的，this同样没有指向它说明</p>
+<ol>
+<li>如果一个函数中有this没有通过上一级对象调用，那么它指向window</li>
+<li>如果有上一级对象调用，那么this指向它的上一级对象</li>
+<li>如果这个函数被多个对象嵌套，那么尽管这个函数被最外层的对象调用，this也指向它的上一级对象。</li>
+</ol>
+<p><strong>特殊情况</strong></p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp1 = &#123;</span><br><span class="line">    b:&#123;</span><br><span class="line">        a = <span class="number">10</span>,</span><br><span class="line">        fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);<span class="comment">//undefined</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//window</span></span><br><span class="line">  &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> j = temp1.b.fn;</span><br><span class="line">j()</span><br></pre></td></tr></table></figure>
+
+<p>此时的this没有指向最后调用它的b，因为在fn赋值给变量j的时候函数并没有运行，最终指向的是window</p>
+<p>构造函数的this</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.user= <span class="string">"aaa"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn();</span><br><span class="line"><span class="built_in">console</span>.log(a.user);<span class="comment">//aaa</span></span><br></pre></td></tr></table></figure>
+
+<p>这里之所以对象a可以点出函数Fn里面的user是因为new关键字可以改变this的指向，将这个this指向对象a，为什么我说a是对象，因为用了new关键字就是创建一个对象实例，理解这句话可以想想我们的例子3，我们这里用变量a创建了一个Fn的实例（相当于复制了一份Fn到对象a里面），此时仅仅只是创建，并没有执行，而调用这个函数Fn的是对象a，那么this指向的自然是对象a，那么为什么对象a中会有user，因为你已经复制了一份Fn函数到对象a中，用了new关键字就等同于复制了一份。</p>
+<p>　　除了上面的这些以外，我们还可以自行改变this的指向，关于自行改变this的指向请看<a href="http://www.cnblogs.com/pssp/p/5215621.html" target="_blank" rel="noopener">JavaScript中call,apply,bind方法的总结</a>这篇文章，详细的说明了我们如何手动更改this的指向。</p>
+<p>当this碰到return时</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.uer=<span class="string">"aaa"</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn();</span><br><span class="line"><span class="built_in">console</span>.log(a.user); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.user = <span class="string">'aaaa'</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn;  </span><br><span class="line"><span class="built_in">console</span>.log(a.user); <span class="comment">//aaaa</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>如果返回值是一个对象，那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</strong></p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>在严格模式中默认的this不再时window，而是undefined</p>
+<p>new操作符会改变this的指向问题</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.user= <span class="string">"aaa"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn();</span><br><span class="line"><span class="built_in">console</span>.log(a.user);<span class="comment">//aaa</span></span><br></pre></td></tr></table></figure>
+
+<p>为什么this会指向a？首先new关键字会创建一个空的对象，然后会自动调用一个函数（比如apply）方法，将this指向这个空对象，这样的化函数内部的this就会被这个空的对象替代</p>
+<h2 id="Vue中的this"><a href="#Vue中的this" class="headerlink" title="Vue中的this"></a>Vue中的this</h2><p>我们可以看到在vue的组件中，我们调用了某个ui组件，使用的使用都会用到this，并且在获取数据的时候也会用到this</p>
+<img src="/2020/08/01/8-1记this的指向/1.png">
+
+<p>获取用户列表数据</p>
+<img src="/2020/08/01/8-1记this的指向/2.png">
+
+<p>使用elementui框架的弹框组件</p>
+<p>Vue中的this指向当前组件的实例</p>
+<p>使用箭头函数没有自己的this，所以指向组件当前的实例</p>
+]]></content>
+  </entry>
+  <entry>
     <title>bootstrap</title>
     <url>/2019/08/27/8-27bootstrap/</url>
     <content><![CDATA[<h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h2 id="Bootstrap-是最受欢迎的-HTML、CSS-和-JS-框架，用于开发响应式布局、移动设备优先的-WEB-项目。"><a href="#Bootstrap-是最受欢迎的-HTML、CSS-和-JS-框架，用于开发响应式布局、移动设备优先的-WEB-项目。" class="headerlink" title="Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。"></a>Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。</h2><a id="more"></a>
@@ -1639,64 +1697,6 @@
       <tags>
         <tag>UI 框架</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>记this的指向</title>
-    <url>/2020/08/01/8-1%E8%AE%B0this%E7%9A%84%E6%8C%87%E5%90%91/</url>
-    <content><![CDATA[<h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><p>this的指向在函数的定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，所以this的最终指向的是调用它的对象（理论上）</p>
-<p>第一个例子</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">app</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> user = <span class="string">"bpp"</span>; </span><br><span class="line">    <span class="built_in">console</span>.log(user);<span class="comment">//undefined</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//window</span></span><br><span class="line">&#125;</span><br><span class="line">app()在全局作用域<span class="built_in">window</span>中调用app()</span><br></pre></td></tr></table></figure>
-
-<p>此时this最终指向的是调用它的对象window，相当于<code>window.app()</code></p>
-<a id="more"></a>
-
-<p>第二个例子</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = &#123;</span><br><span class="line">    user: <span class="string">'name'</span>,</span><br><span class="line">    fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.user);<span class="comment">//name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">temp.fn()</span><br></pre></td></tr></table></figure>
-
-<p>此时因为是对象temp调用了fn，所以this指向它的调用者temp</p>
-<p>例子三证明了我们的this指向它的调用者是一个理论上的说法</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = &#123;</span><br><span class="line">    user: <span class="string">'name'</span>,</span><br><span class="line">    fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.user);<span class="comment">//name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.temp.fn()</span><br></pre></td></tr></table></figure>
-
-<p><strong>通过window调用发现this没有指向window</strong></p>
-<p>例子四</p>
-<figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var temp = &#123;</span><br><span class="line">user:&apos;yy&apos;</span><br><span class="line">temp2：&#123;</span><br><span class="line"> user: &apos;name&apos;,</span><br><span class="line">    fn:function()&#123;</span><br><span class="line">        console.log(this.user);//name</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;  </span><br><span class="line">&#125;</span><br><span class="line">temp.temp2.fn()</span><br></pre></td></tr></table></figure>
-
-<p>这里的temp2是通过temp点出来的，this同样没有指向它说明</p>
-<ol>
-<li>如果一个函数中有this没有通过上一级对象调用，那么它指向window</li>
-<li>如果有上一级对象调用，那么this指向它的上一级对象</li>
-<li>如果这个函数被多个对象嵌套，那么尽管这个函数被最外层的对象调用，this也指向它的上一级对象。</li>
-</ol>
-<p><strong>特殊情况</strong></p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp1 = &#123;</span><br><span class="line">    b:&#123;</span><br><span class="line">        a = <span class="number">10</span>,</span><br><span class="line">        fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);<span class="comment">//undefined</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//window</span></span><br><span class="line">  &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> j = temp1.b.fn;</span><br><span class="line">j()</span><br></pre></td></tr></table></figure>
-
-<p>此时的this没有指向最后调用它的b，因为在fn赋值给变量j的时候函数并没有运行，最终指向的是window</p>
-<p>构造函数的this</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.user= <span class="string">"aaa"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn();</span><br><span class="line"><span class="built_in">console</span>.log(a.user);<span class="comment">//aaa</span></span><br></pre></td></tr></table></figure>
-
-<p>这里之所以对象a可以点出函数Fn里面的user是因为new关键字可以改变this的指向，将这个this指向对象a，为什么我说a是对象，因为用了new关键字就是创建一个对象实例，理解这句话可以想想我们的例子3，我们这里用变量a创建了一个Fn的实例（相当于复制了一份Fn到对象a里面），此时仅仅只是创建，并没有执行，而调用这个函数Fn的是对象a，那么this指向的自然是对象a，那么为什么对象a中会有user，因为你已经复制了一份Fn函数到对象a中，用了new关键字就等同于复制了一份。</p>
-<p>　　除了上面的这些以外，我们还可以自行改变this的指向，关于自行改变this的指向请看<a href="http://www.cnblogs.com/pssp/p/5215621.html" target="_blank" rel="noopener">JavaScript中call,apply,bind方法的总结</a>这篇文章，详细的说明了我们如何手动更改this的指向。</p>
-<p>当this碰到return时</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.uer=<span class="string">"aaa"</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn();</span><br><span class="line"><span class="built_in">console</span>.log(a.user); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
-
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.user = <span class="string">'aaaa'</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn;  </span><br><span class="line"><span class="built_in">console</span>.log(a.user); <span class="comment">//aaaa</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>如果返回值是一个对象，那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</strong></p>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>在严格模式中默认的this不再时window，而是undefined</p>
-<p>new操作符会改变this的指向问题</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.user= <span class="string">"aaa"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fn();</span><br><span class="line"><span class="built_in">console</span>.log(a.user);<span class="comment">//aaa</span></span><br></pre></td></tr></table></figure>
-
-<p>为什么this会指向a？首先new关键字会创建一个空的对象，然后会自动调用一个函数（比如apply）方法，将this指向这个空对象，这样的化函数内部的this就会被这个空的对象替代</p>
-<h2 id="Vue中的this"><a href="#Vue中的this" class="headerlink" title="Vue中的this"></a>Vue中的this</h2><p>我们可以看到在vue的组件中，我们调用了某个ui组件，使用的使用都会用到this，并且在获取数据的时候也会用到this</p>
-<img src="/2020/08/01/8-1记this的指向/1.png">
-
-<p>获取用户列表数据</p>
-<img src="/2020/08/01/8-1记this的指向/2.png">
-
-<p>使用elementui框架的弹框组件</p>
-<p>Vue中的this指向当前组件的实例</p>
-<p>使用箭头函数没有自己的this，所以指向组件当前的实例</p>
-]]></content>
   </entry>
   <entry>
     <title>Ajax</title>
@@ -1969,6 +1969,46 @@
       </tags>
   </entry>
   <entry>
+    <title>apply与call、bind的区别</title>
+    <url>/2019/07/04/apply%E4%B8%8Ecall%E3%80%81bind%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h1 id="apply和call"><a href="#apply和call" class="headerlink" title="apply和call()"></a>apply和call()</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>作用都可以改变this对象的指向</li>
+<li>第一个参数都是this要指向的对象(thisArg//函数执行时this的指向,args//传入的实参)</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="call与apply的区别"><a href="#call与apply的区别" class="headerlink" title="call与apply的区别"></a>call与apply的区别</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"结果："</span>+(x+y)+<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">f1(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">obj=&#123;</span><br><span class="line">    name=<span class="string">"小米"</span>,</span><br><span class="line">    age=<span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line">f1.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]);</span><br><span class="line">f1.call(obj,<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<p> <code>apply()</code>与<code>call()</code>方法都可以将实参在对象之后传递，但是<code>apply()</code>方法需要将实参封装到一个数组中统一转递，即使只有一个实参。</p>
+<p>简单理解</p>
+<ol>
+<li><code>apply()</code>把参数打包成<code>Array</code>再传入</li>
+<li><code>call()</code>把参数按顺序传入</li>
+</ol>
+<h2 id="第一个参数的传递"><a href="#第一个参数的传递" class="headerlink" title="第一个参数的传递"></a>第一个参数的传递</h2><ol>
+<li>thisObj不传或者为null，undefined时，函数中的this会指向window对象（非严格模式）</li>
+<li>传递一个别的函数名时，函数中的this将指向这个函数的引用</li>
+<li>传递的值为数字、布尔、字符串时，this会指向这些基本类型的包装对象Number、Boolean、String</li>
+<li>传递一个对象时，函数中的this将指向传递的这个对象。</li>
+</ol>
+<h3 id="call-和apply-并不在实例对象中，那么对象是如何调用的"><a href="#call-和apply-并不在实例对象中，那么对象是如何调用的" class="headerlink" title="call()和apply()并不在实例对象中，那么对象是如何调用的"></a><code>call()</code>和<code>apply()</code>并不在实例对象中，那么对象是如何调用的</h3><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>+<span class="string">":被调用了"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(f1.__proto__==<span class="built_in">Function</span>.prototype);<span class="comment">//true</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到<code>apply()</code>和<code>call()</code>不在实例对象中，而在对象的原型中</p>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h2><ul>
+<li>可以改变this的指向</li>
+<li><code>call()</code>和<code>apply()</code>在调用函数时改变</li>
+<li>bind是将函数返回，相当于复制了一份。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VueRouter1</title>
     <url>/2020/07/21/VueRouter/</url>
     <content><![CDATA[<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><h2 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h2><p><code>vue-router</code>默认是hash模式，使用这种模式后端不需要额外的处理，前端路由主要通过URL中的hash(#号)来实现不同页面之间的切换，并不会向后端发送请求，并且HTTP请求中不会包含hash相关的内容，</p>
@@ -2019,46 +2059,6 @@
       </categories>
       <tags>
         <tag>Router</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>apply与call、bind的区别</title>
-    <url>/2019/07/04/apply%E4%B8%8Ecall%E3%80%81bind%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h1 id="apply和call"><a href="#apply和call" class="headerlink" title="apply和call()"></a>apply和call()</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
-<li>作用都可以改变this对象的指向</li>
-<li>第一个参数都是this要指向的对象(thisArg//函数执行时this的指向,args//传入的实参)</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="call与apply的区别"><a href="#call与apply的区别" class="headerlink" title="call与apply的区别"></a>call与apply的区别</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"结果："</span>+(x+y)+<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">f1(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">obj=&#123;</span><br><span class="line">    name=<span class="string">"小米"</span>,</span><br><span class="line">    age=<span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line">f1.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]);</span><br><span class="line">f1.call(obj,<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
-
-<p> <code>apply()</code>与<code>call()</code>方法都可以将实参在对象之后传递，但是<code>apply()</code>方法需要将实参封装到一个数组中统一转递，即使只有一个实参。</p>
-<p>简单理解</p>
-<ol>
-<li><code>apply()</code>把参数打包成<code>Array</code>再传入</li>
-<li><code>call()</code>把参数按顺序传入</li>
-</ol>
-<h2 id="第一个参数的传递"><a href="#第一个参数的传递" class="headerlink" title="第一个参数的传递"></a>第一个参数的传递</h2><ol>
-<li>thisObj不传或者为null，undefined时，函数中的this会指向window对象（非严格模式）</li>
-<li>传递一个别的函数名时，函数中的this将指向这个函数的引用</li>
-<li>传递的值为数字、布尔、字符串时，this会指向这些基本类型的包装对象Number、Boolean、String</li>
-<li>传递一个对象时，函数中的this将指向传递的这个对象。</li>
-</ol>
-<h3 id="call-和apply-并不在实例对象中，那么对象是如何调用的"><a href="#call-和apply-并不在实例对象中，那么对象是如何调用的" class="headerlink" title="call()和apply()并不在实例对象中，那么对象是如何调用的"></a><code>call()</code>和<code>apply()</code>并不在实例对象中，那么对象是如何调用的</h3><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>+<span class="string">":被调用了"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(f1.__proto__==<span class="built_in">Function</span>.prototype);<span class="comment">//true</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>可以看到<code>apply()</code>和<code>call()</code>不在实例对象中，而在对象的原型中</p>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h2><ul>
-<li>可以改变this的指向</li>
-<li><code>call()</code>和<code>apply()</code>在调用函数时改变</li>
-<li>bind是将函数返回，相当于复制了一份。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JS</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -2365,36 +2365,6 @@
       </tags>
   </entry>
   <entry>
-    <title>vue项目问题</title>
-    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
-<img src="/2020/06/01/vue项目问题/7.png">
-
-<a id="more"></a>
-
-<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
-<img src="/2020/06/01/vue项目问题/3.png">
-
-<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
-<p>更换浏览器发现同样错误</p>
-<img src="/2020/06/01/vue项目问题/8.png">
-
-<p>当发送请求时</p>
-<img src="/2020/06/01/vue项目问题/88.png">
-
-<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>框架</tag>
-        <tag>bug</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信小程序</title>
     <url>/2020/05/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
     <content><![CDATA[<ol>
@@ -2445,6 +2415,36 @@
       </categories>
       <tags>
         <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue项目问题</title>
+    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
+<img src="/2020/06/01/vue项目问题/7.png">
+
+<a id="more"></a>
+
+<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
+<img src="/2020/06/01/vue项目问题/3.png">
+
+<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
+<p>更换浏览器发现同样错误</p>
+<img src="/2020/06/01/vue项目问题/8.png">
+
+<p>当发送请求时</p>
+<img src="/2020/06/01/vue项目问题/88.png">
+
+<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>框架</tag>
+        <tag>bug</tag>
       </tags>
   </entry>
   <entry>
