@@ -66,7 +66,7 @@
       if (els.length) {
         // Enabled Hexo highlight line number.
         $(els).each(function (i, e) {
-          $(e).before("<button class=\"copy button\">複製</button>");
+          $(e).before("<button class=\"copy button\">Copy</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -82,7 +82,7 @@
         els = $(".post pre code");
         $(els).each(function (i, e) {
           // Add button before pre, not code.
-          $(e).parent().before("<button class=\"copy button\">複製</button>");
+          $(e).parent().before("<button class=\"copy button\">Copy</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -98,11 +98,11 @@
         e.clearSelection();
         var trigger = e.trigger;
         // Change button text as a user tip.
-        trigger.innerHTML = "已複製";
+        trigger.innerHTML = "Copied";
         $(trigger).addClass("copied");
         // Change button text back;
         setTimeout(function () {
-          trigger.innerHTML = "複製";
+          trigger.innerHTML = "Copy";
           $(trigger).removeClass("copied");
         }, 1500);
       });
@@ -124,7 +124,7 @@
       
     </div>
     <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切換導航欄"></i></a>
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
       <ul id="menu" role="menubar" aria-hidden="false">
         
       </ul>
@@ -255,7 +255,7 @@
   
   <div class="search">
     <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
     </div>
   </div>
   <div class="search-result-box" id="search-result"></div>
@@ -284,7 +284,7 @@
     
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
-      <div><i class="fas fa-list-ol"></i>文章目錄</div>
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
       <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#string类型"><span class="toc-text">string类型</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#模版字符串"><span class="toc-text">模版字符串</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#字符方法"><span class="toc-text">字符方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#转化方法"><span class="toc-text">转化方法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#常用方法"><span class="toc-text">常用方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#length-返回字符串长度"><span class="toc-text">.length:返回字符串长度</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）"><span class="toc-text">indexOf(searchString, ?position)返回字符串中指定文本的位置（也就是索引）</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#lastIndexOf-同理，从字符串后方开始查询"><span class="toc-text">lastIndexOf()同理，从字符串后方开始查询</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#search-方法检索字符串中的字符串"><span class="toc-text">search()方法检索字符串中的字符串</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#提取部分字符串"><span class="toc-text">提取部分字符串</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#slice"><span class="toc-text">slice()</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#substring-与slice-相似，但是不接受负值的索引"><span class="toc-text">substring()与slice()相似，但是不接受负值的索引</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"><span class="toc-text">substr()也与slice()相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#字符串的替换方法reaplace"><span class="toc-text">字符串的替换方法reaplace()</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#字符串大小写转换方法"><span class="toc-text">字符串大小写转换方法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#concat-方法可用于代替加运算符"><span class="toc-text">concat() 方法可用于代替加运算符</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#trim-方法删除字符串两端的空白符"><span class="toc-text">trim()方法删除字符串两端的空白符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#fromCharCode-方法"><span class="toc-text">fromCharCode()方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#padStart-amp-padEnd"><span class="toc-text">padStart()&amp;padEnd()</span></a></li></ol></li></ol></li></ol></div>
     </div>
     
@@ -303,7 +303,7 @@
 <footer id="footer" class="footer">
   <div class="container">
     <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到頂部"></i></button>
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
     </div>
     <div class="footer-container">
       <div class="footer-left">
@@ -317,7 +317,7 @@
           
         </div>
         <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 強力驅動 | 主題 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
         </div>
       </div>
     </div>
