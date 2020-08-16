@@ -291,78 +291,11 @@
 ]]></content>
       <categories>
         <category>前端</category>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Js函数表达式</title>
-    <url>/2019/10/31/2019-10-31-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<img src="/2019/10/31/2019-10-31-函数表达式/48.jpg">
-
-<a id="more"></a>
-
-<h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归函数是在一个函数通过名字调用自身的情况下构成的</p>
-<p>一个经典的递归阶乘函数</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * f(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>arguments.callee</code>是一个指向正在执行函数的指针，因此它可以实现对函数的递归调用</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>通过使用<code>arguments.calee</code>代替函数名，可以确保无论怎样调用函数都不会出问题，因此，在编写递归函数时，使用<code>agruments.callee</code>总比使用函数名更保险</strong></p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="执行环境与作用域"><a href="#执行环境与作用域" class="headerlink" title="执行环境与作用域"></a>执行环境与作用域</h3><p>想要理解闭包就要理解执行环境与作用域:</p>
-<p>每个函数都有自己的执行环境，每个执行环境都有一个与之关联的变量对象，当代码在一个环境中执行的时候，会创建变量对象的一个作用域链，如果这个环境是函数的话，则将其活动对象作为变量对象，活动对象最开始只包含一个变量，即arguments对象。</p>
-<p>变量的作用域：全局变量和局部变量，js语言中，函数内部可以直接读取全局变量</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n=<span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(n);</span><br><span class="line">&#125;</span><br><span class="line">f1()<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
-
-<p>另一方面，在函数外部无法读取函数内的局部变量（注意这里内部声明变量要使用var，否则实际上声明 了一个全局变量）</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">999</span>;</span><br><span class="line">&#125;</span><br><span class="line">alert(n); <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="那么什么是闭包呢？"><a href="#那么什么是闭包呢？" class="headerlink" title="那么什么是闭包呢？"></a>那么什么是闭包呢？</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
-<p><strong>理解：闭包就是能够读取其它函数内部变量的函数，他是函数内部与外部连接起来的一座桥梁</strong></p>
-<p>作用：</p>
-<ol>
-<li>从外部读取局部变量</li>
-<li>让变量的始终保存在内存中</li>
-</ol>
-<p>那么如何从外部读取局部变量</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那就是在函数内部在定义一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">//局部变量n对外部不可见，对f2是可见的</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(n); <span class="comment">//100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将f2作为返回值</span></span><br><span class="line">    <span class="keyword">return</span> f2;<span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result= f1();</span><br><span class="line">result();<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
-
-<p>上述代码中<code>f2</code>函数，就是闭包。</p>
-<p>2.将变量的值保存在内存中</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">var</span> n=<span class="number">999</span>;</span><br><span class="line">    <span class="comment">//nAdd没有使用var声明，它是一个全局变量，值为一个匿名函数</span></span><br><span class="line">　　　　nAdd=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;n+=<span class="number">1</span>&#125;</span><br><span class="line">　　　　<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　alert(n);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="keyword">return</span> f2;</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="keyword">var</span> result=f1();</span><br><span class="line">　　result(); <span class="comment">// 999</span></span><br><span class="line">　　nAdd();</span><br><span class="line">　　result(); <span class="comment">// 1000</span></span><br></pre></td></tr></table></figure>
-
-<p>在这段代码中，result实际上就是闭包<code>f2</code>函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在<code>f1</code>调用后被自动清除。</p>
-<p>为什么会这样呢？原因就在于<code>f1</code>是<code>f2</code>的父函数，而<code>f2</code>被赋给了一个全局变量，这导致<code>f2</code>始终在内存中，而<code>f2</code>的存在依赖于<code>f1</code>，因此<code>f1</code>也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。</p>
-<p>这段代码中另一个值得注意的地方，就是”<code>nAdd=function(){n+=1}</code>“这一行，首先在<code>nAdd</code>前面没有使用var关键字，因此<code>nAdd</code>是一个全局变量，而不是局部变量。其次，<code>nAdd</code>的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以<code>nAdd</code>相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。</p>
-<h3 id="关于this对象"><a href="#关于this对象" class="headerlink" title="关于this对象"></a>关于<code>this</code>对象</h3><p>我们需要理解两个例子</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());<span class="comment">//The window</span></span><br></pre></td></tr></table></figure>
-
-<p>在全局函数中，this等于window,而匿名函数的执行环境具有全局性，因此this队形通常指向window</p>
-<p>例2</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> that.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());</span><br></pre></td></tr></table></figure>
-
-<p>在定义匿名函数之前就将this对象赋值给了that，而在定义了闭包之后，闭包可以访问这个变量，此时的that正是引用着object的this。</p>
-<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><p>在作用域链这种配置机制下引出的指的注意的副作用，即闭包只能取得包含函数中任何的变量的最后一个值</p>
-<p>所以当返回函数引入了循环变量时</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i * i;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];<span class="comment">//16</span></span><br></pre></td></tr></table></figure>
-
-<p>全部都是<code>16</code>！原因就在于返回的函数引用了变量<code>i</code>，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量<code>i</code>已经变成了<code>4</code>，因此最终结果为<code>16</code>。</p>
-<p>解决：方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变：</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push((<span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> n * n;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">f1(); <span class="comment">// 1</span></span><br><span class="line">f2(); <span class="comment">// 4</span></span><br><span class="line">f3(); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
         <category>JS</category>
       </categories>
       <tags>
         <tag>javaScript</tag>
-        <tag>闭包</tag>
-        <tag>递归</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -594,6 +527,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Js函数表达式</title>
+    <url>/2019/10/31/2019-10-31-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<img src="/2019/10/31/2019-10-31-函数表达式/48.jpg">
+
+<a id="more"></a>
+
+<h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归函数是在一个函数通过名字调用自身的情况下构成的</p>
+<p>一个经典的递归阶乘函数</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * f(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>arguments.callee</code>是一个指向正在执行函数的指针，因此它可以实现对函数的递归调用</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过使用<code>arguments.calee</code>代替函数名，可以确保无论怎样调用函数都不会出问题，因此，在编写递归函数时，使用<code>agruments.callee</code>总比使用函数名更保险</strong></p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="执行环境与作用域"><a href="#执行环境与作用域" class="headerlink" title="执行环境与作用域"></a>执行环境与作用域</h3><p>想要理解闭包就要理解执行环境与作用域:</p>
+<p>每个函数都有自己的执行环境，每个执行环境都有一个与之关联的变量对象，当代码在一个环境中执行的时候，会创建变量对象的一个作用域链，如果这个环境是函数的话，则将其活动对象作为变量对象，活动对象最开始只包含一个变量，即arguments对象。</p>
+<p>变量的作用域：全局变量和局部变量，js语言中，函数内部可以直接读取全局变量</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n=<span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(n);</span><br><span class="line">&#125;</span><br><span class="line">f1()<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<p>另一方面，在函数外部无法读取函数内的局部变量（注意这里内部声明变量要使用var，否则实际上声明 了一个全局变量）</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">999</span>;</span><br><span class="line">&#125;</span><br><span class="line">alert(n); <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="那么什么是闭包呢？"><a href="#那么什么是闭包呢？" class="headerlink" title="那么什么是闭包呢？"></a>那么什么是闭包呢？</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
+<p><strong>理解：闭包就是能够读取其它函数内部变量的函数，他是函数内部与外部连接起来的一座桥梁</strong></p>
+<p>作用：</p>
+<ol>
+<li>从外部读取局部变量</li>
+<li>让变量的始终保存在内存中</li>
+</ol>
+<p>那么如何从外部读取局部变量</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那就是在函数内部在定义一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">//局部变量n对外部不可见，对f2是可见的</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(n); <span class="comment">//100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将f2作为返回值</span></span><br><span class="line">    <span class="keyword">return</span> f2;<span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result= f1();</span><br><span class="line">result();<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码中<code>f2</code>函数，就是闭包。</p>
+<p>2.将变量的值保存在内存中</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">var</span> n=<span class="number">999</span>;</span><br><span class="line">    <span class="comment">//nAdd没有使用var声明，它是一个全局变量，值为一个匿名函数</span></span><br><span class="line">　　　　nAdd=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;n+=<span class="number">1</span>&#125;</span><br><span class="line">　　　　<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　alert(n);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="keyword">return</span> f2;</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="keyword">var</span> result=f1();</span><br><span class="line">　　result(); <span class="comment">// 999</span></span><br><span class="line">　　nAdd();</span><br><span class="line">　　result(); <span class="comment">// 1000</span></span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，result实际上就是闭包<code>f2</code>函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在<code>f1</code>调用后被自动清除。</p>
+<p>为什么会这样呢？原因就在于<code>f1</code>是<code>f2</code>的父函数，而<code>f2</code>被赋给了一个全局变量，这导致<code>f2</code>始终在内存中，而<code>f2</code>的存在依赖于<code>f1</code>，因此<code>f1</code>也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。</p>
+<p>这段代码中另一个值得注意的地方，就是”<code>nAdd=function(){n+=1}</code>“这一行，首先在<code>nAdd</code>前面没有使用var关键字，因此<code>nAdd</code>是一个全局变量，而不是局部变量。其次，<code>nAdd</code>的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以<code>nAdd</code>相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。</p>
+<h3 id="关于this对象"><a href="#关于this对象" class="headerlink" title="关于this对象"></a>关于<code>this</code>对象</h3><p>我们需要理解两个例子</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());<span class="comment">//The window</span></span><br></pre></td></tr></table></figure>
+
+<p>在全局函数中，this等于window,而匿名函数的执行环境具有全局性，因此this队形通常指向window</p>
+<p>例2</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> that.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());</span><br></pre></td></tr></table></figure>
+
+<p>在定义匿名函数之前就将this对象赋值给了that，而在定义了闭包之后，闭包可以访问这个变量，此时的that正是引用着object的this。</p>
+<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><p>在作用域链这种配置机制下引出的指的注意的副作用，即闭包只能取得包含函数中任何的变量的最后一个值</p>
+<p>所以当返回函数引入了循环变量时</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i * i;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];<span class="comment">//16</span></span><br></pre></td></tr></table></figure>
+
+<p>全部都是<code>16</code>！原因就在于返回的函数引用了变量<code>i</code>，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量<code>i</code>已经变成了<code>4</code>，因此最终结果为<code>16</code>。</p>
+<p>解决：方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变：</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push((<span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> n * n;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">f1(); <span class="comment">// 1</span></span><br><span class="line">f2(); <span class="comment">// 4</span></span><br><span class="line">f3(); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>闭包</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TCP/IP协议</title>
     <url>/2020/02/27/2020-02-27/</url>
     <content><![CDATA[<p>TCP/IP协议 族各层的作用</p>
@@ -647,20 +647,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PPT模板</title>
-    <url>/2019/03/29/3-29ppt%E6%A8%A1%E6%9D%BF%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<h1 id="ppt模板"><a href="#ppt模板" class="headerlink" title="ppt模板"></a>ppt模板</h1><p><a href="https://pan.baidu.com/s/1tequzqrq0m7ok2BALQ2oow" target="_blank" rel="noopener">点这里哦！提取码twyn</a></p>
-<img src="/2019/03/29/3-29ppt模板分享/base.jpg">
-
-]]></content>
-      <categories>
-        <category>资源</category>
-      </categories>
-      <tags>
-        <tag>resource</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>passport验证token</title>
     <url>/2020/03/06/2020-03-06-passport/</url>
     <content><![CDATA[<p>1关于token：</p>
@@ -689,6 +675,20 @@
       </categories>
       <tags>
         <tag>token</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PPT模板</title>
+    <url>/2019/03/29/3-29ppt%E6%A8%A1%E6%9D%BF%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<h1 id="ppt模板"><a href="#ppt模板" class="headerlink" title="ppt模板"></a>ppt模板</h1><p><a href="https://pan.baidu.com/s/1tequzqrq0m7ok2BALQ2oow" target="_blank" rel="noopener">点这里哦！提取码twyn</a></p>
+<img src="/2019/03/29/3-29ppt模板分享/base.jpg">
+
+]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>resource</tag>
       </tags>
   </entry>
   <entry>
@@ -1065,6 +1065,41 @@
       </tags>
   </entry>
   <entry>
+    <title>linux</title>
+    <url>/2019/06/05/6-5-linux-01/</url>
+    <content><![CDATA[<h1 id="linux学习"><a href="#linux学习" class="headerlink" title="linux学习"></a>linux学习</h1><h2 id="学习linux的流程为："><a href="#学习linux的流程为：" class="headerlink" title="学习linux的流程为："></a>学习linux的流程为：</h2><ul>
+<li>第一阶段：linux环境下的 基本操作命令，包括 文件操作命令(rm mkdir chmod chown) 编辑工具使用(vi vim) linux用户管理（useradd userdel）等</li>
+<li>第二阶段：linux的各种配置（环境变量配置，网络配置，服务配置）</li>
+<li>第三阶段：linux下如何搭建对应的语言开发环境(大数据，JavaEE,Python等)</li>
+<li>第四阶段：能编写shell脚本，对linux服务器进行维护</li>
+<li>第五阶段：能进行安全设置，防止攻击，保障服务器正常运行，能对系统调优</li>
+<li>第六阶段：深入理解linux（对内核有研究），熟练掌握大型网站应用架构组成。并熟悉各个环节的部署和维护方法</li>
+</ul>
+<p><code>xrandr --size &lt;width&gt;x&lt;height&gt;</code>修改显示分辨率</p>
+<h2 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h2><p><em>linux中一切皆文件</em>linux文件系统采用级层式的树状目录结构，在此结构中的最上层是根目录“/”。</p>
+<ul>
+<li>/bin    binary的缩写，存放的是最经常使用的命令</li>
+<li>/sbin   存放系统管理员使用的系统管理程序</li>
+<li>/home  存放普通用户的主目录</li>
+<li>/root   系统管理员</li>
+<li>/lib    系统开机所需要的最基本的动态链接共享库，其作用类似于windows例的dll文件</li>
+<li><strong>/etc</strong>  所有的系统管理所需要的配置文件和子目录</li>
+<li>*<em>/usr *</em>  非常重要的目录，用户的很多应用程序和文件都放在这个目录下</li>
+<li>/boot  存放的是启动linux时使用的核心文件</li>
+<li>/media  系统自动识别一些设备，例如光盘和U盘</li>
+<li>/opt   给主机额外安装软件所摆放的目录</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字符串总结</title>
     <url>/2019/07/22/7-22%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>String类型是字符串的对象包装类型，可以像下面这样使用String构造函数来创建</p>
@@ -1117,41 +1152,6 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>String</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux</title>
-    <url>/2019/06/05/6-5-linux-01/</url>
-    <content><![CDATA[<h1 id="linux学习"><a href="#linux学习" class="headerlink" title="linux学习"></a>linux学习</h1><h2 id="学习linux的流程为："><a href="#学习linux的流程为：" class="headerlink" title="学习linux的流程为："></a>学习linux的流程为：</h2><ul>
-<li>第一阶段：linux环境下的 基本操作命令，包括 文件操作命令(rm mkdir chmod chown) 编辑工具使用(vi vim) linux用户管理（useradd userdel）等</li>
-<li>第二阶段：linux的各种配置（环境变量配置，网络配置，服务配置）</li>
-<li>第三阶段：linux下如何搭建对应的语言开发环境(大数据，JavaEE,Python等)</li>
-<li>第四阶段：能编写shell脚本，对linux服务器进行维护</li>
-<li>第五阶段：能进行安全设置，防止攻击，保障服务器正常运行，能对系统调优</li>
-<li>第六阶段：深入理解linux（对内核有研究），熟练掌握大型网站应用架构组成。并熟悉各个环节的部署和维护方法</li>
-</ul>
-<p><code>xrandr --size &lt;width&gt;x&lt;height&gt;</code>修改显示分辨率</p>
-<h2 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h2><p><em>linux中一切皆文件</em>linux文件系统采用级层式的树状目录结构，在此结构中的最上层是根目录“/”。</p>
-<ul>
-<li>/bin    binary的缩写，存放的是最经常使用的命令</li>
-<li>/sbin   存放系统管理员使用的系统管理程序</li>
-<li>/home  存放普通用户的主目录</li>
-<li>/root   系统管理员</li>
-<li>/lib    系统开机所需要的最基本的动态链接共享库，其作用类似于windows例的dll文件</li>
-<li><strong>/etc</strong>  所有的系统管理所需要的配置文件和子目录</li>
-<li>*<em>/usr *</em>  非常重要的目录，用户的很多应用程序和文件都放在这个目录下</li>
-<li>/boot  存放的是启动linux时使用的核心文件</li>
-<li>/media  系统自动识别一些设备，例如光盘和U盘</li>
-<li>/opt   给主机额外安装软件所摆放的目录</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机</category>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOs</tag>
       </tags>
   </entry>
   <entry>
@@ -2276,9 +2276,9 @@
   <entry>
     <title>js创建对象的几种方式</title>
     <url>/2019/03/13/js%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h2><a id="more"></a>
+    <content><![CDATA[<h2 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.name=&quot;小黑&quot;;</span><br><span class="line"></span><br><span class="line">obj.age=10;</span><br><span class="line"></span><br><span class="line">//优化：</span><br><span class="line"></span><br><span class="line">var obj2=&#123;</span><br><span class="line"></span><br><span class="line">    name:&quot;小小&quot;,</span><br><span class="line"></span><br><span class="line">    age:10,</span><br><span class="line"></span><br><span class="line">    sayHi:function()&#123;</span><br><span class="line"></span><br><span class="line">        console.log(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">//缺陷：一次性对象，更改属性需要修改源代码</span><br></pre></td></tr></table></figure>
 
-<figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.name=&quot;小黑&quot;;</span><br><span class="line"></span><br><span class="line">obj.age=10;</span><br><span class="line"></span><br><span class="line">//优化：</span><br><span class="line"></span><br><span class="line">var obj2=&#123;</span><br><span class="line"></span><br><span class="line">    name:&quot;小小&quot;,</span><br><span class="line"></span><br><span class="line">    age:10,</span><br><span class="line"></span><br><span class="line">    sayHi:function()&#123;</span><br><span class="line"></span><br><span class="line">        console.log(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">//缺陷：一次性对象，更改属性需要修改源代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
 <h2 id="构造函数方式创建"><a href="#构造函数方式创建" class="headerlink" title="构造函数方式创建"></a>构造函数方式创建</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var smallDog = new Object();</span><br><span class="line"></span><br><span class="line">            smallDog.eat = &quot;吃骨头&quot;;</span><br><span class="line"></span><br><span class="line">            smallDog.walk = function () &#123;</span><br><span class="line"></span><br><span class="line">                console.log(this.name+&quot;不想走路&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
 
@@ -2289,6 +2289,12 @@
 
 <p>构造函数首字母要大写，这样其他程序员一看就会明白这是构造函数是创建对象的。</p>
 <p><strong>同时我将sayName函数放到了构造函数外部,而在内部将属性设置成等于全局变量的sayName函数，这样解决了两个函数做同一件事的问题，但新的问题是如果对象需要定义很多方法，那么就要定义很多个全局函数，这样这个自定义函数的引用类型就丝毫没有封装性可言。这些问题可以通过原型模式来解决。</strong></p>
+<p>只要创建了一个新函数，就会为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性是一个指向prototype属性所在函数的指针。就拿前面的例子来说，Person.prototype.constructor指向Person。而通过这个构造函数，我们还可继续为原型对象添加其他属性和方法</p>
+<img src="/2019/03/13/js创建对象的几种方式/12.png">
+
+<p>构造函数的prototype属性指向原型对象</p>
+<p>原型对象的constructor属性又指回构造函数</p>
+<p>通过构造函数创建的实例指向原型对象，可以当没有指定相关方法时会调用原型对象中的方法。</p>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -2365,6 +2371,36 @@
       </tags>
   </entry>
   <entry>
+    <title>vue项目问题</title>
+    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
+<img src="/2020/06/01/vue项目问题/7.png">
+
+<a id="more"></a>
+
+<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
+<img src="/2020/06/01/vue项目问题/3.png">
+
+<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
+<p>更换浏览器发现同样错误</p>
+<img src="/2020/06/01/vue项目问题/8.png">
+
+<p>当发送请求时</p>
+<img src="/2020/06/01/vue项目问题/88.png">
+
+<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>框架</tag>
+        <tag>bug</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序</title>
     <url>/2020/05/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
     <content><![CDATA[<ol>
@@ -2415,36 +2451,6 @@
       </categories>
       <tags>
         <tag>小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue项目问题</title>
-    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
-<img src="/2020/06/01/vue项目问题/7.png">
-
-<a id="more"></a>
-
-<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
-<img src="/2020/06/01/vue项目问题/3.png">
-
-<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
-<p>更换浏览器发现同样错误</p>
-<img src="/2020/06/01/vue项目问题/8.png">
-
-<p>当发送请求时</p>
-<img src="/2020/06/01/vue项目问题/88.png">
-
-<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>框架</tag>
-        <tag>bug</tag>
       </tags>
   </entry>
   <entry>

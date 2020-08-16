@@ -212,9 +212,9 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h2 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h2><a id="more"></a>
+      <h2 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.name=&quot;小黑&quot;;</span><br><span class="line"></span><br><span class="line">obj.age=10;</span><br><span class="line"></span><br><span class="line">//优化：</span><br><span class="line"></span><br><span class="line">var obj2=&#123;</span><br><span class="line"></span><br><span class="line">    name:&quot;小小&quot;,</span><br><span class="line"></span><br><span class="line">    age:10,</span><br><span class="line"></span><br><span class="line">    sayHi:function()&#123;</span><br><span class="line"></span><br><span class="line">        console.log(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">//缺陷：一次性对象，更改属性需要修改源代码</span><br></pre></td></tr></table></figure>
 
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.name=&quot;小黑&quot;;</span><br><span class="line"></span><br><span class="line">obj.age=10;</span><br><span class="line"></span><br><span class="line">//优化：</span><br><span class="line"></span><br><span class="line">var obj2=&#123;</span><br><span class="line"></span><br><span class="line">    name:&quot;小小&quot;,</span><br><span class="line"></span><br><span class="line">    age:10,</span><br><span class="line"></span><br><span class="line">    sayHi:function()&#123;</span><br><span class="line"></span><br><span class="line">        console.log(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">//缺陷：一次性对象，更改属性需要修改源代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
 <h2 id="构造函数方式创建"><a href="#构造函数方式创建" class="headerlink" title="构造函数方式创建"></a>构造函数方式创建</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var smallDog = new Object();</span><br><span class="line"></span><br><span class="line">            smallDog.eat = &quot;吃骨头&quot;;</span><br><span class="line"></span><br><span class="line">            smallDog.walk = function () &#123;</span><br><span class="line"></span><br><span class="line">                console.log(this.name+&quot;不想走路&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
 
@@ -225,6 +225,12 @@
 
 <p>构造函数首字母要大写，这样其他程序员一看就会明白这是构造函数是创建对象的。</p>
 <p><strong>同时我将sayName函数放到了构造函数外部,而在内部将属性设置成等于全局变量的sayName函数，这样解决了两个函数做同一件事的问题，但新的问题是如果对象需要定义很多方法，那么就要定义很多个全局函数，这样这个自定义函数的引用类型就丝毫没有封装性可言。这些问题可以通过原型模式来解决。</strong></p>
+<p>只要创建了一个新函数，就会为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性是一个指向prototype属性所在函数的指针。就拿前面的例子来说，Person.prototype.constructor指向Person。而通过这个构造函数，我们还可继续为原型对象添加其他属性和方法</p>
+<img src="/2019/03/13/js创建对象的几种方式/12.png">
+
+<p>构造函数的prototype属性指向原型对象</p>
+<p>原型对象的constructor属性又指回构造函数</p>
+<p>通过构造函数创建的实例指向原型对象，可以当没有指定相关方法时会调用原型对象中的方法。</p>
 
     </main>
     <footer class="post-footer">
@@ -289,7 +295,7 @@
     
     <div class="categories-count count-block">
       <div class="site-count-title">Categories</div>
-      <div><a href="/categories/">18</a></div>
+      <div><a href="/categories/">17</a></div>
     </div>
     
     
