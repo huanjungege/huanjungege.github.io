@@ -208,7 +208,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
         </span>
         
         
@@ -224,29 +224,6 @@
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();<span class="comment">//Mon Aug 17 2020 17:47:35 GMT+0800 (中国标准时间)</span></span><br></pre></td></tr></table></figure>
 
 <p>2、加入年月日等参数</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2020</span>, <span class="number">11</span>, <span class="number">11</span>);<span class="comment">//Fri Dec 11 2020 00:00:00 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="comment">//为日期指定内容</span></span><br></pre></td></tr></table></figure>
-
-<p>注：<strong>对于月份来说一月的索引为0，12月为11</strong></p>
-<p>所以我们在获取月份时也要注意+1才是正确的我们所说的月份</p>
-<p>3、如果只传入一个参数，则按照毫秒为参数添加进函数,将返回一个按照零时加上毫秒数的新的日期对象</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript 将日期存储为自 1970 年 1 月 1 日 00:00:00 UTC（协调世界时）以来的毫秒数。</p>
-<p>零时间是 1970 年 1 月 1 日 00:00:00 UTC。</p>
-<p>4、传入时间字符串会返回一个新的日期对象</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"October 13, 2014 11:13:00"</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="日期的获取方法"><a href="#日期的获取方法" class="headerlink" title="日期的获取方法"></a>日期的获取方法</h3><img src="/2020/08/17/8-17Date函数/2.png">
-
-<h3 id="关于-new-Date"><a href="#关于-new-Date" class="headerlink" title="关于+new Date()"></a>关于+new Date()</h3><p>这个操作是将日期函数转换类型</p>
-<img src="/2020/08/17/8-17Date函数/1.png">
-
-<p>以毫秒显示</p>
-<p>对时间进行格式化,后端提供以秒为单位的时间数据</p>
-<p>将其转换为00:00:00（小时：分钟：秒），并且位数为一位数时，进行补0，避免出现3:20这样的时间应该显示为03:20。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">formateTime(seconds) &#123;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> seconds.toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">3600</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> h = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">3600</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;h&#125;</span>:<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
       
     </main>
     <footer class="post-footer">
@@ -290,7 +267,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
         </span>
         
         
@@ -791,14 +768,14 @@
     
     <div class="categories-count count-block">
       <div class="site-count-title">Categories</div>
-      <div><a href="/categories/">18</a></div>
+      <div><a href="/categories/">17</a></div>
     </div>
     
     
     
     <div class="tags-count count-block">
       <div class="site-count-title">Tags</div>
-      <div><a href="/tags/">41</a></div>
+      <div><a href="/tags/">40</a></div>
     </div>
     
     
