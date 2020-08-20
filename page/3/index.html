@@ -53,7 +53,7 @@
 <link rel="stylesheet" type="text/css" href="/css/post.css">
 
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/solarized-light.css">
     <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script defer type="text/javascript" src="/js/util.js"></script>
@@ -673,15 +673,15 @@
       
       <h1 id="Js中的Array类型"><a href="#Js中的Array类型" class="headerlink" title="Js中的Array类型"></a>Js中的Array类型</h1><p>序：除了Object类型之外，Array类型恐怕是ECAMAScript中最常用的类型了，特点：有序列表，并且数组的每一项都可以保存任意数据类型的数据，数组的大小可以动态的调整。</p>
 <h2 id="创建数组的方式"><a href="#创建数组的方式" class="headerlink" title="创建数组的方式"></a>创建数组的方式</h2><h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>使用Array构造函数:</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();<br></code></pre></td></tr></table></figure>
 
 <ol>
 <li>如果预先知道数组保存项的数量，可以给数组传递数量</li>
 </ol>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);  <span class="comment">//创建数组项数为20的数组</span></span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">20</span>);  <span class="hljs-comment">//创建数组项数为20的数组</span><br></code></pre></td></tr></table></figure>
 
 <p>2.直接 向数组传递要传入的值</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"1"</span>,<span class="string">"2"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-string">"1"</span>,<span class="hljs-string">"2"</span>);<br></code></pre></td></tr></table></figure>
 
 <h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3>
       

@@ -53,7 +53,7 @@
 <link rel="stylesheet" type="text/css" href="/css/post.css">
 
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/solarized-light.css">
     <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script defer type="text/javascript" src="/js/util.js"></script>
@@ -230,7 +230,7 @@
 <p>==note：当与其他属性配合使用时，其不再代表具体的值，而代表一个范围，如下：向下取整==<br>if((列宽<em>列数)&lt;(可用区域-间隔)){<br>按指定列数显示<br>按指定间隔显示<br>列宽自动分配<br>}else{<br>按指定列宽“可用”最大列数（列数小于指定列数）显示，列宽值自动分配，且&gt;=指定列宽<br>}<br>*</em>3.column-gap:列间隔**<br><strong>4.column-rule:间隔线，使用同：border</strong><br><strong>5.column-span:跨列显示，值为all，该属性火狐不支持</strong><br><strong>6.column-fill:auto/balance,但所有浏览器暂不支持</strong><br>http:// dummy images.com</p>
 <h1 id="二、伸缩盒布局"><a href="#二、伸缩盒布局" class="headerlink" title="二、伸缩盒布局"></a>二、伸缩盒布局</h1><p>作用：解决子盒子的位置关系与规格计算，合理利用剩余空间</p>
 <p>设置方法：display:box;</p>
-<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line"><span class="attribute">display</span>:-webkit-box;</span><br><span class="line"><span class="attribute">display</span>:-moz-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#box</span>&#123;<br><span class="hljs-attribute">display</span>:-webkit-box;<br><span class="hljs-attribute">display</span>:-moz-box;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>note:</strong></p>
 <ol>
@@ -239,11 +239,11 @@
 <li>兼容性中display的兼容代码在冒号后面</li>
 </ol>
 <h2 id="1-显示方向控制"><a href="#1-显示方向控制" class="headerlink" title="1.显示方向控制:"></a>1.显示方向控制:</h2><p>==box-orient:horizeontal(横向) / vertical(纵向)要加前缀==</p>
-<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line"><span class="attribute">-webkit-box-orient</span>:vertical;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#box</span>&#123;<br><span class="hljs-attribute">-webkit-box-orient</span>:vertical;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="2-宽度控制："><a href="#2-宽度控制：" class="headerlink" title="2.宽度控制："></a>2.宽度控制：</h2><p>如果不设宽，以最小内容宽或最大父层宽为参照;</p>
 <h3 id="弹性布局："><a href="#弹性布局：" class="headerlink" title="弹性布局："></a>弹性布局：</h3><p>==为子盒子指定box-flex,值至少为1，==可具备自动伸缩功能，瓜分伸缩容器剩余空间；</p>
-<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-box-flex</span>: 1;</span><br><span class="line"><span class="selector-tag">-moz-box-flex</span><span class="selector-pseudo">:1</span>;</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">-webkit-box-flex</span>: 1;<br><span class="hljs-selector-tag">-moz-box-flex</span><span class="hljs-selector-pseudo">:1</span>;<br></code></pre></td></tr></table></figure>
 
 <p>如有内容，按内容多少决定；</p>
 <h3 id="问题1如果忽略内容，强制按比例分配？"><a href="#问题1如果忽略内容，强制按比例分配？" class="headerlink" title="问题1如果忽略内容，强制按比例分配？"></a>问题1如果忽略内容，强制按比例分配？</h3><p>为子盒子指定width：0；</p>
@@ -255,7 +255,7 @@
 <li>固定与比例混用</li>
 <li>如果使用侧轴对齐时，高度变为最小高度<h2 id="4-顺序控制："><a href="#4-顺序控制：" class="headerlink" title="4.顺序控制："></a>4.顺序控制：</h2>box-ordinal-group:后面跟的数值；数值越小越优先进行显示，不接受负值。<br>优点：不破坏html结构<br>box-direction:强调所有子元素正序或倒序显示。使用外层容器。</li>
 </ol>
-<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-box-direction</span>:</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">-webkit-box-direction</span>:<br></code></pre></td></tr></table></figure>
 
 <h2 id="5-对齐控制："><a href="#5-对齐控制：" class="headerlink" title="5.对齐控制："></a>5.对齐控制：</h2><p>（横）box-pack：start起点对齐；/end终点对齐/center/居中对齐/justify<br>（纵）box-align：start/end/center/baseline基线对齐/stretch纵向伸展对齐<br>baseline:基线对齐，是子元素第一行内容的底部；<br>stretch:尽可能与外层容器等高；</p>
 <h1 id="三、弹性盒布局"><a href="#三、弹性盒布局" class="headerlink" title="三、弹性盒布局"></a>三、弹性盒布局</h1><p>特性：<br>是CSS3中BOX升级后的布局，display:box–flexbox–flex</p>

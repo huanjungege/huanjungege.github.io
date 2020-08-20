@@ -53,7 +53,7 @@
 <link rel="stylesheet" type="text/css" href="/css/post.css">
 
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/solarized-light.css">
     <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script defer type="text/javascript" src="/js/util.js"></script>
@@ -216,13 +216,13 @@
 <a id="more"></a>
 
 <p>那么现在更改名字过后本地的库还存在但是需要手动更改所有项目的远程地址，我们可以通过以下途径看到他们：</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git remote -v<br></code></pre></td></tr></table></figure>
 
 <p>之后删除掉旧的远程地址：</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm git@github.com:old_account/res.git</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git remote rm git@github.com:old_account/res.git<br></code></pre></td></tr></table></figure>
 
 <p>最后，添加新的远程地址</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:new_account/res.git</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">git remote <span class="hljs-built_in">add</span> origin git@github.<span class="hljs-keyword">com</span>:new_account/<span class="hljs-keyword">res</span>.git<br></code></pre></td></tr></table></figure>
 
 <h2 id="但是"><a href="#但是" class="headerlink" title="但是"></a>但是</h2><p>更改过后发现通过hexo搭建的博客无法更新的问题，找来找去发现了问题</p>
 

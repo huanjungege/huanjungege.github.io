@@ -53,7 +53,7 @@
 <link rel="stylesheet" type="text/css" href="/css/post.css">
 
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/solarized-light.css">
     <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script defer type="text/javascript" src="/js/util.js"></script>
@@ -378,7 +378,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <h2 id="jQuery节点操作"><a href="#jQuery节点操作" class="headerlink" title="jQuery节点操作"></a>jQuery节点操作</h2><h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $(htmlStr)</span></span><br><span class="line"><span class="comment">// htmlStr：html格式的字符串</span></span><br><span class="line">$(<span class="string">'&lt;span-这是一个span元素&lt;/span-'</span>);</span><br></pre></td></tr></table></figure>
+      <h2 id="jQuery节点操作"><a href="#jQuery节点操作" class="headerlink" title="jQuery节点操作"></a>jQuery节点操作</h2><h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// $(htmlStr)</span><br><span class="hljs-comment">// htmlStr：html格式的字符串</span><br>$(<span class="hljs-string">'&lt;span-这是一个span元素&lt;/span-'</span>);<br></code></pre></td></tr></table></figure>
       
     </main>
     <footer class="post-footer">
@@ -490,7 +490,7 @@
     <main class="post-main" itemprop="articleBody">
       
       <h1 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>String类型是字符串的对象包装类型，可以像下面这样使用String构造函数来创建</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringObject = <span class="keyword">new</span> string(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> stringObject = <span class="hljs-keyword">new</span> string(<span class="hljs-string">"hello world"</span>);<br></code></pre></td></tr></table></figure>
 
 <p>ECMAScript中字符串是不可改变的，也就是说一旦创建他们的值就是不可改变的，要改变某个变量保存的字符串，首先要先销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量</p>
       

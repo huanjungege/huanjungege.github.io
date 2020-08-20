@@ -53,7 +53,7 @@
 <link rel="stylesheet" type="text/css" href="/css/post.css">
 
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/solarized-light.css">
     <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script defer type="text/javascript" src="/js/util.js"></script>
@@ -248,10 +248,10 @@
 </ul>
 <p>如果引擎最终找到了 a 变量，就会将 2 赋值给它。否则引擎就会举手示意并抛出一个异 常！</p>
 <h4 id="编译器的查询类型"><a href="#编译器的查询类型" class="headerlink" title="编译器的查询类型"></a>编译器的查询类型</h4><p>当变量出现在赋值操作的左侧时进行LHS查询，出现在右侧时进行RHS查询。讲得更准确一点，RHS 查询与简单地查找某个变量的值别无二致，而 LHS 查询则是试图 找到变量的容器本身，从而可以对其赋值。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(a)<br></code></pre></td></tr></table></figure>
 
 <p>其中对a的引用是一个RHS引用，因为这里 a 并没有赋予任何值。相应地，需要查找并取 得 a 的值，这样才能将值传递给 console.log(..)。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">a = <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
 
 <p>这里对 a 的引用则是 LHS 引用，因为实际上我们并不关心当前的值是什么，只是想要为 = 2 这个赋值操作找到一个目标。</p>
 
