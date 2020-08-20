@@ -228,13 +228,13 @@
 </li>
 </ol>
 <h2 id="数组拓展"><a href="#数组拓展" class="headerlink" title="数组拓展"></a>数组拓展</h2><ol>
-<li><p>无论是构造函数的方式还是字面量的方式，定义的数组，如果有长度，那么默认是undefined。</p>
+<li><p>无论是构造函数的方式还是字面量的方式，定义的数组，如果没有长度，那么默认是undefined。</p>
 </li>
 <li><p>数组可以通过对应的元素修改为新的值，因此、对数组的索引进行赋值会直接修改这个数组</p>
 <p>例：</p>
 </li>
 </ol>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr=[<span class="hljs-string">'A'</span>,<span class="hljs-string">'B'</span>,<span class="hljs-string">'C'</span>];<br>arr[<span class="hljs-number">1</span>] = <span class="hljs-number">99</span>;<br>arr;<span class="hljs-comment">//arr现在变为['A','99','C'];</span><br></code></pre></td></tr></table></figure>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr=[<span class="hljs-string">'A'</span>,<span class="hljs-string">'B'</span>,<span class="hljs-string">'C'</span>];<br>arr[<span class="hljs-number">1</span>] = <span class="hljs-number">99</span>;<br>arr;<span class="hljs-comment">//arr现在变为['A','99','C']</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h2><ol>
 <li><p>.slice()截取Array的部分元素，然后返回一个新的Array<strong>如果不给slice()传递任何参数，它会从头到尾截取所有元素。利用这点可以很容易复制一个Array</strong></p>

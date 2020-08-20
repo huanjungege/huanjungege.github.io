@@ -212,20 +212,22 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><p>原型模式</p>
-<p>我们所创建的每个函数都有一个<code>prototype</code>(原型)属性，这个属性是一个指针，指向一个对象，意思就是所有对象都可以共享它所包含的属性和方法</p>
-<img src="/2019/10/29/2019-10-29-js面向对象/03.jpg">
+      <h1 id="面向对象与继承"><a href="#面向对象与继承" class="headerlink" title="面向对象与继承"></a>面向对象与继承</h1><p>原型模式</p>
+<p>我们所创建的每个函数都有一个<code>prototype</code>(原型)属性，这个属性是一个指针，指向一个对象，意思就是所有对象都可以共享它所包含的属性和方法，并且所有对象都会从它的原型上继承一个<code>constructor</code>属性</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> o = &#123;&#125;;<br>o.constructor === <span class="hljs-built_in">Object</span>; <span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+
+{% asset_img 03.jpg %}
 
 <a id="more"></a>
 
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>) </span>&#123;<br>&#125;<br>Person.prototype.name = <span class="hljs-string">"mike"</span>;<br>Person.prototype.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    alert(<span class="hljs-keyword">this</span>.name);<br>&#125;<br><span class="hljs-keyword">var</span> person1 = <span class="hljs-keyword">new</span> Person();<br>preson1.sayName(); <span class="hljs-comment">//mike</span><br><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person();<br>person2.sayName(); <span class="hljs-comment">//mike</span><br>alert(person1.sayName == person2.sayName) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="理解原型对象"><a href="#理解原型对象" class="headerlink" title="理解原型对象"></a>理解原型对象</h2>{% asset_img 01.jpg %}
+<h2 id="理解原型对象"><a href="#理解原型对象" class="headerlink" title="理解原型对象"></a>理解原型对象</h2><img src="/2019/10/29/2019-10-29-js面向对象/01.jpg">
 
-{% asset_img 02.jpg %}
+<img src="/2019/10/29/2019-10-29-js面向对象/02.jpg">
 
 <p><strong>事实上现在所展示的原型链还少一环，所有引用类型默认都继承了<code>Object</code>，而这个继承也是通过原型链实现的。因此默认原型内部还有一个指针，指向<code>Object.prototype</code>下面这个图为我们展示了完整的原型链</strong></p>
-{% asset_img 04.png %}
+<img src="/2019/10/29/2019-10-29-js面向对象/04.png">
 
 <p>虽然通过对象实例可以访问保存在原型中的值，但是却不能通过对象实例重写原型中的值。如果我们在实例中添加了一个属性与实例原型中的属性重名，那么会在实例中创建该属性以屏蔽原型中的那个属性</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;<br>&#125;<br>Person.prototype.name = <span class="hljs-string">"mike"</span>;<br><span class="hljs-keyword">var</span> person1 = <span class="hljs-keyword">new</span> Person();<br><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person();<br>person1.name = <span class="hljs-string">"Greg"</span>;<br>alert(person1.name)<span class="hljs-comment">//Greg已经修改</span><br>alert(person2.name)<span class="hljs-comment">//mike 仍然访问原型数据</span><br><span class="hljs-keyword">delete</span> person1.name<br>alert(person1.name)<span class="hljs-comment">//mike</span><br></code></pre></td></tr></table></figure>
@@ -343,7 +345,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#面向对象"><span class="toc-text">面向对象</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#理解原型对象"><span class="toc-text">理解原型对象</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#实现b继承a的方法"><span class="toc-text">实现b继承a的方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型链继承"><span class="toc-text">原型链继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#借用构造函数继承"><span class="toc-text">借用构造函数继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型式继承"><span class="toc-text">原型式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生式继承"><span class="toc-text">寄生式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生组合式继承"><span class="toc-text">寄生组合式继承</span></a></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#面向对象与继承"><span class="toc-text">面向对象与继承</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#理解原型对象"><span class="toc-text">理解原型对象</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#实现b继承a的方法"><span class="toc-text">实现b继承a的方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型链继承"><span class="toc-text">原型链继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#借用构造函数继承"><span class="toc-text">借用构造函数继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型式继承"><span class="toc-text">原型式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生式继承"><span class="toc-text">寄生式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生组合式继承"><span class="toc-text">寄生组合式继承</span></a></li></ol></li></ol></li></ol></div>
     </div>
     
     
