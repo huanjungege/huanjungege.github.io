@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Yo_huanjun" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/fav.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Happy+Monkey&display=swap" ">
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">Copy</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">Copy</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "Copied";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "Copy";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>字符串总结 | Yo_huanjun - Practice makes perfect.</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Yo_huanjun</a></h1>
+        <h2 class="subtitle">Practice makes perfect.</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">Home</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">Archives</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">Categories</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">Tags</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">_Undefined Script Works!</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/07/22/7-22字符串总结/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/12.jpeg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">字符串总结</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-07-22T13:10:32+08:00">2019-07-22 13:10:32</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>String类型是字符串的对象包装类型，可以像下面这样使用String构造函数来创建</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringObject = <span class="keyword">new</span> string(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>ECMAScript中字符串是不可改变的，也就是说一旦创建他们的值就是不可改变的，要改变某个变量保存的字符串，首先要先销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量</p>
+<a id="more"></a>
+
+<h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可直接进行换行，解决了传统的拼接方式的繁琐</span></span><br><span class="line">$(<span class="string">'#result'</span>).append(<span class="string">`</span></span><br><span class="line"><span class="string">  There are &lt;b&gt;<span class="subst">$&#123;basket.count&#125;</span>&lt;/b&gt; items</span></span><br><span class="line"><span class="string">   in your basket, &lt;em&gt;<span class="subst">$&#123;basket.onSale&#125;</span>&lt;/em&gt;</span></span><br><span class="line"><span class="string">  are on sale!</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h2><h3 id="转化方法"><a href="#转化方法" class="headerlink" title="转化方法"></a>转化方法</h3><ol>
+<li>使用<code>toString()</code>基本每个值都有的方法，该方法不接受<strong>null和undefined</strong></li>
+<li>String(),属于强制转换，null和undefined返回他们本身</li>
+</ol>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="length-返回字符串长度"><a href="#length-返回字符串长度" class="headerlink" title=".length:返回字符串长度"></a><code>.length</code>:返回字符串长度</h4><h4 id="indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）"><a href="#indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）" class="headerlink" title="indexOf(searchString, ?position)返回字符串中指定文本的位置（也就是索引）"></a><code>indexOf(searchString, ?position)</code>返回字符串中指定文本的位置（也就是索引）</h4><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可添加一个参数，搜索指定文本的位置，或通过第二个参数限定从第几个索引开始查找</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'The China full of name is China'</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>)) <span class="comment">//没设置索引时显示的位于索引4的China</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>, <span class="number">15</span>))<span class="comment">//索引开始的位置，第一个China被跳过</span></span><br><span class="line"><span class="comment">//当未查到文本时返回-1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="lastIndexOf-同理，从字符串后方开始查询"><a href="#lastIndexOf-同理，从字符串后方开始查询" class="headerlink" title="lastIndexOf()同理，从字符串后方开始查询"></a><code>lastIndexOf()</code>同理，从字符串后方开始查询</h4><h4 id="search-方法检索字符串中的字符串"><a href="#search-方法检索字符串中的字符串" class="headerlink" title="search()方法检索字符串中的字符串"></a><code>search()</code>方法检索字符串中的字符串</h4><p>和<code>indexOf()</code>类似，查找指定字符串的位置，不同的是，<code>search()</code>,不接受第二个参数，而<code>indexOf()</code>不接受正则匹配模式</p>
+<h4 id="提取部分字符串"><a href="#提取部分字符串" class="headerlink" title="提取部分字符串"></a>提取部分字符串</h4><p><code>slice(start, end)</code>,<code>substring(start, end)</code>,<code>substr(start, end)</code></p>
+<h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a><code>slice()</code></h5><p>截取指定位置，指定个数的字符串</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>,<span class="number">13</span>);<span class="comment">//Banana,截取索引7到13部分的字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>,<span class="number">-7</span>);<span class="comment">//Banana,从倒数第13截取到倒数第7位</span></span><br><span class="line"><span class="comment">//当只选择一个参数时，截取从参数索引位置开始后的所有剩余部分</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>)；<span class="comment">//Banana, Mango</span></span><br><span class="line"><span class="comment">//参数为负时，选取倒着数索引后的所有字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>)；<span class="comment">//Banana, Mango</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="substring-与slice-相似，但是不接受负值的索引"><a href="#substring-与slice-相似，但是不接受负值的索引" class="headerlink" title="substring()与slice()相似，但是不接受负值的索引"></a><code>substring()</code>与<code>slice()</code>相似，但是不接受负值的索引</h5><h5 id="substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"><a href="#substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度" class="headerlink" title="substr()也与slice()相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"></a><code>substr()</code>也与<code>slice()</code>相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度</h5><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	从第七位索引，截取6位字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.substr(<span class="number">7</span>,<span class="number">6</span>);<span class="comment">//Banana</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串的替换方法reaplace"><a href="#字符串的替换方法reaplace" class="headerlink" title="字符串的替换方法reaplace()"></a>字符串的替换方法<code>reaplace()</code></h4><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//replace()不会改变原有的字符串，而是返回新的字符串，替换的的文本为第一次匹配到的文本，对大小写敏感</span></span><br><span class="line">str = <span class="string">"Please visit Microsoft!"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="string">"Microsoft"</span>, <span class="string">"W3School"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(n);<span class="comment">//Please visit W3School</span></span><br><span class="line"><span class="comment">//如需执行大小写不敏感的替换，请使用正则表达式 /i（大小写不敏感）：</span></span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="regexp">/MICROSOFT/i</span>, <span class="string">"W3School"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串大小写转换方法"><a href="#字符串大小写转换方法" class="headerlink" title="字符串大小写转换方法"></a>字符串大小写转换方法</h4><p><code>ECMAScript</code>中涉及字符串大小写转换的方法有四个：<code>toLowerCase()</code>、<code>toLocaleLowerCase()</code>、<code>toUpperCase()</code>和<code>toLocaleUpperCase()</code>其中<code>toLowerCase()</code>和 <code>toUpperCase()</code>是两个经典的方法</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"hello world"</span>;</span><br><span class="line">alert(stringValue.toLocaleUpperCase()); <span class="comment">// "HELLO WORLD";</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="concat-方法可用于代替加运算符"><a href="#concat-方法可用于代替加运算符" class="headerlink" title="concat() 方法可用于代替加运算符"></a><code>concat()</code> 方法可用于代替加运算符</h4><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="string">"World!"</span>;</span><br><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span>.concat(<span class="string">" "</span>,<span class="string">"World!"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="trim-方法删除字符串两端的空白符"><a href="#trim-方法删除字符串两端的空白符" class="headerlink" title="trim()方法删除字符串两端的空白符"></a><code>trim()</code>方法删除字符串两端的空白符</h4><p>该方法最近常见的用法是在输入框，实现搜索匹配时，用于去除用户传值时产生的空格</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"       Hello World!        "</span>;</span><br><span class="line">alert(str.trim());</span><br></pre></td></tr></table></figure>
+
+<p><code>charAt()</code>返回指定位置的字符</p>
+<p><code>charCodeAt()</code>返回指定位置字符的Unicode 编码</p>
+<h2 id="fromCharCode-方法"><a href="#fromCharCode-方法" class="headerlink" title="fromCharCode()方法"></a><code>fromCharCode()</code>方法</h2><p>String构造函数本身还有一个静态方法，接收单一或多个字符编码，然后将他们转换成一个字符串。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="built_in">String</span>.fromCharCode(<span class="number">104</span>,<span class="number">101</span>,<span class="number">108</span>,<span class="number">108</span>,<span class="number">111</span>));  <span class="comment">//"hello"</span></span><br><span class="line">这里传递的是字符串hello中每个字符的Unicode编码。</span><br></pre></td></tr></table></figure>
+
+<h3 id="padStart-amp-padEnd"><a href="#padStart-amp-padEnd" class="headerlink" title="padStart()&amp;padEnd()"></a><code>padStart()</code>&amp;<code>padEnd()</code></h3><p>这两个方法是在ES6中新增的语法，用于为字符串提供补全方法，</p>
+<p>例如：</p>
+<p>格式化时间后的字符串<code>3:18</code>3分18秒</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">formateTime(seconds) &#123;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> seconds.toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">3600</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> h = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">3600</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;h&#125;</span>:<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>padStart()</code>和<code>padEnd()</code>一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/JavaScript/" rel="tag"><i class="fas fa-tags"></i>JavaScript</a>
+        
+        <a class="post-tag button" href="/tags/String/" rel="tag"><i class="fas fa-tags"></i>String</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/07/04/apply与call、bind的区别/" rel="next" title="apply与call、bind的区别"><i class="fas fa-angle-left"></i><span class="nav-title">apply与call、bind的区别</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/07/26/7-26jQuery总结一/" rel="prev" title="jQuery总结一"><span class="nav-title">jQuery总结一</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/12.jpeg" alt>
+  
+  <h1 class="author-name"></h1>
+  <h2 class="author-description">Either stand out or kicked out.</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">Archives</div>
+      <div><a href="/archives/">47</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">Categories</div>
+      <div><a href="/categories/">18</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">Tags</div>
+      <div><a href="/tags/">41</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#string类型"><span class="toc-text">string类型</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#模版字符串"><span class="toc-text">模版字符串</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#字符方法"><span class="toc-text">字符方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#转化方法"><span class="toc-text">转化方法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#常用方法"><span class="toc-text">常用方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#length-返回字符串长度"><span class="toc-text">.length:返回字符串长度</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）"><span class="toc-text">indexOf(searchString, ?position)返回字符串中指定文本的位置（也就是索引）</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#lastIndexOf-同理，从字符串后方开始查询"><span class="toc-text">lastIndexOf()同理，从字符串后方开始查询</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#search-方法检索字符串中的字符串"><span class="toc-text">search()方法检索字符串中的字符串</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#提取部分字符串"><span class="toc-text">提取部分字符串</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#slice"><span class="toc-text">slice()</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#substring-与slice-相似，但是不接受负值的索引"><span class="toc-text">substring()与slice()相似，但是不接受负值的索引</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"><span class="toc-text">substr()也与slice()相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#字符串的替换方法reaplace"><span class="toc-text">字符串的替换方法reaplace()</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#字符串大小写转换方法"><span class="toc-text">字符串大小写转换方法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#concat-方法可用于代替加运算符"><span class="toc-text">concat() 方法可用于代替加运算符</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#trim-方法删除字符串两端的空白符"><span class="toc-text">trim()方法删除字符串两端的空白符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#fromCharCode-方法"><span class="toc-text">fromCharCode()方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#padStart-amp-padEnd"><span class="toc-text">padStart()&amp;padEnd()</span></a></li></ol></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>Social Links<p></p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/allen-lhj" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>Blogroll</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author"></span><span class="year"><i class="far fa-copyright"></i>2020</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="Site Visit Count" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="Site User Count" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="Page Click Count" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
