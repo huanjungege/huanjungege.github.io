@@ -215,6 +215,8 @@
       <h1 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h1><p>在ES5中传入参数</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5中通过arguments获取参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  consloe.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">data(<span class="string">'v'</span>,<span class="string">'a'</span>,<span class="string">'r'</span>)<span class="comment">//Arguments(3) ["v","a","r"]</span></span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <p>有了 rest参数后获取参数</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">..args</span>) </span>&#123;</span><br><span class="line">  consloe.log(args) <span class="comment">//(3)["v","a","r"]</span></span><br><span class="line">&#125;</span><br><span class="line">data(<span class="string">'v'</span>, <span class="string">'a'</span>, <span class="string">'r'</span>)</span><br></pre></td></tr></table></figure>
 

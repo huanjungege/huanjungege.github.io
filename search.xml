@@ -1,61 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>20-03-09vuex</title>
-    <url>/2020/03/09/20-03-09vuex/</url>
-    <content><![CDATA[<h2 id="Vuex是什么？"><a href="#Vuex是什么？" class="headerlink" title="Vuex是什么？"></a>Vuex是什么？</h2><p>根据官网解释是一个专门为Vue.js应用程序开发的状态管理模式。（个人理解为数据管理，一个程序在刚开发阶段组件比较少，组件之间的传值解决也很方便，但是当程序越来越大，组件越来越多的时候数据越来越多的时候，组件传值变得复杂难以管理）。Vuex就是将多个组件都会用到的数据进行集中管理，哪个组件需要这些数据就在Vuex的存储库中提取，使数据的调用变得简单直接。</p>
-<a id="more"></a>
-
-<h3 id="Vuex的状态管理包含三个部分："><a href="#Vuex的状态管理包含三个部分：" class="headerlink" title="Vuex的状态管理包含三个部分："></a>Vuex的状态管理包含三个部分：</h3><ol>
-<li>state，驱动应用的数据源；</li>
-<li>view，以声明的方式将state映射到视图；</li>
-<li>actions，响应在view上的用户输入导致的状态变化。</li>
-</ol>
-<img src="/2020/03/09/20-03-09vuex/1.jpg">
-
-<p>这是一个单项数据流。</p>
-<p>state中的数据渲染到view视图，用户通过actions交互事件更改state数据，数据再次渲染，形成一个单项数据流。</p>
-<h2 id="正常情况下的数据管理"><a href="#正常情况下的数据管理" class="headerlink" title="正常情况下的数据管理"></a>正常情况下的数据管理</h2><p>通过官方文档实现一个计数器</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;h1&gt;点击数：&#123;&#123; count &#125;&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;input type="button" value="点击增加" @click="addEvent" /</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "Store",</span></span><br><span class="line"><span class="regexp">  data() &#123;</span></span><br><span class="line"><span class="regexp">    return &#123;</span></span><br><span class="line"><span class="regexp">      count: 0</span></span><br><span class="line"><span class="regexp">    &#125;;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    addEvent:function()&#123;</span></span><br><span class="line"><span class="regexp">        this.count++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2020/03/09/20-03-09vuex/2.jpg">
-
-<p>那么Vuex的方式是</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;!-- Vuex方式 --&gt;</span><br><span class="line">    &lt;h1&gt;点击数：&#123;&#123; $store.state.num &#125;&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;input type="button" value="点击增加" @click="emitAction" /</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Store"</span>,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  <span class="comment">//vuex中的mutation不能直接调用，我们需要调用store.commit方法</span></span><br><span class="line">    emitAction:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.commit(<span class="string">'addEvent2'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<img src="/2020/03/09/20-03-09vuex/3.jpg">
-
-<p>当勾选了Vuex后，会自动创建一个store实例，在state中存储数据，mutations中 定义方法</p>
-<img src="/2020/03/09/20-03-09vuex/4.jpg">
-
-<p>Vuex中的state：</p>
-<p>state可以称作Vuex存储数据的仓库，在组件中调用数据时我们发现在组件中的模板语法是这样的，$state.store.num,较为繁琐，我们可以这样写</p>
-<img src="/2020/03/09/20-03-09vuex/6.jpg">
-
-<p>这个时候发现下面也很繁琐所以Vuex提供了<code>mapState</code>辅助函数帮助我们生成计算属性</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//第一种方式</span></span><br><span class="line">computed:mapSate([<span class="string">'age'</span>,<span class="string">'gender'</span>,<span class="string">'num'</span>]);</span><br><span class="line"><span class="comment">//第二种</span></span><br><span class="line">computed:mapState(&#123;</span><br><span class="line">    age: <span class="string">'age'</span>,</span><br><span class="line">    <span class="comment">//或者箭头函数方式</span></span><br><span class="line">    gender:<span class="function">(<span class="params">state</span>) =&gt;</span>state.gender,</span><br><span class="line">    num:<span class="function">(<span class="params">state</span>) =&gt;</span> state.num</span><br><span class="line">&#125;)</span><br><span class="line">computed: &#123;</span><br><span class="line">    ...mapState([<span class="string">"username"</span>, <span class="string">"age"</span>, <span class="string">"list"</span>]),</span><br><span class="line">    ...mapGetters([<span class="string">'xuAge'</span>])</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="comment">// addAge: function() &#123;</span></span><br><span class="line">    <span class="comment">//   this.$store.commit("addAge");</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    ...mapMutations([<span class="string">'addAge'</span>,<span class="string">'getList'</span>]),</span><br><span class="line">    ...mapActions([<span class="string">'getJoke'</span>])</span><br></pre></td></tr></table></figure>
-
-<p>Vuex中的Getter：</p>
-<p>刚开始想组件中有计算属性，那么为什么要使用getter，组件中的计算属性只能在该组件中使用而：</p>
-<p>Getter相当于全局的computed(计算属性)</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">getters:&#123;</span><br><span class="line">reverseMSg:<span class="function"><span class="keyword">function</span>(<span class="params">state</span>)</span>&#123;</span><br><span class="line"><span class="comment">//返回它的颠倒值</span></span><br><span class="line">  <span class="keyword">return</span> state.msg.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>VueX中的mutations相当于组件中的methods</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//修改数据/状态的方法--methods</span></span><br><span class="line">  mutations: &#123;</span><br><span class="line">    addAge(state,payload)&#123;</span><br><span class="line">      <span class="comment">// console.log(state)</span></span><br><span class="line">      state.age += payload</span><br><span class="line">    &#125;,</span><br><span class="line">    getList(state,payload)&#123;</span><br><span class="line">      state.list = payload</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>VueX中的actions则是异步的修改数据</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">    getJoke(context)&#123;</span><br><span class="line">      <span class="keyword">let</span> httpUrl = <span class="string">'https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=text'</span></span><br><span class="line">      fetch(httpUrl).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json()</span><br><span class="line">      &#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">        context.commit(<span class="string">'getList'</span>,res.result)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">      <span class="comment">//将异步请求到的数据渲染到列表中</span></span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">      &lt;li v-<span class="keyword">for</span>=<span class="string">"(item, i) in $store.state.list"</span> :key=<span class="string">"i"</span>&gt;</span><br><span class="line">        &lt;h3&gt;&#123;&#123; item.name &#125;&#125;&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p&gt;&#123;&#123; item.text &#125;&#125;&lt;/</span>p&gt;</span><br><span class="line">      &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vuex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nodejs入门介绍</title>
     <url>/2019/10/22/2019-10-22-node-01/</url>
     <content><![CDATA[<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><h2 id="Node-js是什么"><a href="#Node-js是什么" class="headerlink" title="Node.js是什么?"></a><code>Node.js</code>是什么?</h2><p>在node官网的介绍中看到</p>
@@ -122,6 +67,61 @@
       <tags>
         <tag>javaScript</tag>
         <tag>Nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>20-03-09vuex</title>
+    <url>/2020/03/09/20-03-09vuex/</url>
+    <content><![CDATA[<h2 id="Vuex是什么？"><a href="#Vuex是什么？" class="headerlink" title="Vuex是什么？"></a>Vuex是什么？</h2><p>根据官网解释是一个专门为Vue.js应用程序开发的状态管理模式。（个人理解为数据管理，一个程序在刚开发阶段组件比较少，组件之间的传值解决也很方便，但是当程序越来越大，组件越来越多的时候数据越来越多的时候，组件传值变得复杂难以管理）。Vuex就是将多个组件都会用到的数据进行集中管理，哪个组件需要这些数据就在Vuex的存储库中提取，使数据的调用变得简单直接。</p>
+<a id="more"></a>
+
+<h3 id="Vuex的状态管理包含三个部分："><a href="#Vuex的状态管理包含三个部分：" class="headerlink" title="Vuex的状态管理包含三个部分："></a>Vuex的状态管理包含三个部分：</h3><ol>
+<li>state，驱动应用的数据源；</li>
+<li>view，以声明的方式将state映射到视图；</li>
+<li>actions，响应在view上的用户输入导致的状态变化。</li>
+</ol>
+<img src="/2020/03/09/20-03-09vuex/1.jpg">
+
+<p>这是一个单项数据流。</p>
+<p>state中的数据渲染到view视图，用户通过actions交互事件更改state数据，数据再次渲染，形成一个单项数据流。</p>
+<h2 id="正常情况下的数据管理"><a href="#正常情况下的数据管理" class="headerlink" title="正常情况下的数据管理"></a>正常情况下的数据管理</h2><p>通过官方文档实现一个计数器</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;h1&gt;点击数：&#123;&#123; count &#125;&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;input type="button" value="点击增加" @click="addEvent" /</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "Store",</span></span><br><span class="line"><span class="regexp">  data() &#123;</span></span><br><span class="line"><span class="regexp">    return &#123;</span></span><br><span class="line"><span class="regexp">      count: 0</span></span><br><span class="line"><span class="regexp">    &#125;;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    addEvent:function()&#123;</span></span><br><span class="line"><span class="regexp">        this.count++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/09/20-03-09vuex/2.jpg">
+
+<p>那么Vuex的方式是</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;!-- Vuex方式 --&gt;</span><br><span class="line">    &lt;h1&gt;点击数：&#123;&#123; $store.state.num &#125;&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;input type="button" value="点击增加" @click="emitAction" /</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"Store"</span>,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  <span class="comment">//vuex中的mutation不能直接调用，我们需要调用store.commit方法</span></span><br><span class="line">    emitAction:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.commit(<span class="string">'addEvent2'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/09/20-03-09vuex/3.jpg">
+
+<p>当勾选了Vuex后，会自动创建一个store实例，在state中存储数据，mutations中 定义方法</p>
+<img src="/2020/03/09/20-03-09vuex/4.jpg">
+
+<p>Vuex中的state：</p>
+<p>state可以称作Vuex存储数据的仓库，在组件中调用数据时我们发现在组件中的模板语法是这样的，$state.store.num,较为繁琐，我们可以这样写</p>
+<img src="/2020/03/09/20-03-09vuex/6.jpg">
+
+<p>这个时候发现下面也很繁琐所以Vuex提供了<code>mapState</code>辅助函数帮助我们生成计算属性</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//第一种方式</span></span><br><span class="line">computed:mapSate([<span class="string">'age'</span>,<span class="string">'gender'</span>,<span class="string">'num'</span>]);</span><br><span class="line"><span class="comment">//第二种</span></span><br><span class="line">computed:mapState(&#123;</span><br><span class="line">    age: <span class="string">'age'</span>,</span><br><span class="line">    <span class="comment">//或者箭头函数方式</span></span><br><span class="line">    gender:<span class="function">(<span class="params">state</span>) =&gt;</span>state.gender,</span><br><span class="line">    num:<span class="function">(<span class="params">state</span>) =&gt;</span> state.num</span><br><span class="line">&#125;)</span><br><span class="line">computed: &#123;</span><br><span class="line">    ...mapState([<span class="string">"username"</span>, <span class="string">"age"</span>, <span class="string">"list"</span>]),</span><br><span class="line">    ...mapGetters([<span class="string">'xuAge'</span>])</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="comment">// addAge: function() &#123;</span></span><br><span class="line">    <span class="comment">//   this.$store.commit("addAge");</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    ...mapMutations([<span class="string">'addAge'</span>,<span class="string">'getList'</span>]),</span><br><span class="line">    ...mapActions([<span class="string">'getJoke'</span>])</span><br></pre></td></tr></table></figure>
+
+<p>Vuex中的Getter：</p>
+<p>刚开始想组件中有计算属性，那么为什么要使用getter，组件中的计算属性只能在该组件中使用而：</p>
+<p>Getter相当于全局的computed(计算属性)</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">getters:&#123;</span><br><span class="line">reverseMSg:<span class="function"><span class="keyword">function</span>(<span class="params">state</span>)</span>&#123;</span><br><span class="line"><span class="comment">//返回它的颠倒值</span></span><br><span class="line">  <span class="keyword">return</span> state.msg.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>VueX中的mutations相当于组件中的methods</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//修改数据/状态的方法--methods</span></span><br><span class="line">  mutations: &#123;</span><br><span class="line">    addAge(state,payload)&#123;</span><br><span class="line">      <span class="comment">// console.log(state)</span></span><br><span class="line">      state.age += payload</span><br><span class="line">    &#125;,</span><br><span class="line">    getList(state,payload)&#123;</span><br><span class="line">      state.list = payload</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>VueX中的actions则是异步的修改数据</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">    getJoke(context)&#123;</span><br><span class="line">      <span class="keyword">let</span> httpUrl = <span class="string">'https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=text'</span></span><br><span class="line">      fetch(httpUrl).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json()</span><br><span class="line">      &#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">        context.commit(<span class="string">'getList'</span>,res.result)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">      <span class="comment">//将异步请求到的数据渲染到列表中</span></span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">      &lt;li v-<span class="keyword">for</span>=<span class="string">"(item, i) in $store.state.list"</span> :key=<span class="string">"i"</span>&gt;</span><br><span class="line">        &lt;h3&gt;&#123;&#123; item.name &#125;&#125;&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p&gt;&#123;&#123; item.text &#125;&#125;&lt;/</span>p&gt;</span><br><span class="line">      &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vuex</tag>
       </tags>
   </entry>
   <entry>
@@ -346,73 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Js函数表达式</title>
-    <url>/2019/10/31/2019-10-31-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<img src="/2019/10/31/2019-10-31-函数表达式/48.jpg">
-
-<a id="more"></a>
-
-<h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归函数是在一个函数通过名字调用自身的情况下构成的</p>
-<p>一个经典的递归阶乘函数</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * f(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>arguments.callee</code>是一个指向正在执行函数的指针，因此它可以实现对函数的递归调用</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>通过使用<code>arguments.calee</code>代替函数名，可以确保无论怎样调用函数都不会出问题，因此，在编写递归函数时，使用<code>agruments.callee</code>总比使用函数名更保险</strong></p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="执行环境与作用域"><a href="#执行环境与作用域" class="headerlink" title="执行环境与作用域"></a>执行环境与作用域</h3><p>想要理解闭包就要理解执行环境与作用域:</p>
-<p>每个函数都有自己的执行环境，每个执行环境都有一个与之关联的变量对象，当代码在一个环境中执行的时候，会创建变量对象的一个作用域链，如果这个环境是函数的话，则将其活动对象作为变量对象，活动对象最开始只包含一个变量，即arguments对象。</p>
-<p>变量的作用域：全局变量和局部变量，js语言中，函数内部可以直接读取全局变量</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n=<span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(n);</span><br><span class="line">&#125;</span><br><span class="line">f1()<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
-
-<p>另一方面，在函数外部无法读取函数内的局部变量（注意这里内部声明变量要使用var，否则实际上声明 了一个全局变量）</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">999</span>;</span><br><span class="line">&#125;</span><br><span class="line">alert(n); <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="那么什么是闭包呢？"><a href="#那么什么是闭包呢？" class="headerlink" title="那么什么是闭包呢？"></a>那么什么是闭包呢？</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
-<p><strong>理解：闭包就是能够读取其它函数内部变量的函数，他是函数内部与外部连接起来的一座桥梁</strong></p>
-<p>作用：</p>
-<ol>
-<li>从外部读取局部变量</li>
-<li>让变量的始终保存在内存中</li>
-</ol>
-<p>那么如何从外部读取局部变量</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那就是在函数内部在定义一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">//局部变量n对外部不可见，对f2是可见的</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(n); <span class="comment">//100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将f2作为返回值</span></span><br><span class="line">    <span class="keyword">return</span> f2;<span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result= f1();</span><br><span class="line">result();<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
-
-<p>上述代码中<code>f2</code>函数，就是闭包。</p>
-<p>2.将变量的值保存在内存中</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">var</span> n=<span class="number">999</span>;</span><br><span class="line">    <span class="comment">//nAdd没有使用var声明，它是一个全局变量，值为一个匿名函数</span></span><br><span class="line">　　　　nAdd=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;n+=<span class="number">1</span>&#125;</span><br><span class="line">　　　　<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　alert(n);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="keyword">return</span> f2;</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="keyword">var</span> result=f1();</span><br><span class="line">　　result(); <span class="comment">// 999</span></span><br><span class="line">　　nAdd();</span><br><span class="line">　　result(); <span class="comment">// 1000</span></span><br></pre></td></tr></table></figure>
-
-<p>在这段代码中，result实际上就是闭包<code>f2</code>函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在<code>f1</code>调用后被自动清除。</p>
-<p>为什么会这样呢？原因就在于<code>f1</code>是<code>f2</code>的父函数，而<code>f2</code>被赋给了一个全局变量，这导致<code>f2</code>始终在内存中，而<code>f2</code>的存在依赖于<code>f1</code>，因此<code>f1</code>也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。</p>
-<p>这段代码中另一个值得注意的地方，就是”<code>nAdd=function(){n+=1}</code>“这一行，首先在<code>nAdd</code>前面没有使用var关键字，因此<code>nAdd</code>是一个全局变量，而不是局部变量。其次，<code>nAdd</code>的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以<code>nAdd</code>相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。</p>
-<h3 id="关于this对象"><a href="#关于this对象" class="headerlink" title="关于this对象"></a>关于<code>this</code>对象</h3><p>我们需要理解两个例子</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());<span class="comment">//The window</span></span><br></pre></td></tr></table></figure>
-
-<p>在全局函数中，this等于window,而匿名函数的执行环境具有全局性，因此this队形通常指向window</p>
-<p>例2</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> that.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());</span><br></pre></td></tr></table></figure>
-
-<p>在定义匿名函数之前就将this对象赋值给了that，而在定义了闭包之后，闭包可以访问这个变量，此时的that正是引用着object的this。</p>
-<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><p>在作用域链这种配置机制下引出的指的注意的副作用，即闭包只能取得包含函数中任何的变量的最后一个值</p>
-<p>所以当返回函数引入了循环变量时</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i * i;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];<span class="comment">//16</span></span><br></pre></td></tr></table></figure>
-
-<p>全部都是<code>16</code>！原因就在于返回的函数引用了变量<code>i</code>，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量<code>i</code>已经变成了<code>4</code>，因此最终结果为<code>16</code>。</p>
-<p>解决：方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变：</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push((<span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> n * n;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">f1(); <span class="comment">// 1</span></span><br><span class="line">f2(); <span class="comment">// 4</span></span><br><span class="line">f3(); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>闭包</tag>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2019-11-11-Vue-01</title>
     <url>/2019/11/11/2019-11-11-Vue-01/</url>
     <content><![CDATA[<h1 id="Vue-js是什么"><a href="#Vue-js是什么" class="headerlink" title="Vue.js是什么"></a>Vue.js是什么</h1><p><code>Vue</code>是一套用于构建用户界面的<strong>渐进式框架</strong>。与其它大型框架不同的是，<code>Vue</code> 被设计为可以自底向上逐层应用。<code>Vue</code> 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">现代化的工具链</a>以及各种<a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">支持类库</a>结合使用时，<code>Vue</code> 也完全能够为复杂的单页应用提供驱动。</p>
@@ -501,6 +434,73 @@
       </categories>
       <tags>
         <tag>javaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Js函数表达式</title>
+    <url>/2019/10/31/2019-10-31-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<img src="/2019/10/31/2019-10-31-函数表达式/48.jpg">
+
+<a id="more"></a>
+
+<h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归函数是在一个函数通过名字调用自身的情况下构成的</p>
+<p>一个经典的递归阶乘函数</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * f(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>arguments.callee</code>是一个指向正在执行函数的指针，因此它可以实现对函数的递归调用</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过使用<code>arguments.calee</code>代替函数名，可以确保无论怎样调用函数都不会出问题，因此，在编写递归函数时，使用<code>agruments.callee</code>总比使用函数名更保险</strong></p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="执行环境与作用域"><a href="#执行环境与作用域" class="headerlink" title="执行环境与作用域"></a>执行环境与作用域</h3><p>想要理解闭包就要理解执行环境与作用域:</p>
+<p>每个函数都有自己的执行环境，每个执行环境都有一个与之关联的变量对象，当代码在一个环境中执行的时候，会创建变量对象的一个作用域链，如果这个环境是函数的话，则将其活动对象作为变量对象，活动对象最开始只包含一个变量，即arguments对象。</p>
+<p>变量的作用域：全局变量和局部变量，js语言中，函数内部可以直接读取全局变量</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n=<span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(n);</span><br><span class="line">&#125;</span><br><span class="line">f1()<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<p>另一方面，在函数外部无法读取函数内的局部变量（注意这里内部声明变量要使用var，否则实际上声明 了一个全局变量）</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">999</span>;</span><br><span class="line">&#125;</span><br><span class="line">alert(n); <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="那么什么是闭包呢？"><a href="#那么什么是闭包呢？" class="headerlink" title="那么什么是闭包呢？"></a>那么什么是闭包呢？</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
+<p><strong>理解：闭包就是能够读取其它函数内部变量的函数，他是函数内部与外部连接起来的一座桥梁</strong></p>
+<p>作用：</p>
+<ol>
+<li>从外部读取局部变量</li>
+<li>让变量的始终保存在内存中</li>
+</ol>
+<p>那么如何从外部读取局部变量</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那就是在函数内部在定义一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">//局部变量n对外部不可见，对f2是可见的</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(n); <span class="comment">//100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将f2作为返回值</span></span><br><span class="line">    <span class="keyword">return</span> f2;<span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result= f1();</span><br><span class="line">result();<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码中<code>f2</code>函数，就是闭包。</p>
+<p>2.将变量的值保存在内存中</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">var</span> n=<span class="number">999</span>;</span><br><span class="line">    <span class="comment">//nAdd没有使用var声明，它是一个全局变量，值为一个匿名函数</span></span><br><span class="line">　　　　nAdd=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;n+=<span class="number">1</span>&#125;</span><br><span class="line">　　　　<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　alert(n);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="keyword">return</span> f2;</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="keyword">var</span> result=f1();</span><br><span class="line">　　result(); <span class="comment">// 999</span></span><br><span class="line">　　nAdd();</span><br><span class="line">　　result(); <span class="comment">// 1000</span></span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，result实际上就是闭包<code>f2</code>函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在<code>f1</code>调用后被自动清除。</p>
+<p>为什么会这样呢？原因就在于<code>f1</code>是<code>f2</code>的父函数，而<code>f2</code>被赋给了一个全局变量，这导致<code>f2</code>始终在内存中，而<code>f2</code>的存在依赖于<code>f1</code>，因此<code>f1</code>也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。</p>
+<p>这段代码中另一个值得注意的地方，就是”<code>nAdd=function(){n+=1}</code>“这一行，首先在<code>nAdd</code>前面没有使用var关键字，因此<code>nAdd</code>是一个全局变量，而不是局部变量。其次，<code>nAdd</code>的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以<code>nAdd</code>相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。</p>
+<h3 id="关于this对象"><a href="#关于this对象" class="headerlink" title="关于this对象"></a>关于<code>this</code>对象</h3><p>我们需要理解两个例子</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());<span class="comment">//The window</span></span><br></pre></td></tr></table></figure>
+
+<p>在全局函数中，this等于window,而匿名函数的执行环境具有全局性，因此this队形通常指向window</p>
+<p>例2</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">"My Object"</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> that.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　alert(object.getNameFunc()());</span><br></pre></td></tr></table></figure>
+
+<p>在定义匿名函数之前就将this对象赋值给了that，而在定义了闭包之后，闭包可以访问这个变量，此时的that正是引用着object的this。</p>
+<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><p>在作用域链这种配置机制下引出的指的注意的副作用，即闭包只能取得包含函数中任何的变量的最后一个值</p>
+<p>所以当返回函数引入了循环变量时</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i * i;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];<span class="comment">//16</span></span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];<span class="comment">//16</span></span><br></pre></td></tr></table></figure>
+
+<p>全部都是<code>16</code>！原因就在于返回的函数引用了变量<code>i</code>，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量<code>i</code>已经变成了<code>4</code>，因此最终结果为<code>16</code>。</p>
+<p>解决：方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变：</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">        arr.push((<span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> n * n;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> results = count();</span><br><span class="line"><span class="keyword">var</span> f1 = results[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> f2 = results[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> f3 = results[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">f1(); <span class="comment">// 1</span></span><br><span class="line">f2(); <span class="comment">// 4</span></span><br><span class="line">f3(); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>闭包</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -625,28 +625,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Github与码云同时上传</title>
-    <url>/2020/03/03/2020-03-03/</url>
-    <content><![CDATA[<p>今天学校通知将毕业设计的项目每天进程上传到码云，那么一直使用GitHub的我该怎么同时维护，上网找到的办法是这样的（不一定是最简单的方法）</p>
-<a id="more"></a>
-
-<p>首先我在将本地的仓库上传到码云，打开本地.git文件夹中的cofig</p>
-<img src="/2020/03/03/2020-03-03/6.jpg">
-
-<p>然后github中创建同样的仓库，在cofig中添加如下代码</p>
-<img src="/2020/03/03/2020-03-03/2.jpg">
-
-<p>之后push会将代码同时推送到GitHub与码云</p>
-]]></content>
-      <categories>
-        <category>计算机</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>passport验证token</title>
     <url>/2020/03/06/2020-03-06-passport/</url>
     <content><![CDATA[<p>1关于token：</p>
@@ -678,6 +656,42 @@
       </tags>
   </entry>
   <entry>
+    <title>Github与码云同时上传</title>
+    <url>/2020/03/03/2020-03-03/</url>
+    <content><![CDATA[<p>今天学校通知将毕业设计的项目每天进程上传到码云，那么一直使用GitHub的我该怎么同时维护，上网找到的办法是这样的（不一定是最简单的方法）</p>
+<a id="more"></a>
+
+<p>首先我在将本地的仓库上传到码云，打开本地.git文件夹中的cofig</p>
+<img src="/2020/03/03/2020-03-03/6.jpg">
+
+<p>然后github中创建同样的仓库，在cofig中添加如下代码</p>
+<img src="/2020/03/03/2020-03-03/2.jpg">
+
+<p>之后push会将代码同时推送到GitHub与码云</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PPT模板</title>
+    <url>/2019/03/29/3-29ppt%E6%A8%A1%E6%9D%BF%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<h1 id="ppt模板"><a href="#ppt模板" class="headerlink" title="ppt模板"></a>ppt模板</h1><p><a href="https://pan.baidu.com/s/1tequzqrq0m7ok2BALQ2oow" target="_blank" rel="noopener">点这里哦！提取码twyn</a></p>
+<img src="/2019/03/29/3-29ppt模板分享/base.jpg">
+
+]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>resource</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS随记</title>
     <url>/2019/05/12/5-12/</url>
     <content><![CDATA[<h1 id="如何交换两个数"><a href="#如何交换两个数" class="headerlink" title="如何交换两个数"></a>如何交换两个数</h1><a id="more"></a>
@@ -696,20 +710,6 @@
       </categories>
       <tags>
         <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PPT模板</title>
-    <url>/2019/03/29/3-29ppt%E6%A8%A1%E6%9D%BF%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<h1 id="ppt模板"><a href="#ppt模板" class="headerlink" title="ppt模板"></a>ppt模板</h1><p><a href="https://pan.baidu.com/s/1tequzqrq0m7ok2BALQ2oow" target="_blank" rel="noopener">点这里哦！提取码twyn</a></p>
-<img src="/2019/03/29/3-29ppt模板分享/base.jpg">
-
-]]></content>
-      <categories>
-        <category>资源</category>
-      </categories>
-      <tags>
-        <tag>resource</tag>
       </tags>
   </entry>
   <entry>
@@ -1101,6 +1101,61 @@
       </tags>
   </entry>
   <entry>
+    <title>字符串总结</title>
+    <url>/2019/07/22/7-22%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>String类型是字符串的对象包装类型，可以像下面这样使用String构造函数来创建</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringObject = <span class="keyword">new</span> string(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>ECMAScript中字符串是不可改变的，也就是说一旦创建他们的值就是不可改变的，要改变某个变量保存的字符串，首先要先销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量</p>
+<a id="more"></a>
+
+<h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可直接进行换行，解决了传统的拼接方式的繁琐</span></span><br><span class="line">$(<span class="string">'#result'</span>).append(<span class="string">`</span></span><br><span class="line"><span class="string">  There are &lt;b&gt;<span class="subst">$&#123;basket.count&#125;</span>&lt;/b&gt; items</span></span><br><span class="line"><span class="string">   in your basket, &lt;em&gt;<span class="subst">$&#123;basket.onSale&#125;</span>&lt;/em&gt;</span></span><br><span class="line"><span class="string">  are on sale!</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h2><h3 id="转化方法"><a href="#转化方法" class="headerlink" title="转化方法"></a>转化方法</h3><ol>
+<li>使用<code>toString()</code>基本每个值都有的方法，该方法不接受<strong>null和undefined</strong></li>
+<li>String(),属于强制转换，null和undefined返回他们本身</li>
+</ol>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="length-返回字符串长度"><a href="#length-返回字符串长度" class="headerlink" title=".length:返回字符串长度"></a><code>.length</code>:返回字符串长度</h4><h4 id="indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）"><a href="#indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）" class="headerlink" title="indexOf(searchString, ?position)返回字符串中指定文本的位置（也就是索引）"></a><code>indexOf(searchString, ?position)</code>返回字符串中指定文本的位置（也就是索引）</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可添加一个参数，搜索指定文本的位置，或通过第二个参数限定从第几个索引开始查找</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'The China full of name is China'</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>)) <span class="comment">//没设置索引时显示的位于索引4的China</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>, <span class="number">15</span>))<span class="comment">//索引开始的位置，第一个China被跳过</span></span><br><span class="line"><span class="comment">//当未查到文本时返回-1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="lastIndexOf-同理，从字符串后方开始查询"><a href="#lastIndexOf-同理，从字符串后方开始查询" class="headerlink" title="lastIndexOf()同理，从字符串后方开始查询"></a><code>lastIndexOf()</code>同理，从字符串后方开始查询</h4><h4 id="search-方法检索字符串中的字符串"><a href="#search-方法检索字符串中的字符串" class="headerlink" title="search()方法检索字符串中的字符串"></a><code>search()</code>方法检索字符串中的字符串</h4><p>和<code>indexOf()</code>类似，查找指定字符串的位置，不同的是，<code>search()</code>,不接受第二个参数，而<code>indexOf()</code>不接受正则匹配模式</p>
+<h4 id="提取部分字符串"><a href="#提取部分字符串" class="headerlink" title="提取部分字符串"></a>提取部分字符串</h4><p><code>slice(start, end)</code>,<code>substring(start, end)</code>,<code>substr(start, end)</code></p>
+<h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a><code>slice()</code></h5><p>截取指定位置，指定个数的字符串</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>,<span class="number">13</span>);<span class="comment">//Banana,截取索引7到13部分的字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>,<span class="number">-7</span>);<span class="comment">//Banana,从倒数第13截取到倒数第7位</span></span><br><span class="line"><span class="comment">//当只选择一个参数时，截取从参数索引位置开始后的所有剩余部分</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>)；<span class="comment">//Banana, Mango</span></span><br><span class="line"><span class="comment">//参数为负时，选取倒着数索引后的所有字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>)；<span class="comment">//Banana, Mango</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="substring-与slice-相似，但是不接受负值的索引"><a href="#substring-与slice-相似，但是不接受负值的索引" class="headerlink" title="substring()与slice()相似，但是不接受负值的索引"></a><code>substring()</code>与<code>slice()</code>相似，但是不接受负值的索引</h5><h5 id="substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"><a href="#substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度" class="headerlink" title="substr()也与slice()相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"></a><code>substr()</code>也与<code>slice()</code>相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度</h5><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//	从第七位索引，截取6位字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.substr(<span class="number">7</span>,<span class="number">6</span>);<span class="comment">//Banana</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串的替换方法reaplace"><a href="#字符串的替换方法reaplace" class="headerlink" title="字符串的替换方法reaplace()"></a>字符串的替换方法<code>reaplace()</code></h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//replace()不会改变原有的字符串，而是返回新的字符串，替换的的文本为第一次匹配到的文本，对大小写敏感</span></span><br><span class="line">str = <span class="string">"Please visit Microsoft!"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="string">"Microsoft"</span>, <span class="string">"W3School"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(n);<span class="comment">//Please visit W3School</span></span><br><span class="line"><span class="comment">//如需执行大小写不敏感的替换，请使用正则表达式 /i（大小写不敏感）：</span></span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="regexp">/MICROSOFT/i</span>, <span class="string">"W3School"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串大小写转换方法"><a href="#字符串大小写转换方法" class="headerlink" title="字符串大小写转换方法"></a>字符串大小写转换方法</h4><p><code>ECMAScript</code>中涉及字符串大小写转换的方法有四个：<code>toLowerCase()</code>、<code>toLocaleLowerCase()</code>、<code>toUpperCase()</code>和<code>toLocaleUpperCase()</code>其中<code>toLowerCase()</code>和 <code>toUpperCase()</code>是两个经典的方法</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"hello world"</span>;</span><br><span class="line">alert(stringValue.toLocaleUpperCase()); <span class="comment">// "HELLO WORLD";</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="concat-方法可用于代替加运算符"><a href="#concat-方法可用于代替加运算符" class="headerlink" title="concat() 方法可用于代替加运算符"></a><code>concat()</code> 方法可用于代替加运算符</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="string">"World!"</span>;</span><br><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span>.concat(<span class="string">" "</span>,<span class="string">"World!"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="trim-方法删除字符串两端的空白符"><a href="#trim-方法删除字符串两端的空白符" class="headerlink" title="trim()方法删除字符串两端的空白符"></a><code>trim()</code>方法删除字符串两端的空白符</h4><p>该方法最近常见的用法是在输入框，实现搜索匹配时，用于去除用户传值时产生的空格</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"       Hello World!        "</span>;</span><br><span class="line">alert(str.trim());</span><br></pre></td></tr></table></figure>
+
+<p><code>charAt()</code>返回指定位置的字符</p>
+<p><code>charCodeAt()</code>返回指定位置字符的Unicode 编码</p>
+<h2 id="fromCharCode-方法"><a href="#fromCharCode-方法" class="headerlink" title="fromCharCode()方法"></a><code>fromCharCode()</code>方法</h2><p>String构造函数本身还有一个静态方法，接收单一或多个字符编码，然后将他们转换成一个字符串。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">alert(<span class="built_in">String</span>.fromCharCode(<span class="number">104</span>,<span class="number">101</span>,<span class="number">108</span>,<span class="number">108</span>,<span class="number">111</span>));  <span class="comment">//"hello"</span></span><br><span class="line">这里传递的是字符串hello中每个字符的Unicode编码。</span><br></pre></td></tr></table></figure>
+
+<h3 id="padStart-amp-padEnd"><a href="#padStart-amp-padEnd" class="headerlink" title="padStart()&amp;padEnd()"></a><code>padStart()</code>&amp;<code>padEnd()</code></h3><p>这两个方法是在ES6中新增的语法，用于为字符串提供补全方法，</p>
+<p>例如：</p>
+<p>格式化时间后的字符串<code>3:18</code>3分18秒</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">formateTime(seconds) &#123;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> seconds.toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">3600</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> h = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">3600</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;h&#125;</span>:<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>padStart()</code>和<code>padEnd()</code>一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>String</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>jQuery总结一</title>
     <url>/2019/07/26/7-26jQuery%E6%80%BB%E7%BB%93%E4%B8%80/</url>
     <content><![CDATA[<h1 id="jQuery总结"><a href="#jQuery总结" class="headerlink" title="jQuery总结"></a>jQuery总结</h1><h2 id="引入jQuery的原因"><a href="#引入jQuery的原因" class="headerlink" title="引入jQuery的原因"></a>引入jQuery的原因</h2><p>在用js写代码会出现的问题</p>
@@ -1161,61 +1216,6 @@
       <tags>
         <tag>javaScript</tag>
         <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符串总结</title>
-    <url>/2019/07/22/7-22%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>String类型是字符串的对象包装类型，可以像下面这样使用String构造函数来创建</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringObject = <span class="keyword">new</span> string(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>ECMAScript中字符串是不可改变的，也就是说一旦创建他们的值就是不可改变的，要改变某个变量保存的字符串，首先要先销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量</p>
-<a id="more"></a>
-
-<h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可直接进行换行，解决了传统的拼接方式的繁琐</span></span><br><span class="line">$(<span class="string">'#result'</span>).append(<span class="string">`</span></span><br><span class="line"><span class="string">  There are &lt;b&gt;<span class="subst">$&#123;basket.count&#125;</span>&lt;/b&gt; items</span></span><br><span class="line"><span class="string">   in your basket, &lt;em&gt;<span class="subst">$&#123;basket.onSale&#125;</span>&lt;/em&gt;</span></span><br><span class="line"><span class="string">  are on sale!</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h2><h3 id="转化方法"><a href="#转化方法" class="headerlink" title="转化方法"></a>转化方法</h3><ol>
-<li>使用<code>toString()</code>基本每个值都有的方法，该方法不接受<strong>null和undefined</strong></li>
-<li>String(),属于强制转换，null和undefined返回他们本身</li>
-</ol>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="length-返回字符串长度"><a href="#length-返回字符串长度" class="headerlink" title=".length:返回字符串长度"></a><code>.length</code>:返回字符串长度</h4><h4 id="indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）"><a href="#indexOf-searchString-position-返回字符串中指定文本的位置（也就是索引）" class="headerlink" title="indexOf(searchString, ?position)返回字符串中指定文本的位置（也就是索引）"></a><code>indexOf(searchString, ?position)</code>返回字符串中指定文本的位置（也就是索引）</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//可添加一个参数，搜索指定文本的位置，或通过第二个参数限定从第几个索引开始查找</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'The China full of name is China'</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>)) <span class="comment">//没设置索引时显示的位于索引4的China</span></span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">'China'</span>, <span class="number">15</span>))<span class="comment">//索引开始的位置，第一个China被跳过</span></span><br><span class="line"><span class="comment">//当未查到文本时返回-1</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="lastIndexOf-同理，从字符串后方开始查询"><a href="#lastIndexOf-同理，从字符串后方开始查询" class="headerlink" title="lastIndexOf()同理，从字符串后方开始查询"></a><code>lastIndexOf()</code>同理，从字符串后方开始查询</h4><h4 id="search-方法检索字符串中的字符串"><a href="#search-方法检索字符串中的字符串" class="headerlink" title="search()方法检索字符串中的字符串"></a><code>search()</code>方法检索字符串中的字符串</h4><p>和<code>indexOf()</code>类似，查找指定字符串的位置，不同的是，<code>search()</code>,不接受第二个参数，而<code>indexOf()</code>不接受正则匹配模式</p>
-<h4 id="提取部分字符串"><a href="#提取部分字符串" class="headerlink" title="提取部分字符串"></a>提取部分字符串</h4><p><code>slice(start, end)</code>,<code>substring(start, end)</code>,<code>substr(start, end)</code></p>
-<h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a><code>slice()</code></h5><p>截取指定位置，指定个数的字符串</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>,<span class="number">13</span>);<span class="comment">//Banana,截取索引7到13部分的字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>,<span class="number">-7</span>);<span class="comment">//Banana,从倒数第13截取到倒数第7位</span></span><br><span class="line"><span class="comment">//当只选择一个参数时，截取从参数索引位置开始后的所有剩余部分</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">7</span>)；<span class="comment">//Banana, Mango</span></span><br><span class="line"><span class="comment">//参数为负时，选取倒着数索引后的所有字符串</span></span><br><span class="line"><span class="keyword">var</span> res = str.slice(<span class="number">-13</span>)；<span class="comment">//Banana, Mango</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="substring-与slice-相似，但是不接受负值的索引"><a href="#substring-与slice-相似，但是不接受负值的索引" class="headerlink" title="substring()与slice()相似，但是不接受负值的索引"></a><code>substring()</code>与<code>slice()</code>相似，但是不接受负值的索引</h5><h5 id="substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"><a href="#substr-也与slice-相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度" class="headerlink" title="substr()也与slice()相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度"></a><code>substr()</code>也与<code>slice()</code>相似，不同之处为第二个参数不再是结束截取的索引，而是要截取的长度</h5><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//	从第七位索引，截取6位字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Apple, Banana, Mango"</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.substr(<span class="number">7</span>,<span class="number">6</span>);<span class="comment">//Banana</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="字符串的替换方法reaplace"><a href="#字符串的替换方法reaplace" class="headerlink" title="字符串的替换方法reaplace()"></a>字符串的替换方法<code>reaplace()</code></h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//replace()不会改变原有的字符串，而是返回新的字符串，替换的的文本为第一次匹配到的文本，对大小写敏感</span></span><br><span class="line">str = <span class="string">"Please visit Microsoft!"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="string">"Microsoft"</span>, <span class="string">"W3School"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(n);<span class="comment">//Please visit W3School</span></span><br><span class="line"><span class="comment">//如需执行大小写不敏感的替换，请使用正则表达式 /i（大小写不敏感）：</span></span><br><span class="line"><span class="keyword">var</span> n = str.replace(<span class="regexp">/MICROSOFT/i</span>, <span class="string">"W3School"</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="字符串大小写转换方法"><a href="#字符串大小写转换方法" class="headerlink" title="字符串大小写转换方法"></a>字符串大小写转换方法</h4><p><code>ECMAScript</code>中涉及字符串大小写转换的方法有四个：<code>toLowerCase()</code>、<code>toLocaleLowerCase()</code>、<code>toUpperCase()</code>和<code>toLocaleUpperCase()</code>其中<code>toLowerCase()</code>和 <code>toUpperCase()</code>是两个经典的方法</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"hello world"</span>;</span><br><span class="line">alert(stringValue.toLocaleUpperCase()); <span class="comment">// "HELLO WORLD";</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="concat-方法可用于代替加运算符"><a href="#concat-方法可用于代替加运算符" class="headerlink" title="concat() 方法可用于代替加运算符"></a><code>concat()</code> 方法可用于代替加运算符</h4><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="string">"World!"</span>;</span><br><span class="line"><span class="keyword">var</span> text = <span class="string">"Hello"</span>.concat(<span class="string">" "</span>,<span class="string">"World!"</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="trim-方法删除字符串两端的空白符"><a href="#trim-方法删除字符串两端的空白符" class="headerlink" title="trim()方法删除字符串两端的空白符"></a><code>trim()</code>方法删除字符串两端的空白符</h4><p>该方法最近常见的用法是在输入框，实现搜索匹配时，用于去除用户传值时产生的空格</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"       Hello World!        "</span>;</span><br><span class="line">alert(str.trim());</span><br></pre></td></tr></table></figure>
-
-<p><code>charAt()</code>返回指定位置的字符</p>
-<p><code>charCodeAt()</code>返回指定位置字符的Unicode 编码</p>
-<h2 id="fromCharCode-方法"><a href="#fromCharCode-方法" class="headerlink" title="fromCharCode()方法"></a><code>fromCharCode()</code>方法</h2><p>String构造函数本身还有一个静态方法，接收单一或多个字符编码，然后将他们转换成一个字符串。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">alert(<span class="built_in">String</span>.fromCharCode(<span class="number">104</span>,<span class="number">101</span>,<span class="number">108</span>,<span class="number">108</span>,<span class="number">111</span>));  <span class="comment">//"hello"</span></span><br><span class="line">这里传递的是字符串hello中每个字符的Unicode编码。</span><br></pre></td></tr></table></figure>
-
-<h3 id="padStart-amp-padEnd"><a href="#padStart-amp-padEnd" class="headerlink" title="padStart()&amp;padEnd()"></a><code>padStart()</code>&amp;<code>padEnd()</code></h3><p>这两个方法是在ES6中新增的语法，用于为字符串提供补全方法，</p>
-<p>例如：</p>
-<p>格式化时间后的字符串<code>3:18</code>3分18秒</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">formateTime(seconds) &#123;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> seconds.toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (seconds &lt; <span class="number">3600</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> h = <span class="built_in">String</span>(<span class="built_in">parseInt</span>(seconds / <span class="number">3600</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> m = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) / <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">const</span> s = <span class="built_in">String</span>(<span class="built_in">parseInt</span>((seconds % <span class="number">3600</span>) % <span class="number">60</span>)).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;h&#125;</span>:<span class="subst">$&#123;m&#125;</span>:<span class="subst">$&#123;s&#125;</span>`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>padStart()</code>和<code>padEnd()</code>一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>String</tag>
       </tags>
   </entry>
   <entry>
@@ -1777,6 +1777,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Ajax3-jquery</title>
+    <url>/2020/07/24/Ajax3-jquery/</url>
+    <content><![CDATA[<h1 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h1><h2 id="封装Ajax"><a href="#封装Ajax" class="headerlink" title="封装Ajax"></a>封装Ajax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAjax</span>(<span class="params">httpUrl,callbackFn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    <span class="comment">// 设置请求方法和路径</span></span><br><span class="line">    xhr.open(<span class="string">'GET'</span>,httpUrl);</span><br><span class="line">    <span class="comment">// 发送数据</span></span><br><span class="line">    xhr.send()</span><br><span class="line">    <span class="comment">// 监听后台是否返回数据</span></span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status==<span class="number">200</span>&amp;&amp;xhr.readyState ==<span class="number">4</span>)&#123;</span><br><span class="line">           callbackFn(xhr)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="调用Ajax"><a href="#调用Ajax" class="headerlink" title="调用Ajax"></a>调用Ajax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">getAjax(httpUrl,<span class="function"><span class="keyword">function</span> (<span class="params">xhr</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(xhr)</span><br><span class="line">        <span class="keyword">var</span> dataObj = <span class="built_in">JSON</span>.parse(xhr.response)</span><br><span class="line">        <span class="built_in">document</span>.querySelector(<span class="string">'body'</span>).append(<span class="string">`&lt;h1&gt;<span class="subst">$&#123;res.title&#125;</span>&lt;/h1&gt;`</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>加上url后，使用异步的回调函数将JSON数据进行解析</p>
+<h2 id="使用jQueryAjax"><a href="#使用jQueryAjax" class="headerlink" title="使用jQueryAjax"></a>使用jQueryAjax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="keyword">get</span>(httpUrl,function (res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">        $(<span class="string">'body'</span>).append(<span class="string">`&lt;h1&gt;<span class="subst">$&#123;res.title&#125;</span>&lt;/h1&gt;`</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>不需要再对JSON进行解析</p>
+<h2 id="其它写法"><a href="#其它写法" class="headerlink" title="其它写法"></a>其它写法</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 请求段子地址</span></span><br><span class="line">    <span class="keyword">var</span> httpUrl1 = <span class="string">"https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=video"</span></span><br><span class="line">    $.<span class="keyword">get</span>(httpUrl1).then(function (res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="comment">//使用.then()并且将参数作为对象传入</span></span><br><span class="line">    <span class="keyword">var</span> httpUrl2 = <span class="string">"https://api.apiopen.top/getJoke"</span></span><br><span class="line">    <span class="keyword">var</span> options = &#123;</span><br><span class="line">        page: <span class="number">1</span>,</span><br><span class="line">        count: <span class="number">10</span>,</span><br><span class="line">        type: <span class="string">"image"</span></span><br><span class="line">    &#125;</span><br><span class="line">    $.<span class="keyword">get</span>(httpUrl2, options).then(function (res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">        res.result.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, i</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">'body'</span>).append(<span class="string">`&lt;img src="<span class="subst">$&#123;item.images&#125;</span>"&gt;`</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="$.ajax"></a>$.ajax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">        url: httpUrl2,</span><br><span class="line">        data: <span class="string">"options"</span>,<span class="comment">//地址后面的参数</span></span><br><span class="line">        method: <span class="string">"GET"</span>,</span><br><span class="line">        <span class="comment">//成功执行的函数</span></span><br><span class="line">        <span class="comment">// success:function () &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">        <span class="comment">// // 失败执行的函数</span></span><br><span class="line">        <span class="comment">// fail:function () &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">        <span class="comment">//不管成功还是失败都会执行的函数</span></span><br><span class="line">        complete: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(res)</span><br><span class="line">            <span class="keyword">var</span> res = res.responseJSON;</span><br><span class="line">            res.result.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, i</span>) </span>&#123;</span><br><span class="line">                $(<span class="string">'body'</span>).append(<span class="string">`&lt;img src="<span class="subst">$&#123;item.images&#125;</span>"&gt;`</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>$.ajax()方法是jQuery最底层的Ajax实现</strong></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Ajax</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ajax2</title>
     <url>/2020/07/23/Ajax2/</url>
     <content><![CDATA[<h1 id="关于Ajax"><a href="#关于Ajax" class="headerlink" title="关于Ajax"></a>关于Ajax</h1><p>对于在学习Ajax过程中，再看了各种教程，或者视频讲解时，粗略了解到我们可以在不刷新页面的情况下，通过Ajax的方式区获取新的内容</p>
@@ -1830,38 +1858,12 @@
       </tags>
   </entry>
   <entry>
-    <title>Ajax3-jquery</title>
-    <url>/2020/07/24/Ajax3-jquery/</url>
-    <content><![CDATA[<h1 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h1><h2 id="封装Ajax"><a href="#封装Ajax" class="headerlink" title="封装Ajax"></a>封装Ajax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAjax</span>(<span class="params">httpUrl,callbackFn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    <span class="comment">// 设置请求方法和路径</span></span><br><span class="line">    xhr.open(<span class="string">'GET'</span>,httpUrl);</span><br><span class="line">    <span class="comment">// 发送数据</span></span><br><span class="line">    xhr.send()</span><br><span class="line">    <span class="comment">// 监听后台是否返回数据</span></span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status==<span class="number">200</span>&amp;&amp;xhr.readyState ==<span class="number">4</span>)&#123;</span><br><span class="line">           callbackFn(xhr)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h2 id="调用Ajax"><a href="#调用Ajax" class="headerlink" title="调用Ajax"></a>调用Ajax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">getAjax(httpUrl,<span class="function"><span class="keyword">function</span> (<span class="params">xhr</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(xhr)</span><br><span class="line">        <span class="keyword">var</span> dataObj = <span class="built_in">JSON</span>.parse(xhr.response)</span><br><span class="line">        <span class="built_in">document</span>.querySelector(<span class="string">'body'</span>).append(<span class="string">`&lt;h1&gt;<span class="subst">$&#123;res.title&#125;</span>&lt;/h1&gt;`</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>加上url后，使用异步的回调函数将JSON数据进行解析</p>
-<h2 id="使用jQueryAjax"><a href="#使用jQueryAjax" class="headerlink" title="使用jQueryAjax"></a>使用jQueryAjax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="keyword">get</span>(httpUrl,function (res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">        $(<span class="string">'body'</span>).append(<span class="string">`&lt;h1&gt;<span class="subst">$&#123;res.title&#125;</span>&lt;/h1&gt;`</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>不需要再对JSON进行解析</p>
-<h2 id="其它写法"><a href="#其它写法" class="headerlink" title="其它写法"></a>其它写法</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 请求段子地址</span></span><br><span class="line">    <span class="keyword">var</span> httpUrl1 = <span class="string">"https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=video"</span></span><br><span class="line">    $.<span class="keyword">get</span>(httpUrl1).then(function (res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="comment">//使用.then()并且将参数作为对象传入</span></span><br><span class="line">    <span class="keyword">var</span> httpUrl2 = <span class="string">"https://api.apiopen.top/getJoke"</span></span><br><span class="line">    <span class="keyword">var</span> options = &#123;</span><br><span class="line">        page: <span class="number">1</span>,</span><br><span class="line">        count: <span class="number">10</span>,</span><br><span class="line">        type: <span class="string">"image"</span></span><br><span class="line">    &#125;</span><br><span class="line">    $.<span class="keyword">get</span>(httpUrl2, options).then(function (res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">        res.result.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, i</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">'body'</span>).append(<span class="string">`&lt;img src="<span class="subst">$&#123;item.images&#125;</span>"&gt;`</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="ajax"><a href="#ajax" class="headerlink" title="$.ajax"></a>$.ajax</h2><figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">        url: httpUrl2,</span><br><span class="line">        data: <span class="string">"options"</span>,<span class="comment">//地址后面的参数</span></span><br><span class="line">        method: <span class="string">"GET"</span>,</span><br><span class="line">        <span class="comment">//成功执行的函数</span></span><br><span class="line">        <span class="comment">// success:function () &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">        <span class="comment">// // 失败执行的函数</span></span><br><span class="line">        <span class="comment">// fail:function () &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">        <span class="comment">//不管成功还是失败都会执行的函数</span></span><br><span class="line">        complete: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(res)</span><br><span class="line">            <span class="keyword">var</span> res = res.responseJSON;</span><br><span class="line">            res.result.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, i</span>) </span>&#123;</span><br><span class="line">                $(<span class="string">'body'</span>).append(<span class="string">`&lt;img src="<span class="subst">$&#123;item.images&#125;</span>"&gt;`</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<p><strong>$.ajax()方法是jQuery最底层的Ajax实现</strong></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Ajax</category>
-      </categories>
-      <tags>
-        <tag>jQuery</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6rest参数和拓展运算符</title>
     <url>/2020/08/19/ES6rest%E5%8F%82%E6%95%B0%E5%92%8C%E6%8B%93%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<h1 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h1><p>在ES5中传入参数</p>
 <figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ES5中通过arguments获取参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  consloe.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">data(<span class="string">'v'</span>,<span class="string">'a'</span>,<span class="string">'r'</span>)<span class="comment">//Arguments(3) ["v","a","r"]</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>有了 rest参数后获取参数</p>
 <figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">..args</span>) </span>&#123;</span><br><span class="line">  consloe.log(args) <span class="comment">//(3)["v","a","r"]</span></span><br><span class="line">&#125;</span><br><span class="line">data(<span class="string">'v'</span>, <span class="string">'a'</span>, <span class="string">'r'</span>)</span><br></pre></td></tr></table></figure>
@@ -1885,6 +1887,38 @@
       </categories>
       <tags>
         <tag>javascript ES6 拓展运算符</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue02-组件</title>
+    <url>/2020/05/14/Vue02/</url>
+    <content><![CDATA[<h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><p>从概念上说，组件可以拓展HTML元素，封装复用性高的代码。组件是我们自定义的元素，Vue为其添加 了特殊的功能。在特殊情况下，组件也可以是原生的元素。</p>
+<h3 id="为什么使用组件"><a href="#为什么使用组件" class="headerlink" title="为什么使用组件"></a>为什么使用组件</h3><p>input是一个简单常用的搜索框，很多项目会多次使用，通常情况下，复制粘贴会更加简单，这需要了粘一个那需要了，粘一个，但当需要为这些搜索框添加一个Enter事件或添加一个类时，工作量会非常大，若是使用组件，只需要修改一次。</p>
+<p>组件的目的就是<strong>让代码复用更强</strong>，通过多种组件的组合形式完整的功能，同时功能的存在不需要额外增加多余的代码。</p>
+<a id="more"></a>
+
+<h3 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h3><p>父组件向子组件传值</p>
+<figure class="hljs highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;son v-bind:parentsmsg=<span class="string">"msg"</span>&gt;&lt;<span class="regexp">/son&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data:&#123;</span><br><span class="line">    msg:<span class="string">"父亲的数据"</span></span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    son:&#123;</span><br><span class="line">        template:<span class="string">'&lt;h1&gt;子组件数据++&#123;&#123; parentsmsg&#125;&#125;&lt;/h1&gt;'</span>,</span><br><span class="line">        props:[<span class="string">'parentsmsg'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用props传来的值可以直接使用，props的数据传输是单向的，也就是说，父组件给子组件传值，子组件只能调用不能修改。</p>
+<p>如果必须要修改，可以使用以下两个方法。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.在组件内部定义数据</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">data()&#123;</span><br><span class="line"><span class="keyword">return</span>&#123;</span><br><span class="line">  local_title:<span class="keyword">this</span>.title</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.使用计算属性</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">computed:&#123;</span><br><span class="line">    local_title:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.title.trim(<span class="string">``</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="子组件向父组件传值使用自定义事件"><a href="#子组件向父组件传值使用自定义事件" class="headerlink" title="子组件向父组件传值使用自定义事件"></a>子组件向父组件传值使用自定义事件</h4><figure class="hljs highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;&#123; new data&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">son</span> @<span class="attr">event1</span>=<span class="string">"change($event)"</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">        //event为</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>js</p>
+<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> son = &#123;</span><br><span class="line">    template:<span class="string">"#temp1"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            data1:<span class="string">'子组件中的数据'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        toparents:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.$emit(<span class="string">'event1'</span>,<span class="keyword">this</span>.data1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//event1为要触发的事件，this.data1是传的值</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.newdata = data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;</span><br><span class="line">        son</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>首先在父组件调用子组件时将函数绑定，之后在子组件中使用$emit调用函数，并且可以传参，完成子组件向父组件的通信。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>框架</tag>
+        <tag>组件</tag>
       </tags>
   </entry>
   <entry>
@@ -2020,38 +2054,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue02-组件</title>
-    <url>/2020/05/14/Vue02/</url>
-    <content><![CDATA[<h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><p>从概念上说，组件可以拓展HTML元素，封装复用性高的代码。组件是我们自定义的元素，Vue为其添加 了特殊的功能。在特殊情况下，组件也可以是原生的元素。</p>
-<h3 id="为什么使用组件"><a href="#为什么使用组件" class="headerlink" title="为什么使用组件"></a>为什么使用组件</h3><p>input是一个简单常用的搜索框，很多项目会多次使用，通常情况下，复制粘贴会更加简单，这需要了粘一个那需要了，粘一个，但当需要为这些搜索框添加一个Enter事件或添加一个类时，工作量会非常大，若是使用组件，只需要修改一次。</p>
-<p>组件的目的就是<strong>让代码复用更强</strong>，通过多种组件的组合形式完整的功能，同时功能的存在不需要额外增加多余的代码。</p>
-<a id="more"></a>
-
-<h3 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h3><p>父组件向子组件传值</p>
-<figure class="hljs highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;son v-bind:parentsmsg=<span class="string">"msg"</span>&gt;&lt;<span class="regexp">/son&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data:&#123;</span><br><span class="line">    msg:<span class="string">"父亲的数据"</span></span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    son:&#123;</span><br><span class="line">        template:<span class="string">'&lt;h1&gt;子组件数据++&#123;&#123; parentsmsg&#125;&#125;&lt;/h1&gt;'</span>,</span><br><span class="line">        props:[<span class="string">'parentsmsg'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用props传来的值可以直接使用，props的数据传输是单向的，也就是说，父组件给子组件传值，子组件只能调用不能修改。</p>
-<p>如果必须要修改，可以使用以下两个方法。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.在组件内部定义数据</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">data()&#123;</span><br><span class="line"><span class="keyword">return</span>&#123;</span><br><span class="line">  local_title:<span class="keyword">this</span>.title</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.使用计算属性</span></span><br><span class="line">props:[<span class="string">'title'</span>],</span><br><span class="line">computed:&#123;</span><br><span class="line">    local_title:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.title.trim(<span class="string">``</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="子组件向父组件传值使用自定义事件"><a href="#子组件向父组件传值使用自定义事件" class="headerlink" title="子组件向父组件传值使用自定义事件"></a>子组件向父组件传值使用自定义事件</h4><figure class="hljs highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;&#123; new data&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">son</span> @<span class="attr">event1</span>=<span class="string">"change($event)"</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">        //event为</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>js</p>
-<figure class="hljs highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> son = &#123;</span><br><span class="line">    template:<span class="string">"#temp1"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            data1:<span class="string">'子组件中的数据'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        toparents:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.$emit(<span class="string">'event1'</span>,<span class="keyword">this</span>.data1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//event1为要触发的事件，this.data1是传的值</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.newdata = data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;</span><br><span class="line">        son</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>首先在父组件调用子组件时将函数绑定，之后在子组件中使用$emit调用函数，并且可以传参，完成子组件向父组件的通信。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>框架</tag>
-        <tag>组件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VueRouter1</title>
     <url>/2020/07/21/VueRouter/</url>
     <content><![CDATA[<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><h2 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h2><p><code>vue-router</code>默认是hash模式，使用这种模式后端不需要额外的处理，前端路由主要通过URL中的hash(#号)来实现不同页面之间的切换，并不会向后端发送请求，并且HTTP请求中不会包含hash相关的内容，</p>
@@ -2105,6 +2107,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Cookie与session</title>
+    <url>/2020/07/13/cookie%E4%B8%8Esession/</url>
+    <content><![CDATA[<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于<a href="https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的HTTP协议记录稳定的状态信息成为了可能。</p>
+<a id="more"></a>
+
+<p>客户端浏览器会将Cookie存储起来，当再次请求该网站时，浏览器将请求地址和Cookie一同交给服务器，服务器检查Cookie来辨认用户的状态。</p>
+<p>如果没有Cookie，那么在我们购物时会出现这样的场景。</p>
+<p>输入用户名和密码，跳转到主页<br>C：点击添加购物车<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：于是很憋屈地再次输入用户名和密码，打算再点击添加购物车的按钮<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：…….</p>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session是另一种记录服务器和客户端会话状态的机制。</p>
+<p>当第一次请求时服务器会创建Session返回SessionID给浏览器，当第二次请求时，浏览器会将SessionID传递给服务器进行验证。</p>
+<p><strong>Cookie是客户端保存的用户信息的一种机制，用来记录 用户信息，可以说它是实现Session的一种方式。</strong></p>
+<h2 id="session的实现方式"><a href="#session的实现方式" class="headerlink" title="session的实现方式"></a>session的实现方式</h2><p>1、借助Cookie的sessionId发送的方式</p>
+<p>2、通过LocalStorage的方式</p>
+<p>3、URL回写的方式，这是客户端禁止接收Cookie之后的方法。</p>
+<p>4、隐藏表单字段（hidden）</p>
+<h2 id="Cookie与session的区别"><a href="#Cookie与session的区别" class="headerlink" title="Cookie与session的区别"></a>Cookie与session的区别</h2><ul>
+<li><strong>安全性：</strong> Session 比 Cookie 安全，Session 是存储在服务器端的，Cookie 是存储在客户端的。</li>
+<li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li>
+<li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li>
+<li><strong>存储大小不同：</strong> 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>Cookie</tag>
+        <tag>session</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>apply与call、bind的区别</title>
     <url>/2019/07/04/apply%E4%B8%8Ecall%E3%80%81bind%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<h1 id="apply和call"><a href="#apply和call" class="headerlink" title="apply和call()"></a>apply和call()</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
@@ -2142,37 +2175,6 @@
       </categories>
       <tags>
         <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Cookie与session</title>
-    <url>/2020/07/13/cookie%E4%B8%8Esession/</url>
-    <content><![CDATA[<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于<a href="https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的HTTP协议记录稳定的状态信息成为了可能。</p>
-<a id="more"></a>
-
-<p>客户端浏览器会将Cookie存储起来，当再次请求该网站时，浏览器将请求地址和Cookie一同交给服务器，服务器检查Cookie来辨认用户的状态。</p>
-<p>如果没有Cookie，那么在我们购物时会出现这样的场景。</p>
-<p>输入用户名和密码，跳转到主页<br>C：点击添加购物车<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：于是很憋屈地再次输入用户名和密码，打算再点击添加购物车的按钮<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：…….</p>
-<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session是另一种记录服务器和客户端会话状态的机制。</p>
-<p>当第一次请求时服务器会创建Session返回SessionID给浏览器，当第二次请求时，浏览器会将SessionID传递给服务器进行验证。</p>
-<p><strong>Cookie是客户端保存的用户信息的一种机制，用来记录 用户信息，可以说它是实现Session的一种方式。</strong></p>
-<h2 id="session的实现方式"><a href="#session的实现方式" class="headerlink" title="session的实现方式"></a>session的实现方式</h2><p>1、借助Cookie的sessionId发送的方式</p>
-<p>2、通过LocalStorage的方式</p>
-<p>3、URL回写的方式，这是客户端禁止接收Cookie之后的方法。</p>
-<p>4、隐藏表单字段（hidden）</p>
-<h2 id="Cookie与session的区别"><a href="#Cookie与session的区别" class="headerlink" title="Cookie与session的区别"></a>Cookie与session的区别</h2><ul>
-<li><strong>安全性：</strong> Session 比 Cookie 安全，Session 是存储在服务器端的，Cookie 是存储在客户端的。</li>
-<li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li>
-<li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li>
-<li><strong>存储大小不同：</strong> 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>网络</category>
-      </categories>
-      <tags>
-        <tag>Cookie</tag>
-        <tag>session</tag>
       </tags>
   </entry>
   <entry>
@@ -2305,6 +2307,37 @@
       </tags>
   </entry>
   <entry>
+    <title>js创建对象的几种方式</title>
+    <url>/2019/03/13/js%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.name=&quot;小黑&quot;;</span><br><span class="line"></span><br><span class="line">obj.age=10;</span><br><span class="line"></span><br><span class="line">//优化：</span><br><span class="line"></span><br><span class="line">var obj2=&#123;</span><br><span class="line"></span><br><span class="line">    name:&quot;小小&quot;,</span><br><span class="line"></span><br><span class="line">    age:10,</span><br><span class="line"></span><br><span class="line">    sayHi:function()&#123;</span><br><span class="line"></span><br><span class="line">        console.log(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">//缺陷：一次性对象，更改属性需要修改源代码</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="构造函数方式创建"><a href="#构造函数方式创建" class="headerlink" title="构造函数方式创建"></a>构造函数方式创建</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var smallDog = new Object();</span><br><span class="line"></span><br><span class="line">            smallDog.eat = &quot;吃骨头&quot;;</span><br><span class="line"></span><br><span class="line">            smallDog.walk = function () &#123;</span><br><span class="line"></span><br><span class="line">                console.log(this.name+&quot;不想走路&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">function createObject(name,age) &#123;</span><br><span class="line"></span><br><span class="line">            var o = new Object();</span><br><span class="line"></span><br><span class="line">            o.name = name;</span><br><span class="line"></span><br><span class="line">            o.age = age;</span><br><span class="line"></span><br><span class="line">            o.sayName = function () &#123;</span><br><span class="line"></span><br><span class="line">                alert(&quot;this.name&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            return o;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">            var person1 = createObject(&quot;小刘&quot;,12);</span><br></pre></td></tr></table></figure>
+
+<p>函数createPerson()能够根据接受的参数来构建一个包含所有必要信息的Person对象，可以无数次的调用这个函数，而它每次都会返回一个包含两个属性一个方法的对象，虽然解决了创建多个相似对象的问题，但仍没有解决对象的识别问题。</p>
+<h2 id="自定义构造函数模式"><a href="#自定义构造函数模式" class="headerlink" title="自定义构造函数模式"></a>自定义构造函数模式</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">function Person(name,age) &#123;</span><br><span class="line"></span><br><span class="line">            this.name = name;</span><br><span class="line"></span><br><span class="line">            this.age = age;</span><br><span class="line">            this.sayName = sayName;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">function sayName()&#123;</span><br><span class="line">            alert(this.name);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var obj=new Person(&quot;小刘&quot;,20);</span><br></pre></td></tr></table></figure>
+
+<p>构造函数首字母要大写，这样其他程序员一看就会明白这是构造函数是创建对象的。</p>
+<p><strong>同时我将sayName函数放到了构造函数外部,而在内部将属性设置成等于全局变量的sayName函数，这样解决了两个函数做同一件事的问题，但新的问题是如果对象需要定义很多方法，那么就要定义很多个全局函数，这样这个自定义函数的引用类型就丝毫没有封装性可言。这些问题可以通过原型模式来解决。</strong></p>
+<p>只要创建了一个新函数，就会为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性是一个指向prototype属性所在函数的指针。就拿前面的例子来说，Person.prototype.constructor指向Person。而通过这个构造函数，我们还可继续为原型对象添加其他属性和方法</p>
+<img src="/2019/03/13/js创建对象的几种方式/12.png">
+
+<p>构造函数的prototype属性指向原型对象</p>
+<p>原型对象的constructor属性又指回构造函数</p>
+<p>通过构造函数创建的实例指向原型对象，可以当没有指定相关方法时会调用原型对象中的方法。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>jquery04操作DOM</title>
     <url>/2020/07/18/jquery04%E6%93%8D%E4%BD%9CDOM/</url>
     <content><![CDATA[<h1 id="DOM操作的分三个方面"><a href="#DOM操作的分三个方面" class="headerlink" title="DOM操作的分三个方面"></a>DOM操作的分三个方面</h1><p>DOM Core（核心）、HTML-DOM和CSS-DOM</p>
@@ -2354,37 +2387,6 @@
         <tag>javaScript</tag>
         <tag>jQuery</tag>
         <tag>DOM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js创建对象的几种方式</title>
-    <url>/2019/03/13/js%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.name=&quot;小黑&quot;;</span><br><span class="line"></span><br><span class="line">obj.age=10;</span><br><span class="line"></span><br><span class="line">//优化：</span><br><span class="line"></span><br><span class="line">var obj2=&#123;</span><br><span class="line"></span><br><span class="line">    name:&quot;小小&quot;,</span><br><span class="line"></span><br><span class="line">    age:10,</span><br><span class="line"></span><br><span class="line">    sayHi:function()&#123;</span><br><span class="line"></span><br><span class="line">        console.log(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">//缺陷：一次性对象，更改属性需要修改源代码</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h2 id="构造函数方式创建"><a href="#构造函数方式创建" class="headerlink" title="构造函数方式创建"></a>构造函数方式创建</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">var smallDog = new Object();</span><br><span class="line"></span><br><span class="line">            smallDog.eat = &quot;吃骨头&quot;;</span><br><span class="line"></span><br><span class="line">            smallDog.walk = function () &#123;</span><br><span class="line"></span><br><span class="line">                console.log(this.name+&quot;不想走路&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">function createObject(name,age) &#123;</span><br><span class="line"></span><br><span class="line">            var o = new Object();</span><br><span class="line"></span><br><span class="line">            o.name = name;</span><br><span class="line"></span><br><span class="line">            o.age = age;</span><br><span class="line"></span><br><span class="line">            o.sayName = function () &#123;</span><br><span class="line"></span><br><span class="line">                alert(&quot;this.name&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            return o;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">            var person1 = createObject(&quot;小刘&quot;,12);</span><br></pre></td></tr></table></figure>
-
-<p>函数createPerson()能够根据接受的参数来构建一个包含所有必要信息的Person对象，可以无数次的调用这个函数，而它每次都会返回一个包含两个属性一个方法的对象，虽然解决了创建多个相似对象的问题，但仍没有解决对象的识别问题。</p>
-<h2 id="自定义构造函数模式"><a href="#自定义构造函数模式" class="headerlink" title="自定义构造函数模式"></a>自定义构造函数模式</h2><figure class="hljs highlight plain"><table><tr><td class="code"><pre><span class="line">function Person(name,age) &#123;</span><br><span class="line"></span><br><span class="line">            this.name = name;</span><br><span class="line"></span><br><span class="line">            this.age = age;</span><br><span class="line">            this.sayName = sayName;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">function sayName()&#123;</span><br><span class="line">            alert(this.name);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var obj=new Person(&quot;小刘&quot;,20);</span><br></pre></td></tr></table></figure>
-
-<p>构造函数首字母要大写，这样其他程序员一看就会明白这是构造函数是创建对象的。</p>
-<p><strong>同时我将sayName函数放到了构造函数外部,而在内部将属性设置成等于全局变量的sayName函数，这样解决了两个函数做同一件事的问题，但新的问题是如果对象需要定义很多方法，那么就要定义很多个全局函数，这样这个自定义函数的引用类型就丝毫没有封装性可言。这些问题可以通过原型模式来解决。</strong></p>
-<p>只要创建了一个新函数，就会为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性是一个指向prototype属性所在函数的指针。就拿前面的例子来说，Person.prototype.constructor指向Person。而通过这个构造函数，我们还可继续为原型对象添加其他属性和方法</p>
-<img src="/2019/03/13/js创建对象的几种方式/12.png">
-
-<p>构造函数的prototype属性指向原型对象</p>
-<p>原型对象的constructor属性又指回构造函数</p>
-<p>通过构造函数创建的实例指向原型对象，可以当没有指定相关方法时会调用原型对象中的方法。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
