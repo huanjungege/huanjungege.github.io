@@ -91,7 +91,7 @@
       if (els.length) {
         // Enabled Hexo highlight line number.
         $(els).each(function (i, e) {
-          $(e).before("<button class=\"copy button\">Copy</button>");
+          $(e).before("<button class=\"copy button\">複製</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -107,7 +107,7 @@
         els = $(".post pre code");
         $(els).each(function (i, e) {
           // Add button before pre, not code.
-          $(e).parent().before("<button class=\"copy button\">Copy</button>");
+          $(e).parent().before("<button class=\"copy button\">複製</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -123,11 +123,11 @@
         e.clearSelection();
         var trigger = e.trigger;
         // Change button text as a user tip.
-        trigger.innerHTML = "Copied";
+        trigger.innerHTML = "已複製";
         $(trigger).addClass("copied");
         // Change button text back;
         setTimeout(function () {
-          trigger.innerHTML = "Copy";
+          trigger.innerHTML = "複製";
           $(trigger).removeClass("copied");
         }, 1500);
       });
@@ -153,16 +153,16 @@
       
     </div>
     <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切換導航欄"></i></a>
       <ul id="menu" role="menubar" aria-hidden="false">
         
-        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">Home</span></a></li>
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首頁</span></a></li>
         
-        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">Archives</span></a></li>
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">歸檔</span></a></li>
         
-        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">Categories</span></a></li>
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分類</span></a></li>
         
-        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">Tags</span></a></li>
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">標籤</span></a></li>
         
         <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">_Undefined Script Works!</span></a></li>
         
@@ -179,6 +179,70 @@
             
 
 <div id="index" class="index page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/10/28/2019-10-28-Array/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/12.jpeg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2019/10/28/2019-10-28-Array/" itemprop="url">Js中的Array类型总结</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-28T07:17:27+08:00">2019-10-28 07:17:27</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h1 id="Js中的Array类型"><a href="#Js中的Array类型" class="headerlink" title="Js中的Array类型"></a>Js中的Array类型</h1><p>序：除了Object类型之外，Array类型恐怕是ECAMAScript中最常用的类型了，特点：有序列表，并且数组的每一项都可以保存任意数据类型的数据，数组的大小可以动态的调整。</p>
+<h2 id="创建数组的方式"><a href="#创建数组的方式" class="headerlink" title="创建数组的方式"></a>创建数组的方式</h2><h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>使用Array构造函数:</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>如果预先知道数组保存项的数量，可以给数组传递数量</li>
+</ol>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">20</span>);  <span class="hljs-comment">//创建数组项数为20的数组</span><br></code></pre></td></tr></table></figure>
+
+<p>2.直接 向数组传递要传入的值</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-string">"1"</span>,<span class="hljs-string">"2"</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/Array/" rel="tag"><i class="fas fa-tags"></i>Array</a>
+        
+      </div>
+      
+    </footer>
+  </article>
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
@@ -688,64 +752,9 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/06/04/6-4git/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/12.jpeg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/06/04/6-4git/" itemprop="url">廖雪峰官方网站Git粗略总结</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-06-04T09:22:04+08:00">2019-06-04 09:22:04</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="git学习总结"><a href="#git学习总结" class="headerlink" title="git学习总结"></a>git学习总结</h1><ol>
-<li><p>初始化一个Git仓库，使用<code>git init</code>命令</p>
-</li>
-<li><p>添加文件到Git仓库，分两步：</p>
-<p>使用命令<code>git add&lt;file&gt;</code>，可反复多次使用，添加多个文件；</p>
-<p>使用命令<code>git commit -m &lt;message&gt;</code>，完成。</p></li></ol>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/Git/" rel="tag"><i class="fas fa-tags"></i>Git</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-left" aria-label="Previous Page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-right" aria-label="Next Page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
   
   
@@ -759,7 +768,7 @@
   
   <div class="search">
     <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
     </div>
   </div>
   <div class="search-result-box" id="search-result"></div>
@@ -777,22 +786,22 @@
     
     
     <div class="archives-count count-block">
-      <div class="site-count-title">Archives</div>
-      <div><a href="/archives/">47</a></div>
+      <div class="site-count-title">歸檔</div>
+      <div><a href="/archives/">48</a></div>
     </div>
     
     
     
     <div class="categories-count count-block">
-      <div class="site-count-title">Categories</div>
+      <div class="site-count-title">分類</div>
       <div><a href="/categories/">18</a></div>
     </div>
     
     
     
     <div class="tags-count count-block">
-      <div class="site-count-title">Tags</div>
-      <div><a href="/tags/">41</a></div>
+      <div class="site-count-title">標籤</div>
+      <div><a href="/tags/">42</a></div>
     </div>
     
     
@@ -812,7 +821,7 @@
     
     <hr>
     <div class="social-link sidebar-item">
-      <div><i class="far fa-address-card"></i>Social Links<p></p></div>
+      <div><i class="far fa-address-card"></i>社交鏈接<p></p></div>
       <ul>
         
         <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
@@ -827,7 +836,7 @@
     
     <hr>
     <div class="blogroll sidebar-item">
-      <div><i class="fas fa-link"></i>Blogroll</div>
+      <div><i class="fas fa-link"></i>友情鏈接</div>
       <ul>
         
         <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
@@ -851,7 +860,7 @@
 <footer id="footer" class="footer" style="background: #33363b;">
   <div class="container">
     <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到頂部"></i></button>
     </div>
     <div class="footer-container">
       <div class="footer-left">
@@ -860,7 +869,7 @@
         </div>
         
         <div class="busuanzi">
-          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="Site Visit Count" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="Site User Count" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="Page Click Count" aria-hidden="false"></span></span>
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站點訪問量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站點用戶數" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="頁面訪問量" aria-hidden="false"></span></span>
         </div>
         
       </div>
@@ -871,7 +880,7 @@
           
         </div>
         <div class="powered-by">
-          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 強力驅動 | 主題 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
         </div>
       </div>
     </div>
