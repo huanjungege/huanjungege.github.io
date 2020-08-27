@@ -91,7 +91,7 @@
       if (els.length) {
         // Enabled Hexo highlight line number.
         $(els).each(function (i, e) {
-          $(e).before("<button class=\"copy button\">複製</button>");
+          $(e).before("<button class=\"copy button\">Copy</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -107,7 +107,7 @@
         els = $(".post pre code");
         $(els).each(function (i, e) {
           // Add button before pre, not code.
-          $(e).parent().before("<button class=\"copy button\">複製</button>");
+          $(e).parent().before("<button class=\"copy button\">Copy</button>");
         });
         cb = new ClipboardJS("button.copy", {
           "target": function (trigger) {
@@ -123,11 +123,11 @@
         e.clearSelection();
         var trigger = e.trigger;
         // Change button text as a user tip.
-        trigger.innerHTML = "已複製";
+        trigger.innerHTML = "Copied";
         $(trigger).addClass("copied");
         // Change button text back;
         setTimeout(function () {
-          trigger.innerHTML = "複製";
+          trigger.innerHTML = "Copy";
           $(trigger).removeClass("copied");
         }, 1500);
       });
@@ -153,16 +153,16 @@
       
     </div>
     <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切換導航欄"></i></a>
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
       <ul id="menu" role="menubar" aria-hidden="false">
         
-        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首頁</span></a></li>
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">Home</span></a></li>
         
-        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">歸檔</span></a></li>
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">Archives</span></a></li>
         
-        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分類</span></a></li>
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">Categories</span></a></li>
         
-        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">標籤</span></a></li>
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">Tags</span></a></li>
         
         <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">_Undefined Script Works!</span></a></li>
         
@@ -179,6 +179,80 @@
             
 
 <div id="index" class="index page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/06/05/6-5-linux-01/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/12.jpeg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2019/06/05/6-5-linux-01/" itemprop="url">linux</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-06-05T09:21:04+08:00">2019-06-05 09:21:04</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h1 id="linux学习"><a href="#linux学习" class="headerlink" title="linux学习"></a>linux学习</h1><h2 id="学习linux的流程为："><a href="#学习linux的流程为：" class="headerlink" title="学习linux的流程为："></a>学习linux的流程为：</h2><ul>
+<li>第一阶段：linux环境下的 基本操作命令，包括 文件操作命令(rm mkdir chmod chown) 编辑工具使用(vi vim) linux用户管理（useradd userdel）等</li>
+<li>第二阶段：linux的各种配置（环境变量配置，网络配置，服务配置）</li>
+<li>第三阶段：linux下如何搭建对应的语言开发环境(大数据，JavaEE,Python等)</li>
+<li>第四阶段：能编写shell脚本，对linux服务器进行维护</li>
+<li>第五阶段：能进行安全设置，防止攻击，保障服务器正常运行，能对系统调优</li>
+<li>第六阶段：深入理解linux（对内核有研究），熟练掌握大型网站应用架构组成。并熟悉各个环节的部署和维护方法</li>
+</ul>
+<p><code>xrandr --size &lt;width&gt;x&lt;height&gt;</code>修改显示分辨率</p>
+<h2 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h2><p><em>linux中一切皆文件</em>linux文件系统采用级层式的树状目录结构，在此结构中的最上层是根目录“/”。</p>
+<ul>
+<li>/bin    binary的缩写，存放的是最经常使用的命令</li>
+<li>/sbin   存放系统管理员使用的系统管理程序</li>
+<li>/home  存放普通用户的主目录</li>
+<li>/root   系统管理员</li>
+<li>/lib    系统开机所需要的最基本的动态链接共享库，其作用类似于windows例的dll文件</li>
+<li><strong>/etc</strong>  所有的系统管理所需要的配置文件和子目录</li>
+<li>*<em>/usr *</em>  非常重要的目录，用户的很多应用程序和文件都放在这个目录下</li>
+<li>/boot  存放的是启动linux时使用的核心文件</li>
+<li>/media  系统自动识别一些设备，例如光盘和U盘</li>
+<li>/opt   给主机额外安装软件所摆放的目录</li>
+</ul>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Linux/" rel="tag"><i class="fas fa-tags"></i>Linux</a>
+        
+        <a class="post-tag button" href="/tags/CentOs/" rel="tag"><i class="fas fa-tags"></i>CentOs</a>
+        
+      </div>
+      
+    </footer>
+  </article>
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
@@ -604,7 +678,7 @@
   
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-left" aria-label="Previous Page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
   </nav>
   
   
@@ -618,7 +692,7 @@
   
   <div class="search">
     <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
     </div>
   </div>
   <div class="search-result-box" id="search-result"></div>
@@ -636,22 +710,22 @@
     
     
     <div class="archives-count count-block">
-      <div class="site-count-title">歸檔</div>
-      <div><a href="/archives/">48</a></div>
+      <div class="site-count-title">Archives</div>
+      <div><a href="/archives/">49</a></div>
     </div>
     
     
     
     <div class="categories-count count-block">
-      <div class="site-count-title">分類</div>
+      <div class="site-count-title">Categories</div>
       <div><a href="/categories/">18</a></div>
     </div>
     
     
     
     <div class="tags-count count-block">
-      <div class="site-count-title">標籤</div>
-      <div><a href="/tags/">42</a></div>
+      <div class="site-count-title">Tags</div>
+      <div><a href="/tags/">45</a></div>
     </div>
     
     
@@ -671,7 +745,7 @@
     
     <hr>
     <div class="social-link sidebar-item">
-      <div><i class="far fa-address-card"></i>社交鏈接<p></p></div>
+      <div><i class="far fa-address-card"></i>Social Links<p></p></div>
       <ul>
         
         <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
@@ -686,7 +760,7 @@
     
     <hr>
     <div class="blogroll sidebar-item">
-      <div><i class="fas fa-link"></i>友情鏈接</div>
+      <div><i class="fas fa-link"></i>Blogroll</div>
       <ul>
         
         <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
@@ -710,7 +784,7 @@
 <footer id="footer" class="footer" style="background: #33363b;">
   <div class="container">
     <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到頂部"></i></button>
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
     </div>
     <div class="footer-container">
       <div class="footer-left">
@@ -719,7 +793,7 @@
         </div>
         
         <div class="busuanzi">
-          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站點訪問量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站點用戶數" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="頁面訪問量" aria-hidden="false"></span></span>
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="Site Visit Count" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="Site User Count" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="Page Click Count" aria-hidden="false"></span></span>
         </div>
         
       </div>
@@ -730,7 +804,7 @@
           
         </div>
         <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 強力驅動 | 主題 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
         </div>
       </div>
     </div>
