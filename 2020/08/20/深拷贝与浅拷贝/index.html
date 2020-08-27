@@ -215,6 +215,8 @@
       <h1 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h1><h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>提到深拷贝与浅拷贝就要探讨js中的数据类型，基本类型例如，<code>Number</code>,<code>String</code>等，他们的值是不可变的，动态的修改了基本数据类型的值它的原始值也是不会改变的</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> s = <span class="hljs-string">"abc"</span><br><span class="hljs-built_in">console</span>.log(st[<span class="hljs-number">1</span>]=<span class="hljs-string">"d"</span>)<br><span class="hljs-built_in">console</span>.log(s)<span class="hljs-comment">//abc</span><br></code></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>引用类型是存放在堆内存中的，变量实际上存放着一个放在栈内存的指针，引用类型可以直接改变它的值</p>
 <h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>浅拷贝是将原对象或数组的引用直接赋给新对象，新数组它们只是原对象的一个引用</p>
 <p>首先我们通过赋值复制一个数组</p>
