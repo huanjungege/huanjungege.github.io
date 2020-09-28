@@ -635,6 +635,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Github与码云同时上传</title>
+    <url>/2020/03/03/2020-03-03/</url>
+    <content><![CDATA[<p>今天学校通知将毕业设计的项目每天进程上传到码云，那么一直使用GitHub的我该怎么同时维护，上网找到的办法是这样的（不一定是最简单的方法）</p>
+<a id="more"></a>
+
+<p>首先我在将本地的仓库上传到码云，打开本地.git文件夹中的cofig</p>
+<img src="/2020/03/03/2020-03-03/6.jpg">
+
+<p>然后github中创建同样的仓库，在cofig中添加如下代码</p>
+<img src="/2020/03/03/2020-03-03/2.jpg">
+
+<p>之后push会将代码同时推送到GitHub与码云</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>passport验证token</title>
     <url>/2020/03/06/2020-03-06-passport/</url>
     <content><![CDATA[<p>1关于token：</p>
@@ -663,28 +685,6 @@
       </categories>
       <tags>
         <tag>token</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github与码云同时上传</title>
-    <url>/2020/03/03/2020-03-03/</url>
-    <content><![CDATA[<p>今天学校通知将毕业设计的项目每天进程上传到码云，那么一直使用GitHub的我该怎么同时维护，上网找到的办法是这样的（不一定是最简单的方法）</p>
-<a id="more"></a>
-
-<p>首先我在将本地的仓库上传到码云，打开本地.git文件夹中的cofig</p>
-<img src="/2020/03/03/2020-03-03/6.jpg">
-
-<p>然后github中创建同样的仓库，在cofig中添加如下代码</p>
-<img src="/2020/03/03/2020-03-03/2.jpg">
-
-<p>之后push会将代码同时推送到GitHub与码云</p>
-]]></content>
-      <categories>
-        <category>计算机</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -817,6 +817,53 @@
       </tags>
   </entry>
   <entry>
+    <title>6-19CSS相关问题</title>
+    <url>/2020/06/19/6-19/</url>
+    <content><![CDATA[<ul>
+<li><p>text-indent:-999px;当做一个a链接的图片按钮时，可以用于在添加完图片时将原本的字隐藏，只显示图片作为链接按钮</p>
+<img src="/2020/06/19/6-19/1.png">
+
+<a id="more"></a>
+</li>
+<li><p>content用于在元素的::before和::after伪元素中插入内容。例如在自定义复选框样式时，</p>
+<img src="/2020/06/19/6-19/2.png">
+
+<p>使用label覆盖input，设置label的样式通过content设置在点击状态时显示背景图片</p>
+</li>
+<li><p>label标签表示用户界面中某个元素的说明。将一个 <code>&lt;label&gt;</code> 和一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">``</a> 元素相关联主要有这些优点：</p>
+<ul>
+<li>标签文本不仅与其相应的文本输入元素在视觉上相关联，程序中也是如此。 这意味着，当用户聚焦到这个表单输入元素时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。</li>
+<li>你可以点击关联的标签来聚焦或者激活这个输入元素，就像直接点击输入元素一样。这扩大了元素的可点击区域，让包括使用触屏设备在内的用户更容易激活这个元素。</li>
+</ul>
+<p>将一个 <code>&lt;label&gt;</code> 和一个 <code>&lt;input&gt;</code> 元素匹配在一起，你需要给 <code>&lt;input&gt;</code> 一个 <code>id</code> 属性。而 <code>&lt;label&gt;</code> 需要一个 <code>for</code> 属性，其值和  <code>&lt;input&gt;</code> 的 <code>id</code> 一样。</p>
+<p>另外，你也可以将 <code>&lt;input&gt;</code> 直接放在 <code>&lt;label&gt;</code> 里，此时则不需要 <code>for</code> 和 <code>id</code> 属性，因为关联已隐含存在</p>
+</li>
+<li><p>给父元素overflow：hidden；zoom：1；清除浮动。</p>
+</li>
+<li><p>移动端布局</p>
+<ol>
+<li>做移动端的两种方式，一个项目分为PC端适配和移动端布局，判断设备进行切换</li>
+<li>一种PC移动端同时适配的响应式页面，适应pc页面和移动端页面，@media</li>
+<li>@media screen and(max-width:300px)当页面宽度小于300像素时，使用此内容中的样式</li>
+<li>宽度设为100%，盒子自动继承父盒子宽度</li>
+</ol>
+<p>轮播图</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs css">&lt;div class="btnList"&gt;<br>            &lt;div class="btn pre"&gt;&lt;&lt;/div&gt;<br>            &lt;div class="btn next"&gt;&gt;&lt;/div&gt;<br>        &lt;/div&gt;<br>.swiper .btn.pre&#123;width: 100px;height: 60px;line-height: 60px;text-align: center;background-color: rgba(0,0, 0, 0.6);color: #ffffff;position: absolute;top: calc(50% - 30px);font-size: 35px;&#125;<br><br>.swiper .btn.next&#123;width: 100px;height: 60px;line-height: 60px;text-align: center;background-color: rgba(0,0, 0, 0.6);color: #ffffff;position: absolute;right: 0;;top: calc(50% - 30px);font-size: 35px;&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> preBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".swiper .pre"</span>);<br>        <span class="hljs-keyword">var</span> nextBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".swiper .next"</span>);<br>        <span class="hljs-keyword">var</span> imgListDivs = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">".swiper .imgItems"</span>);<br>        <span class="hljs-comment">// 图片数组的索引</span><br>        <span class="hljs-keyword">var</span> currentImg = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 点击事件</span><br>        nextBtn.onclick=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            currentImg = currentImg + <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">// 点击到最后一张图片，回到起点</span><br>            <span class="hljs-keyword">if</span>(currentImg&gt;=imgListDivs.length)&#123;<br>                currentImg= <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-comment">// 初始化，将所有的img列表的active去掉</span><br>            imgListDivs.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item,i</span>)</span>&#123;<br>                item.classList.remove(<span class="hljs-string">"active"</span>)<br>            &#125;)<br>            <span class="hljs-comment">// 点击后索引加1，active移动到下一个元素显示下一张图片</span><br>            imgListDivs[currentImg].classList.add(<span class="hljs-string">"active"</span>)<br>            <br>        &#125;<br>        preBtn.onclick=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            currentImg = currentImg - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span>(currentImg&lt;<span class="hljs-number">0</span>)&#123;<br>                currentImg= imgListDivs.length<span class="hljs-number">-1</span>;<br>            &#125;<br>            <span class="hljs-comment">// 初始化，将所有的img列表的active去掉</span><br>            imgListDivs.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item,i</span>)</span>&#123;<br>                item.classList.remove(<span class="hljs-string">"active"</span>)<br>            &#125;)<br>            imgListDivs[currentImg].classList.add(<span class="hljs-string">"active"</span>)<br>            <br>        &#125;<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>廖雪峰官方网站Git粗略总结</title>
     <url>/2019/06/04/6-4git/</url>
     <content><![CDATA[<h1 id="git学习总结"><a href="#git学习总结" class="headerlink" title="git学习总结"></a>git学习总结</h1><ol>
@@ -887,53 +934,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>6-19CSS相关问题</title>
-    <url>/2020/06/19/6-19/</url>
-    <content><![CDATA[<ul>
-<li><p>text-indent:-999px;当做一个a链接的图片按钮时，可以用于在添加完图片时将原本的字隐藏，只显示图片作为链接按钮</p>
-<img src="/2020/06/19/6-19/1.png">
-
-<a id="more"></a>
-</li>
-<li><p>content用于在元素的::before和::after伪元素中插入内容。例如在自定义复选框样式时，</p>
-<img src="/2020/06/19/6-19/2.png">
-
-<p>使用label覆盖input，设置label的样式通过content设置在点击状态时显示背景图片</p>
-</li>
-<li><p>label标签表示用户界面中某个元素的说明。将一个 <code>&lt;label&gt;</code> 和一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">``</a> 元素相关联主要有这些优点：</p>
-<ul>
-<li>标签文本不仅与其相应的文本输入元素在视觉上相关联，程序中也是如此。 这意味着，当用户聚焦到这个表单输入元素时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。</li>
-<li>你可以点击关联的标签来聚焦或者激活这个输入元素，就像直接点击输入元素一样。这扩大了元素的可点击区域，让包括使用触屏设备在内的用户更容易激活这个元素。</li>
-</ul>
-<p>将一个 <code>&lt;label&gt;</code> 和一个 <code>&lt;input&gt;</code> 元素匹配在一起，你需要给 <code>&lt;input&gt;</code> 一个 <code>id</code> 属性。而 <code>&lt;label&gt;</code> 需要一个 <code>for</code> 属性，其值和  <code>&lt;input&gt;</code> 的 <code>id</code> 一样。</p>
-<p>另外，你也可以将 <code>&lt;input&gt;</code> 直接放在 <code>&lt;label&gt;</code> 里，此时则不需要 <code>for</code> 和 <code>id</code> 属性，因为关联已隐含存在</p>
-</li>
-<li><p>给父元素overflow：hidden；zoom：1；清除浮动。</p>
-</li>
-<li><p>移动端布局</p>
-<ol>
-<li>做移动端的两种方式，一个项目分为PC端适配和移动端布局，判断设备进行切换</li>
-<li>一种PC移动端同时适配的响应式页面，适应pc页面和移动端页面，@media</li>
-<li>@media screen and(max-width:300px)当页面宽度小于300像素时，使用此内容中的样式</li>
-<li>宽度设为100%，盒子自动继承父盒子宽度</li>
-</ol>
-<p>轮播图</p>
-<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs css">&lt;div class="btnList"&gt;<br>            &lt;div class="btn pre"&gt;&lt;&lt;/div&gt;<br>            &lt;div class="btn next"&gt;&gt;&lt;/div&gt;<br>        &lt;/div&gt;<br>.swiper .btn.pre&#123;width: 100px;height: 60px;line-height: 60px;text-align: center;background-color: rgba(0,0, 0, 0.6);color: #ffffff;position: absolute;top: calc(50% - 30px);font-size: 35px;&#125;<br><br>.swiper .btn.next&#123;width: 100px;height: 60px;line-height: 60px;text-align: center;background-color: rgba(0,0, 0, 0.6);color: #ffffff;position: absolute;right: 0;;top: calc(50% - 30px);font-size: 35px;&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> preBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".swiper .pre"</span>);<br>        <span class="hljs-keyword">var</span> nextBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".swiper .next"</span>);<br>        <span class="hljs-keyword">var</span> imgListDivs = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">".swiper .imgItems"</span>);<br>        <span class="hljs-comment">// 图片数组的索引</span><br>        <span class="hljs-keyword">var</span> currentImg = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 点击事件</span><br>        nextBtn.onclick=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            currentImg = currentImg + <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">// 点击到最后一张图片，回到起点</span><br>            <span class="hljs-keyword">if</span>(currentImg&gt;=imgListDivs.length)&#123;<br>                currentImg= <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-comment">// 初始化，将所有的img列表的active去掉</span><br>            imgListDivs.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item,i</span>)</span>&#123;<br>                item.classList.remove(<span class="hljs-string">"active"</span>)<br>            &#125;)<br>            <span class="hljs-comment">// 点击后索引加1，active移动到下一个元素显示下一张图片</span><br>            imgListDivs[currentImg].classList.add(<span class="hljs-string">"active"</span>)<br>            <br>        &#125;<br>        preBtn.onclick=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            currentImg = currentImg - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span>(currentImg&lt;<span class="hljs-number">0</span>)&#123;<br>                currentImg= imgListDivs.length<span class="hljs-number">-1</span>;<br>            &#125;<br>            <span class="hljs-comment">// 初始化，将所有的img列表的active去掉</span><br>            imgListDivs.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item,i</span>)</span>&#123;<br>                item.classList.remove(<span class="hljs-string">"active"</span>)<br>            &#125;)<br>            imgListDivs[currentImg].classList.add(<span class="hljs-string">"active"</span>)<br>            <br>        &#125;<br></code></pre></td></tr></table></figure>
-
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS3</tag>
       </tags>
   </entry>
   <entry>
@@ -1352,63 +1352,6 @@
       </tags>
   </entry>
   <entry>
-    <title>7-31记</title>
-    <url>/2020/07/31/7-31%E8%AE%B0/</url>
-    <content><![CDATA[<p>模板字符串</p>
-<p>数据库中返回的是纯数字模式的时间，例如下午四点，数据库中存储的为16，下午六点，数据库中储存的为18，</p>
-<p>要求是我们需要将16展示为16：00-16：59的时间段</p>
-<p>在elementUi的表格中</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">el-table-column</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"姓名"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"180"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot-scope</span>=<span class="hljs-string">"&#123;row&#125;"</span>&gt;</span>&#123;&#123; `$(row.hour):00 - $(row.hour):59` &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">el-table-column</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<ol>
-<li><p>解构赋值</p>
-<p>对象的解构赋值</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> &#123;foo, bar&#125; = &#123;<span class="hljs-attr">foo</span>: <span class="hljs-string">'aaa'</span>, <span class="hljs-attr">bar</span>: <span class="hljs-string">'bbb'</span>&#125;<br>foo <span class="hljs-comment">// 'aaa'</span><br>bar <span class="hljs-comment">// 'bbb'</span><br></code></pre></td></tr></table></figure>
-
-<p>对像的属性没有次序，变量必须与属性同名，才能正确的值</p>
-<ol start="3">
-<li>JSON.stringify({x:5,y:6}) //{‘x’:’5’,”y”,’6’}</li>
-<li>JSON.parse(json)//解析json转为js值或对象</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-        <tag>组件库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>7-7记</title>
-    <url>/2020/07/07/7-7%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="rem布局"><a href="#rem布局" class="headerlink" title="rem布局"></a>rem布局</h3><p>新建rem.js文件创建自定义函数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resize</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">var</span> baseFontSize = <span class="hljs-number">100</span>  <span class="hljs-comment">//设计稿100px相当于1rem</span><br>        <span class="hljs-keyword">var</span> designWidth = <span class="hljs-number">750</span>;<span class="hljs-comment">//设计稿宽度</span><br>        <span class="hljs-keyword">var</span> width = <span class="hljs-built_in">window</span>.innerWidth;<span class="hljs-comment">//屏幕宽度</span><br>        <span class="hljs-keyword">var</span> currentFontSize = (width/designWidth) * <span class="hljs-number">100</span>;<br>        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'html'</span>).style.fontSize = currentFontSize + <span class="hljs-string">'px'</span><br>    &#125;<br><br><br><br><br>    <span class="hljs-built_in">window</span>.onresize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        resize()<br>    &#125;<br>    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'DOMContentLoaded'</span>,resize)<br>&#125;())<br></code></pre></td></tr></table></figure>
-
-<h3 id="关于mockjs的使用"><a href="#关于mockjs的使用" class="headerlink" title="关于mockjs的使用"></a>关于mockjs的使用</h3><p>当我们没有得到从后端传递来的数据时，可以在了解数据的类型之后，通过Mockjs在前端进行模拟数据的获取。</p>
-<p>首先安装Mockjs</p>
-<p>在api文件夹下新建数据文件夹（ServerData）在文件夹下创建数据文件position.js</p>
-<p>在mockjs文件中首先导入Mockjs</p>
-<p>导入postion文件</p>
-<figure class="highlight less"><table><tr><td class="code"><pre><code class="hljs undefined"><span class="hljs-selector-tag">Mock</span><span class="hljs-selector-class">.mock</span>(<span class="hljs-string">'/api/posi'</span>,position)<br></code></pre></td></tr></table></figure>
-
-<p>此时我们获取数据的接口为</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs undefined"><span class="hljs-keyword">export</span> const getPosiData = <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br><span class="hljs-keyword">return</span> axios.request(&#123;<br> url:<span class="hljs-string">'posi'</span>,<br> method:<span class="hljs-string">'get'</span><br>&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>rem</category>
-      </categories>
-      <tags>
-        <tag>模拟数据</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>elementUi相关组件实例</title>
     <url>/2020/07/30/7-30%E8%AE%B0elementUi/</url>
     <content><![CDATA[<h1 id="项目中关于ElementUi的记录"><a href="#项目中关于ElementUi的记录" class="headerlink" title="项目中关于ElementUi的记录"></a>项目中关于ElementUi的记录</h1><h2 id="Pagination分页"><a href="#Pagination分页" class="headerlink" title="Pagination分页"></a>Pagination分页</h2><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">el-pagination</span><br>  <span class="hljs-attr">:page-size</span>=<span class="hljs-string">"20"</span><br>  <span class="hljs-attr">:pager-count</span>=<span class="hljs-string">"11"</span><br>  <span class="hljs-attr">layout</span>=<span class="hljs-string">"prev, pager, next"</span><br>  <span class="hljs-attr">:total</span>=<span class="hljs-string">"total"</span><br>   @<span class="hljs-attr">curtent-change</span>=<span class="hljs-string">"getpageUser"</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">el-pagination</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -1439,6 +1382,63 @@
       <tags>
         <tag>框架</tag>
         <tag>组件库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>7-31记</title>
+    <url>/2020/07/31/7-31%E8%AE%B0/</url>
+    <content><![CDATA[<p>模板字符串</p>
+<p>数据库中返回的是纯数字模式的时间，例如下午四点，数据库中存储的为16，下午六点，数据库中储存的为18，</p>
+<p>要求是我们需要将16展示为16：00-16：59的时间段</p>
+<p>在elementUi的表格中</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">el-table-column</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"姓名"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"180"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot-scope</span>=<span class="hljs-string">"&#123;row&#125;"</span>&gt;</span>&#123;&#123; `$(row.hour):00 - $(row.hour):59` &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">el-table-column</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<ol>
+<li><p>解构赋值</p>
+<p>对象的解构赋值</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> &#123;foo, bar&#125; = &#123;<span class="hljs-attr">foo</span>: <span class="hljs-string">'aaa'</span>, <span class="hljs-attr">bar</span>: <span class="hljs-string">'bbb'</span>&#125;<br>foo <span class="hljs-comment">// 'aaa'</span><br>bar <span class="hljs-comment">// 'bbb'</span><br></code></pre></td></tr></table></figure>
+
+<p>对像的属性没有次序，变量必须与属性同名，才能正确的值</p>
+<ol start="3">
+<li>JSON.stringify({x:5,y:6}) //{‘x’:’5’,”y”,’6’}</li>
+<li>JSON.parse(json)//解析json转为js值或对象</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>组件库</tag>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>7-7记</title>
+    <url>/2020/07/07/7-7%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="rem布局"><a href="#rem布局" class="headerlink" title="rem布局"></a>rem布局</h3><p>新建rem.js文件创建自定义函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resize</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">var</span> baseFontSize = <span class="hljs-number">100</span>  <span class="hljs-comment">//设计稿100px相当于1rem</span><br>        <span class="hljs-keyword">var</span> designWidth = <span class="hljs-number">750</span>;<span class="hljs-comment">//设计稿宽度</span><br>        <span class="hljs-keyword">var</span> width = <span class="hljs-built_in">window</span>.innerWidth;<span class="hljs-comment">//屏幕宽度</span><br>        <span class="hljs-keyword">var</span> currentFontSize = (width/designWidth) * <span class="hljs-number">100</span>;<br>        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'html'</span>).style.fontSize = currentFontSize + <span class="hljs-string">'px'</span><br>    &#125;<br><br><br><br><br>    <span class="hljs-built_in">window</span>.onresize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        resize()<br>    &#125;<br>    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'DOMContentLoaded'</span>,resize)<br>&#125;())<br></code></pre></td></tr></table></figure>
+
+<h3 id="关于mockjs的使用"><a href="#关于mockjs的使用" class="headerlink" title="关于mockjs的使用"></a>关于mockjs的使用</h3><p>当我们没有得到从后端传递来的数据时，可以在了解数据的类型之后，通过Mockjs在前端进行模拟数据的获取。</p>
+<p>首先安装Mockjs</p>
+<p>在api文件夹下新建数据文件夹（ServerData）在文件夹下创建数据文件position.js</p>
+<p>在mockjs文件中首先导入Mockjs</p>
+<p>导入postion文件</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><code class="hljs undefined"><span class="hljs-selector-tag">Mock</span><span class="hljs-selector-class">.mock</span>(<span class="hljs-string">'/api/posi'</span>,position)<br></code></pre></td></tr></table></figure>
+
+<p>此时我们获取数据的接口为</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs undefined"><span class="hljs-keyword">export</span> const getPosiData = <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br><span class="hljs-keyword">return</span> axios.request(&#123;<br> url:<span class="hljs-string">'posi'</span>,<br> method:<span class="hljs-string">'get'</span><br>&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>rem</category>
+      </categories>
+      <tags>
+        <tag>模拟数据</tag>
       </tags>
   </entry>
   <entry>
@@ -1485,6 +1485,55 @@
       <tags>
         <tag>JS</tag>
         <tag>Date对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>迭代器Iterator</title>
+    <url>/2020/08/26/8-26%E8%BF%AD%E4%BB%A3%E5%99%A8Iterator/</url>
+    <content><![CDATA[<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p>迭代器（Iterator）是一种接口，为各种不同的数据结构提供统一的访问机制，任何数据结构只要部署Iterator接口，就可以完成遍历操作。</p>
+<p>1、ES6创造了一种新的遍历命令for…of循环，Iterator接口主要供for…of循环使用</p>
+<p>2、原生具备Iterator接口的数据可使用for of遍历</p>
+<a id="more"></a>
+
+<p>生成一个数组使用for…of遍历</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>       <span class="hljs-keyword">const</span> Arr = [<span class="hljs-string">'唐僧'</span>, <span class="hljs-string">'猪八戒'</span>, <span class="hljs-string">'孙悟空'</span>, <span class="hljs-string">'沙僧'</span>]<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> Arr) &#123;<br>           <span class="hljs-built_in">console</span>.log(i)<span class="hljs-comment">//唐僧 猪八戒 孙悟空 沙僧</span><br>       &#125;<br>   &lt;<span class="hljs-regexp">/script&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>生成一个数组使用for…in遍历</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Arr = [<span class="hljs-string">'唐僧'</span>, <span class="hljs-string">'猪八戒'</span>, <span class="hljs-string">'孙悟空'</span>, <span class="hljs-string">'沙僧'</span>]<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> Arr) &#123;<br>            <span class="hljs-built_in">console</span>.log(i)<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<img src="/2020/08/26/8-26迭代器Iterator/2.png">
+
+<p><strong>for in循环保存的是键名，而for of保存的是键值</strong></p>
+<h2 id="谁可以使用"><a href="#谁可以使用" class="headerlink" title="谁可以使用"></a>谁可以使用</h2><p>可以看到在该数组的方法中有一个<code>Symbol(Symbol.iterator)</code>方法</p>
+<img src="/2020/08/26/8-26迭代器Iterator/3.png">
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> iterator = Arr[<span class="hljs-built_in">Symbol</span>.iterator]()<br>        <span class="hljs-built_in">console</span>.log(iterator)<br></code></pre></td></tr></table></figure>
+
+{% asset_img 4.png %}
+
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><ol>
+<li>创建一个指针对象，指向当前数据结构的起始位置</li>
+<li>第一次调用对象<code>next</code>方法，指针自动指向数据结构的第一个成员</li>
+<li>接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员</li>
+<li>每调用next方法返回一个包含value和done属性的对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Arr = [<span class="hljs-string">'唐僧'</span>, <span class="hljs-string">'猪八戒'</span>, <span class="hljs-string">'孙悟空'</span>, <span class="hljs-string">'沙僧'</span>]<br>        <span class="hljs-keyword">let</span> iterator = Arr[<span class="hljs-built_in">Symbol</span>.iterator]()<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br></code></pre></td></tr></table></figure>
+
+<img src="/2020/08/26/8-26迭代器Iterator/5.png">
+
+<p>当<code>done</code>为true时，表示循环已经完成</p>
+<h2 id="自定义遍历数据"><a href="#自定义遍历数据" class="headerlink" title="自定义遍历数据"></a>自定义遍历数据</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> banji = &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">"终极一班"</span>,<br>        <span class="hljs-attr">stus</span>: [<br>            <span class="hljs-string">'xiaoming'</span>,<br>            <span class="hljs-string">'xiaobai'</span>,<br>            <span class="hljs-string">'xiaohei'</span>,<br>            <span class="hljs-string">'xiaoli'</span>,<br>            <span class="hljs-string">'xiaoning'</span><br>        ],<br>        [<span class="hljs-built_in">Symbol</span>.iterator]()&#123;<br>            <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">return</span> &#123;<br>                <span class="hljs-attr">next</span>: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>                    <span class="hljs-keyword">if</span>(index&lt; <span class="hljs-keyword">this</span>.stus.length)&#123;<br>                        <span class="hljs-keyword">const</span> result = &#123;<span class="hljs-attr">value</span>: <span class="hljs-keyword">this</span>.stus[index], <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>&#125;<br>                        index++<br>                        <span class="hljs-keyword">return</span> result<br>                    &#125;<span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">value</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">true</span>&#125;<br>                    &#125;<br>                    <br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> banji) &#123;<br>        <span class="hljs-built_in">console</span>.log(v)<br>    &#125;<br><span class="hljs-comment">//其中的if判断可以优化</span><br><span class="hljs-comment">//优化</span><br>       index &lt; <span class="hljs-keyword">this</span>.stus.length ? <br>       &#123;<span class="hljs-attr">value</span>: <span class="hljs-keyword">this</span>.stus[index++], <span class="hljs-attr">done</span>:<span class="hljs-literal">false</span>&#125; : <br>       &#123;<span class="hljs-attr">value</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">true</span>&#125;<br><span class="hljs-comment">//再优化</span><br><span class="hljs-keyword">let</span> _this = <span class="hljs-keyword">this</span><br><span class="hljs-keyword">return</span> index &lt; _this.stus.length ?<br>&#123;<span class="hljs-attr">value</span>: _this.stus[index++]&#125; :<br>&#123;<span class="hljs-attr">done</span>: <span class="hljs-literal">true</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+        <tag>迭代器</tag>
       </tags>
   </entry>
   <entry>
@@ -1550,55 +1599,6 @@
       </categories>
       <tags>
         <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>迭代器Iterator</title>
-    <url>/2020/08/26/8-26%E8%BF%AD%E4%BB%A3%E5%99%A8Iterator/</url>
-    <content><![CDATA[<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p>迭代器（Iterator）是一种接口，为各种不同的数据结构提供统一的访问机制，任何数据结构只要部署Iterator接口，就可以完成遍历操作。</p>
-<p>1、ES6创造了一种新的遍历命令for…of循环，Iterator接口主要供for…of循环使用</p>
-<p>2、原生具备Iterator接口的数据可使用for of遍历</p>
-<a id="more"></a>
-
-<p>生成一个数组使用for…of遍历</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>       <span class="hljs-keyword">const</span> Arr = [<span class="hljs-string">'唐僧'</span>, <span class="hljs-string">'猪八戒'</span>, <span class="hljs-string">'孙悟空'</span>, <span class="hljs-string">'沙僧'</span>]<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> Arr) &#123;<br>           <span class="hljs-built_in">console</span>.log(i)<span class="hljs-comment">//唐僧 猪八戒 孙悟空 沙僧</span><br>       &#125;<br>   &lt;<span class="hljs-regexp">/script&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>生成一个数组使用for…in遍历</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Arr = [<span class="hljs-string">'唐僧'</span>, <span class="hljs-string">'猪八戒'</span>, <span class="hljs-string">'孙悟空'</span>, <span class="hljs-string">'沙僧'</span>]<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> Arr) &#123;<br>            <span class="hljs-built_in">console</span>.log(i)<br>        &#125;<br></code></pre></td></tr></table></figure>
-
-<img src="/2020/08/26/8-26迭代器Iterator/2.png">
-
-<p><strong>for in循环保存的是键名，而for of保存的是键值</strong></p>
-<h2 id="谁可以使用"><a href="#谁可以使用" class="headerlink" title="谁可以使用"></a>谁可以使用</h2><p>可以看到在该数组的方法中有一个<code>Symbol(Symbol.iterator)</code>方法</p>
-<img src="/2020/08/26/8-26迭代器Iterator/3.png">
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> iterator = Arr[<span class="hljs-built_in">Symbol</span>.iterator]()<br>        <span class="hljs-built_in">console</span>.log(iterator)<br></code></pre></td></tr></table></figure>
-
-{% asset_img 4.png %}
-
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><ol>
-<li>创建一个指针对象，指向当前数据结构的起始位置</li>
-<li>第一次调用对象<code>next</code>方法，指针自动指向数据结构的第一个成员</li>
-<li>接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员</li>
-<li>每调用next方法返回一个包含value和done属性的对象</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Arr = [<span class="hljs-string">'唐僧'</span>, <span class="hljs-string">'猪八戒'</span>, <span class="hljs-string">'孙悟空'</span>, <span class="hljs-string">'沙僧'</span>]<br>        <span class="hljs-keyword">let</span> iterator = Arr[<span class="hljs-built_in">Symbol</span>.iterator]()<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br>        <span class="hljs-built_in">console</span>.log(iterator.next())<br></code></pre></td></tr></table></figure>
-
-<img src="/2020/08/26/8-26迭代器Iterator/5.png">
-
-<p>当<code>done</code>为true时，表示循环已经完成</p>
-<h2 id="自定义遍历数据"><a href="#自定义遍历数据" class="headerlink" title="自定义遍历数据"></a>自定义遍历数据</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> banji = &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">"终极一班"</span>,<br>        <span class="hljs-attr">stus</span>: [<br>            <span class="hljs-string">'xiaoming'</span>,<br>            <span class="hljs-string">'xiaobai'</span>,<br>            <span class="hljs-string">'xiaohei'</span>,<br>            <span class="hljs-string">'xiaoli'</span>,<br>            <span class="hljs-string">'xiaoning'</span><br>        ],<br>        [<span class="hljs-built_in">Symbol</span>.iterator]()&#123;<br>            <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">return</span> &#123;<br>                <span class="hljs-attr">next</span>: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>                    <span class="hljs-keyword">if</span>(index&lt; <span class="hljs-keyword">this</span>.stus.length)&#123;<br>                        <span class="hljs-keyword">const</span> result = &#123;<span class="hljs-attr">value</span>: <span class="hljs-keyword">this</span>.stus[index], <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>&#125;<br>                        index++<br>                        <span class="hljs-keyword">return</span> result<br>                    &#125;<span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">value</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">true</span>&#125;<br>                    &#125;<br>                    <br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> banji) &#123;<br>        <span class="hljs-built_in">console</span>.log(v)<br>    &#125;<br><span class="hljs-comment">//其中的if判断可以优化</span><br><span class="hljs-comment">//优化</span><br>       index &lt; <span class="hljs-keyword">this</span>.stus.length ? <br>       &#123;<span class="hljs-attr">value</span>: <span class="hljs-keyword">this</span>.stus[index++], <span class="hljs-attr">done</span>:<span class="hljs-literal">false</span>&#125; : <br>       &#123;<span class="hljs-attr">value</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">true</span>&#125;<br><span class="hljs-comment">//再优化</span><br><span class="hljs-keyword">let</span> _this = <span class="hljs-keyword">this</span><br><span class="hljs-keyword">return</span> index &lt; _this.stus.length ?<br>&#123;<span class="hljs-attr">value</span>: _this.stus[index++]&#125; :<br>&#123;<span class="hljs-attr">done</span>: <span class="hljs-literal">true</span>&#125;;<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JavaScript</category>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-        <tag>ES6</tag>
-        <tag>迭代器</tag>
       </tags>
   </entry>
   <entry>
@@ -1694,59 +1694,6 @@
 </ul>
 <h2 id="函数封装"><a href="#函数封装" class="headerlink" title="函数封装"></a>函数封装</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 方法：ajax get 五部曲</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajax_get</span>(<span class="hljs-params">url,data</span>) </span>&#123;<br>	<span class="hljs-comment">// 异步对象</span><br>	<span class="hljs-keyword">var</span> ajax = <span class="hljs-keyword">new</span> XMLHttpRequest();<br><br>	<span class="hljs-comment">// url 方法</span><br>	<span class="hljs-comment">// 如果是get发送数据 发送的格式为 xxx.php?name=jack&amp;age=18</span><br>	<span class="hljs-comment">// 所以 这里 需要拼接 url</span><br>	<span class="hljs-keyword">if</span> (data) &#123;<br>		<span class="hljs-comment">// 如果有值 需要拼接字符串</span><br>		<span class="hljs-comment">// 拼接为xxx.php?name=jack&amp;age=18</span><br>		url+=<span class="hljs-string">'?'</span>;<br>		url+=data;<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>	&#125;<br><br>	ajax.open(<span class="hljs-string">'get'</span>,url);<br>	<span class="hljs-comment">// 发送</span><br>	ajax.send();<br><br>	<span class="hljs-comment">// 注册事件</span><br>	ajax.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>		<span class="hljs-comment">// 在事件中 获取数据 并修改界面显示</span><br>		<span class="hljs-keyword">if</span> (ajax.readyState==<span class="hljs-number">4</span>&amp;&amp; ajax.status==<span class="hljs-number">200</span>) &#123;<br>			<span class="hljs-built_in">console</span>.log(ajax.responseText);<br>		&#125;<br>	&#125;<br>&#125;<br><br><br><span class="hljs-comment">// 方法：ajax_post五部曲</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajax_post</span>(<span class="hljs-params">url,data</span>) </span>&#123;<br>	<span class="hljs-comment">// 异步对象</span><br>	<span class="hljs-keyword">var</span> ajax = <span class="hljs-keyword">new</span> XMLHttpRequest();<br><br>	<span class="hljs-comment">// url 方法</span><br>	ajax.open(<span class="hljs-string">'post'</span>,url);<br><br>	<span class="hljs-comment">// 设置 请求报文</span><br>	ajax.setRequestHeader(<span class="hljs-string">"Content-type"</span>,<span class="hljs-string">"application/x-www-form-urlencoded"</span>);<br><br>	<span class="hljs-comment">// 发送</span><br>	<span class="hljs-keyword">if</span> (data) &#123;<br>		<span class="hljs-comment">// 如果 有值 post请求 是在 send中 发送给服务器</span><br>		ajax.send(data);<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		ajax.send();<br>	&#125;<br><br><br>	<span class="hljs-comment">// 注册事件</span><br>	ajax.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>		<span class="hljs-comment">// 在事件中 获取数据 并修改界面显示</span><br>		<span class="hljs-keyword">if</span> (ajax.readyState==<span class="hljs-number">4</span>&amp;&amp;ajax.status==<span class="hljs-number">200</span>) &#123;<br>			<span class="hljs-built_in">console</span>.log(ajax.responseText);<br>		&#125;<br>	&#125;<br><br>&#125;<br><br><br><span class="hljs-comment">// 方法：将 get 跟post 封装到一起</span><br><span class="hljs-comment">/*<br>	参数1:url<br>	参数2:数据<br>	参数3:请求的方法<br>	参数4:数据成功获取以后，调用的方法<br>*/</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajax_tool</span>(<span class="hljs-params">url,data,method,success</span>) </span>&#123;<br>	<span class="hljs-comment">// 异步对象</span><br>	<span class="hljs-keyword">var</span> ajax = <span class="hljs-keyword">new</span> XMLHttpRequest();<br><br>	<span class="hljs-comment">// get 跟post  需要分别写不同的代码</span><br>	<span class="hljs-keyword">if</span> (method==<span class="hljs-string">'get'</span>) &#123;<br>		<span class="hljs-comment">// get请求</span><br>		<span class="hljs-keyword">if</span> (data) &#123;<br>			<span class="hljs-comment">// 如果有值</span><br>			url+=<span class="hljs-string">'?'</span>;<br>			url+=data;<br>		&#125;<span class="hljs-keyword">else</span>&#123;<br><br>		&#125;<br>		<span class="hljs-comment">// 设置 方法 以及 url</span><br>		ajax.open(method,url);<br><br>		<span class="hljs-comment">// send即可</span><br>		ajax.send();<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-comment">// post请求</span><br>		<span class="hljs-comment">// post请求 url 是不需要改变</span><br>		ajax.open(method,url);<br><br>		<span class="hljs-comment">// 需要设置请求报文</span><br>		ajax.setRequestHeader(<span class="hljs-string">"Content-type"</span>,<span class="hljs-string">"application/x-www-form-urlencoded"</span>);<br><br>		<span class="hljs-comment">// 判断data send发送数据</span><br>		<span class="hljs-keyword">if</span> (data) &#123;<br>			<span class="hljs-comment">// 如果有值 从send发送</span><br>			ajax.send(data);<br>		&#125;<span class="hljs-keyword">else</span>&#123;<br>			<span class="hljs-comment">// 木有值 直接发送即可</span><br>			ajax.send();<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-comment">// 注册事件</span><br>	ajax.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>		<span class="hljs-comment">// 在事件中 获取数据 并修改界面显示</span><br>		<span class="hljs-keyword">if</span> (ajax.readyState==<span class="hljs-number">4</span>&amp;&amp;ajax.status==<span class="hljs-number">200</span>) &#123;<br>			<span class="hljs-comment">// console.log(ajax.responseText);</span><br><br>			<span class="hljs-comment">// 将 数据 让 外面可以使用</span><br>			<span class="hljs-comment">// return ajax.responseText;</span><br><br>			<span class="hljs-comment">// 当 onreadystatechange 调用时 说明 数据回来了</span><br>			<span class="hljs-comment">// ajax.responseText;</span><br><br>			<span class="hljs-comment">// 数据成功获取以后，执行方法success()。</span><br>			<span class="hljs-comment">//我们把获取的数据作为 success()的参数，意思是：</span><br>			<span class="hljs-comment">//success方法是外面的，数据是里面给的。那数据就变相地传递到了外面去【重要】</span><br>			success(ajax.responseText);<br>		&#125;<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Ajax</category>
-      </categories>
-      <tags>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ajax2</title>
-    <url>/2020/07/23/Ajax2/</url>
-    <content><![CDATA[<h1 id="关于Ajax"><a href="#关于Ajax" class="headerlink" title="关于Ajax"></a>关于Ajax</h1><p>对于在学习Ajax过程中，再看了各种教程，或者视频讲解时，粗略了解到我们可以在不刷新页面的情况下，通过Ajax的方式区获取新的内容</p>
-<a id="more"></a>
-
-<h2 id="发送Ajax请求的五个步骤"><a href="#发送Ajax请求的五个步骤" class="headerlink" title="发送Ajax请求的五个步骤"></a>发送Ajax请求的五个步骤</h2><ul>
-<li>创建异步对象。即XMLHttpRequest对象。</li>
-<li>使用open方法设置请求的参数。open(method,url,async)</li>
-<li>发送请求</li>
-<li>注册事件。注册onreadystatechange事件，状态改变时就会调用。</li>
-<li>获取返回的数据</li>
-</ul>
-<p>并且对Ajax的五个步骤进行封装，将url和将要执行的请求方法或者回调函数进行封装复用</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAjax</span>(<span class="hljs-params">httpUrl,data,callbackFn</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>    <span class="hljs-comment">// 设置请求方法和路径</span><br>    xhr.open(<span class="hljs-string">'GET'</span>,httpUrl+parseData(data));<br>    <span class="hljs-comment">// 发送数据</span><br>    xhr.send()<br>    <span class="hljs-comment">// 监听后台是否返回数据</span><br>    xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(xhr.status==<span class="hljs-number">200</span>&amp;&amp;xhr.readyState ==<span class="hljs-number">4</span>)&#123;<br>           callbackFn(xhr)<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseData</span>(<span class="hljs-params">data</span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> str = <span class="hljs-string">"?"</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> data)&#123;<br>            str = str + key + <span class="hljs-string">"="</span> + data[key]+ <span class="hljs-string">"&amp;"</span>;<br>        &#125;<br>        str.substr(<span class="hljs-number">0</span>,str.length<span class="hljs-number">-1</span>)<br>        <span class="hljs-keyword">return</span> str<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="练习1"><a href="#练习1" class="headerlink" title="练习1"></a>练习1</h3><p>在大都数教程中会告诉我们，通过设置url就可以将数据进行返回</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> httpUrl = <span class="hljs-string">"https://api.apiopen.top/getJoke"</span><br>    <span class="hljs-keyword">var</span> data = &#123;<br>        <span class="hljs-attr">page</span>:<span class="hljs-number">1</span>,<br>        <span class="hljs-attr">count</span>:<span class="hljs-number">10</span>,<br>        <span class="hljs-attr">type</span>:<span class="hljs-string">"video"</span><br>    &#125;<br>    getAjax(httpUrl,data,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(xhr)<br>        <span class="hljs-keyword">var</span> datiObj = <span class="hljs-built_in">JSON</span>.parse(xhr.response)<br>        <span class="hljs-built_in">console</span>.log(datiObj)<br>    &#125;)<br></code></pre></td></tr></table></figure>
-
-<img src="/2020/07/23/Ajax2/1.png">
-
-<p>这样就请求到了数据，但是还是不清楚我们请求到的数据要做什么，在实际的项目中ajax是怎么操作的</p>
-<p>一直保持懵懂的了解基本api 的程度</p>
-<h2 id="练习2"><a href="#练习2" class="headerlink" title="练习2"></a>练习2</h2><p>通过练习一个段子项目渲染页面来熟悉ajax操作</p>
-<img src="/2020/07/23/Ajax2/2.png">
-
-<p>通过查看易点租的页面发现内部的商品结构全部是由js进行dom节点插入，我们实现一个类似今日头条的视频页面</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoList"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoItem"</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoTop"</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"img"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">'background-image: url("http://wimg.spriteapp.cn/picture/2020/0713/5f0c04f33bf50_wpd.jpg")'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span>无知者无畏。。。看好自家小孩，以免酿成悲剧<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"num"</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>次播放<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoBottom"</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://thirdwx.qlogo.cn/mmopen/vi_32/rlIeDLHvqo1MpvibllRxg4K4pBJ8CxRkN8Vtv5TpJjicdeetpuJtqqibAHEHC1IKibAHqaQ5DQKDBg9XOPib76HlIicA/132"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"headerImg"</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"author"</span>&gt;</span>老朽姓何<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>根据页面结构设置好视频列表的布局，然后我们需要编辑该盒子CSS样式，这个时候的图片素材是我们直接在结构中写的已知的链接，</p>
-<p>接下来编写ajax请求数据获取所有的图片等资源</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> httpUrl = <span class="hljs-string">"https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=video"</span>;<br>    getAjax(httpUrl, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) </span>&#123;<br>        <span class="hljs-comment">//var resultObj = "数据获取不到"</span><br>        <span class="hljs-keyword">var</span> resultObj = <span class="hljs-built_in">JSON</span>.parse(xhr.response);<br>        <span class="hljs-built_in">console</span>.log(resultObj);<br>    &#125;)<br></code></pre></td></tr></table></figure>
-
-<p><strong>getAjax()函数是我们引入的已经封装好的Ajax文件</strong></p>
-<h3 id="那么接下来是我们如何将页面动态的渲染"><a href="#那么接下来是我们如何将页面动态的渲染" class="headerlink" title="那么接下来是我们如何将页面动态的渲染"></a>那么接下来是我们如何将页面动态的渲染</h3><ol>
-<li>首先加载好了数据</li>
-<li>我们要通过获取的数据渲染出视频列表，那么就需要进行循环的创建</li>
-</ol>
-<p><strong>将上方写好的videoItem注释掉</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> httpUrl = <span class="hljs-string">"https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=video"</span>;<br>  getAjax(httpUrl, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) </span>&#123;<br>      <span class="hljs-keyword">var</span> resultObj = <span class="hljs-string">"数据获取不到"</span><br>      <span class="hljs-keyword">var</span> resultObj = <span class="hljs-built_in">JSON</span>.parse(xhr.response);<br>      <span class="hljs-built_in">console</span>.log(resultObj);<br>      <span class="hljs-comment">//将请求的结果赋值给videolist</span><br>      <span class="hljs-keyword">var</span> videoList = resultObj.result;<br>      renderVideoList(videoList);<br>  &#125;)<br>  <span class="hljs-comment">//编写渲染函数</span><br>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderVideoList</span>(<span class="hljs-params">videoList</span>) </span>&#123;<br>       <span class="hljs-comment">//循环创建内部节点</span><br>      videoList.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item, index</span>) </span>&#123;<br>          <span class="hljs-comment">//创建内部节点并添加类名</span><br>          <span class="hljs-keyword">var</span> videoItem = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>)<br>          <span class="hljs-comment">//添加类名以便获取CSS样式</span><br>          videoItem.className = <span class="hljs-string">"videoItem"</span><br>          videoItem.innerHTML = <span class="hljs-string">`&lt;div class="videoTop"&gt;<br>              &lt;div class="img" style='background-image: url(<span class="hljs-subst">$&#123;item.thumbnail&#125;</span>)'&gt;&lt;/div&gt;<br>              &lt;button type="button"&gt;&lt;/button&gt;<br>              &lt;h3 class="title"&gt;<span class="hljs-subst">$&#123;item.text&#125;</span>&lt;/h3&gt;<br>              &lt;p&gt;&lt;span class="icon yanjing"&gt;&lt;/span&gt; &lt;span class="num"&gt;<span class="hljs-subst">$&#123;item.up&#125;</span>&lt;/span&gt;次播放&lt;/p&gt;<br>          &lt;/div&gt;`</span><br>          <span class="hljs-keyword">var</span> videoListDom = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".videoList"</span>)<br>          videoListDom.appendChild(videoItem)<br>      &#125;)<br>  &#125;<br></code></pre></td></tr></table></figure>
-
-<img src="/2020/07/23/Ajax2/4.png">
-
-<p>我们可以看到js渲染的页面全部获取到了ajax请求到的数据，包括每个栏目的图片、标题、观看量等。</p>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -1866,6 +1813,59 @@
       </categories>
       <tags>
         <tag>jQuery</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ajax2</title>
+    <url>/2020/07/23/Ajax2/</url>
+    <content><![CDATA[<h1 id="关于Ajax"><a href="#关于Ajax" class="headerlink" title="关于Ajax"></a>关于Ajax</h1><p>对于在学习Ajax过程中，再看了各种教程，或者视频讲解时，粗略了解到我们可以在不刷新页面的情况下，通过Ajax的方式区获取新的内容</p>
+<a id="more"></a>
+
+<h2 id="发送Ajax请求的五个步骤"><a href="#发送Ajax请求的五个步骤" class="headerlink" title="发送Ajax请求的五个步骤"></a>发送Ajax请求的五个步骤</h2><ul>
+<li>创建异步对象。即XMLHttpRequest对象。</li>
+<li>使用open方法设置请求的参数。open(method,url,async)</li>
+<li>发送请求</li>
+<li>注册事件。注册onreadystatechange事件，状态改变时就会调用。</li>
+<li>获取返回的数据</li>
+</ul>
+<p>并且对Ajax的五个步骤进行封装，将url和将要执行的请求方法或者回调函数进行封装复用</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAjax</span>(<span class="hljs-params">httpUrl,data,callbackFn</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>    <span class="hljs-comment">// 设置请求方法和路径</span><br>    xhr.open(<span class="hljs-string">'GET'</span>,httpUrl+parseData(data));<br>    <span class="hljs-comment">// 发送数据</span><br>    xhr.send()<br>    <span class="hljs-comment">// 监听后台是否返回数据</span><br>    xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(xhr.status==<span class="hljs-number">200</span>&amp;&amp;xhr.readyState ==<span class="hljs-number">4</span>)&#123;<br>           callbackFn(xhr)<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseData</span>(<span class="hljs-params">data</span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> str = <span class="hljs-string">"?"</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> data)&#123;<br>            str = str + key + <span class="hljs-string">"="</span> + data[key]+ <span class="hljs-string">"&amp;"</span>;<br>        &#125;<br>        str.substr(<span class="hljs-number">0</span>,str.length<span class="hljs-number">-1</span>)<br>        <span class="hljs-keyword">return</span> str<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="练习1"><a href="#练习1" class="headerlink" title="练习1"></a>练习1</h3><p>在大都数教程中会告诉我们，通过设置url就可以将数据进行返回</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> httpUrl = <span class="hljs-string">"https://api.apiopen.top/getJoke"</span><br>    <span class="hljs-keyword">var</span> data = &#123;<br>        <span class="hljs-attr">page</span>:<span class="hljs-number">1</span>,<br>        <span class="hljs-attr">count</span>:<span class="hljs-number">10</span>,<br>        <span class="hljs-attr">type</span>:<span class="hljs-string">"video"</span><br>    &#125;<br>    getAjax(httpUrl,data,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(xhr)<br>        <span class="hljs-keyword">var</span> datiObj = <span class="hljs-built_in">JSON</span>.parse(xhr.response)<br>        <span class="hljs-built_in">console</span>.log(datiObj)<br>    &#125;)<br></code></pre></td></tr></table></figure>
+
+<img src="/2020/07/23/Ajax2/1.png">
+
+<p>这样就请求到了数据，但是还是不清楚我们请求到的数据要做什么，在实际的项目中ajax是怎么操作的</p>
+<p>一直保持懵懂的了解基本api 的程度</p>
+<h2 id="练习2"><a href="#练习2" class="headerlink" title="练习2"></a>练习2</h2><p>通过练习一个段子项目渲染页面来熟悉ajax操作</p>
+<img src="/2020/07/23/Ajax2/2.png">
+
+<p>通过查看易点租的页面发现内部的商品结构全部是由js进行dom节点插入，我们实现一个类似今日头条的视频页面</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoList"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoItem"</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoTop"</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"img"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">'background-image: url("http://wimg.spriteapp.cn/picture/2020/0713/5f0c04f33bf50_wpd.jpg")'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span>无知者无畏。。。看好自家小孩，以免酿成悲剧<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"num"</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>次播放<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"videoBottom"</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://thirdwx.qlogo.cn/mmopen/vi_32/rlIeDLHvqo1MpvibllRxg4K4pBJ8CxRkN8Vtv5TpJjicdeetpuJtqqibAHEHC1IKibAHqaQ5DQKDBg9XOPib76HlIicA/132"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"headerImg"</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"author"</span>&gt;</span>老朽姓何<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>根据页面结构设置好视频列表的布局，然后我们需要编辑该盒子CSS样式，这个时候的图片素材是我们直接在结构中写的已知的链接，</p>
+<p>接下来编写ajax请求数据获取所有的图片等资源</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> httpUrl = <span class="hljs-string">"https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=video"</span>;<br>    getAjax(httpUrl, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) </span>&#123;<br>        <span class="hljs-comment">//var resultObj = "数据获取不到"</span><br>        <span class="hljs-keyword">var</span> resultObj = <span class="hljs-built_in">JSON</span>.parse(xhr.response);<br>        <span class="hljs-built_in">console</span>.log(resultObj);<br>    &#125;)<br></code></pre></td></tr></table></figure>
+
+<p><strong>getAjax()函数是我们引入的已经封装好的Ajax文件</strong></p>
+<h3 id="那么接下来是我们如何将页面动态的渲染"><a href="#那么接下来是我们如何将页面动态的渲染" class="headerlink" title="那么接下来是我们如何将页面动态的渲染"></a>那么接下来是我们如何将页面动态的渲染</h3><ol>
+<li>首先加载好了数据</li>
+<li>我们要通过获取的数据渲染出视频列表，那么就需要进行循环的创建</li>
+</ol>
+<p><strong>将上方写好的videoItem注释掉</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> httpUrl = <span class="hljs-string">"https://api.apiopen.top/getJoke?page=1&amp;count10&amp;type=video"</span>;<br>  getAjax(httpUrl, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) </span>&#123;<br>      <span class="hljs-keyword">var</span> resultObj = <span class="hljs-string">"数据获取不到"</span><br>      <span class="hljs-keyword">var</span> resultObj = <span class="hljs-built_in">JSON</span>.parse(xhr.response);<br>      <span class="hljs-built_in">console</span>.log(resultObj);<br>      <span class="hljs-comment">//将请求的结果赋值给videolist</span><br>      <span class="hljs-keyword">var</span> videoList = resultObj.result;<br>      renderVideoList(videoList);<br>  &#125;)<br>  <span class="hljs-comment">//编写渲染函数</span><br>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderVideoList</span>(<span class="hljs-params">videoList</span>) </span>&#123;<br>       <span class="hljs-comment">//循环创建内部节点</span><br>      videoList.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item, index</span>) </span>&#123;<br>          <span class="hljs-comment">//创建内部节点并添加类名</span><br>          <span class="hljs-keyword">var</span> videoItem = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>)<br>          <span class="hljs-comment">//添加类名以便获取CSS样式</span><br>          videoItem.className = <span class="hljs-string">"videoItem"</span><br>          videoItem.innerHTML = <span class="hljs-string">`&lt;div class="videoTop"&gt;<br>              &lt;div class="img" style='background-image: url(<span class="hljs-subst">$&#123;item.thumbnail&#125;</span>)'&gt;&lt;/div&gt;<br>              &lt;button type="button"&gt;&lt;/button&gt;<br>              &lt;h3 class="title"&gt;<span class="hljs-subst">$&#123;item.text&#125;</span>&lt;/h3&gt;<br>              &lt;p&gt;&lt;span class="icon yanjing"&gt;&lt;/span&gt; &lt;span class="num"&gt;<span class="hljs-subst">$&#123;item.up&#125;</span>&lt;/span&gt;次播放&lt;/p&gt;<br>          &lt;/div&gt;`</span><br>          <span class="hljs-keyword">var</span> videoListDom = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".videoList"</span>)<br>          videoListDom.appendChild(videoItem)<br>      &#125;)<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<img src="/2020/07/23/Ajax2/4.png">
+
+<p>我们可以看到js渲染的页面全部获取到了ajax请求到的数据，包括每个栏目的图片、标题、观看量等。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Ajax</category>
+      </categories>
+      <tags>
         <tag>Ajax</tag>
       </tags>
   </entry>
@@ -2066,6 +2066,46 @@
       </tags>
   </entry>
   <entry>
+    <title>apply与call、bind的区别</title>
+    <url>/2019/07/04/apply%E4%B8%8Ecall%E3%80%81bind%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h1 id="apply和call"><a href="#apply和call" class="headerlink" title="apply和call()"></a>apply和call()</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>作用都可以改变this对象的指向</li>
+<li>第一个参数都是this要指向的对象(thisArg//函数执行时this的指向,args//传入的实参)</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="call与apply的区别"><a href="#call与apply的区别" class="headerlink" title="call与apply的区别"></a>call与apply的区别</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params">x,y</span>)</span>&#123;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"结果："</span>+(x+y)+<span class="hljs-keyword">this</span>);<br>&#125;<br>f1(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br>obj=&#123;<br>    name=<span class="hljs-string">"小米"</span>,<br>    age=<span class="hljs-number">20</span><br>&#125;<br>f1.apply(obj,[<span class="hljs-number">10</span>,<span class="hljs-number">20</span>]);<br>f1.call(obj,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br></code></pre></td></tr></table></figure>
+
+<p> <code>apply()</code>与<code>call()</code>方法都可以将实参在对象之后传递，但是<code>apply()</code>方法需要将实参封装到一个数组中统一转递，即使只有一个实参。</p>
+<p>简单理解</p>
+<ol>
+<li><code>apply()</code>把参数打包成<code>Array</code>再传入</li>
+<li><code>call()</code>把参数按顺序传入</li>
+</ol>
+<h2 id="第一个参数的传递"><a href="#第一个参数的传递" class="headerlink" title="第一个参数的传递"></a>第一个参数的传递</h2><ol>
+<li>thisObj不传或者为null，undefined时，函数中的this会指向window对象（非严格模式）</li>
+<li>传递一个别的函数名时，函数中的this将指向这个函数的引用</li>
+<li>传递的值为数字、布尔、字符串时，this会指向这些基本类型的包装对象Number、Boolean、String</li>
+<li>传递一个对象时，函数中的this将指向传递的这个对象。</li>
+</ol>
+<h3 id="call-和apply-并不在实例对象中，那么对象是如何调用的"><a href="#call-和apply-并不在实例对象中，那么对象是如何调用的" class="headerlink" title="call()和apply()并不在实例对象中，那么对象是如何调用的"></a><code>call()</code>和<code>apply()</code>并不在实例对象中，那么对象是如何调用的</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>+<span class="hljs-string">":被调用了"</span>);<br>&#125;<br><span class="hljs-built_in">console</span>.log(f1.__proto__==<span class="hljs-built_in">Function</span>.prototype);<span class="hljs-comment">//true</span><br>&lt;<span class="hljs-regexp">/script&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到<code>apply()</code>和<code>call()</code>不在实例对象中，而在对象的原型中</p>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h2><ul>
+<li>可以改变this的指向</li>
+<li><code>call()</code>和<code>apply()</code>在调用函数时改变</li>
+<li>bind是将函数返回，相当于复制了一份。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VueRouter1</title>
     <url>/2020/07/21/VueRouter/</url>
     <content><![CDATA[<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><h2 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h2><p><code>vue-router</code>默认是hash模式，使用这种模式后端不需要额外的处理，前端路由主要通过URL中的hash(#号)来实现不同页面之间的切换，并不会向后端发送请求，并且HTTP请求中不会包含hash相关的内容，</p>
@@ -2234,46 +2274,6 @@
       </categories>
       <tags>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>apply与call、bind的区别</title>
-    <url>/2019/07/04/apply%E4%B8%8Ecall%E3%80%81bind%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h1 id="apply和call"><a href="#apply和call" class="headerlink" title="apply和call()"></a>apply和call()</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
-<li>作用都可以改变this对象的指向</li>
-<li>第一个参数都是this要指向的对象(thisArg//函数执行时this的指向,args//传入的实参)</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="call与apply的区别"><a href="#call与apply的区别" class="headerlink" title="call与apply的区别"></a>call与apply的区别</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params">x,y</span>)</span>&#123;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"结果："</span>+(x+y)+<span class="hljs-keyword">this</span>);<br>&#125;<br>f1(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br>obj=&#123;<br>    name=<span class="hljs-string">"小米"</span>,<br>    age=<span class="hljs-number">20</span><br>&#125;<br>f1.apply(obj,[<span class="hljs-number">10</span>,<span class="hljs-number">20</span>]);<br>f1.call(obj,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br></code></pre></td></tr></table></figure>
-
-<p> <code>apply()</code>与<code>call()</code>方法都可以将实参在对象之后传递，但是<code>apply()</code>方法需要将实参封装到一个数组中统一转递，即使只有一个实参。</p>
-<p>简单理解</p>
-<ol>
-<li><code>apply()</code>把参数打包成<code>Array</code>再传入</li>
-<li><code>call()</code>把参数按顺序传入</li>
-</ol>
-<h2 id="第一个参数的传递"><a href="#第一个参数的传递" class="headerlink" title="第一个参数的传递"></a>第一个参数的传递</h2><ol>
-<li>thisObj不传或者为null，undefined时，函数中的this会指向window对象（非严格模式）</li>
-<li>传递一个别的函数名时，函数中的this将指向这个函数的引用</li>
-<li>传递的值为数字、布尔、字符串时，this会指向这些基本类型的包装对象Number、Boolean、String</li>
-<li>传递一个对象时，函数中的this将指向传递的这个对象。</li>
-</ol>
-<h3 id="call-和apply-并不在实例对象中，那么对象是如何调用的"><a href="#call-和apply-并不在实例对象中，那么对象是如何调用的" class="headerlink" title="call()和apply()并不在实例对象中，那么对象是如何调用的"></a><code>call()</code>和<code>apply()</code>并不在实例对象中，那么对象是如何调用的</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>+<span class="hljs-string">":被调用了"</span>);<br>&#125;<br><span class="hljs-built_in">console</span>.log(f1.__proto__==<span class="hljs-built_in">Function</span>.prototype);<span class="hljs-comment">//true</span><br>&lt;<span class="hljs-regexp">/script&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>可以看到<code>apply()</code>和<code>call()</code>不在实例对象中，而在对象的原型中</p>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h2><ul>
-<li>可以改变this的指向</li>
-<li><code>call()</code>和<code>apply()</code>在调用函数时改变</li>
-<li>bind是将函数返回，相当于复制了一份。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -2468,36 +2468,6 @@
       </tags>
   </entry>
   <entry>
-    <title>vue项目问题</title>
-    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
-<img src="/2020/06/01/vue项目问题/7.png">
-
-<a id="more"></a>
-
-<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
-<img src="/2020/06/01/vue项目问题/3.png">
-
-<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
-<p>更换浏览器发现同样错误</p>
-<img src="/2020/06/01/vue项目问题/8.png">
-
-<p>当发送请求时</p>
-<img src="/2020/06/01/vue项目问题/88.png">
-
-<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>javaScript</tag>
-        <tag>框架</tag>
-        <tag>bug</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信小程序</title>
     <url>/2020/05/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
     <content><![CDATA[<ol>
@@ -2548,6 +2518,36 @@
       </categories>
       <tags>
         <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue项目问题</title>
+    <url>/2020/06/01/vue%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="vue踩坑"><a href="#vue踩坑" class="headerlink" title="vue踩坑"></a>vue踩坑</h2><p>今天在执行项目时碰到这样的问题首先是项目</p>
+<img src="/2020/06/01/vue项目问题/7.png">
+
+<a id="more"></a>
+
+<p>这是一个点歌系统，后端node+express那么这个表单在上传文件时也就是歌曲时。</p>
+<img src="/2020/06/01/vue项目问题/3.png">
+
+<p>报了这样一个错，检查跨域并没有问题，项目本身也不会有问题，毕竟早就完美运行过了</p>
+<p>更换浏览器发现同样错误</p>
+<img src="/2020/06/01/vue项目问题/8.png">
+
+<p>当发送请求时</p>
+<img src="/2020/06/01/vue项目问题/88.png">
+
+<p>这个fs引起了注意，最终发现谷歌浏览器最近的MP3压缩格式后缀改成了mpeg。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>框架</tag>
+        <tag>bug</tag>
       </tags>
   </entry>
   <entry>
