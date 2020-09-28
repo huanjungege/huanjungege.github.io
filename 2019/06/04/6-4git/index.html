@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Yo_huanjun" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/fav.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Happy+Monkey&display=swap" ">
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/solarized-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">Copy</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">Copy</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "Copied";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "Copy";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>廖雪峰官方网站Git粗略总结 | Yo_huanjun - Practice makes perfect.</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Yo_huanjun</a></h1>
+        <h2 class="subtitle">Practice makes perfect.</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">Home</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">Archives</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">Categories</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">Tags</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">_Undefined Script Works!</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2019/06/04/6-4git/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/12.jpeg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">廖雪峰官方网站Git粗略总结</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-06-04T09:22:04+08:00">2019-06-04 09:22:04</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="git学习总结"><a href="#git学习总结" class="headerlink" title="git学习总结"></a>git学习总结</h1><ol>
+<li><p>初始化一个Git仓库，使用<code>git init</code>命令</p>
+</li>
+<li><p>添加文件到Git仓库，分两步：</p>
+<p>使用命令<code>git add&lt;file&gt;</code>，可反复多次使用，添加多个文件；</p>
+<p>使用命令<code>git commit -m &lt;message&gt;</code>，完成。</p>
+<a id="more"></a>
+
+</li>
+</ol>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><ol>
+<li><p>使用<code>git log</code>命令查看最近到最远的修改记录，输出信息太多显得杂乱可以加上<code>--pretty=oneline</code> 参数</p>
+<figure class="hljs highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">$ git log --pretty=oneline<br><span class="hljs-number">1094</span>adb<span class="hljs-number">7</span>b<span class="hljs-number">9</span>b<span class="hljs-number">3807259</span>d<span class="hljs-number">8</span>cb<span class="hljs-number">349e7</span>df<span class="hljs-number">1</span>d<span class="hljs-number">4</span>d<span class="hljs-number">6477073</span> (HEAD -&gt; master) append GPL<br>e<span class="hljs-number">475</span>afc<span class="hljs-number">93</span><span class="hljs-keyword">c</span><span class="hljs-number">209</span>a<span class="hljs-number">690</span><span class="hljs-keyword">c</span><span class="hljs-number">39</span><span class="hljs-keyword">c</span><span class="hljs-number">13</span>a<span class="hljs-number">46716e8</span>fa<span class="hljs-number">000</span><span class="hljs-keyword">c</span><span class="hljs-number">366</span> <span class="hljs-keyword">add</span> distributed<br>eaadf<span class="hljs-number">4e385</span>e<span class="hljs-number">865</span>d<span class="hljs-number">25</span><span class="hljs-keyword">c</span><span class="hljs-number">48e7</span>ca<span class="hljs-number">9</span><span class="hljs-keyword">c</span><span class="hljs-number">8395</span><span class="hljs-keyword">c</span><span class="hljs-number">3</span>f<span class="hljs-number">7</span>dfaef<span class="hljs-number">0</span> wrote a readme file<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用命令<code>git reset --hard HEAD^</code>回退到上一版本</p>
+</li>
+<li><p>回到未来在窗口没有被关掉时找到<code>commit id</code>，可以指定回到未来的某个版本</p>
+<figure class="hljs highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">$ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard 1094a</span><br><span class="hljs-keyword">HEAD</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">now</span> <span class="hljs-keyword">at</span> <span class="hljs-number">83</span>b0afe append GPL<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>如果关闭了窗口使用<code>git reflog</code>名令查看每一次输入的命令找到曾经的<code>commit id</code></p>
+</li>
+</ol>
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><ol>
+<li><code>git status</code>命令查看状态</li>
+<li>再提交前，使用<code>git checkout --file</code>丢弃对工作区的修改<strong>–</strong>很重要</li>
+<li>已经<code>git add</code>到暂存区，在<code>commit</code>之前<code>git reset HEAD &lt;file&gt;</code>可以把暂存区的修改撤销掉，重新放回工作区</li>
+</ol>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>命令<code>git rm file</code>删除文件，并且<code>commit</code></p>
+<h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><p>查看已经存放：git ls-files</p>
+<p>查看还没添加的文件：git status</p>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p>命令<code>git clone</code>在本地克隆一个仓库。</p>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><ol>
+<li>查看分支：<code>git branch</code></li>
+<li>创建分支：<code>git branch &lt;name&gt;</code></li>
+<li>切换分支：<code>git checkout &lt;name&gt;</code></li>
+<li>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></li>
+<li>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></li>
+<li>删除分支：<code>git branch -d &lt;name&gt;</code></li>
+</ol>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>在分支上进行修改，提交后切换到master，在master分支下又进行了修改提交，这时候进行分支合并则会产生冲突，必须手动解决冲突</p>
+<ol>
+<li><code>git status</code>会告诉我们冲突的文件</li>
+<li><code>git log --graph</code>可以看到分支合并图</li>
+</ol>
+<h3 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h3><p>当已经在本地创建了一个Git仓库后，又想在<code>GitHub</code>上创建一个Git仓库，并且让这两个仓库惊醒远程同步.</p>
+<ol>
+<li><p>新建远程仓库在<code>repository name</code>填入<code>learngit</code>,其它保持默认设置，点击创建，就成功创建了一个新的Git仓库</p>
+</li>
+<li><p>现在在本地的<code>learngit</code>运行命令</p>
+<figure class="hljs highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">$ git remote <span class="hljs-keyword">add</span><span class="bash"> origin git@github.com:你的github账户名/learngit.git</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>下一步将本地库的所有内容推送到远程库上：</p>
+<figure class="hljs highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">$ git push -u origin master<br>Counting objects: <span class="hljs-number">20</span>, done.<br>Delta compression using up to <span class="hljs-number">4</span> threads.<br>Compressing objects: <span class="hljs-number">100</span>% (<span class="hljs-number">15</span>/<span class="hljs-number">15</span>), done.<br>Writing objects: <span class="hljs-number">100</span>% (<span class="hljs-number">20</span>/<span class="hljs-number">20</span>), <span class="hljs-number">1.64</span> KiB | <span class="hljs-number">560.00</span> KiB/s, done.<br>Total <span class="hljs-number">20</span> (delta <span class="hljs-number">5</span>), reused <span class="hljs-number">0</span> (delta <span class="hljs-number">0</span>)<br>remote: Resolving deltas: <span class="hljs-number">100</span>% (<span class="hljs-number">5</span>/<span class="hljs-number">5</span>), done.<br>To github.com:michaelliao/learngit.git<br> * [new branch]      master -&gt; master<br>Branch <span class="hljs-string">'master'</span> <span class="hljs-keyword">set</span> up to track remote branch <span class="hljs-string">'master'</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'origin'</span><br></code></pre></td></tr></table></figure>
+
+<p>把本地库的内容推送到远程，用<code>git push</code>命令，实际上是把当前分支master推送到远程。</p>
+</li>
+</ol>
+<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><p>找到<code>GitHub</code>中的仓库使用<code>git clone</code>克隆一个本地库</p>
+<figure class="hljs highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">$ git clone <span class="hljs-symbol">git@</span>github.com:michaelliao/gitskills.git<br>Cloning <span class="hljs-built_in">int</span>o <span class="hljs-string">'gitskills'</span>...<br>remote: Counting objects: <span class="hljs-number">3</span>, done.<br>remote: Total <span class="hljs-number">3</span> (delta <span class="hljs-number">0</span>), reused <span class="hljs-number">0</span> (delta <span class="hljs-number">0</span>), pack-reused <span class="hljs-number">3</span><br>Receiving objects: <span class="hljs-number">100</span>% (<span class="hljs-number">3</span>/<span class="hljs-number">3</span>), done.<br></code></pre></td></tr></table></figure>
+
+<p>在本地要在自己想要的盘符进行克隆，如果想克隆在D盘，那么只需要在D盘下运行<code>Git bash</code></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Git/" rel="tag"><i class="fas fa-tags"></i>Git</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/05/16/5-16函数/" rel="next" title="Js中的函数"><i class="fas fa-angle-left"></i><span class="nav-title">Js中的函数</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/06/05/6-5-linux-01/" rel="prev" title="linux"><span class="nav-title">linux</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/12.jpeg" alt>
+  
+  <h1 class="author-name"></h1>
+  <h2 class="author-description">Either stand out or kicked out.</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">Archives</div>
+      <div><a href="/archives/">49</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">Categories</div>
+      <div><a href="/categories/">18</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">Tags</div>
+      <div><a href="/tags/">46</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#git学习总结"><span class="toc-text">git学习总结</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#版本回退"><span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#修改"><span class="toc-text">修改</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#删除"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#查看"><span class="toc-text">查看</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#克隆"><span class="toc-text">克隆</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#分支管理"><span class="toc-text">分支管理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#创建与合并分支"><span class="toc-text">创建与合并分支</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#解决冲突"><span class="toc-text">解决冲突</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#添加远程库"><span class="toc-text">添加远程库</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#从远程库克隆"><span class="toc-text">从远程库克隆</span></a></li></ol></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>Social Links<p></p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/allen-lhj" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>Blogroll</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author"></span><span class="year"><i class="far fa-copyright"></i>2020</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="Site Visit Count" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="Site User Count" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="Page Click Count" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

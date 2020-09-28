@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Yo_huanjun" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/fav.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Happy+Monkey&display=swap" ">
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/solarized-light.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">Copy</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">Copy</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "Copied";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "Copy";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>VueRouter1 | Yo_huanjun - Practice makes perfect.</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Yo_huanjun</a></h1>
+        <h2 class="subtitle">Practice makes perfect.</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">Home</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">Archives</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">Categories</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">Tags</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">_Undefined Script Works!</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.aiabby.top/2020/07/21/VueRouter/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/12.jpeg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">VueRouter1</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-07-21T17:29:16+08:00">2020-07-21 17:29:16</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><h2 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h2><p><code>vue-router</code>默认是hash模式，使用这种模式后端不需要额外的处理，前端路由主要通过URL中的hash(#号)来实现不同页面之间的切换，并不会向后端发送请求，并且HTTP请求中不会包含hash相关的内容，</p>
+<p>但是使用默认模式会url会出现一个#号，比较丑，所以可以使用history模式，这种模式充分利用 <code>history.pushState</code> API 来完成 URL 跳转而无须重新加载页面。</p>
+<a id="more"></a>
+
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter(&#123;<br>  <span class="hljs-attr">mode</span>: <span class="hljs-string">'history'</span>,<br>  <span class="hljs-attr">routes</span>: [...]<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>使用了history模式URL就会像正常的url，但是使用这种方式需要在后端进行配置，Vue官方有相对于Apache服务器，nginx，Nodejs等相关配置说明。甚至于使用Express框架时有相关的中间件配置。只需引用即可</p>
+<h2 id="路由的使用"><a href="#路由的使用" class="headerlink" title="路由的使用"></a>路由的使用</h2><p>1、创建路由实例，参数为一个对象，这个配置对象中有一个属性：<code>routes</code>表示<strong>路由匹配规则</strong></p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> Router(&#123;<br>    <span class="hljs-attr">routes</span> : [<br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/home'</span>, <span class="hljs-attr">component</span>: Home &#125;, <span class="hljs-comment">//当地址为/home时，显示Home组件</span><br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/goods'</span>, <span class="hljs-attr">component</span>: Goods &#125;,<br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/users'</span>, <span class="hljs-attr">component</span>: Users &#125;<br>    ]<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>routes属性是一个数组，数组中的每一项都是匹配规则。</p>
+<p>每一个规则都是一个对象，这个对象中有两个必须的属性</p>
+<p><strong>path</strong>:表示监听的路由地址</p>
+<p><strong>component</strong>：表示如果路由匹配到path，则展示相关的组件；</p>
+<p>2、将路由规则对象router注册到vue实例中</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> Vue(&#123;<br>  <span class="hljs-attr">el</span>: <span class="hljs-string">"#app"</span>,<br>  <span class="hljs-comment">// 将路由对象注册到vue实例</span><br>  router<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>3、一旦路由规则匹配成功，就会在vue-router提供的标签<strong><code>&lt;router-view&gt;</code></strong>上显示出来，这个标签就代表匹配成功后的component组件的显示位置</p>
+<h2 id="router-link属性"><a href="#router-link属性" class="headerlink" title="router-link属性"></a>router-link属性</h2><p>我们之前的超链接使用a标签，在vue-router官方为我们提供了<code>router-link</code>的属性实现链接跳转</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;p&gt;<br>   &lt;!-- 使用 router-link 组件来导航. --&gt;<br>   &lt;!-- 通过传入 <span class="hljs-string">`to`</span> 属性指定链接. --&gt;<br>   &lt;!-- <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span>&gt;</span> 默认会被渲染成一个 `<span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>` 标签 --&gt;<br>   <span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/foo"</span>&gt;</span>Go to Foo<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/bar"</span>&gt;</span>Go to Bar<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>并且我们也可以通过tag属性，tag=”span”，将默认的a标签转换成span标签。</p>
+<h2 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h2><p>编程式导航就是通过js来实现页面跳转（之前都是通过标签router-link来跳转的），比如如果用户登录成功跳转道首页，这个判断的功能只能通过js来实现。</p>
+<p>我在app.html添加一个按钮：</p>
+<figure class="hljs highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">'goHome'</span>&gt;</span>跳转到首页<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后在app.js里面实现点击事件：</p>
+<p>通过<code>父组件.$router.push(&#39;路由地址&#39;)</code> 或者是<code>父组件.$router.push({name:&#39;路由别名&#39;})</code>的方式进行跳转。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">methods: &#123;<br>    goHome() &#123;<br>        <span class="hljs-keyword">this</span>.$router.push(<span class="hljs-string">'/home'</span>);<br>        <span class="hljs-keyword">this</span>.$router.push(&#123; <span class="hljs-attr">name</span>: <span class="hljs-string">'h'</span> &#125;);<br>    &#125;<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+<p><code>this.$router.push</code>和<code>this.$router.replace</code>的区别:</p>
+<p>push会保留跳转前的地址，而replace不会。通过名字也可以看出端倪。</p>
+<p>还有<code>this.$router.go(1)</code> 执行浏览指针的前进或者后退次数。</p>
+<h2 id="路由嵌套"><a href="#路由嵌套" class="headerlink" title="路由嵌套"></a>路由嵌套</h2><p>我们现在想在/home路径下再接子路由a和b，形成嵌套路由/home/a或者/home/b形式的路由。</p>
+<p>在路由配置规则数组中使用 <code>children</code> 属性，实现子路由功能。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> Router(&#123;<br>    <span class="hljs-attr">routes</span>: [<br>        <span class="hljs-comment">// 路由重定向</span><br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/'</span>, <span class="hljs-attr">redirect</span>: <span class="hljs-string">'/home'</span> &#125;,<br>        &#123;<br>            <span class="hljs-attr">path</span>: <span class="hljs-string">'/home'</span>,<br>            <span class="hljs-attr">component</span>: Home,<br>            <span class="hljs-comment">// 使用children实现子路由</span><br>            <span class="hljs-attr">children</span>: [<br>                &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'a'</span>, <span class="hljs-attr">component</span>: A &#125;,<br>                &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'b'</span>, <span class="hljs-attr">component</span>: B &#125;<br>            ]<br>        &#125;,<br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/goods'</span>, <span class="hljs-attr">component</span>: Goods &#125;,<br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/users'</span>, <span class="hljs-attr">component</span>: Users &#125;<br>    ]<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：子路由的匹配规则前面不要加/</strong></p>
+<h3 id="当路由特别长的时候我们可以给路由起别名"><a href="#当路由特别长的时候我们可以给路由起别名" class="headerlink" title="当路由特别长的时候我们可以给路由起别名"></a>当路由特别长的时候我们可以给路由起别名</h3><p>起别名的方式就是往路由匹配规则加个<code>name</code>属性即可。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> Router(&#123;<br>    <span class="hljs-attr">routes</span>: [<br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/'</span>, <span class="hljs-attr">redirect</span>: <span class="hljs-string">'/home'</span> &#125;,<br>        &#123;<br>            <span class="hljs-attr">path</span>: <span class="hljs-string">'/home'</span>,<br>            <span class="hljs-attr">component</span>: Home,<br>            <span class="hljs-attr">name</span>: <span class="hljs-string">'h'</span>,<br>            <span class="hljs-attr">children</span>: [<br>                &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'a'</span>, <span class="hljs-attr">component</span>: A, <span class="hljs-attr">name</span>: <span class="hljs-string">'a'</span> &#125;,<br>                &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'b'</span>, <span class="hljs-attr">component</span>: B, <span class="hljs-attr">name</span>: <span class="hljs-string">'b'</span> &#125;<br>            ]<br>        &#125;, <span class="hljs-comment">//当地址为/home时，显示Home组件</span><br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/goods'</span>, <span class="hljs-attr">component</span>: Goods, <span class="hljs-attr">name</span>: <span class="hljs-string">'g'</span> &#125;,<br>        &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">'/users'</span>, <span class="hljs-attr">component</span>: Users, <span class="hljs-attr">name</span>: <span class="hljs-string">'u'</span> &#125;<br>    ]<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Router/" rel="tag"><i class="fas fa-tags"></i>Router</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/07/18/jquery04操作DOM/" rel="next" title="jquery04操作DOM"><i class="fas fa-angle-left"></i><span class="nav-title">jquery04操作DOM</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/07/23/Ajax2/" rel="prev" title="Ajax2"><span class="nav-title">Ajax2</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/12.jpeg" alt>
+  
+  <h1 class="author-name"></h1>
+  <h2 class="author-description">Either stand out or kicked out.</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">Archives</div>
+      <div><a href="/archives/">49</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">Categories</div>
+      <div><a href="/categories/">18</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">Tags</div>
+      <div><a href="/tags/">46</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Vue路由"><span class="toc-text">Vue路由</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#History模式"><span class="toc-text">History模式</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#路由的使用"><span class="toc-text">路由的使用</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#router-link属性"><span class="toc-text">router-link属性</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#编程式导航"><span class="toc-text">编程式导航</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#路由嵌套"><span class="toc-text">路由嵌套</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#当路由特别长的时候我们可以给路由起别名"><span class="toc-text">当路由特别长的时候我们可以给路由起别名</span></a></li></ol></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>Social Links<p></p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:liu772636821@163.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/allen-lhj" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>Blogroll</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author"></span><span class="year"><i class="far fa-copyright"></i>2020</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="Site Visit Count" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="Site User Count" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="Page Click Count" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
