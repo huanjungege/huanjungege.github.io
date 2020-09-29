@@ -396,14 +396,14 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/Array/</loc>
+    <loc>http://www.aiabby.top/tags/Object/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/Object/</loc>
+    <loc>http://www.aiabby.top/tags/Array/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -592,14 +592,14 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/UI-%E6%A1%86%E6%9E%B6/</loc>
+    <loc>http://www.aiabby.top/tags/Ajax/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/Ajax/</loc>
+    <loc>http://www.aiabby.top/tags/UI-%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -655,13 +655,6 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/DOM/</loc>
-    <lastmod>2020-09-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://www.aiabby.top/tags/%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
@@ -676,6 +669,13 @@
   </url>
   
   <url>
+    <loc>http://www.aiabby.top/tags/DOM/</loc>
+    <lastmod>2020-09-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.aiabby.top/tags/thinkJS/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
@@ -683,14 +683,14 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
+    <loc>http://www.aiabby.top/tags/bug/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/tags/bug/</loc>
+    <loc>http://www.aiabby.top/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -790,7 +790,7 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/categories/%E5%89%8D%E7%AB%AF/Bootstrap/</loc>
+    <loc>http://www.aiabby.top/categories/%E5%89%8D%E7%AB%AF/Ajax/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -804,7 +804,7 @@
   </url>
   
   <url>
-    <loc>http://www.aiabby.top/categories/%E5%89%8D%E7%AB%AF/Ajax/</loc>
+    <loc>http://www.aiabby.top/categories/%E5%89%8D%E7%AB%AF/Bootstrap/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
