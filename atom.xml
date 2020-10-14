@@ -6,10 +6,36 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.aiabby.top/"/>
-  <updated>2020-08-27T11:06:08.564Z</updated>
+  <updated>2020-10-14T00:47:57.605Z</updated>
   <id>http://www.aiabby.top/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Session&amp;&amp;cookie</title>
+    <link href="http://www.aiabby.top/2020/10/14/201014Sessioncookie/"/>
+    <id>http://www.aiabby.top/2020/10/14/201014Sessioncookie/</id>
+    <published>2020-10-14T00:31:53.000Z</published>
+    <updated>2020-10-14T00:47:57.605Z</updated>
+    
+    <content type="html"><![CDATA[<p>Session和Cookie产生的原因：</p><p>因为Http的一个显著特征为无状态！无状态意味着它不记录请求它的用户信息，无法区分是否来自同一个用户。</p><a id="more"></a><h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在计算机中，尤其是在网络应用中，称为“会话控制”。Session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当用户请求来自应用程序的 Web 页时，如果该用户还没有会话，则 Web 服务器将自动创建一个 Session 对象。当会话过期或被放弃后，服务器将终止该会话。</p><p>session是另一种记录服务器和客户端会话状态的机制。</p><p>当第一次请求时服务器会创建Session返回SessionID给浏览器，当第二次请求时，浏览器会将SessionID传递给服务器进行验证。</p><img src="/2020/10/14/201014Sessioncookie/1.jpg"><h2 id="Session的实现方式"><a href="#Session的实现方式" class="headerlink" title="Session的实现方式"></a>Session的实现方式</h2><p>1、借助Cookie的sessionId发送的方式</p><p>2、通过LocalStorage的方式</p><p>3、URL回写的方式，这是客户端禁止接收Cookie之后的方法。</p><p>4、隐藏表单字段（hidden）</p><h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于<a href="https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的HTTP协议记录稳定的状态信息成为了可能。</p><p>可以看到上面实现Session的方式第一项就是借助Cookie去携带Sessionid，所以可以说Cookie也是实现Session的一种方式</p><h2 id="Session与Cookie的区别"><a href="#Session与Cookie的区别" class="headerlink" title="Session与Cookie的区别"></a>Session与Cookie的区别</h2><ul><li><strong>安全性：</strong> Session 比 Cookie 安全，Session 是存储在服务器端的，Cookie 是存储在客户端的。</li><li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li><li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li><li><strong>存储大小不同：</strong> 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Session和Cookie产生的原因：&lt;/p&gt;
+&lt;p&gt;因为Http的一个显著特征为无状态！无状态意味着它不记录请求它的用户信息，无法区分是否来自同一个用户。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="网络" scheme="http://www.aiabby.top/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="Cookie" scheme="http://www.aiabby.top/tags/Cookie/"/>
+    
+      <category term="session" scheme="http://www.aiabby.top/tags/session/"/>
+    
+  </entry>
   
   <entry>
     <title>Promise</title>
@@ -216,9 +242,9 @@
       <category term="前端" scheme="http://www.aiabby.top/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="JS" scheme="http://www.aiabby.top/tags/JS/"/>
-    
       <category term="组件库" scheme="http://www.aiabby.top/tags/%E7%BB%84%E4%BB%B6%E5%BA%93/"/>
+    
+      <category term="JS" scheme="http://www.aiabby.top/tags/JS/"/>
     
   </entry>
   
@@ -421,31 +447,6 @@
       <category term="选择器" scheme="http://www.aiabby.top/tags/%E9%80%89%E6%8B%A9%E5%99%A8/"/>
     
       <category term="样式" scheme="http://www.aiabby.top/tags/%E6%A0%B7%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cookie与session</title>
-    <link href="http://www.aiabby.top/2020/07/13/cookie%E4%B8%8Esession/"/>
-    <id>http://www.aiabby.top/2020/07/13/cookie%E4%B8%8Esession/</id>
-    <published>2020-07-13T14:54:31.000Z</published>
-    <updated>2020-07-13T15:16:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于<a href="https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的HTTP协议记录稳定的状态信息成为了可能。</p><a id="more"></a><p>客户端浏览器会将Cookie存储起来，当再次请求该网站时，浏览器将请求地址和Cookie一同交给服务器，服务器检查Cookie来辨认用户的状态。</p><p>如果没有Cookie，那么在我们购物时会出现这样的场景。</p><p>输入用户名和密码，跳转到主页<br>C：点击添加购物车<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：于是很憋屈地再次输入用户名和密码，打算再点击添加购物车的按钮<br>B：不好意思，你是谁阿？这个添加购物车的按钮，需要获得登录权限之后才能使用<br>C：…….</p><h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session是另一种记录服务器和客户端会话状态的机制。</p><p>当第一次请求时服务器会创建Session返回SessionID给浏览器，当第二次请求时，浏览器会将SessionID传递给服务器进行验证。</p><p><strong>Cookie是客户端保存的用户信息的一种机制，用来记录 用户信息，可以说它是实现Session的一种方式。</strong></p><h2 id="session的实现方式"><a href="#session的实现方式" class="headerlink" title="session的实现方式"></a>session的实现方式</h2><p>1、借助Cookie的sessionId发送的方式</p><p>2、通过LocalStorage的方式</p><p>3、URL回写的方式，这是客户端禁止接收Cookie之后的方法。</p><p>4、隐藏表单字段（hidden）</p><h2 id="Cookie与session的区别"><a href="#Cookie与session的区别" class="headerlink" title="Cookie与session的区别"></a>Cookie与session的区别</h2><ul><li><strong>安全性：</strong> Session 比 Cookie 安全，Session 是存储在服务器端的，Cookie 是存储在客户端的。</li><li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li><li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li><li><strong>存储大小不同：</strong> 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Cookie&quot;&gt;&lt;a href=&quot;#Cookie&quot; class=&quot;headerlink&quot; title=&quot;Cookie&quot;&gt;&lt;/a&gt;Cookie&lt;/h2&gt;&lt;p&gt;HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于&lt;a href=&quot;https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;无状态&lt;/a&gt;的HTTP协议记录稳定的状态信息成为了可能。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="网络" scheme="http://www.aiabby.top/categories/%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="Cookie" scheme="http://www.aiabby.top/tags/Cookie/"/>
-    
-      <category term="session" scheme="http://www.aiabby.top/tags/session/"/>
     
   </entry>
   
