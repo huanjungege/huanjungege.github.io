@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Yo_huanjun - /-Practice makes perfect.</title>
+    <title>Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -166,7 +166,7 @@
     <div class="header-container">
       <div class="header-title">
         <h1 class="title"><a href="/">Yo_huanjun</a></h1>
-        <h2 class="subtitle">/-Practice makes perfect.</h2>
+        <h2 class="subtitle">Practice makes perfect.</h2>
       </div>
       
     </div>
@@ -195,6 +195,58 @@
             
 
 <div id="index" class="index page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/07/24/Ajax3-jquery/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/07/24/Ajax3-jquery/" itemprop="url">Ajax3-jquery</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-07-24T21:47:54+08:00">2020-07-24 21:47:54</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Ajax/" itemprop="url" rel="index"><span itemprop="name">Ajax</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h1 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h1><h2 id="封装Ajax"><a href="#封装Ajax" class="headerlink" title="封装Ajax"></a>封装Ajax</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAjax</span>(<span class="hljs-params">httpUrl,callbackFn</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>    <span class="hljs-comment">// 设置请求方法和路径</span><br>    xhr.open(<span class="hljs-string">'GET'</span>,httpUrl);<br>    <span class="hljs-comment">// 发送数据</span><br>    xhr.send()<br>    <span class="hljs-comment">// 监听后台是否返回数据</span><br>    xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(xhr.status==<span class="hljs-number">200</span>&amp;&amp;xhr.readyState ==<span class="hljs-number">4</span>)&#123;<br>           callbackFn(xhr)<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/jQuery/" rel="tag"><i class="fas fa-tags"></i>jQuery</a>
+        
+        <a class="post-tag button" href="/tags/Ajax/" rel="tag"><i class="fas fa-tags"></i>Ajax</a>
+        
+      </div>
+      
+    </footer>
+  </article>
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
@@ -684,63 +736,6 @@
         <a class="post-tag button" href="/tags/框架/" rel="tag"><i class="fas fa-tags"></i>框架</a>
         
         <a class="post-tag button" href="/tags/bug/" rel="tag"><i class="fas fa-tags"></i>bug</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/05/20/微信小程序/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/05/20/微信小程序/" itemprop="url">微信小程序</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-05-20T12:38:07+08:00">2020-05-20 12:38:07</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微信小程序/" itemprop="url" rel="index"><span itemprop="name">微信小程序</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <ol>
-<li><p>x小程序没有DOM对象，一切基于组件化</p>
-</li>
-<li><p>小程序的4个重要文件</p>
-<p>wxml—&gt;view结构—&gt; 类似HTML</p>
-<p>wxss—&gt;view样式—-&gt; 类似CSS</p>
-<p>js</p>
-<p>json—&gt;数据—–&gt;json文件</p></li></ol>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/小程序/" rel="tag"><i class="fas fa-tags"></i>小程序</a>
         
       </div>
       
