@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>TCP/IP协议 | Yo_huanjun - Practice makes perfect.</title>
+    <title>http的地基 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -208,7 +208,7 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">TCP/IP协议</h1>
+      <h1 class="post-title" itemprop="name headline">http的地基</h1>
       <div class="post-meta">
         
         <span class="post-date">
@@ -233,29 +233,59 @@
 <li><p>应用层：决定了用户提供应用服务时 通信的活动，比如FTP(文件传输协议)，DNS(域名系统)，HTTP</p>
 </li>
 <li><p>传输层：传输层对应上层应用层，提供处于网络连接中两台计算机之间的数据传输，传输层有两个性质不同的协议，TCP(传输控制协议)，UDP(用户数据报协议)</p>
-<a id="more"></a>
 </li>
 <li><p>网络层：用来处理网络上流动的数据包，数据包是网络传输的最小数据单位。该层规定了通过怎样的路径到达对方计算机，并把数据传给对方。</p>
 </li>
 <li><p>链路层：用来 处理连接网络的硬件部分，包括操作系统，网卡，硬件的设备驱动等</p>
 <img src="/2020/02/27/2020-02-27/1.png">
 
+<a id="more"></a>
+
+<p>各层由下到上，越接近底层就越接近硬件，越靠近上层越靠近用户</p>
 </li>
 </ul>
-<h3 id="确保可靠性的TCP协议"><a href="#确保可靠性的TCP协议" class="headerlink" title="确保可靠性的TCP协议"></a>确保可靠性的TCP协议</h3><p>TCP协议位于传输层，为了能够更容易的传输大数据将数据进行分割，并且要确保数据最终能否送达到对方，为列准确无误地将数据送达目标处，采用 了<strong>三次握手策略</strong></p>
-<p>DNS服务是和HTTP协议一样位于应用层的协议，提供域名到ip地址之间的解析服务，由于用户通常适应字母配合数字进行记忆，但是计算机却更适合理解ip地址的一组纯数字，所以DNS服务应运而生，<strong>DNS协议通过 用户传入的域名进行查找对应的ip地址，或通过ip地址反向查找域名</strong></p>
-<h3 id="URI与URL"><a href="#URI与URL" class="headerlink" title="URI与URL"></a>URI与URL</h3><p>URI(统一资源标识符)，标识某以互联网资源，而URL(统一资源定位符)，URI用字符串标识某一互联网资源，而URL表示资源的地址，可以说URL是URI的子集</p>
-<p>URI：<a href="http://www.ietf.com/rfc/...txt" target="_blank" rel="noopener">http://www.ietf.com/rfc/...txt</a>  包括协议，登录信息，服务器地址，服务器端口号等</p>
-<p>URL:<a href="http://ietf.com" target="_blank" rel="noopener">http://ietf.com</a></p>
+<h2 id="第一层"><a href="#第一层" class="headerlink" title="第一层"></a>第一层</h2><ol>
+<li><p>是将电脑连接起来的<strong>物理手段</strong>，（通过光缆、电缆、双绞线、无线电波）等方式，它主要规定了网络的一些电气特性，作用是负责传送0和1的电信号。链路层还确定了传送0和1的电信号的分组方式</p>
+<p><strong>以太网协议</strong>：最初各家公司的电信号分组方式各不相同，由此以太网协议开始流行起来，并逐渐占据了主导地位，以太网规定：一组电信号构成一个数据包，叫做帧，每一帧分为两个部分，标头和数据</p>
+<p>“标头”：包含数据包的一些说明项，比如发送者、接受者、数据类型等；”数据“则是数据包的具体内容</p>
+<p>标头的长度，固定为18字节，“数据的长度”，最短为46字节，最长为1500字节，因此。整个帧最短为64字节，最长为1518字节，如果数据很长，就必须分割成多个帧发送。</p>
+</li>
+<li><p>MAC地址</p>
+<p>虽然以太网的标头包含了发送者和接受者的信息，但是发送者和接受者又如何来区分和标示呢？</p>
+<p>以太网规定所有连入网络的设备都必须具有网卡接口，数据包则是又一块网卡发送到另一块网卡，MAC地址就是<strong>网卡地址</strong></p>
+<p>​                                MAC Address</p>
+<p>​                                00-B0-D0-86-BB-F7</p>
+<p>在同一个子网络内数据通过广播的方式像本网络内所有的计算机发送，让每台计算机自己判断是否为接收方</p>
+</li>
+</ol>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>仅仅依靠MAC地址和在子网络内的广播效率低下，并且我们不能让所有国家的计算机都处在同一个子网络，所以需要判断：处于子网络内的计算机通过广播的方式传递数据，否则采用路由的方式，这样就产生了网络层，他的作用是引进一套新的地址，使得我们能够区分计算机是否处在同一个子网络，这套地址叫做“网络地址”，网络地址的协议叫做 <strong>IP协议</strong>。</p>
+<p>”MAC地址“绑定在网卡上，“网络地址”由管理员分配，网络地址帮助确定计算机所处子网络（是不是在一个子网络），MAC地址则将数据包发送到该子网络的目标网卡，所以逻辑上先处理网络地址，后处理MAC地址。</p>
+<p>规定网络地址的协议叫做“IP协议”，他所定的地址就叫做<strong>IP地址</strong></p>
+<p>那么什么是IP地址：它长这样</p>
+
+
+<p>习惯上，我们用四段十进制表示IP地址从0.0.0.0到255.255.255.255</p>
+<p>互联网上每个计算机都会分配一个IP地址，前部分代表网络，后一部分代表主机，通过子网掩码可以判断两个IP地址是够处在同一个子网络。</p>
+<p>所以总结来说IP地址的协议主要有两个，一个是为每台计算机分配IP地址，另一个是确定哪些地址处在同一个子网络</p>
+<h3 id="IP数据包"><a href="#IP数据包" class="headerlink" title="IP数据包"></a>IP数据包</h3><p>前面所得以太网数据包包含标头和数据体两部分，只包含MAC地址，所以我门可以将IP数据包直接放进以太网数据包的数据部分，在前面在添加一个标头，那么到达网络层时数据包括以太网标头+IP标头+数据体（IP数据包在以太网数据包内部）</p>
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><p>有了MAC地址和IP协议我们已经可以通过互联网在任意两台主机上建立通信，发送数据。</p>
+<p>但是现在我们的电脑一开机便同时运行着多个应用程序，比如你现在一边浏览着网页，一边听着歌，还在微信随时加入群聊。那么这么多程序，我们的数据包到底应该给哪个程序供给数据，这时候我们还需要一个参数，<strong>端口号（port）</strong>，每个数据包发送到主机特定的端口，不同的程序通过不同的端口取到自己所需的数据。</p>
+<p>端口号时0到65535之间的一个整数，正好是一个16个二进制位，0到1023端口被系统占用。<strong>传输层的作用就是建立端口到端口的通信，相比之下，网络层的功能是建立主机到主机的通信，主要确定主机和端口，我们就能实现程序之间的交流</strong></p>
+<h3 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h3><p>在数据包中加入端口信息我门就用到了UDP协议，他的格式就是在数据前面加上端口号，这一段数据的连接我们在加上UDP协议，如法炮制，我们将UDP的数据包放入以太网的数据包中的IP数据包中，那么形式看起来变成了：</p>
+<p>以太网标头+IP标头+UDP标头+数据体（以太网-&gt;IP-&gt;UDP）</p>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>应用程序收到传输层的数据。重要的就是<strong>要进行解读</strong>，由于互联网时开放架构，数据来源五花八门，必须事先规定好格式，否则根本无法解读。</p>
+<p><strong>应用层的作用就是规定应用程序的数据格式。接下来便是了解应用层</strong>http**</p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/HTTP/" rel="tag"><i class="fas fa-tags"></i>HTTP</a>
+        <a class="post-tag button" href="/tags/TCP/" rel="tag"><i class="fas fa-tags"></i>TCP</a>
         
-        <a class="post-tag button" href="/tags/TCP-IP/" rel="tag"><i class="fas fa-tags"></i>TCP/IP</a>
+        <a class="post-tag button" href="/tags/IP/" rel="tag"><i class="fas fa-tags"></i>IP</a>
+        
+        <a class="post-tag button" href="/tags/MAC/" rel="tag"><i class="fas fa-tags"></i>MAC</a>
         
       </div>
       
@@ -327,7 +357,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#确保可靠性的TCP协议"><span class="toc-text">确保可靠性的TCP协议</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#URI与URL"><span class="toc-text">URI与URL</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#第一层"><span class="toc-text">第一层</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#网络层"><span class="toc-text">网络层</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#IP数据包"><span class="toc-text">IP数据包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#传输层"><span class="toc-text">传输层</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#UDP协议"><span class="toc-text">UDP协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#应用层"><span class="toc-text">应用层</span></a></li></ol></div>
     </div>
     
     
