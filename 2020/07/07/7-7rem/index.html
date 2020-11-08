@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Archive | Yo_huanjun - Practice makes perfect.</title>
+    <title>7-7记 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -193,62 +193,83 @@
         <div class="main-container">
           <div class="content">
             
-<div id="archive" class="archive page">
-  <h1 class="page-title">Archive</h1>
-  <h2 class="page-counter">
-    
-    You have 52 posts!
-    
-  </h2>
-  
-  
-  
-  
-  <h2 class="page-title">2019
+<div id="post" class="page">
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/03/29/3-29ppt模板分享/" itemprop="url">PPT模板</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-29T20:37:23+08:00">03-29</time>
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/07/07/7-7rem/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/avatar.jpg">
       </span>
-      
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">7-7记</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-07-07T21:01:39+08:00">2020-07-07 21:01:39</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+        </span>
+        
+        
+      </div>
     </header>
+    <main class="post-main" itemprop="articleBody">
+      <h3 id="rem布局"><a href="#rem布局" class="headerlink" title="rem布局"></a>rem布局</h3><p>新建rem.js文件创建自定义函数</p>
+<figure class="hljs highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resize</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">var</span> baseFontSize = <span class="hljs-number">100</span>  <span class="hljs-comment">//设计稿100px相当于1rem</span><br>        <span class="hljs-keyword">var</span> designWidth = <span class="hljs-number">750</span>;<span class="hljs-comment">//设计稿宽度</span><br>        <span class="hljs-keyword">var</span> width = <span class="hljs-built_in">window</span>.innerWidth;<span class="hljs-comment">//屏幕宽度</span><br>        <span class="hljs-keyword">var</span> currentFontSize = (width/designWidth) * <span class="hljs-number">100</span>;<br>        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'html'</span>).style.fontSize = currentFontSize + <span class="hljs-string">'px'</span><br>    &#125;<br><br><br><br><br>    <span class="hljs-built_in">window</span>.onresize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        resize()<br>    &#125;<br>    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'DOMContentLoaded'</span>,resize)<br>&#125;())<br></code></pre></td></tr></table></figure>
+
+<h3 id="关于mockjs的使用"><a href="#关于mockjs的使用" class="headerlink" title="关于mockjs的使用"></a>关于mockjs的使用</h3><p>当我们没有得到从后端传递来的数据时，可以在了解数据的类型之后，通过Mockjs在前端进行模拟数据的获取。</p>
+<p>首先安装Mockjs</p>
+<p>在api文件夹下新建数据文件夹（ServerData）在文件夹下创建数据文件position.js</p>
+<p>在mockjs文件中首先导入Mockjs</p>
+<p>导入postion文件</p>
+<figure class="hljs highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-selector-tag">Mock</span><span class="hljs-selector-class">.mock</span>(<span class="hljs-string">'/api/posi'</span>,position)<br></code></pre></td></tr></table></figure>
+
+<p>此时我们获取数据的接口为</p>
+<figure class="hljs highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-keyword">export</span> const getPosiData = <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br><span class="hljs-keyword">return</span> axios.request(&#123;<br> url:<span class="hljs-string">'posi'</span>,<br> method:<span class="hljs-string">'get'</span><br>&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/rem/" rel="tag"><i class="fas fa-tags"></i>rem</a>
+        
+      </div>
+      
+    </footer>
   </article>
   
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/03/13/js创建对象的几种方式/" itemprop="url">js创建对象的几种方式</a>
-      </h1>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
       
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-13T21:42:48+08:00">03-13</time>
-      </span>
+      <a href="/2020/07/02/7-2周记/" rel="next" title="深入解析CSS层叠、优先级、继承"><i class="fas fa-angle-left"></i><span class="nav-title">深入解析CSS层叠、优先级、继承</span></a>
       
-    </header>
-  </article>
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/07/15/jQuery03选择器/" rel="prev" title="jQuery03选择器"><span class="nav-title">jQuery03选择器</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
   
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/03/11/LESS/" itemprop="url">LESS</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-11T18:56:22+08:00">03-11</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-</h2></div>
+</div>
 
           </div>
           
@@ -290,6 +311,17 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#rem布局"><span class="toc-text">rem布局</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#关于mockjs的使用"><span class="toc-text">关于mockjs的使用</span></a></li></ol></div>
+    </div>
+    
     
     
     <hr>
