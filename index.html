@@ -290,41 +290,6 @@
       <h2 id="Http简介"><a href="#Http简介" class="headerlink" title="Http简介"></a>Http简介</h2><p>HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。</p>
 <p>HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p>
 <p>HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。</p>
-<p>HTTP协议工作于客户端-服务端架构为上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。</p>
-<img src="/2020/10/29/20201029Http/1.png">
-
-<h2 id="http的工作方式"><a href="#http的工作方式" class="headerlink" title="http的工作方式"></a>http的工作方式</h2><p><strong>http</strong>采用请求/响应的工作方式</p>
-<p>服务器不断监听TCP端口等待客户端发送请求，当客户端发送请求是建立TCP连接，以http请求报文的形式发送页面请求，服务器以响应报文的方式发送响应，</p>
-<p>http的每次通信都必须包含头部信息（HTTP header），用来描述一些元数据，其他的新增功能还包括状态吗（status code）,多字符集支持、多部分发送、权限（authorization）、缓存（cache）、内容编码（content encoding）等</p>
-<h3 id="请求格式"><a href="#请求格式" class="headerlink" title="请求格式"></a>请求格式</h3><figure class="hljs highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/</span> HTTP/1.0<br><span class="hljs-attribute">User-Agent</span>: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)<br><span class="hljs-attribute">Accept</span>: */*<br></code></pre></td></tr></table></figure>
-
-<p>Accept：在发送请求的时候告诉服务器自己可以接受哪些数据格式</p>
-<h3 id="响应格式"><a href="#响应格式" class="headerlink" title="响应格式"></a>响应格式</h3><figure class="hljs highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs http">HTTP/1.0 <span class="hljs-number">200</span> OK <br><span class="hljs-attribute">Content-Type</span>: text/plain<br><span class="hljs-attribute">Content-Length</span>: 137582<br><span class="hljs-attribute">Expires</span>: Thu, 05 Dec 1997 16:00:00 GMT<br><span class="hljs-attribute">Last-Modified</span>: Wed, 5 August 1996 15:55:28 GMT<br><span class="hljs-attribute">Server</span>: Apache 0.84<br><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<h3 id="content-Type字段"><a href="#content-Type字段" class="headerlink" title="content Type字段"></a>content Type字段</h3><p>关于字符的编码，1.0版本规定，头部信息必须是ASCII码，后面的数据可以是任何形式，所以服务器响应的时候必须告诉客户端数据是什么格式，content Type的作用就是表明数据的格式</p>
-<ul>
-<li>text/plain</li>
-<li>text/html</li>
-<li>text/css</li>
-<li>image/jpeg</li>
-<li>image/png</li>
-<li>image/svg+xml</li>
-<li>audio/mp4</li>
-<li>video/mp4</li>
-<li>application/javascript</li>
-<li>application/pdf</li>
-<li>application/zip</li>
-<li>application/atom+xml</li>
-</ul>
-<h3 id="关于http1-0的缺点"><a href="#关于http1-0的缺点" class="headerlink" title="关于http1.0的缺点"></a>关于http1.0的缺点</h3><p>每个TCP连接只能发送一个请求，发送数据完毕，连接就要关闭，如果还要请求其他资源，就必须再新建一个连接。TCP新建的成本很高，需要进行三次握手，所以当网页加载外部资源越来越多的时候，这个问题就愈发突出了</p>
-<h2 id="HTTP1-1"><a href="#HTTP1-1" class="headerlink" title="HTTP1.1"></a>HTTP1.1</h2><p>1.1版最大的变化就是引入了持久连接，即TCP连接默认不关闭，可以被多个请求服用，不用声明Connection：keep-alive</p>
-<p>客户端和服务器发现对方一段时间没有活动，就可以主动关闭连接。</p>
-<h2 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h2><p>GET请求：请求指定页面的信息，并返回实体主体</p>
-<p>HEAD：类似get请求，只不过返回的响应中没有具体的内容，用于获取报头</p>
-<p>POST：像指定资源提交数据进行处理请求，（例如提交表单或上传文件，数据被包含在请求体中</p>
-<p>PUT：从客户端向服务器传送的数据取代指定的文档的内容</p>
-<p>DELETE：请求服务器删除指定页面</p>
-
       
     </main>
     <footer class="post-footer">

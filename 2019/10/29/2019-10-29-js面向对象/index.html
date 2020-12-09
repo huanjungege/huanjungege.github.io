@@ -228,22 +228,80 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="面向对象与继承"><a href="#面向对象与继承" class="headerlink" title="面向对象与继承"></a>面向对象与继承</h1><p>原型模式</p>
+      <h1 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h1><p>我们看到的大多数引用类型值都是Object类型的实例，它的主要作用是在应用程序中存储和传输数据。</p>
+<h2 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h2><p>ECMA5中定义只有内部才用的特性<strong>attribute</strong>，描述里属性<strong>property</strong>的各种特性。ECMA中有两种属性，数据属性和访问器属性</p>
+<ol>
+<li><p>数据属性</p>
+<ol>
+<li><p>[Configurable]: 表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性，例如直接在对象上定义属性，这个特性默认为true</p>
+</li>
+<li><p>[Enumerable]: 表示能否通过for-in循环返回属性，默认为true</p>
+</li>
+<li><p>[Writable]: 表示能否修改属性值，默认为true</p>
+</li>
+<li><p>[Value]: 包含这个属性的数据值，读取属性值的时候从这个位置读，写入属性值的时候，把新值保存在这个位置。这个特性的默认值为undefined</p>
+</li>
+</ol>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> person = &#123;<br>		name = <span class="hljs-string">'Jess'</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>前三个特性默认为true，[Value]被设置为指定的值</p>
+<a id="more"></a>
+
+<h3 id="修改属性的默认特性"><a href="#修改属性的默认特性" class="headerlink" title="修改属性的默认特性"></a>修改属性的默认特性</h3><p>要修改属性默认的特性必须使用ECMA5的<code>Object.defineProperty()</code>方法。这个方法接收三个参数：属性所在的对象、属性的名字和一个描述符对象，其中描述符对象的属性必须是上面四个特性的一种或者多个</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> person = &#123;&#125;<br><span class="hljs-built_in">Object</span>.defineProperty(person, <span class="hljs-string">'name'</span>, &#123;<br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">value</span>: <span class="hljs-string">'Jess'</span><br>&#125;)<br>alert(person.name) <span class="hljs-comment">// Jess</span><br>person.name = <span class="hljs-string">'Bob'</span><br><span class="hljs-built_in">console</span>.log(person.nam) <span class="hljs-comment">// Jess</span><br></code></pre></td></tr></table></figure>
+
+<p>严格模式下，当configurable设置为false后表示不能再将它变为可配置的了，此时处理修改writable之外的特性都会导致错误</p>
+</li>
+<li><p>访问器属性</p>
+<p>访问器属性不包含数据值，它们包含一队getter和setter（不过这两个函数都不是必须的），在读取访问器属性时会调用getter函数，这个函数负责返回有效的值，在写入访问器属性时，会调用setter函数并传入新值，这个值负责决定如何处理数据。访问器有四个特性。</p>
+<ol>
+<li>Configurable</li>
+<li>Enumerable</li>
+<li>Get: 在读取属性时调用，默认为undefined</li>
+<li>Set： 在写入属性时调用的函数，默认为undefined</li>
+</ol>
+</li>
+</ol>
+<p>访问器属性不能直接定义，必须使用<code>Object.defindeProperty()</code>来定义</p>
+<h2 id="对象的创建方式"><a href="#对象的创建方式" class="headerlink" title="对象的创建方式"></a>对象的创建方式</h2><h3 id="构造函数方式创建"><a href="#构造函数方式创建" class="headerlink" title="构造函数方式创建"></a>构造函数方式创建</h3><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> smallDog = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br><br>            smallDog.eat = <span class="hljs-string">"吃骨头"</span>;<br><br>            smallDog.walk = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">"不想走路"</span>);<br><br>            &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="字面量的方式创建"><a href="#字面量的方式创建" class="headerlink" title="字面量的方式创建"></a>字面量的方式创建</h3><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj=&#123;&#125;;<br><br>obj.name=<span class="hljs-string">"小黑"</span>;<br><br>obj.age=<span class="hljs-number">10</span>;<br><br><span class="hljs-comment">//优化：</span><br><br><span class="hljs-keyword">var</span> obj2=&#123;<br><br>    <span class="hljs-attr">name</span>:<span class="hljs-string">"小小"</span>,<br><br>    <span class="hljs-attr">age</span>:<span class="hljs-number">10</span>,<br><br>    <span class="hljs-attr">sayHi</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>);<br><br>    &#125;<br><br>&#125;;<br><span class="hljs-comment">//缺陷：一次性对象，更改属性需要修改源代码</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>工厂模式是软件工程领域中一种广为人知的设计模式，这种模式抽象类创建具体对象的过程，通过封装一个函数，在函数中创建对象，对对象的属性进行赋值，在将对象return</p>
+<p>函数createPerson()能够根据接受的参数来构建一个包含所有必要信息的Person对象，可以无数次的调用这个函数，而它每次都会返回一个包含两个属性一个方法的对象，虽然解决了创建多个相似对象的问题，但仍没有解决<strong>对象的识别</strong>问题。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createObject</span>(<span class="hljs-params">name,age</span>) </span>&#123;<br><br>            <span class="hljs-keyword">var</span> o = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br><br>            o.name = name;<br><br>            o.age = age;<br><br>            o.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><br>                alert(<span class="hljs-string">"this.name"</span>);<br><br>            &#125;;<br><br>            <span class="hljs-keyword">return</span> o;<br><br>        &#125;<br><br> <br><br>            <span class="hljs-keyword">var</span> person1 = createObject(<span class="hljs-string">"小刘"</span>,<span class="hljs-number">12</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h3><p>首先如果使用构造函数创建对象<strong>首字母要大写</strong>，这样其他程序员一看就会明白这个构造函数是创建对象的。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name,age</span>) </span>&#123;<br>            <span class="hljs-keyword">this</span>.name = name;<br>            <span class="hljs-keyword">this</span>.age = age;<br>            <span class="hljs-keyword">this</span>.sayName = sayName;<br>  <br>            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayName</span>(<span class="hljs-params"></span>)</span>&#123;<br>            	alert(<span class="hljs-keyword">this</span>.name);<br>        			&#125;<br>        &#125;<br><br>        <span class="hljs-keyword">var</span> person2=<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"小刘"</span>,<span class="hljs-number">20</span>);<br></code></pre></td></tr></table></figure>
+
+<p>Person函数来代替createObject函数，不同之处在于Person函数</p>
+<ol>
+<li>没有显式的创建对象</li>
+<li>直接将属性和方法赋给来this对象</li>
+<li>没有return语句</li>
+</ol>
+<p>这种创建对象的方式会经历四个步骤</p>
+<p>1） 通过new创建一个新对象；</p>
+<p>2）将构造函数的作用域赋给新对象（因此this就指向来这个新对象）</p>
+<p>3）执行构造函数中的代码（为这个新对象添加属性）</p>
+<p>4）返回新对象</p>
+<p>两种方式创建的person1和person2分别保存着Person的一个不同的实例，这两个对象都有一个<code>constructor</code>属性，这个属性指向Person。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">alert(person1.constructor == Person) <span class="hljs-comment">// true</span><br>alert(person2.constructor == Person) <span class="hljs-comment">// true</span><br><span class="hljs-comment">// 使用instanceof操作符监测对象类型</span><br>alert(person1 <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>) <span class="hljs-comment">// true</span><br>alert(person1 <span class="hljs-keyword">instanceof</span> Person) <span class="hljs-comment">// true</span><br>alert(person2 <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>) <span class="hljs-comment">// true</span><br>alert(person2 <span class="hljs-keyword">instanceof</span> Person) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="面向对象与继承"><a href="#面向对象与继承" class="headerlink" title="面向对象与继承"></a>面向对象与继承</h2><p>原型模式</p>
 <p>我们所创建的每个函数都有一个<code>prototype</code>(原型)属性，这个属性是一个指针，指向一个对象，意思就是所有对象都可以共享它所包含的属性和方法，并且所有对象都会从它的原型上继承一个<code>constructor</code>属性</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> o = &#123;&#125;;<br>o.constructor === <span class="hljs-built_in">Object</span>; <span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
 
-{% asset_img 03.jpg %}
-
-<a id="more"></a>
+<img src="/2019/10/29/2019-10-29-js面向对象/03.jpg">
 
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>) </span>&#123;<br>&#125;<br>Person.prototype.name = <span class="hljs-string">"mike"</span>;<br>Person.prototype.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    alert(<span class="hljs-keyword">this</span>.name);<br>&#125;<br><span class="hljs-keyword">var</span> person1 = <span class="hljs-keyword">new</span> Person();<br>preson1.sayName(); <span class="hljs-comment">//mike</span><br><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person();<br>person2.sayName(); <span class="hljs-comment">//mike</span><br>alert(person1.sayName == person2.sayName) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="理解原型对象"><a href="#理解原型对象" class="headerlink" title="理解原型对象"></a>理解原型对象</h2><img src="/2019/10/29/2019-10-29-js面向对象/01.jpg">
+<h2 id="理解原型对象"><a href="#理解原型对象" class="headerlink" title="理解原型对象"></a>理解原型对象</h2>{% asset_img 01.jpg %}
 
-<img src="/2019/10/29/2019-10-29-js面向对象/02.jpg">
+{% asset_img 02.jpg %}
 
 <p><strong>事实上现在所展示的原型链还少一环，所有引用类型默认都继承了<code>Object</code>，而这个继承也是通过原型链实现的。因此默认原型内部还有一个指针，指向<code>Object.prototype</code>下面这个图为我们展示了完整的原型链</strong></p>
-<img src="/2019/10/29/2019-10-29-js面向对象/04.png">
+{% asset_img 04.png %}
 
 <p>虽然通过对象实例可以访问保存在原型中的值，但是却不能通过对象实例重写原型中的值。如果我们在实例中添加了一个属性与实例原型中的属性重名，那么会在实例中创建该属性以屏蔽原型中的那个属性</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;<br>&#125;<br>Person.prototype.name = <span class="hljs-string">"mike"</span>;<br><span class="hljs-keyword">var</span> person1 = <span class="hljs-keyword">new</span> Person();<br><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person();<br>person1.name = <span class="hljs-string">"Greg"</span>;<br>alert(person1.name)<span class="hljs-comment">//Greg已经修改</span><br>alert(person2.name)<span class="hljs-comment">//mike 仍然访问原型数据</span><br><span class="hljs-keyword">delete</span> person1.name<br>alert(person1.name)<span class="hljs-comment">//mike</span><br></code></pre></td></tr></table></figure>
@@ -344,7 +402,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#面向对象与继承"><span class="toc-text">面向对象与继承</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#理解原型对象"><span class="toc-text">理解原型对象</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#实现b继承a的方法"><span class="toc-text">实现b继承a的方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型链继承"><span class="toc-text">原型链继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#借用构造函数继承"><span class="toc-text">借用构造函数继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型式继承"><span class="toc-text">原型式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生式继承"><span class="toc-text">寄生式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生组合式继承"><span class="toc-text">寄生组合式继承</span></a></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Object类型"><span class="toc-text">Object类型</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#属性类型"><span class="toc-text">属性类型</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#修改属性的默认特性"><span class="toc-text">修改属性的默认特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#对象的创建方式"><span class="toc-text">对象的创建方式</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#构造函数方式创建"><span class="toc-text">构造函数方式创建</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#字面量的方式创建"><span class="toc-text">字面量的方式创建</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#工厂模式"><span class="toc-text">工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#构造函数模式"><span class="toc-text">构造函数模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#面向对象与继承"><span class="toc-text">面向对象与继承</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#理解原型对象"><span class="toc-text">理解原型对象</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#实现b继承a的方法"><span class="toc-text">实现b继承a的方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型链继承"><span class="toc-text">原型链继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#借用构造函数继承"><span class="toc-text">借用构造函数继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原型式继承"><span class="toc-text">原型式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生式继承"><span class="toc-text">寄生式继承</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄生组合式继承"><span class="toc-text">寄生组合式继承</span></a></li></ol></li></ol></li></ol></div>
     </div>
     
     

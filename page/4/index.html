@@ -390,11 +390,23 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <h1 id="面向对象与继承"><a href="#面向对象与继承" class="headerlink" title="面向对象与继承"></a>面向对象与继承</h1><p>原型模式</p>
-<p>我们所创建的每个函数都有一个<code>prototype</code>(原型)属性，这个属性是一个指针，指向一个对象，意思就是所有对象都可以共享它所包含的属性和方法，并且所有对象都会从它的原型上继承一个<code>constructor</code>属性</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> o = &#123;&#125;;<br>o.constructor === <span class="hljs-built_in">Object</span>; <span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+      <h1 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h1><p>我们看到的大多数引用类型值都是Object类型的实例，它的主要作用是在应用程序中存储和传输数据。</p>
+<h2 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h2><p>ECMA5中定义只有内部才用的特性<strong>attribute</strong>，描述里属性<strong>property</strong>的各种特性。ECMA中有两种属性，数据属性和访问器属性</p>
+<ol>
+<li><p>数据属性</p>
+<ol>
+<li><p>[Configurable]: 表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性，例如直接在对象上定义属性，这个特性默认为true</p>
+</li>
+<li><p>[Enumerable]: 表示能否通过for-in循环返回属性，默认为true</p>
+</li>
+<li><p>[Writable]: 表示能否修改属性值，默认为true</p>
+</li>
+<li><p>[Value]: 包含这个属性的数据值，读取属性值的时候从这个位置读，写入属性值的时候，把新值保存在这个位置。这个特性的默认值为undefined</p>
+</li>
+</ol>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> person = &#123;<br>		name = <span class="hljs-string">'Jess'</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-{% asset_img 03.jpg %}
+<p>前三个特性默认为true，[Value]被设置为指定的值</p></li></ol>
       
     </main>
     <footer class="post-footer">
