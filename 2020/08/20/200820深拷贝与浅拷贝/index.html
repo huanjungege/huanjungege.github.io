@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>js作用域 | Yo_huanjun - Practice makes perfect.</title>
+    <title>深拷贝与浅拷贝 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -197,7 +197,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2019/11/27/2019-11-27-js作用域/">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/20/200820深拷贝与浅拷贝/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content>
        <meta itemprop="description" content="Either stand out or kicked out.">
@@ -208,11 +208,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">js作用域</h1>
+      <h1 class="post-title" itemprop="name headline">深拷贝与浅拷贝</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-11-27T13:10:57+08:00">2019-11-27 13:10:57</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-20T21:28:09+08:00">2020-08-20 21:28:09</time></span>
         </span>
         
         
@@ -221,62 +221,34 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
         </span>
         
         
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="关于函数作用域"><a href="#关于函数作用域" class="headerlink" title="关于函数作用域"></a>关于函数作用域</h1><p>几乎所有编程语言的基本功能之一就是<strong>能够存储变量当中的值</strong>，并且能在这之后进行访问和修改，那么变量存储在哪里？程序需要的时候如何找到他们。</p>
-<p>事实上js也是一门编译语言，并且大部分情况下编译发生在代码执行前的几微秒（甚至更短）。</p>
-<h2 id="关于编译原理"><a href="#关于编译原理" class="headerlink" title="关于编译原理"></a>关于编译原理</h2><a id="more"></a>
+      <h1 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h1><h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>提到深拷贝与浅拷贝就要探讨js中的数据类型，基本类型例如，<code>Number</code>,<code>String</code>等，他们的值是不可变的，动态的修改了基本数据类型的值它的原始值也是不会改变的</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> s = <span class="hljs-string">"abc"</span><br><span class="hljs-built_in">console</span>.log(st[<span class="hljs-number">1</span>]=<span class="hljs-string">"d"</span>)<br><span class="hljs-built_in">console</span>.log(s)<span class="hljs-comment">//abc</span><br></code></pre></td></tr></table></figure>
 
-<p>传统编译语言的流程中，程序的一段源代码在执行之前会有三个步骤，统称为“编译”。</p>
-<ol>
-<li><p>分词/词法分析</p>
-<p>这个过程会将由字符组成的字符串分解成（对编程语言来说）有意义的代码块，这些代 码块被称为词法单元（token）。例如，考虑程序 var a = 2;。这段程序通常会被分解成 为下面这些词法单元：var、a、=、2 、;。空格是否会被当作词法单元，取决于空格在 这门语言中是否具有意义。</p>
-</li>
-<li><p>解析/语法分析</p>
-<p>这个过程是将词法单元流（数组）转换成一个由元素逐级嵌套所组成的代表了程序语法 结构的树。这个树被称为“抽象语法树”（Abstract Syntax Tree，AST）。</p>
-</li>
-<li><p>代码生成</p>
-<p>将AST转换为可执行代码的过程被称为代码生成。</p>
-</li>
-</ol>
-<h2 id="理解作用域"><a href="#理解作用域" class="headerlink" title="理解作用域"></a>理解作用域</h2><h3 id="进行工作的工作员"><a href="#进行工作的工作员" class="headerlink" title="进行工作的工作员"></a>进行工作的工作员</h3><ol>
-<li><p>引擎</p>
-<p>从头到尾负责整个JavaScript程序的编译及执行过程</p>
-</li>
-<li><p>编译器</p>
-<p>负责语法分析及代码生成</p>
-</li>
-<li><p>作用域</p>
-<p>负责收集并维护所有声明的变量组成的一系列查询，并实施非常严格的规则，确定当前执行的代码对这些标识符的访问权限</p>
-</li>
-</ol>
-<h3 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h3><p>对于 var a = 2 ;</p>
-<p>为变量分配内存，将其命名为a，然后将值2保存进这个变量，这句话并不完全正确</p>
-<p>事实上编译器会进行如下处理：</p>
-<ul>
-<li>遇到 var a，编译器会询问作用域是否已经有一个该名称的变量存在于同一个作用域的 集合中。如果是，编译器会忽略该声明，继续进行编译；否则它会要求作用域在当前作 用域的集合中声明一个新的变量，并命名为 a。</li>
-<li>接下来编译器会为引擎生成运行时所需的代码，这些代码被用来处理 a = 2 这个赋值 操作。引擎运行时会首先询问作用域，在当前的作用域集合中是否存在一个叫作 a 的 变量。如果是，引擎就会使用这个变量；如果否，引擎会继续查找该变量。</li>
-</ul>
-<p>如果引擎最终找到了 a 变量，就会将 2 赋值给它。否则引擎就会举手示意并抛出一个异 常！</p>
-<h4 id="编译器的查询类型"><a href="#编译器的查询类型" class="headerlink" title="编译器的查询类型"></a>编译器的查询类型</h4><p>当变量出现在赋值操作的左侧时进行LHS查询，出现在右侧时进行RHS查询。讲得更准确一点，RHS 查询与简单地查找某个变量的值别无二致，而 LHS 查询则是试图 找到变量的容器本身，从而可以对其赋值。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(a)<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
 
-<p>其中对a的引用是一个RHS引用，因为这里 a 并没有赋予任何值。相应地，需要查找并取 得 a 的值，这样才能将值传递给 console.log(..)。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">a = <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>引用类型是存放在堆内存中的，变量实际上存放着一个放在栈内存的指针，引用类型可以直接改变它的值</p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>浅拷贝是将原对象或数组的引用直接赋给新对象，新数组它们只是原对象的一个引用</p>
+<p>首先我们通过赋值复制一个数组</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj1 = &#123;<br>       <span class="hljs-string">'name'</span> : <span class="hljs-string">'zhangsan'</span>,<br>       <span class="hljs-string">'age'</span> :  <span class="hljs-string">'18'</span>,<br>       <span class="hljs-string">'language'</span> : [<span class="hljs-number">1</span>,[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]],<br>   &#125;;<br><br>   <span class="hljs-keyword">var</span> obj2 = obj1;<br><br><br>   <span class="hljs-keyword">var</span> obj3 = shallowCopy(obj1);<br>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shallowCopy</span>(<span class="hljs-params">src</span>) </span>&#123;<br>       <span class="hljs-keyword">var</span> dst = &#123;&#125;;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> prop <span class="hljs-keyword">in</span> src) &#123;<br>           <span class="hljs-keyword">if</span> (src.hasOwnProperty(prop)) &#123;<br>               dst[prop] = src[prop];<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> dst;<br>   &#125;<br><br>   obj2.name = <span class="hljs-string">"lisi"</span>;<br>   obj3.age = <span class="hljs-string">"20"</span>;<br><br>   obj2.language[<span class="hljs-number">1</span>] = [<span class="hljs-string">"二"</span>,<span class="hljs-string">"三"</span>];<br>   obj3.language[<span class="hljs-number">2</span>] = [<span class="hljs-string">"四"</span>,<span class="hljs-string">"五"</span>];<br><br>   <span class="hljs-built_in">console</span>.log(obj1);  <br>   <span class="hljs-comment">//obj1 = &#123;</span><br>   <span class="hljs-comment">//    'name' : 'lisi',</span><br>   <span class="hljs-comment">//    'age' :  '18',</span><br>   <span class="hljs-comment">//    'language' : [1,["二","三"],["四","五"]],</span><br>   <span class="hljs-comment">//&#125;;</span><br><br>   <span class="hljs-built_in">console</span>.log(obj2);<br>   <span class="hljs-comment">//obj2 = &#123;</span><br>   <span class="hljs-comment">//    'name' : 'lisi',</span><br>   <span class="hljs-comment">//    'age' :  '18',</span><br>   <span class="hljs-comment">//    'language' : [1,["二","三"],["四","五"]],</span><br>   <span class="hljs-comment">//&#125;;</span><br><br>   <span class="hljs-built_in">console</span>.log(obj3);<br>   <span class="hljs-comment">//obj3 = &#123;</span><br>   <span class="hljs-comment">//    'name' : 'zhangsan',</span><br>   <span class="hljs-comment">//    'age' :  '20',</span><br>   <span class="hljs-comment">//    'language' : [1,["二","三"],["四","五"]],</span><br>   <span class="hljs-comment">//&#125;;</span><br></code></pre></td></tr></table></figure>
 
-<p>这里对 a 的引用则是 LHS 引用，因为实际上我们并不关心当前的值是什么，只是想要为 = 2 这个赋值操作找到一个目标。</p>
+<p>如果属性是基本数据类型，拷贝的就是基本类型的值，如果属性是引用类型拷贝的就是内存地址，所以如果其中一个对像改变了，这个引用类型的属性或者说是地就会影响到另一个对像。</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>创建一个新的对像和数组，将原对象的各个属性的值（数组的所有元素）拷贝过来，<strong>是值而不是引用</strong></p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> array = [<br>    &#123; <span class="hljs-attr">number</span>: <span class="hljs-number">1</span> &#125;,<br>    &#123; <span class="hljs-attr">number</span>: <span class="hljs-number">2</span> &#125;,<br>    &#123; <span class="hljs-attr">number</span>: <span class="hljs-number">3</span> &#125;<br>];<br><span class="hljs-keyword">var</span> copyArray = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(array))<br>copyArray[<span class="hljs-number">0</span>].number = <span class="hljs-number">100</span>;<br><span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">//  [&#123;number: 1&#125;, &#123; number: 2 &#125;, &#123; number: 3 &#125;]</span><br><span class="hljs-built_in">console</span>.log(copyArray); <span class="hljs-comment">// [&#123;number: 100&#125;, &#123; number: 2 &#125;, &#123; number: 3 &#125;]</span><br></code></pre></td></tr></table></figure>
+
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        <a class="post-tag button" href="/tags/javascript/" rel="tag"><i class="fas fa-tags"></i>javascript</a>
         
       </div>
       
@@ -287,12 +259,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2019/11/11/2019-11-11-Vue-01/" rel="next" title="2019-11-11-Vue-01"><i class="fas fa-angle-left"></i><span class="nav-title">2019-11-11-Vue-01</span></a>
+      <a href="/2020/08/19/ES6rest参数和拓展运算符/" rel="next" title="ES6rest参数和拓展运算符"><i class="fas fa-angle-left"></i><span class="nav-title">ES6rest参数和拓展运算符</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2020/02/20/2020-02-20-1/" rel="prev" title="写给自己看的flex布局"><span class="nav-title">写给自己看的flex布局</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2020/08/26/8-26迭代器Iterator/" rel="prev" title="迭代器Iterator"><span class="nav-title">迭代器Iterator</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -348,7 +320,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#关于函数作用域"><span class="toc-text">关于函数作用域</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#关于编译原理"><span class="toc-text">关于编译原理</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#理解作用域"><span class="toc-text">理解作用域</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#进行工作的工作员"><span class="toc-text">进行工作的工作员</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#编译器"><span class="toc-text">编译器</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#编译器的查询类型"><span class="toc-text">编译器的查询类型</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#深拷贝与浅拷贝"><span class="toc-text">深拷贝与浅拷贝</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#基本类型"><span class="toc-text">基本类型</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#引用类型"><span class="toc-text">引用类型</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#浅拷贝"><span class="toc-text">浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#深拷贝"><span class="toc-text">深拷贝</span></a></li></ol></li></ol></div>
     </div>
     
     
