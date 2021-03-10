@@ -230,10 +230,10 @@
     <main class="post-main" itemprop="articleBody">
       <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>Promise 是异步编程的解决方案，比传统的解决方案–回调函数和事件–更合理和强大。</p>
 <h2 id="回调异步"><a href="#回调异步" class="headerlink" title="回调异步"></a>回调异步</h2><p>在JS中的异步处理，第一时间想到的就是利用回调函数</p>
-<a id="more"></a>
-
 <p>通过回调实现x+y运算</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//利用回调函数的异步处理</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">getX, getY, cb</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> x, y;<br>  getX(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">xVal</span>)</span>&#123;<br>    x = xVal;<br>    <span class="hljs-comment">//去判断是否有值</span><br>    <span class="hljs-keyword">if</span>(y != <span class="hljs-literal">undefined</span>) &#123;<br>      cb(x + y);<br>    &#125;<br>  &#125;);<br>  getY(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">yVal</span>)</span>&#123;<br>    y = yVal;<br>    <span class="hljs-comment">//去判断是否有值</span><br>    <span class="hljs-keyword">if</span>(x != <span class="hljs-literal">undefined</span>) &#123;<br>      cb(x + y);<br>    &#125;<br>  &#125;);<br>&#125;<br>add(fetchX, fetchY, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">sum</span>)</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(sum)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>我们将x和y作为未来值，进行了一个运算add()</p>
 <p>回调多了会出现层层嵌套，可读性变差，调试困难</p>
