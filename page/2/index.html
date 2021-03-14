@@ -198,6 +198,60 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/01/2020-08-01记this的指向/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/08/01/2020-08-01记this的指向/" itemprop="url">记this的指向</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-01T21:27:39+08:00">2020-08-01 21:27:39</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><p>this的指向在函数的定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，所以this的最终指向的是调用它的对象（理论上）</p>
+<p>第一个例子</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">app</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> user = <span class="hljs-string">"bpp"</span>; <br>    <span class="hljs-built_in">console</span>.log(user);<span class="hljs-comment">//undefined</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);<span class="hljs-comment">//window</span><br>&#125;<br>app()在全局作用域<span class="hljs-built_in">window</span>中调用app()<br></code></pre></td></tr></table></figure>
+
+<p>此时this最终指向的是调用它的对象window，相当于<code>window.app()</code></p>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/JS/" rel="tag"><i class="fas fa-tags"></i>JS</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/07/31/7-31记/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -708,60 +762,6 @@
       <div class="post-tags">
         
         <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2019/10/31/2019-10-31-函数表达式/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/31/2019-10-31-函数表达式/" itemprop="url">Js函数表达式</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-31T08:15:01+08:00">2019-10-31 08:15:01</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <img src="/2019/10/31/2019-10-31-函数表达式/48.jpg">
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/闭包/" rel="tag"><i class="fas fa-tags"></i>闭包</a>
-        
-        <a class="post-tag button" href="/tags/递归/" rel="tag"><i class="fas fa-tags"></i>递归</a>
         
       </div>
       

@@ -198,7 +198,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/02/22/2021-2-22Js作用域/">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/14/2021-3-14-Vueslot简析/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
         <meta itemprop="description" content="Either stand out or kicked out.">
@@ -210,24 +210,101 @@
     </div>
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2021/02/22/2021-2-22Js作用域/" itemprop="url">2021-2-22Js作用域</a>
+        <a class="post-title-link post-title-link-external" href="/2021/03/14/2021-3-14-Vueslot简析/" itemprop="url">2021-3-14-Vueslot简析</a>
       </h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-02-22T10:44:04+08:00">2021-02-22 10:44:04</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-14T20:59:03+08:00">2021-03-14 20:59:03</time></span>
         </span>
         
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+        </span>
         
         
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      
+      <p>关于slot，在组件化的模式下，通常遇到一个会多次使用的元素，例如封装一个后台管理系统常需要用到的表格，弹窗等等组件，但是通常在复用性高的情况下又有略微的不同，例如一个弹窗，有的情况可能需要仅仅展示一个图片一个按钮，有时又需要展示出这个弹窗的标题，那么根据不同的情况，我们会在这个组件中穿插不同的元素，这个时候就需要用到插槽。</p>
       
     </main>
     <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/slot/" rel="tag"><i class="fas fa-tags"></i>slot</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/14/2021-3-14CSS简写/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/03/14/2021-3-14CSS简写/" itemprop="url">2021-3-14CSS简写</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-14T19:46:40+08:00">2021-03-14 19:46:40</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>关于合理的简写：</p>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">blue</span>;<br><span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-tag">blue</span>;<br></code></pre></td></tr></table></figure>
+
+<p>前者是简写，可以确保你得到一个蓝色的纯色背景，但是如果你使用展开式的单个属性，那么这个元素的背景最终可能显示为一个粉红色的图案，一张图片，或者其他任何东西，因为同时可能会有一条<code>background-image</code>在其作用，展开式的写法不会帮助我们清空所有其他相关的属性，<strong>你设置了一个蓝色背景，又在下面几行设置了一张背景图片，那么你永远也看不到这个蓝色的背景图片!</strong></p>
+{% asset_img 1.png %}
+
+<p>比如我们要实现li前面的背景图片可以设置</p>
+<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CSS">background:  #badcfe url(./images/icon2.gif) no-repeat left center;<br></code></pre></td></tr></table></figure>
+
+<p>但是这个是我在设置<code>list-style-image</code>无效的情况下的无奈之举</p>
+<p>当时使用的是dl自定义列表，那么要使用</p>
+<figure class="hljs highlight CSS"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs CSS"><span class="hljs-selector-tag">display</span>: <span class="hljs-selector-tag">list-item</span>;<br><span class="hljs-selector-tag">list-style</span>: <span class="hljs-selector-tag">url</span>()<br></code></pre></td></tr></table></figure>
+
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/CSS3/" rel="tag"><i class="fas fa-tags"></i>CSS3</a>
+        
+      </div>
       
     </footer>
   </article>
@@ -396,7 +473,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/10/14/201014Sessioncookie/">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/10/14/2020-10-14Sessioncookie/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
         <meta itemprop="description" content="Either stand out or kicked out.">
@@ -408,7 +485,7 @@
     </div>
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/10/14/201014Sessioncookie/" itemprop="url">Session&&cookie</a>
+        <a class="post-title-link post-title-link-external" href="/2020/10/14/2020-10-14Sessioncookie/" itemprop="url">Session&&cookie</a>
       </h1>
       <div class="post-meta">
         
@@ -484,7 +561,7 @@
     <main class="post-main" itemprop="articleBody">
       
       <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>Promise 是异步编程的解决方案，比传统的解决方案–回调函数和事件–更合理和强大。</p>
-<h2 id="回调异步"><a href="#回调异步" class="headerlink" title="回调异步"></a>回调异步</h2><p>在JS中的异步处理，第一时间想到的就是利用回调函数</p>
+<h2 id="回调异步来处理异步"><a href="#回调异步来处理异步" class="headerlink" title="回调异步来处理异步"></a>回调异步来处理异步</h2><p>在JS中的异步处理，第一时间想到的就是利用回调函数</p>
 <p>通过回调实现x+y运算</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//利用回调函数的异步处理</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">getX, getY, cb</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> x, y;<br>  getX(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">xVal</span>)</span>&#123;<br>    x = xVal;<br>    <span class="hljs-comment">//去判断是否有值</span><br>    <span class="hljs-keyword">if</span>(y != <span class="hljs-literal">undefined</span>) &#123;<br>      cb(x + y);<br>    &#125;<br>  &#125;);<br>  getY(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">yVal</span>)</span>&#123;<br>    y = yVal;<br>    <span class="hljs-comment">//去判断是否有值</span><br>    <span class="hljs-keyword">if</span>(x != <span class="hljs-literal">undefined</span>) &#123;<br>      cb(x + y);<br>    &#125;<br>  &#125;);<br>&#125;<br>add(fetchX, fetchY, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">sum</span>)</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(sum)<br>&#125;)<br></code></pre></td></tr></table></figure>
       
@@ -562,7 +639,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/20/200820深拷贝与浅拷贝/">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/20/2020-8-20深拷贝与浅拷贝/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
         <meta itemprop="description" content="Either stand out or kicked out.">
@@ -574,7 +651,7 @@
     </div>
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/20/200820深拷贝与浅拷贝/" itemprop="url">深拷贝与浅拷贝</a>
+        <a class="post-title-link post-title-link-external" href="/2020/08/20/2020-8-20深拷贝与浅拷贝/" itemprop="url">深拷贝与浅拷贝</a>
       </h1>
       <div class="post-meta">
         
@@ -664,60 +741,6 @@
         <a class="post-tag button" href="/tags/JS/" rel="tag"><i class="fas fa-tags"></i>JS</a>
         
         <a class="post-tag button" href="/tags/Date对象/" rel="tag"><i class="fas fa-tags"></i>Date对象</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/01/2020-08-01记this的指向/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/01/2020-08-01记this的指向/" itemprop="url">记this的指向</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-01T21:27:39+08:00">2020-08-01 21:27:39</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><p>this的指向在函数的定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，所以this的最终指向的是调用它的对象（理论上）</p>
-<p>第一个例子</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">app</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> user = <span class="hljs-string">"bpp"</span>; <br>    <span class="hljs-built_in">console</span>.log(user);<span class="hljs-comment">//undefined</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);<span class="hljs-comment">//window</span><br>&#125;<br>app()在全局作用域<span class="hljs-built_in">window</span>中调用app()<br></code></pre></td></tr></table></figure>
-
-<p>此时this最终指向的是调用它的对象window，相当于<code>window.app()</code></p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/JS/" rel="tag"><i class="fas fa-tags"></i>JS</a>
         
       </div>
       

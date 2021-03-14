@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Archive | Yo_huanjun - Practice makes perfect.</title>
+    <title>Session&&cookie | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -193,34 +193,99 @@
         <div class="main-container">
           <div class="content">
             
-<div id="archive" class="archive page">
-  <h1 class="page-title">Archive</h1>
-  <h2 class="page-counter">
-    
-    You have 30 posts!
-    
-  </h2>
-  
-  
-  
-  
-  <h2 class="page-title">2019
+<div id="post" class="page">
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/05/16/2020-05-16函数/" itemprop="url">Js中的函数</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2019-05-16T08:12:34+08:00">05-16</time>
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/10/14/2020-10-14Sessioncookie/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/avatar.jpg">
       </span>
-      
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Session&&cookie</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-14T08:31:53+08:00">2020-10-14 08:31:53</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+        </span>
+        
+        
+      </div>
     </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>Session和Cookie产生的原因：</p>
+<p>因为Http的一个显著特征为无状态！无状态意味着它不记录请求它的用户信息，无法区分是否来自同一个用户。</p>
+<a id="more"></a>
+
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在计算机中，尤其是在网络应用中，称为“会话控制”。Session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当用户请求来自应用程序的 Web 页时，如果该用户还没有会话，则 Web 服务器将自动创建一个 Session 对象。当会话过期或被放弃后，服务器将终止该会话。</p>
+<p>session是另一种记录服务器和客户端会话状态的机制。</p>
+<ol>
+<li>用户第一次请求服务器时，服务器端会生成一个sessionid</li>
+<li>服务器端将生成的sessionid返回给客户端，通过set-cookie</li>
+<li>客户端收到sessionid会将它保存在cookie中，当客户端再次访问服务端时会带上这个sessionid</li>
+<li>当服务端再次接收到来自客户端的请求时，会先去检查是否存在sessionid，不存在就新建一个sessionid重复1,2的流程，如果存在就去遍历服务端的session文件，找到与这个sessionid相对应的文件，文件中的键值便是sessionid，值为当前用户的一些信息</li>
+<li>此后的请求都会交换这个 Session ID，进行有状态的会话。</li>
+</ol>
+
+
+<h2 id="Session的实现方式"><a href="#Session的实现方式" class="headerlink" title="Session的实现方式"></a>Session的实现方式</h2><p>1、借助Cookie的sessionId发送的方式</p>
+<p>2、通过LocalStorage的方式</p>
+<p>3、URL回写的方式，这是客户端禁止接收Cookie之后的方法。</p>
+<p>4、隐藏表单字段（hidden）</p>
+<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于<a href="https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%23HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的HTTP协议记录稳定的状态信息成为了可能。</p>
+<p>可以看到上面实现Session的方式第一项就是借助Cookie去携带Sessionid，所以可以说Cookie也是实现Session的一种方式</p>
+<h2 id="Session与Cookie的区别"><a href="#Session与Cookie的区别" class="headerlink" title="Session与Cookie的区别"></a>Session与Cookie的区别</h2><ul>
+<li><strong>安全性：</strong> Session 比 Cookie 安全，Session 是存储在服务器端的，Cookie 是存储在客户端的。</li>
+<li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li>
+<li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li>
+<li><strong>存储大小不同：</strong> 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Cookie/" rel="tag"><i class="fas fa-tags"></i>Cookie</a>
+        
+        <a class="post-tag button" href="/tags/session/" rel="tag"><i class="fas fa-tags"></i>session</a>
+        
+      </div>
+      
+    </footer>
   </article>
   
   
-</h2></div>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/08/27/2021-08-27Promise/" rel="next" title="Promise"><i class="fas fa-angle-left"></i><span class="nav-title">Promise</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/10/26/2020-10-27-mysql/" rel="prev" title="2020_1027mysql"><span class="nav-title">2020_1027mysql</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
 
           </div>
           
@@ -262,6 +327,17 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Session"><span class="toc-text">Session</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#概念"><span class="toc-text">概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Session的实现方式"><span class="toc-text">Session的实现方式</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Cookie"><span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Session与Cookie的区别"><span class="toc-text">Session与Cookie的区别</span></a></li></ol></div>
+    </div>
+    
     
     
     <hr>

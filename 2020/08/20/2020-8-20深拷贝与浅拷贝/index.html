@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Date函数 | Yo_huanjun - Practice makes perfect.</title>
+    <title>深拷贝与浅拷贝 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -197,7 +197,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/17/2020-8-17-Date函数/">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/20/2020-8-20深拷贝与浅拷贝/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content>
        <meta itemprop="description" content="Either stand out or kicked out.">
@@ -208,11 +208,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">Date函数</h1>
+      <h1 class="post-title" itemprop="name headline">深拷贝与浅拷贝</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-17T17:40:18+08:00">2020-08-17 17:40:18</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-20T21:28:09+08:00">2020-08-20 21:28:09</time></span>
         </span>
         
         
@@ -221,55 +221,34 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
         </span>
         
         
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="JS日期"><a href="#JS日期" class="headerlink" title="JS日期"></a>JS日期</h1><h2 id="关于创建时间对象"><a href="#关于创建时间对象" class="headerlink" title="关于创建时间对象"></a>关于创建时间对象</h2><h3 id="创建日期对象的四种方法"><a href="#创建日期对象的四种方法" class="headerlink" title="创建日期对象的四种方法"></a>创建日期对象的四种方法</h3><p><code>new Date()</code></p>
-<p><code>new Date(year, month,day, hours, minutes, seconds, milliseconds)</code></p>
-<p><code>new Date(milliseconds)</code></p>
-<p><code>new Date(date string)</code></p>
-<p>1、不传参数创建日期</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<span class="hljs-comment">//Mon Aug 17 2020 17:47:35 GMT+0800 (中国标准时间)</span><br></code></pre></td></tr></table></figure>
+      <h1 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h1><h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>提到深拷贝与浅拷贝就要探讨js中的数据类型，基本类型例如，<code>Number</code>,<code>String</code>等，他们的值是不可变的，动态的修改了基本数据类型的值它的原始值也是不会改变的</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> s = <span class="hljs-string">"abc"</span><br><span class="hljs-built_in">console</span>.log(st[<span class="hljs-number">1</span>]=<span class="hljs-string">"d"</span>)<br><span class="hljs-built_in">console</span>.log(s)<span class="hljs-comment">//abc</span><br></code></pre></td></tr></table></figure>
 
-<p>2、加入年月日等参数</p>
 <a id="more"></a>
 
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">2020</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>);<span class="hljs-comment">//Fri Dec 11 2020 00:00:00 GMT+0800 (中国标准时间)</span><br><span class="hljs-comment">//为日期指定内容</span><br></code></pre></td></tr></table></figure>
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>引用类型是存放在堆内存中的，变量实际上存放着一个放在栈内存的指针，引用类型可以直接改变它的值</p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>浅拷贝是将原对象或数组的引用直接赋给新对象，新数组它们只是原对象的一个引用</p>
+<p>首先我们通过赋值复制一个数组</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj1 = &#123;<br>       <span class="hljs-string">'name'</span> : <span class="hljs-string">'zhangsan'</span>,<br>       <span class="hljs-string">'age'</span> :  <span class="hljs-string">'18'</span>,<br>       <span class="hljs-string">'language'</span> : [<span class="hljs-number">1</span>,[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]],<br>   &#125;;<br><br>   <span class="hljs-keyword">var</span> obj2 = obj1;<br><br><br>   <span class="hljs-keyword">var</span> obj3 = shallowCopy(obj1);<br>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shallowCopy</span>(<span class="hljs-params">src</span>) </span>&#123;<br>       <span class="hljs-keyword">var</span> dst = &#123;&#125;;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> prop <span class="hljs-keyword">in</span> src) &#123;<br>           <span class="hljs-keyword">if</span> (src.hasOwnProperty(prop)) &#123;<br>               dst[prop] = src[prop];<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> dst;<br>   &#125;<br><br>   obj2.name = <span class="hljs-string">"lisi"</span>;<br>   obj3.age = <span class="hljs-string">"20"</span>;<br><br>   obj2.language[<span class="hljs-number">1</span>] = [<span class="hljs-string">"二"</span>,<span class="hljs-string">"三"</span>];<br>   obj3.language[<span class="hljs-number">2</span>] = [<span class="hljs-string">"四"</span>,<span class="hljs-string">"五"</span>];<br><br>   <span class="hljs-built_in">console</span>.log(obj1);  <br>   <span class="hljs-comment">//obj1 = &#123;</span><br>   <span class="hljs-comment">//    'name' : 'lisi',</span><br>   <span class="hljs-comment">//    'age' :  '18',</span><br>   <span class="hljs-comment">//    'language' : [1,["二","三"],["四","五"]],</span><br>   <span class="hljs-comment">//&#125;;</span><br><br>   <span class="hljs-built_in">console</span>.log(obj2);<br>   <span class="hljs-comment">//obj2 = &#123;</span><br>   <span class="hljs-comment">//    'name' : 'lisi',</span><br>   <span class="hljs-comment">//    'age' :  '18',</span><br>   <span class="hljs-comment">//    'language' : [1,["二","三"],["四","五"]],</span><br>   <span class="hljs-comment">//&#125;;</span><br><br>   <span class="hljs-built_in">console</span>.log(obj3);<br>   <span class="hljs-comment">//obj3 = &#123;</span><br>   <span class="hljs-comment">//    'name' : 'zhangsan',</span><br>   <span class="hljs-comment">//    'age' :  '20',</span><br>   <span class="hljs-comment">//    'language' : [1,["二","三"],["四","五"]],</span><br>   <span class="hljs-comment">//&#125;;</span><br></code></pre></td></tr></table></figure>
 
-<p>注：<strong>对于月份来说一月的索引为0，12月为11</strong></p>
-<p>所以我们在获取月份时也要注意+1才是正确的我们所说的月份</p>
-<p>3、如果只传入一个参数，则按照毫秒为参数添加进函数,将返回一个按照零时加上毫秒数的新的日期对象</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+<p>如果属性是基本数据类型，拷贝的就是基本类型的值，如果属性是引用类型拷贝的就是内存地址，所以如果其中一个对像改变了，这个引用类型的属性或者说是地就会影响到另一个对像。</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>创建一个新的对像和数组，将原对象的各个属性的值（数组的所有元素）拷贝过来，<strong>是值而不是引用</strong></p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> array = [<br>    &#123; <span class="hljs-attr">number</span>: <span class="hljs-number">1</span> &#125;,<br>    &#123; <span class="hljs-attr">number</span>: <span class="hljs-number">2</span> &#125;,<br>    &#123; <span class="hljs-attr">number</span>: <span class="hljs-number">3</span> &#125;<br>];<br><span class="hljs-keyword">var</span> copyArray = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(array))<br>copyArray[<span class="hljs-number">0</span>].number = <span class="hljs-number">100</span>;<br><span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">//  [&#123;number: 1&#125;, &#123; number: 2 &#125;, &#123; number: 3 &#125;]</span><br><span class="hljs-built_in">console</span>.log(copyArray); <span class="hljs-comment">// [&#123;number: 100&#125;, &#123; number: 2 &#125;, &#123; number: 3 &#125;]</span><br></code></pre></td></tr></table></figure>
 
-<p>JavaScript 将日期存储为自 1970 年 1 月 1 日 00:00:00 UTC（协调世界时）以来的毫秒数。</p>
-<p>零时间是 1970 年 1 月 1 日 00:00:00 UTC。</p>
-<p>4、传入时间字符串会返回一个新的日期对象</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"October 13, 2014 11:13:00"</span>);<br></code></pre></td></tr></table></figure>
-
-<h3 id="日期的获取方法"><a href="#日期的获取方法" class="headerlink" title="日期的获取方法"></a>日期的获取方法</h3>
-
-<h3 id="关于-new-Date"><a href="#关于-new-Date" class="headerlink" title="关于+new Date()"></a>关于+new Date()</h3><p>这个操作是将日期函数转换类型</p>
-
-
-<p>以毫秒显示</p>
-<p>对时间进行格式化,后端提供以秒为单位的时间数据</p>
-<p>将其转换为00:00:00（小时：分钟：秒），并且位数为一位数时，进行补0，避免出现3:20这样的时间应该显示为03:20。</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">formateTime(seconds) &#123;<br>      <span class="hljs-keyword">if</span> (seconds &lt; <span class="hljs-number">60</span>) &#123;<br>        <span class="hljs-keyword">return</span> seconds.toString().padStart(<span class="hljs-number">2</span>, <span class="hljs-string">'0'</span>)<br>      &#125;<br>      <span class="hljs-keyword">if</span> (seconds &lt; <span class="hljs-number">3600</span>) &#123;<br>        <span class="hljs-keyword">const</span> m = <span class="hljs-built_in">String</span>(<span class="hljs-built_in">parseInt</span>(seconds / <span class="hljs-number">60</span>)).padStart(<span class="hljs-number">2</span>, <span class="hljs-string">'0'</span>)<br>        <span class="hljs-keyword">const</span> s = <span class="hljs-built_in">String</span>(<span class="hljs-built_in">parseInt</span>(seconds % <span class="hljs-number">60</span>)).padStart(<span class="hljs-number">2</span>, <span class="hljs-string">'0'</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;m&#125;</span>:<span class="hljs-subst">$&#123;s&#125;</span>`</span><br>      &#125;<br>      <span class="hljs-keyword">const</span> h = <span class="hljs-built_in">String</span>(<span class="hljs-built_in">parseInt</span>(seconds / <span class="hljs-number">3600</span>)).padStart(<span class="hljs-number">2</span>, <span class="hljs-string">'0'</span>)<br>      <span class="hljs-keyword">const</span> m = <span class="hljs-built_in">String</span>(<span class="hljs-built_in">parseInt</span>((seconds % <span class="hljs-number">3600</span>) / <span class="hljs-number">60</span>)).padStart(<span class="hljs-number">2</span>, <span class="hljs-string">'0'</span>)<br>      <span class="hljs-keyword">const</span> s = <span class="hljs-built_in">String</span>(<span class="hljs-built_in">parseInt</span>((seconds % <span class="hljs-number">3600</span>) % <span class="hljs-number">60</span>)).padStart(<span class="hljs-number">2</span>, <span class="hljs-string">'0'</span>)<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;h&#125;</span>:<span class="hljs-subst">$&#123;m&#125;</span>:<span class="hljs-subst">$&#123;s&#125;</span>`</span><br>    &#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="时间戳转换"><a href="#时间戳转换" class="headerlink" title="时间戳转换"></a>时间戳转换</h3><p>new Date(1598338225474)，如果是秒为单位需要乘1000</p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/JS/" rel="tag"><i class="fas fa-tags"></i>JS</a>
-        
-        <a class="post-tag button" href="/tags/Date对象/" rel="tag"><i class="fas fa-tags"></i>Date对象</a>
+        <a class="post-tag button" href="/tags/javascript/" rel="tag"><i class="fas fa-tags"></i>javascript</a>
         
       </div>
       
@@ -280,12 +259,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/08/01/2020-08-01记this的指向/" rel="next" title="记this的指向"><i class="fas fa-angle-left"></i><span class="nav-title">记this的指向</span></a>
+      <a href="/2020/08/17/2020-8-17-Date函数/" rel="next" title="Date函数"><i class="fas fa-angle-left"></i><span class="nav-title">Date函数</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2020/08/20/2020-8-20深拷贝与浅拷贝/" rel="prev" title="深拷贝与浅拷贝"><span class="nav-title">深拷贝与浅拷贝</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2020/08/26/2020-08-26-迭代器Iterator/" rel="prev" title="迭代器Iterator"><span class="nav-title">迭代器Iterator</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -341,7 +320,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#JS日期"><span class="toc-text">JS日期</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#关于创建时间对象"><span class="toc-text">关于创建时间对象</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#创建日期对象的四种方法"><span class="toc-text">创建日期对象的四种方法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#日期的获取方法"><span class="toc-text">日期的获取方法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#关于-new-Date"><span class="toc-text">关于+new Date()</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#时间戳转换"><span class="toc-text">时间戳转换</span></a></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#深拷贝与浅拷贝"><span class="toc-text">深拷贝与浅拷贝</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#基本类型"><span class="toc-text">基本类型</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#引用类型"><span class="toc-text">引用类型</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#浅拷贝"><span class="toc-text">浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#深拷贝"><span class="toc-text">深拷贝</span></a></li></ol></li></ol></div>
     </div>
     
     

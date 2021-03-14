@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Archive | Yo_huanjun - Practice makes perfect.</title>
+    <title>2021-3-14CSS简写 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -193,34 +193,83 @@
         <div class="main-container">
           <div class="content">
             
-<div id="archive" class="archive page">
-  <h1 class="page-title">Archive</h1>
-  <h2 class="page-counter">
-    
-    You have 30 posts!
-    
-  </h2>
-  
-  
-  
-  
-  <h2 class="page-title">2019
+<div id="post" class="page">
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/05/16/2020-05-16函数/" itemprop="url">Js中的函数</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2019-05-16T08:12:34+08:00">05-16</time>
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/14/2021-3-14CSS简写/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/avatar.jpg">
       </span>
-      
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">2021-3-14CSS简写</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-14T19:46:40+08:00">2021-03-14 19:46:40</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+        </span>
+        
+        
+      </div>
     </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>关于合理的简写：</p>
+<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">blue</span>;<br><span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-tag">blue</span>;<br></code></pre></td></tr></table></figure>
+
+<p>前者是简写，可以确保你得到一个蓝色的纯色背景，但是如果你使用展开式的单个属性，那么这个元素的背景最终可能显示为一个粉红色的图案，一张图片，或者其他任何东西，因为同时可能会有一条<code>background-image</code>在其作用，展开式的写法不会帮助我们清空所有其他相关的属性，<strong>你设置了一个蓝色背景，又在下面几行设置了一张背景图片，那么你永远也看不到这个蓝色的背景图片!</strong></p>
+{% asset_img 1.png %}
+
+<p>比如我们要实现li前面的背景图片可以设置</p>
+<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CSS">background:  #badcfe url(./images/icon2.gif) no-repeat left center;<br></code></pre></td></tr></table></figure>
+
+<p>但是这个是我在设置<code>list-style-image</code>无效的情况下的无奈之举</p>
+<p>当时使用的是dl自定义列表，那么要使用</p>
+<figure class="hljs highlight CSS"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs CSS"><span class="hljs-selector-tag">display</span>: <span class="hljs-selector-tag">list-item</span>;<br><span class="hljs-selector-tag">list-style</span>: <span class="hljs-selector-tag">url</span>()<br></code></pre></td></tr></table></figure>
+
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/CSS3/" rel="tag"><i class="fas fa-tags"></i>CSS3</a>
+        
+      </div>
+      
+    </footer>
   </article>
   
   
-</h2></div>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/11/08/2020-01-10-关于HTTP请求参数/" rel="next" title="HTTP请求参数"><i class="fas fa-angle-left"></i><span class="nav-title">HTTP请求参数</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2021/03/14/2021-3-14-Vueslot简析/" rel="prev" title="2021-3-14-Vueslot简析"><span class="nav-title">2021-3-14-Vueslot简析</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
 
           </div>
           
@@ -262,6 +311,11 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
     
     
     <hr>
