@@ -198,6 +198,59 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/17/2021-3-17-理解理解Vue的mixin/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/03/17/2021-3-17-理解理解Vue的mixin/" itemprop="url">理解理解Vue的mixin</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-17T22:21:57+08:00">2021-03-17 22:21:57</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>mixin翻译为混入，创建它时也是创建一个对象，他也有data，也有生命周期，也有methods方法，所以根据官网的说法，他可以灵活的分发Vue组件中的可复用功能，当组件使用混入对象时，所有的对象选项都将被混合进入该组件本身的选项，也就是把mixin中的data与组件实例的对象混合在一起，那么当两者之间有重复时，会以特定的方式进行合并。</p>
+<p>如果data中的变量与mixin中的变量冲突（也就是重复），那么以data中的变量优先，如果没有在data中发现该变量，则选择mixin中的变量</p>
+<p>生命周期将会合并为一个数组，如果发生冲突，mixin先执行，实例后执行</p>
+<p>methods，coimponent,directives将会合并为一个对象，如果出现冲突，取组件实例中的方法</p>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/slot/" rel="tag"><i class="fas fa-tags"></i>slot</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/14/2021-3-14-Vueslot简析/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -688,68 +741,9 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/17/2020-8-17-Date函数/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/17/2020-8-17-Date函数/" itemprop="url">Date函数</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-17T17:40:18+08:00">2020-08-17 17:40:18</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="JS日期"><a href="#JS日期" class="headerlink" title="JS日期"></a>JS日期</h1><h2 id="关于创建时间对象"><a href="#关于创建时间对象" class="headerlink" title="关于创建时间对象"></a>关于创建时间对象</h2><h3 id="创建日期对象的四种方法"><a href="#创建日期对象的四种方法" class="headerlink" title="创建日期对象的四种方法"></a>创建日期对象的四种方法</h3><p><code>new Date()</code></p>
-<p><code>new Date(year, month,day, hours, minutes, seconds, milliseconds)</code></p>
-<p><code>new Date(milliseconds)</code></p>
-<p><code>new Date(date string)</code></p>
-<p>1、不传参数创建日期</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<span class="hljs-comment">//Mon Aug 17 2020 17:47:35 GMT+0800 (中国标准时间)</span><br></code></pre></td></tr></table></figure>
-
-<p>2、加入年月日等参数</p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/JS/" rel="tag"><i class="fas fa-tags"></i>JS</a>
-        
-        <a class="post-tag button" href="/tags/Date对象/" rel="tag"><i class="fas fa-tags"></i>Date对象</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right" aria-label="Next Page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right" aria-label="Next Page"></i></a>
   </nav>
   
   

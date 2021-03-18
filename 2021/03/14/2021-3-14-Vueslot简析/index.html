@@ -237,7 +237,7 @@
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> app = Vue.createApp(&#123;<br>      data() &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>          <span class="hljs-attr">needButton</span>: <span class="hljs-string">'我需要一个按钮'</span>,<br>          <span class="hljs-attr">noNeed</span>: <span class="hljs-string">'不太需要'</span><br>        &#125;<br>      &#125;,<br>      <span class="hljs-attr">template</span>: <span class="hljs-string">`<br>        &lt;myform :text="needButton"&gt;<br>          &lt;button&gt;按钮&lt;/button&gt;<br>          &lt;hr /&gt;<br>        &lt;/myform&gt;<br>        &lt;myform :text="noNeed" /&gt;<br>      `</span><br>    &#125;)<br><br>    app.component(<span class="hljs-string">'myform'</span>, &#123;<br>      <span class="hljs-attr">props</span>: [<span class="hljs-string">'text'</span>],<br>      <span class="hljs-attr">methods</span>: &#123;<br>        handleClick() &#123;<br>          alert(<span class="hljs-number">123</span>)<br>        &#125;<br>      &#125;,<br>      <span class="hljs-attr">template</span>: <span class="hljs-string">`&lt;div&gt;<br>        &lt;input /&gt;<br>        &lt;div @click="handleClick"&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;<br>        &lt;slot /&gt;<br>        &lt;/div&gt;`</span><br>    &#125;)<br>    <span class="hljs-keyword">const</span> vm = app.mount(<span class="hljs-string">'#root'</span>)<br></code></pre></td></tr></table></figure>
 
 <p>上面我们将不太确定的具体需要什么元素的位置使用slot代替，当我们在父组件调用子组件时，插入的元素将自动被slot元素承载</p>
-
+<h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3>
     </main>
     <footer class="post-footer">
       
@@ -258,6 +258,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2021/03/17/2021-3-17-理解理解Vue的mixin/" rel="prev" title="理解理解Vue的mixin"><span class="nav-title">理解理解Vue的mixin</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -309,6 +311,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#具名插槽"><span class="toc-text">具名插槽</span></a></li></ol></div>
+    </div>
     
     
     

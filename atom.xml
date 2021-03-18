@@ -6,19 +6,47 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.lhjailj.top/"/>
-  <updated>2021-03-14T15:13:01.577Z</updated>
+  <updated>2021-03-17T14:52:25.677Z</updated>
   <id>http://www.lhjailj.top/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>理解理解Vue的mixin</title>
+    <link href="http://www.lhjailj.top/2021/03/17/2021-3-17-%E7%90%86%E8%A7%A3%E7%90%86%E8%A7%A3Vue%E7%9A%84mixin/"/>
+    <id>http://www.lhjailj.top/2021/03/17/2021-3-17-%E7%90%86%E8%A7%A3%E7%90%86%E8%A7%A3Vue%E7%9A%84mixin/</id>
+    <published>2021-03-17T14:21:57.000Z</published>
+    <updated>2021-03-17T14:52:25.677Z</updated>
+    
+    <content type="html"><![CDATA[<p>mixin翻译为混入，创建它时也是创建一个对象，他也有data，也有生命周期，也有methods方法，所以根据官网的说法，他可以灵活的分发Vue组件中的可复用功能，当组件使用混入对象时，所有的对象选项都将被混合进入该组件本身的选项，也就是把mixin中的data与组件实例的对象混合在一起，那么当两者之间有重复时，会以特定的方式进行合并。</p><p>如果data中的变量与mixin中的变量冲突（也就是重复），那么以data中的变量优先，如果没有在data中发现该变量，则选择mixin中的变量</p><p>生命周期将会合并为一个数组，如果发生冲突，mixin先执行，实例后执行</p><p>methods，coimponent,directives将会合并为一个对象，如果出现冲突，取组件实例中的方法</p><a id="more"></a><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> myMixin = &#123;<br>  <span class="hljs-attr">methods</span>: &#123;<br>    foo() &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'foo'</span>)<br>    &#125;,<br>    conflicting() &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'from mixin'</span>)<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> app = Vue.createApp(&#123;<br>  <span class="hljs-attr">mixins</span>: [myMixin],<br>  <span class="hljs-attr">methods</span>: &#123;<br>    bar() &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'bar'</span>)<br>    &#125;,<br>    conflicting() &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'from self'</span>)<br>    &#125;<br>  &#125;<br>&#125;)<br><br><span class="hljs-keyword">const</span> vm = app.mount(<span class="hljs-string">'#mixins-basic'</span>)<br><br>vm.foo() <span class="hljs-comment">// =&gt; "foo"</span><br>vm.bar() <span class="hljs-comment">// =&gt; "bar"</span><br>vm.conflicting() <span class="hljs-comment">// =&gt; "from self"</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;mixin翻译为混入，创建它时也是创建一个对象，他也有data，也有生命周期，也有methods方法，所以根据官网的说法，他可以灵活的分发Vue组件中的可复用功能，当组件使用混入对象时，所有的对象选项都将被混合进入该组件本身的选项，也就是把mixin中的data与组件实例的对象混合在一起，那么当两者之间有重复时，会以特定的方式进行合并。&lt;/p&gt;
+&lt;p&gt;如果data中的变量与mixin中的变量冲突（也就是重复），那么以data中的变量优先，如果没有在data中发现该变量，则选择mixin中的变量&lt;/p&gt;
+&lt;p&gt;生命周期将会合并为一个数组，如果发生冲突，mixin先执行，实例后执行&lt;/p&gt;
+&lt;p&gt;methods，coimponent,directives将会合并为一个对象，如果出现冲突，取组件实例中的方法&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="Vue" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
+    
+    
+      <category term="slot" scheme="http://www.lhjailj.top/tags/slot/"/>
+    
+  </entry>
   
   <entry>
     <title>2021-3-14-Vueslot简析</title>
     <link href="http://www.lhjailj.top/2021/03/14/2021-3-14-Vueslot%E7%AE%80%E6%9E%90/"/>
     <id>http://www.lhjailj.top/2021/03/14/2021-3-14-Vueslot%E7%AE%80%E6%9E%90/</id>
     <published>2021-03-14T12:59:03.000Z</published>
-    <updated>2021-03-14T15:13:01.577Z</updated>
+    <updated>2021-03-18T01:14:27.705Z</updated>
     
-    <content type="html"><![CDATA[<p>关于slot，在组件化的模式下，通常遇到一个会多次使用的元素，例如封装一个后台管理系统常需要用到的表格，弹窗等等组件，但是通常在复用性高的情况下又有略微的不同，例如一个弹窗，有的情况可能需要仅仅展示一个图片一个按钮，有时又需要展示出这个弹窗的标题，那么根据不同的情况，我们会在这个组件中穿插不同的元素，这个时候就需要用到插槽。</p><a id="more"></a><img src="/2021/03/14/2021-3-14-Vueslot简析/1.png"><p>例：我们定义了一个子组件<code>myform</code>，并且在父组件中调用了两次，但是第一次我们需要在input下面放上点击按钮，而第二次并不需要，这个时候slot就派上了用场</p><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> app = Vue.createApp(&#123;<br>      data() &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>          <span class="hljs-attr">needButton</span>: <span class="hljs-string">'我需要一个按钮'</span>,<br>          <span class="hljs-attr">noNeed</span>: <span class="hljs-string">'不太需要'</span><br>        &#125;<br>      &#125;,<br>      <span class="hljs-attr">template</span>: <span class="hljs-string">`<br>        &lt;myform :text="needButton"&gt;<br>          &lt;button&gt;按钮&lt;/button&gt;<br>          &lt;hr /&gt;<br>        &lt;/myform&gt;<br>        &lt;myform :text="noNeed" /&gt;<br>      `</span><br>    &#125;)<br><br>    app.component(<span class="hljs-string">'myform'</span>, &#123;<br>      <span class="hljs-attr">props</span>: [<span class="hljs-string">'text'</span>],<br>      <span class="hljs-attr">methods</span>: &#123;<br>        handleClick() &#123;<br>          alert(<span class="hljs-number">123</span>)<br>        &#125;<br>      &#125;,<br>      <span class="hljs-attr">template</span>: <span class="hljs-string">`&lt;div&gt;<br>        &lt;input /&gt;<br>        &lt;div @click="handleClick"&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;<br>        &lt;slot /&gt;<br>        &lt;/div&gt;`</span><br>    &#125;)<br>    <span class="hljs-keyword">const</span> vm = app.mount(<span class="hljs-string">'#root'</span>)<br></code></pre></td></tr></table></figure><p>上面我们将不太确定的具体需要什么元素的位置使用slot代替，当我们在父组件调用子组件时，插入的元素将自动被slot元素承载</p>]]></content>
+    <content type="html"><![CDATA[<p>关于slot，在组件化的模式下，通常遇到一个会多次使用的元素，例如封装一个后台管理系统常需要用到的表格，弹窗等等组件，但是通常在复用性高的情况下又有略微的不同，例如一个弹窗，有的情况可能需要仅仅展示一个图片一个按钮，有时又需要展示出这个弹窗的标题，那么根据不同的情况，我们会在这个组件中穿插不同的元素，这个时候就需要用到插槽。</p><a id="more"></a><img src="/2021/03/14/2021-3-14-Vueslot简析/1.png"><p>例：我们定义了一个子组件<code>myform</code>，并且在父组件中调用了两次，但是第一次我们需要在input下面放上点击按钮，而第二次并不需要，这个时候slot就派上了用场</p><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> app = Vue.createApp(&#123;<br>      data() &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>          <span class="hljs-attr">needButton</span>: <span class="hljs-string">'我需要一个按钮'</span>,<br>          <span class="hljs-attr">noNeed</span>: <span class="hljs-string">'不太需要'</span><br>        &#125;<br>      &#125;,<br>      <span class="hljs-attr">template</span>: <span class="hljs-string">`<br>        &lt;myform :text="needButton"&gt;<br>          &lt;button&gt;按钮&lt;/button&gt;<br>          &lt;hr /&gt;<br>        &lt;/myform&gt;<br>        &lt;myform :text="noNeed" /&gt;<br>      `</span><br>    &#125;)<br><br>    app.component(<span class="hljs-string">'myform'</span>, &#123;<br>      <span class="hljs-attr">props</span>: [<span class="hljs-string">'text'</span>],<br>      <span class="hljs-attr">methods</span>: &#123;<br>        handleClick() &#123;<br>          alert(<span class="hljs-number">123</span>)<br>        &#125;<br>      &#125;,<br>      <span class="hljs-attr">template</span>: <span class="hljs-string">`&lt;div&gt;<br>        &lt;input /&gt;<br>        &lt;div @click="handleClick"&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;<br>        &lt;slot /&gt;<br>        &lt;/div&gt;`</span><br>    &#125;)<br>    <span class="hljs-keyword">const</span> vm = app.mount(<span class="hljs-string">'#root'</span>)<br></code></pre></td></tr></table></figure><p>上面我们将不太确定的具体需要什么元素的位置使用slot代替，当我们在父组件调用子组件时，插入的元素将自动被slot元素承载</p><h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3>]]></content>
     
     <summary type="html">
     
@@ -381,9 +409,9 @@
       <category term="Vue" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
     
     
-      <category term="thinkJS" scheme="http://www.lhjailj.top/tags/thinkJS/"/>
-    
       <category term="框架" scheme="http://www.lhjailj.top/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="thinkJS" scheme="http://www.lhjailj.top/tags/thinkJS/"/>
     
   </entry>
   
@@ -462,9 +490,9 @@
       <category term="Vue" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
     
     
-      <category term="框架" scheme="http://www.lhjailj.top/tags/%E6%A1%86%E6%9E%B6/"/>
-    
       <category term="javaScript" scheme="http://www.lhjailj.top/tags/javaScript/"/>
+    
+      <category term="框架" scheme="http://www.lhjailj.top/tags/%E6%A1%86%E6%9E%B6/"/>
     
       <category term="组件" scheme="http://www.lhjailj.top/tags/%E7%BB%84%E4%BB%B6/"/>
     
@@ -589,33 +617,6 @@
     
     
       <category term="Flex" scheme="http://www.lhjailj.top/tags/Flex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js作用域</title>
-    <link href="http://www.lhjailj.top/2019/11/27/2019-11-27-js%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    <id>http://www.lhjailj.top/2019/11/27/2019-11-27-js%E4%BD%9C%E7%94%A8%E5%9F%9F/</id>
-    <published>2019-11-27T05:10:57.000Z</published>
-    <updated>2020-08-18T02:29:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="关于函数作用域"><a href="#关于函数作用域" class="headerlink" title="关于函数作用域"></a>关于函数作用域</h1><p>几乎所有编程语言的基本功能之一就是<strong>能够存储变量当中的值</strong>，并且能在这之后进行访问和修改，那么变量存储在哪里？程序需要的时候如何找到他们。</p><p>事实上js也是一门编译语言，并且大部分情况下编译发生在代码执行前的几微秒（甚至更短）。</p><h2 id="关于编译原理"><a href="#关于编译原理" class="headerlink" title="关于编译原理"></a>关于编译原理</h2><a id="more"></a><p>传统编译语言的流程中，程序的一段源代码在执行之前会有三个步骤，统称为“编译”。</p><ol><li><p>分词/词法分析</p><p>这个过程会将由字符组成的字符串分解成（对编程语言来说）有意义的代码块，这些代 码块被称为词法单元（token）。例如，考虑程序 var a = 2;。这段程序通常会被分解成 为下面这些词法单元：var、a、=、2 、;。空格是否会被当作词法单元，取决于空格在 这门语言中是否具有意义。</p></li><li><p>解析/语法分析</p><p>这个过程是将词法单元流（数组）转换成一个由元素逐级嵌套所组成的代表了程序语法 结构的树。这个树被称为“抽象语法树”（Abstract Syntax Tree，AST）。</p></li><li><p>代码生成</p><p>将AST转换为可执行代码的过程被称为代码生成。</p></li></ol><h2 id="理解作用域"><a href="#理解作用域" class="headerlink" title="理解作用域"></a>理解作用域</h2><h3 id="进行工作的工作员"><a href="#进行工作的工作员" class="headerlink" title="进行工作的工作员"></a>进行工作的工作员</h3><ol><li><p>引擎</p><p>从头到尾负责整个JavaScript程序的编译及执行过程</p></li><li><p>编译器</p><p>负责语法分析及代码生成</p></li><li><p>作用域</p><p>负责收集并维护所有声明的变量组成的一系列查询，并实施非常严格的规则，确定当前执行的代码对这些标识符的访问权限</p></li></ol><h3 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h3><p>对于 var a = 2 ;</p><p>为变量分配内存，将其命名为a，然后将值2保存进这个变量，这句话并不完全正确</p><p>事实上编译器会进行如下处理：</p><ul><li>遇到 var a，编译器会询问作用域是否已经有一个该名称的变量存在于同一个作用域的 集合中。如果是，编译器会忽略该声明，继续进行编译；否则它会要求作用域在当前作 用域的集合中声明一个新的变量，并命名为 a。</li><li>接下来编译器会为引擎生成运行时所需的代码，这些代码被用来处理 a = 2 这个赋值 操作。引擎运行时会首先询问作用域，在当前的作用域集合中是否存在一个叫作 a 的 变量。如果是，引擎就会使用这个变量；如果否，引擎会继续查找该变量。</li></ul><p>如果引擎最终找到了 a 变量，就会将 2 赋值给它。否则引擎就会举手示意并抛出一个异 常！</p><h4 id="编译器的查询类型"><a href="#编译器的查询类型" class="headerlink" title="编译器的查询类型"></a>编译器的查询类型</h4><p>当变量出现在赋值操作的左侧时进行LHS查询，出现在右侧时进行RHS查询。讲得更准确一点，RHS 查询与简单地查找某个变量的值别无二致，而 LHS 查询则是试图 找到变量的容器本身，从而可以对其赋值。</p><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(a)<br></code></pre></td></tr></table></figure><p>其中对a的引用是一个RHS引用，因为这里 a 并没有赋予任何值。相应地，需要查找并取 得 a 的值，这样才能将值传递给 console.log(..)。</p><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">a = <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure><p>这里对 a 的引用则是 LHS 引用，因为实际上我们并不关心当前的值是什么，只是想要为 = 2 这个赋值操作找到一个目标。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;关于函数作用域&quot;&gt;&lt;a href=&quot;#关于函数作用域&quot; class=&quot;headerlink&quot; title=&quot;关于函数作用域&quot;&gt;&lt;/a&gt;关于函数作用域&lt;/h1&gt;&lt;p&gt;几乎所有编程语言的基本功能之一就是&lt;strong&gt;能够存储变量当中的值&lt;/strong&gt;，并且能在这之后进行访问和修改，那么变量存储在哪里？程序需要的时候如何找到他们。&lt;/p&gt;
-&lt;p&gt;事实上js也是一门编译语言，并且大部分情况下编译发生在代码执行前的几微秒（甚至更短）。&lt;/p&gt;
-&lt;h2 id=&quot;关于编译原理&quot;&gt;&lt;a href=&quot;#关于编译原理&quot; class=&quot;headerlink&quot; title=&quot;关于编译原理&quot;&gt;&lt;/a&gt;关于编译原理&lt;/h2&gt;
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="JavaScript" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
-    
-    
-      <category term="javaScript" scheme="http://www.lhjailj.top/tags/javaScript/"/>
     
   </entry>
   
