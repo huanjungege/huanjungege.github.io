@@ -6,10 +6,35 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.lhjailj.top/"/>
-  <updated>2021-03-17T14:52:25.677Z</updated>
+  <updated>2021-03-21T12:14:09.572Z</updated>
   <id>http://www.lhjailj.top/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机是如何读懂我们的程序的呢</title>
+    <link href="http://www.lhjailj.top/2021/03/21/2021-3-21-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E8%AF%BB%E6%87%82%E6%88%91%E4%BB%AC%E7%9A%84%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%91%A2/"/>
+    <id>http://www.lhjailj.top/2021/03/21/2021-3-21-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E8%AF%BB%E6%87%82%E6%88%91%E4%BB%AC%E7%9A%84%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%91%A2/</id>
+    <published>2021-03-21T11:30:15.000Z</published>
+    <updated>2021-03-21T12:14:09.572Z</updated>
+    
+    <content type="html"><![CDATA[<p>事实上当我们上第一节编程课时会了解到，我们所学的语言是高级语言，计算机并不能看懂我们的程序，我们需要编译器进行编译，计算机读取编译器编译后的结果，并完成我们想要执行的操作，但是当我们第一次使用ide当我们在文本中敲上正确的语法像这样</p><figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">#include &lt;stdio.h&gt;<br>  <br> int main() &#123;<br>printf("Hello World!")<br>&#125;<br></code></pre></td></tr></table></figure><p>当我们按下运行，我们的工作被保存了，结果被输出了，我们得到了实时的结果。</p><p>但是事实上计算机读取当的文件是这样的</p><p>11100101100010010100100001010101</p><p>他们供计算机读取的列表，由二进制编写，也叫做机器码，我们经常可以看到计算机只能读取0，和1，为什么计算机只能读取这样的程序呢？</p><p>涉及到计算机的核心，处理器，<code>CPU</code>，处理器已经内置了处理这些指令的电路，只有当相应的指令被输入时。正确的电路才能连接在一起，完成对应的操作。指令中的某些0和1会引起某些晶体管的打开或关闭，最终将正确的电路连接到一起。</p><p>所以一开始我们的定义变量，if条件，循环，和函数，将转变为对应的机器指令。传达给计算机，这些高阶的结果可以让我们更轻松的思考程序。</p><p>但是如何将我们的一些程序翻译成计算机可读的机器语言，我们可以举简单的例子</p><figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> x;<br>  x = <span class="hljs-number">3</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>我们定义一个变量x，并对其赋值为3，它看起来有某种结构，但是对于计算机，只是毫无意义的字符序列。只是文本，将源码传入编译器。</p><p>编译器首先将文本分为单独的标记，有点像编译器在理解程序中的单词含义，接着标记被分为多层次的结构，就是所谓的解析树</p><img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/1.png"><p>接着编译器记录程序的上下文，包括变量和函数的名字，最后一步遍历树，转译成机器码</p><p>转译成机机器码确实有点难读和解释</p><img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/2.jpg"><p>实际上读起来还很难，将其写成汇编代码</p><img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/3.jpg"><img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/4.jpg"><p>这里的步骤记录了这块内存中创建了变量x，并给他赋值为3，简单的赋值语句就这样完成了，但是条件语句与循环就变得没那么简单，因为并没有等价的语句，而要用现有指令来模拟它们的行为，在if语句中让我们执行下面这块代码</p><img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/5.jpg"><p>只有当条件为真时执行这段代码，否则跳过这段代码，在汇编中，块中代码可以正常转译，但这之前还有条件指令<code>cmpl</code>以及下面的条件跳转指令<code>jg</code>，处理器根据前一条指令的结果，知道是否应该执行此跳转，该指令在处理器中临时设置一些标志，这样就可以记住一些结果当执行到跳转时用来判断，如果不符合跳出执行，执行器就会忽略该跳出指令，条件继续符合，继续执行块中的代码</p><p>但是有一个问题，如果在一台电脑编译程序，复制到另一台电脑并尝试运行它，可能不会工作，因为不同电脑可能有不同操作系统和不同的处理器，处理器可能使用了不同的机器指令！！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;事实上当我们上第一节编程课时会了解到，我们所学的语言是高级语言，计算机并不能看懂我们的程序，我们需要编译器进行编译，计算机读取编译器编译后的结果，并完成我们想要执行的操作，但是当我们第一次使用ide当我们在文本中敲上正确的语法像这样&lt;/p&gt;
+&lt;figure class=&quot;h
+      
+    
+    </summary>
+    
+    
+      <category term="计算机" scheme="http://www.lhjailj.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>理解理解Vue的mixin</title>
@@ -409,9 +434,9 @@
       <category term="Vue" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
     
     
-      <category term="框架" scheme="http://www.lhjailj.top/tags/%E6%A1%86%E6%9E%B6/"/>
-    
       <category term="thinkJS" scheme="http://www.lhjailj.top/tags/thinkJS/"/>
+    
+      <category term="框架" scheme="http://www.lhjailj.top/tags/%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
@@ -490,9 +515,9 @@
       <category term="Vue" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
     
     
-      <category term="javaScript" scheme="http://www.lhjailj.top/tags/javaScript/"/>
-    
       <category term="框架" scheme="http://www.lhjailj.top/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="javaScript" scheme="http://www.lhjailj.top/tags/javaScript/"/>
     
       <category term="组件" scheme="http://www.lhjailj.top/tags/%E7%BB%84%E4%BB%B6/"/>
     
@@ -555,68 +580,6 @@
       <category term="IP" scheme="http://www.lhjailj.top/tags/IP/"/>
     
       <category term="MAC" scheme="http://www.lhjailj.top/tags/MAC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写给自己看的flex布局</title>
-    <link href="http://www.lhjailj.top/2020/02/20/2020-02-20-flex%E5%B8%83%E5%B1%80%E7%9A%84%E5%B1%9E%E6%80%A7%E8%AE%B0%E5%BD%95/"/>
-    <id>http://www.lhjailj.top/2020/02/20/2020-02-20-flex%E5%B8%83%E5%B1%80%E7%9A%84%E5%B1%9E%E6%80%A7%E8%AE%B0%E5%BD%95/</id>
-    <published>2020-02-20T10:58:23.000Z</published>
-    <updated>2021-03-10T09:30:46.129Z</updated>
-    
-    <content type="html"><![CDATA[<h5 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h5><p>flex布局相关的属性分两组，一组作用在flex容器上，还有一组作用在flex子项上</p><table><thead><tr><th align="center">作用在flex容器上</th><th align="center">作用在flex子项上</th></tr></thead><tbody><tr><td align="center">flex-direction</td><td align="center">order</td></tr><tr><td align="center">flex-wrap</td><td align="center">flex-grow</td></tr><tr><td align="center">flex-flow</td><td align="center">flex-shrink</td></tr><tr><td align="center">justify-content</td><td align="center">flex-basis</td></tr><tr><td align="center">align-items</td><td align="center">flex</td></tr><tr><td align="center">align-content</td><td align="center">align-self</td></tr></tbody></table><p>flex有很多属性，和平时使用的css不同的是它控制的是一个容器和容器内的所有子项，通常不是针对某一个子元素，所以在最开始的时候总是习惯的想要对某一个元素进行时会纠结不清到底使用哪个属性。</p><p>最后认为搞清楚flex布局最重要的也就是明白控制元素的主轴</p><p>也就是使用<code>flex-direction</code>控制主轴方向，通常默认主轴水平方向，那么使用<code>justify-content</code>去控制子项在水平方向的对齐方式是便是控制子项在X轴上的对齐方式。当<code>flex-direction</code>:column;时，主轴由原来的X轴变为Y轴，那么<code>justify-content</code>控制的便是纵向的布局，而不是一味的认为控制当前页面的横向布局。</p><a id="more"></a><ol><li>flex-direction`：用来控制子项的整体布局方向,<strong>也就是决定了子项的主轴</strong>。</li></ol><p>   <code>flex-direction</code>: <code>row</code>(显示为行，从左向右)|<code>row-reverse</code>(从右向左)|<code>column</code>(显示为列)|<code>column-reverse</code>(与column相反)</p><ol start="2"><li><p><code>flex-wrap</code>：控制子项整体单行显示或换行显示</p><p><code>flex-wrap</code>: <code>nowrap</code>(单行显示不换行)|<code>wrap</code>(宽度不足换行显示)|<code>wrap-reverse</code>(宽度不足换行，下面的子项去上面)</p></li><li><p><strong><code>align-items</code>flex的子项们在（侧轴）主轴垂直方向上的对齐方式</strong></p><p><code>stretch</code>默认值。子项拉伸</p><p><code>flex-start</code>:逻辑CSS属性值，与文档流相关，默认表现为容器顶部对齐</p><p><code>flex-end</code>:逻辑CSS属性值，与文档流方向相关。默认表现为容器底部对齐。</p><p><code>center</code>:表现为垂直居中对齐</p><p><code>baseline</code>:表现为所有flex子项都对于flex容器的基线对齐</p></li><li><p><strong><code>justify-content</code>:决定主轴水平方向子项的对齐和分布方式</strong></p><p><code>justify-content</code>: <code>flex-start</code>(与文档流方向相关，默认为左对齐)|<code>flex-end</code>(右对齐)|<code>center</code>(表现为居中对齐)|<code>space-between</code>(两端对齐)|<code>space-around</code>(环绕，展现为边缘的空白只有中间空白的一半)|<code>space-evenly</code>(均等，每个子项两侧空白完全相等)</p></li><li><p><code>algin-content</code>可以看成与<code>justify-content</code>是相似的但是且对立的属性，前者指明水平方向flex子项的对齐和分布方式，而<code>align-content</code>则指明垂直方向每一项flex元素的对齐和分布方式哦。<strong>如果所有flex子项只有一行，则<code>aligi-content</code>属性是没有任何效果的</strong>；</p><p><code>stretch</code>默认值。每一行flex子元素都等比例拉伸。例如，如果共两行flex子元素，则每一行拉伸高度是50%。</p><p><code>flex-start</code>逻辑CSS属性值，与文档流方向相关。默认表现为顶部堆砌。</p><p><code>flex-end</code>逻辑CSS属性值，与文档流方向相关。默认表现为底部堆放。</p><p><code>center</code>表现为整体垂直居中对齐。</p><p><code>space-between</code>表现为上下两行两端对齐。剩下每一行元素等分剩余空间。</p><p><code>space-around</code>每一行元素上下都享有独立不重叠的空白空间。</p><p><code>space-evenly</code>每一行元素都完全上下等分。</p></li><li><p><code>flex-flow</code>: 为<code>flex-direction</code> 和<code>flex-wrap</code>两个属性的的缩写，例：flex-flow: row nowrap;</p><p>表示为子项从左向右排列，不换行</p></li></ol><h6 id="子项上的属性"><a href="#子项上的属性" class="headerlink" title="子项上的属性"></a>子项上的属性</h6><ol><li><code>order</code>: order:<integer>//整数值，控制子项的位置例如要子项在最前面只需要给一个-1就可以了</integer></li><li><code>flex-grow:</code>//数值默认0，可以是小数最大为1，控制占据剩余空间的比例</li><li><code>flex-shrink</code>: 当容器空间不足时单个元素的收缩比例</li><li><code>flex-basis</code>定义了在分配剩余空间之前元素的默认大小，默认auto，或指定尺寸</li><li><strong><code>flex</code>flex-grow,flex-shrink,flex-basis的缩写定义子项占多少份</strong></li><li><code>align-self</code>: 控制单独某一个flex子项的垂直对齐方式，与align-item类似，不过指定单个元素</li></ol><p>将一个父盒子中的两个子盒子左右居中对齐</p><figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#father</span>&#123;<br>            <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;<br>            <span class="hljs-attribute">height</span>: <span class="hljs-number">1000px</span>;<br>            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid orange;<br>            <span class="hljs-attribute">display</span>: flex;<br>            <span class="hljs-attribute">justify-content</span>:space-between;<br>            <span class="hljs-attribute">align-items</span>: center;<br>        &#125;<br>        <span class="hljs-selector-class">.son1</span>,<span class="hljs-selector-class">.son2</span>&#123;<br>            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<br>            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>            <span class="hljs-attribute">background-color</span>: red;<br>        &#125;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h5 id=&quot;flex布局&quot;&gt;&lt;a href=&quot;#flex布局&quot; class=&quot;headerlink&quot; title=&quot;flex布局&quot;&gt;&lt;/a&gt;flex布局&lt;/h5&gt;&lt;p&gt;flex布局相关的属性分两组，一组作用在flex容器上，还有一组作用在flex子项上&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;作用在flex容器上&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;作用在flex子项上&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;flex-direction&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;order&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;flex-wrap&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;flex-grow&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;flex-flow&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;flex-shrink&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;justify-content&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;flex-basis&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;align-items&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;flex&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;align-content&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;align-self&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;flex有很多属性，和平时使用的css不同的是它控制的是一个容器和容器内的所有子项，通常不是针对某一个子元素，所以在最开始的时候总是习惯的想要对某一个元素进行时会纠结不清到底使用哪个属性。&lt;/p&gt;
-&lt;p&gt;最后认为搞清楚flex布局最重要的也就是明白控制元素的主轴&lt;/p&gt;
-
-
-&lt;p&gt;也就是使用&lt;code&gt;flex-direction&lt;/code&gt;控制主轴方向，通常默认主轴水平方向，那么使用&lt;code&gt;justify-content&lt;/code&gt;去控制子项在水平方向的对齐方式是便是控制子项在X轴上的对齐方式。当&lt;code&gt;flex-direction&lt;/code&gt;:column;时，主轴由原来的X轴变为Y轴，那么&lt;code&gt;justify-content&lt;/code&gt;控制的便是纵向的布局，而不是一味的认为控制当前页面的横向布局。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="CSS" scheme="http://www.lhjailj.top/categories/%E5%89%8D%E7%AB%AF/CSS/"/>
-    
-    
-      <category term="Flex" scheme="http://www.lhjailj.top/tags/Flex/"/>
     
   </entry>
   

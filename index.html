@@ -198,6 +198,80 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/" itemprop="url">计算机是如何读懂我们的程序的呢</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-21T19:30:15+08:00">2021-03-21 19:30:15</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>事实上当我们上第一节编程课时会了解到，我们所学的语言是高级语言，计算机并不能看懂我们的程序，我们需要编译器进行编译，计算机读取编译器编译后的结果，并完成我们想要执行的操作，但是当我们第一次使用ide当我们在文本中敲上正确的语法像这样</p>
+<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">#include &lt;stdio.h&gt;<br>  <br> int main() &#123;<br>		printf("Hello World!")<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当我们按下运行，我们的工作被保存了，结果被输出了，我们得到了实时的结果。</p>
+<p>但是事实上计算机读取当的文件是这样的</p>
+<p>11100101100010010100100001010101</p>
+<p>他们供计算机读取的列表，由二进制编写，也叫做机器码，我们经常可以看到计算机只能读取0，和1，为什么计算机只能读取这样的程序呢？</p>
+<p>涉及到计算机的核心，处理器，<code>CPU</code>，处理器已经内置了处理这些指令的电路，只有当相应的指令被输入时。正确的电路才能连接在一起，完成对应的操作。指令中的某些0和1会引起某些晶体管的打开或关闭，最终将正确的电路连接到一起。</p>
+<p>所以一开始我们的定义变量，if条件，循环，和函数，将转变为对应的机器指令。传达给计算机，这些高阶的结果可以让我们更轻松的思考程序。</p>
+<p>但是如何将我们的一些程序翻译成计算机可读的机器语言，我们可以举简单的例子</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> x;<br>  x = <span class="hljs-number">3</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们定义一个变量x，并对其赋值为3，它看起来有某种结构，但是对于计算机，只是毫无意义的字符序列。只是文本，将源码传入编译器。</p>
+<p>编译器首先将文本分为单独的标记，有点像编译器在理解程序中的单词含义，接着标记被分为多层次的结构，就是所谓的解析树</p>
+<img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/1.png">
+
+<p>接着编译器记录程序的上下文，包括变量和函数的名字，最后一步遍历树，转译成机器码</p>
+<p>转译成机机器码确实有点难读和解释</p>
+<img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/2.jpg">
+
+<p>实际上读起来还很难，将其写成汇编代码</p>
+<img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/3.jpg">
+
+<img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/4.jpg">
+
+<p>这里的步骤记录了这块内存中创建了变量x，并给他赋值为3，简单的赋值语句就这样完成了，但是条件语句与循环就变得没那么简单，因为并没有等价的语句，而要用现有指令来模拟它们的行为，在if语句中让我们执行下面这块代码</p>
+<img src="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/5.jpg">
+
+<p>只有当条件为真时执行这段代码，否则跳过这段代码，在汇编中，块中代码可以正常转译，但这之前还有条件指令<code>cmpl</code>以及下面的条件跳转指令<code>jg</code>，处理器根据前一条指令的结果，知道是否应该执行此跳转，该指令在处理器中临时设置一些标志，这样就可以记住一些结果当执行到跳转时用来判断，如果不符合跳出执行，执行器就会忽略该跳出指令，条件继续符合，继续执行块中的代码</p>
+<p>但是有一个问题，如果在一台电脑编译程序，复制到另一台电脑并尝试运行它，可能不会工作，因为不同电脑可能有不同操作系统和不同的处理器，处理器可能使用了不同的机器指令！！！！</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/17/2021-3-17-理解理解Vue的mixin/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -684,57 +758,6 @@
         <a class="post-tag button" href="/tags/ES6/" rel="tag"><i class="fas fa-tags"></i>ES6</a>
         
         <a class="post-tag button" href="/tags/迭代器/" rel="tag"><i class="fas fa-tags"></i>迭代器</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/20/2020-8-20深拷贝与浅拷贝/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/20/2020-8-20深拷贝与浅拷贝/" itemprop="url">深拷贝与浅拷贝</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-20T21:28:09+08:00">2020-08-20 21:28:09</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h1><h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>提到深拷贝与浅拷贝就要探讨js中的数据类型，基本类型例如，<code>Number</code>,<code>String</code>等，他们的值是不可变的，动态的修改了基本数据类型的值它的原始值也是不会改变的</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> s = <span class="hljs-string">"abc"</span><br><span class="hljs-built_in">console</span>.log(st[<span class="hljs-number">1</span>]=<span class="hljs-string">"d"</span>)<br><span class="hljs-built_in">console</span>.log(s)<span class="hljs-comment">//abc</span><br></code></pre></td></tr></table></figure>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javascript/" rel="tag"><i class="fas fa-tags"></i>javascript</a>
         
       </div>
       

@@ -198,6 +198,93 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/02/20/2020-02-20-flex布局的属性记录/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/02/20/2020-02-20-flex布局的属性记录/" itemprop="url">写给自己看的flex布局</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-02-20T18:58:23+08:00">2020-02-20 18:58:23</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h5 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h5><p>flex布局相关的属性分两组，一组作用在flex容器上，还有一组作用在flex子项上</p>
+<table>
+<thead>
+<tr>
+<th align="center">作用在flex容器上</th>
+<th align="center">作用在flex子项上</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">flex-direction</td>
+<td align="center">order</td>
+</tr>
+<tr>
+<td align="center">flex-wrap</td>
+<td align="center">flex-grow</td>
+</tr>
+<tr>
+<td align="center">flex-flow</td>
+<td align="center">flex-shrink</td>
+</tr>
+<tr>
+<td align="center">justify-content</td>
+<td align="center">flex-basis</td>
+</tr>
+<tr>
+<td align="center">align-items</td>
+<td align="center">flex</td>
+</tr>
+<tr>
+<td align="center">align-content</td>
+<td align="center">align-self</td>
+</tr>
+</tbody></table>
+<p>flex有很多属性，和平时使用的css不同的是它控制的是一个容器和容器内的所有子项，通常不是针对某一个子元素，所以在最开始的时候总是习惯的想要对某一个元素进行时会纠结不清到底使用哪个属性。</p>
+<p>最后认为搞清楚flex布局最重要的也就是明白控制元素的主轴</p>
+
+
+<p>也就是使用<code>flex-direction</code>控制主轴方向，通常默认主轴水平方向，那么使用<code>justify-content</code>去控制子项在水平方向的对齐方式是便是控制子项在X轴上的对齐方式。当<code>flex-direction</code>:column;时，主轴由原来的X轴变为Y轴，那么<code>justify-content</code>控制的便是纵向的布局，而不是一味的认为控制当前页面的横向布局。</p>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Flex/" rel="tag"><i class="fas fa-tags"></i>Flex</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2019/11/27/2019-11-27-js作用域/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -708,59 +795,6 @@
         <a class="post-tag button" href="/tags/JavaScript/" rel="tag"><i class="fas fa-tags"></i>JavaScript</a>
         
         <a class="post-tag button" href="/tags/String/" rel="tag"><i class="fas fa-tags"></i>String</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2019/07/04/2019-02-03-apply与call、bind的区别/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/07/04/2019-02-03-apply与call、bind的区别/" itemprop="url">apply与call、bind的区别</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-07-04T10:44:43+08:00">2019-07-04 10:44:43</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="apply和call"><a href="#apply和call" class="headerlink" title="apply和call()"></a>apply和call()</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
-<li>作用都可以改变this对象的指向</li>
-<li>第一个参数都是this要指向的对象(thisArg//函数执行时this的指向,args//传入的实参)</li>
-</ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javascript/" rel="tag"><i class="fas fa-tags"></i>javascript</a>
         
       </div>
       
