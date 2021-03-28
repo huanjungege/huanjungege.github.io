@@ -198,6 +198,62 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/26/2021-03-26-proxy与Reflect/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/03/26/2021-03-26-proxy与Reflect/" itemprop="url">proxy与Reflect</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-26T17:31:31+08:00">2021-03-26 17:31:31</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h1 id="代理基础"><a href="#代理基础" class="headerlink" title="代理基础"></a>代理基础</h1><p>代理是目标对象的抽象，使用代理类似于给目标对象制作一个替身，但由完全独立于目标对象，我可以直接操作对象本身做一些事情，也可以通过代理对象进行操作。直接操作会绕过代理对象施予的一些行为。</p>
+<h2 id="代理对象Proxy"><a href="#代理对象Proxy" class="headerlink" title="代理对象Proxy"></a>代理对象Proxy</h2><p>Proxy用来修改某些操作的默认行为，代理由构造函数创建，必须接受两个参数：<strong>被代理的目标对象，和处理程序对象</strong>，这两个参数缺少任何一个都会报错，我们也可以使用简单的对象字面量创建空代理</p>
+<h3 id="代理操作"><a href="#代理操作" class="headerlink" title="代理操作"></a>代理操作</h3><p>为对象target创建一个代理对象</p>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/Object/" rel="tag"><i class="fas fa-tags"></i>Object</a>
+        
+        <a class="post-tag button" href="/tags/proxy/" rel="tag"><i class="fas fa-tags"></i>proxy</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/25/2021-03-25Objedct-defineProperty/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -210,7 +266,7 @@
     </div>
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2021/03/25/2021-03-25Objedct-defineProperty/" itemprop="url">Object.defineProperty</a>
+        <a class="post-title-link post-title-link-external" href="/2021/03/25/2021-03-25Objedct-defineProperty/" itemprop="url">Object.defineProperty与Reflect.definProperty</a>
       </h1>
       <div class="post-meta">
         
@@ -233,7 +289,7 @@
     <main class="post-main" itemprop="articleBody">
       
       <h1 id="JavaScript中的对象"><a href="#JavaScript中的对象" class="headerlink" title="JavaScript中的对象"></a>JavaScript中的对象</h1><p>对象是js中的一种数据类型，到目前为止引用值的示例大多使用的是<code>Obejct</code>类型，并且ECMAScript中还定义了一个最特别的对象Global对象，代码不会显式的访问它，它所针对的是不属于任何对象的属性和方法，事实上不存在全局变量与全局函数这种东西，我们在全局作用域中定义的变量和函数都会变成Global对象的属性，包括<code>isNaN()</code>、<code>isFinite()</code>、<code>parseInt()</code>实际上都是Global对象的方法。</p>
-<h2 id="本篇记录的方法"><a href="#本篇记录的方法" class="headerlink" title="本篇记录的方法"></a>本篇记录的方法</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。<br><span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor()<span class="hljs-comment">// 读取对象属性的特征</span><br></code></pre></td></tr></table></figure>
+<h2 id="本篇记录的方法"><a href="#本篇记录的方法" class="headerlink" title="本篇记录的方法"></a>本篇记录的方法</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。<br><span class="hljs-built_in">Reflect</span>.defineProperty()<br><span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor()<span class="hljs-comment">// 读取对象属性的特征</span><br></code></pre></td></tr></table></figure>
       
     </main>
     <footer class="post-footer">
@@ -673,63 +729,6 @@
         <a class="post-tag button" href="/tags/Cookie/" rel="tag"><i class="fas fa-tags"></i>Cookie</a>
         
         <a class="post-tag button" href="/tags/session/" rel="tag"><i class="fas fa-tags"></i>session</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/08/27/2021-08-27Promise/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/27/2021-08-27Promise/" itemprop="url">Promise</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-27T14:32:23+08:00">2020-08-27 14:32:23</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>Promise 是异步编程的解决方案，比传统的解决方案–回调函数和事件–更合理和强大。</p>
-<h2 id="回调异步来处理异步"><a href="#回调异步来处理异步" class="headerlink" title="回调异步来处理异步"></a>回调异步来处理异步</h2><p>在JS中的异步处理，第一时间想到的就是利用回调函数</p>
-<p>通过回调实现x+y运算</p>
-<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//利用回调函数的异步处理</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">getX, getY, cb</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> x, y;<br>  getX(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">xVal</span>)</span>&#123;<br>    x = xVal;<br>    <span class="hljs-comment">//去判断是否有值</span><br>    <span class="hljs-keyword">if</span>(y != <span class="hljs-literal">undefined</span>) &#123;<br>      cb(x + y);<br>    &#125;<br>  &#125;);<br>  getY(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">yVal</span>)</span>&#123;<br>    y = yVal;<br>    <span class="hljs-comment">//去判断是否有值</span><br>    <span class="hljs-keyword">if</span>(x != <span class="hljs-literal">undefined</span>) &#123;<br>      cb(x + y);<br>    &#125;<br>  &#125;);<br>&#125;<br>add(fetchX, fetchY, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">sum</span>)</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(sum)<br>&#125;)<br></code></pre></td></tr></table></figure>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/ES6/" rel="tag"><i class="fas fa-tags"></i>ES6</a>
-        
-        <a class="post-tag button" href="/tags/Promise/" rel="tag"><i class="fas fa-tags"></i>Promise</a>
-        
-        <a class="post-tag button" href="/tags/异步/" rel="tag"><i class="fas fa-tags"></i>异步</a>
         
       </div>
       

@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Object.defineProperty | Yo_huanjun - Practice makes perfect.</title>
+    <title>Object.defineProperty与Reflect.definProperty | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -208,7 +208,7 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">Object.defineProperty</h1>
+      <h1 class="post-title" itemprop="name headline">Object.defineProperty与Reflect.definProperty</h1>
       <div class="post-meta">
         
         <span class="post-date">
@@ -229,7 +229,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <h1 id="JavaScript中的对象"><a href="#JavaScript中的对象" class="headerlink" title="JavaScript中的对象"></a>JavaScript中的对象</h1><p>对象是js中的一种数据类型，到目前为止引用值的示例大多使用的是<code>Obejct</code>类型，并且ECMAScript中还定义了一个最特别的对象Global对象，代码不会显式的访问它，它所针对的是不属于任何对象的属性和方法，事实上不存在全局变量与全局函数这种东西，我们在全局作用域中定义的变量和函数都会变成Global对象的属性，包括<code>isNaN()</code>、<code>isFinite()</code>、<code>parseInt()</code>实际上都是Global对象的方法。</p>
-<h2 id="本篇记录的方法"><a href="#本篇记录的方法" class="headerlink" title="本篇记录的方法"></a>本篇记录的方法</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。<br><span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor()<span class="hljs-comment">// 读取对象属性的特征</span><br></code></pre></td></tr></table></figure>
+<h2 id="本篇记录的方法"><a href="#本篇记录的方法" class="headerlink" title="本篇记录的方法"></a>本篇记录的方法</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。<br><span class="hljs-built_in">Reflect</span>.defineProperty()<br><span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor()<span class="hljs-comment">// 读取对象属性的特征</span><br></code></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
@@ -266,6 +266,9 @@
 <p>上面的代码中我们执行update更新obj时，预期视图也要随之更新，但实际是并不会，</p>
 <p>因为<code>vue</code>中<code>data init</code>是在生命周期<code>created</code>之前的操作，<code>init</code>时会为data对象绑定一个观察者<code>Observer</code>，之后<code>data</code>中的字段更新都会通知依赖收集器<code>Dep</code>，触发更新。</p>
 <p>然后，<code>definePropery</code>的访问器属性是对<strong>对象的属性进行操作</strong>，而非对象本身。所以当<code>Observer data</code>时新增属性并不存在，自然也不会有 <code>getter, setter</code>也就解释了为什么视图不更新 </p>
+<h2 id="Reflect-defineProperty"><a href="#Reflect-defineProperty" class="headerlink" title="Reflect.defineProperty"></a>Reflect.defineProperty</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyDate</span>(<span class="hljs-params"></span>) </span>&#123;&#125;<br><br><span class="hljs-built_in">Object</span>.defineProperty(MyDate, <span class="hljs-string">'now'</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Date</span>.now()<br>&#125;)<br><br><span class="hljs-comment">//等同于</span><br><span class="hljs-built_in">Reflect</span>.defineProperty(MyDate, <span class="hljs-string">'now'</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Date</span>.now()<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>使用<code>Reflect.defineProperty</code>方法时，结果会返回一个布尔值，而<code>Obejct.defineProperty</code>如果运行失败则会报错，这意味着，使用Reflect你将不必去麻烦的处理报错信息</p>
 
     </main>
     <footer class="post-footer">
@@ -291,6 +294,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2021/03/26/2021-03-26-proxy与Reflect/" rel="prev" title="proxy与Reflect"><span class="nav-title">proxy与Reflect</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -346,7 +351,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#JavaScript中的对象"><span class="toc-text">JavaScript中的对象</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#本篇记录的方法"><span class="toc-text">本篇记录的方法</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#对象的属性特征"><span class="toc-text">对象的属性特征</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#数据属性"><span class="toc-text">数据属性</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#修改数据属性"><span class="toc-text">修改数据属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#访问器属性也叫存取属性"><span class="toc-text">访问器属性也叫存取属性</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#通过defineProperty定义访问器属性"><span class="toc-text">通过defineProperty定义访问器属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Vue2中的双向数据绑定"><span class="toc-text">Vue2中的双向数据绑定</span></a></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#JavaScript中的对象"><span class="toc-text">JavaScript中的对象</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#本篇记录的方法"><span class="toc-text">本篇记录的方法</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#对象的属性特征"><span class="toc-text">对象的属性特征</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#数据属性"><span class="toc-text">数据属性</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#修改数据属性"><span class="toc-text">修改数据属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#访问器属性也叫存取属性"><span class="toc-text">访问器属性也叫存取属性</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#通过defineProperty定义访问器属性"><span class="toc-text">通过defineProperty定义访问器属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Vue2中的双向数据绑定"><span class="toc-text">Vue2中的双向数据绑定</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Reflect-defineProperty"><span class="toc-text">Reflect.defineProperty</span></a></li></ol></li></ol></div>
     </div>
     
     
