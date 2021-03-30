@@ -198,6 +198,128 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/30/2021-3-21-observer/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/03/30/2021-3-21-observer/" itemprop="url">observer</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-30T17:51:19+08:00">2021-03-30 17:51:19</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p><code>**MutationObserver**</code>接口提供了监视对DOM树所做更改的能力。它被设计为旧的<code>Mutation Events</code>功能的替代品</p>
+<p><code>MutationObserver</code>的实例要通过调用构造函数，并传入一个回调函数来创建：</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> observer = <span class="hljs-keyword">new</span> MutationObserver(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><code>observe()</code>方法：配置实例在dom更改匹配选项时，通知回调函数开始接收通知</p>
+<p>新创建的实例不会关联DOM的任何部分，要把这个observer与DOM关联起来，需要使用<code>observe()</code>方法，这个方法必须接受两个参数；要观察的DOM节点，以及一个MutationObserverInit对象</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> observer = <span class="hljs-keyword">new</span> MutationObserver(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'&lt;body&gt; attributes changed'</span>))<br>    observer.observe(<span class="hljs-built_in">document</span>.body, &#123;<span class="hljs-attr">attributes</span>: <span class="hljs-literal">true</span>&#125;)<br>    <span class="hljs-built_in">document</span>.body.className = <span class="hljs-string">'foo'</span> <span class="hljs-comment">// &lt;body&gt; attributes changed</span><br></code></pre></td></tr></table></figure>
+
+<p><code>disconnect()</code>方法。在默认情况下，观察的元素不被垃圾回收，就会响应DOM变化时间，从而被执行，要提前终止执行回调，可以调用disconnect方法</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> observer = <span class="hljs-keyword">new</span> MutationObserver(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'&lt;body&gt; attributes changed'</span>))<br>    observer.observe(<span class="hljs-built_in">document</span>.body, &#123;<span class="hljs-attr">attributes</span>: <span class="hljs-literal">true</span>&#125;)<br>    <span class="hljs-built_in">document</span>.body.className = <span class="hljs-string">'foo'</span><br>    observer.disconnect()<br>    <span class="hljs-built_in">document</span>.body.className = <span class="hljs-string">'bvar'</span> <span class="hljs-comment">// 没有输出</span><br></code></pre></td></tr></table></figure>
+
+<p><code>MutationObserverInit</code>用来控制对目标节点的观察范围，包括属性变化、文本变化和子节点变化</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/MutationObserver/" rel="tag"><i class="fas fa-tags"></i>MutationObserver</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/30/2021-3-30-对象的迭代/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/03/30/2021-3-30-对象的迭代/" itemprop="url">对象的迭代</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-30T11:28:12+08:00">2021-03-30 11:28:12</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>在JavaScript有史以来的大部分时间内，迭代对象属性都是一个难题</p>
+<p><code>Object.entries()</code>接收一个对象，返回对象的键值对数组</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> obj = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">'lhj'</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">23</span>,<br>  sayName() &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name)<br>  &#125;<br>&#125;<br><br>obj.sayName()<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.entries(obj))<br><span class="hljs-comment">/*[<br>  [ 'name', 'lhj' ],<br>  [ 'age', 23 ],<br>  [ 'sayName', [Function: sayName] ]<br>]*/</span><br></code></pre></td></tr></table></figure>
+
+<p><code>Obejct.values()</code>接收一个对象返回对象的值数组，不包括键</p>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/Object/" rel="tag"><i class="fas fa-tags"></i>Object</a>
+        
+        <a class="post-tag button" href="/tags/迭代/" rel="tag"><i class="fas fa-tags"></i>迭代</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/26/2021-03-26-proxy与Reflect/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -621,114 +743,6 @@
       <div class="post-tags">
         
         <a class="post-tag button" href="/tags/Http/" rel="tag"><i class="fas fa-tags"></i>Http</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/10/26/2020-10-27-mysql/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/10/26/2020-10-27-mysql/" itemprop="url">2020_1027mysql</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-26T21:01:09+08:00">2020-10-26 21:01:09</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Msql数据库概述"><a href="#Msql数据库概述" class="headerlink" title="Msql数据库概述"></a>Msql数据库概述</h1><p>Msql为关系数据库，关系数据库的特点：</p>
-<ul>
-<li>理论基础：集合论和关系代数</li>
-<li>具体表象：用二维表（有行和列）组织数据</li>
-<li>编程语言：结构化查询语言（sql）</li>
-</ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/mysql/" rel="tag"><i class="fas fa-tags"></i>mysql</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/10/14/2020-10-14Sessioncookie/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/10/14/2020-10-14Sessioncookie/" itemprop="url">Session&&cookie</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-14T08:31:53+08:00">2020-10-14 08:31:53</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <p>Session和Cookie产生的原因：</p>
-<p>因为Http的一个显著特征为无状态！无状态意味着它不记录请求它的用户信息，无法区分是否来自同一个用户。</p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/Cookie/" rel="tag"><i class="fas fa-tags"></i>Cookie</a>
-        
-        <a class="post-tag button" href="/tags/session/" rel="tag"><i class="fas fa-tags"></i>session</a>
         
       </div>
       

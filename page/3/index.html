@@ -198,6 +198,111 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/06/19/2020-06-19-CSS小问题/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/06/19/2020-06-19-CSS小问题/" itemprop="url">6-19CSS相关问题</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-06-19T10:42:30+08:00">2020-06-19 10:42:30</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <ul>
+<li><p>text-indent:-999px;当做一个a链接的图片按钮时，可以用于在添加完图片时将原本的字隐藏，只显示图片作为链接按钮</p></li></ul>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/CSS3/" rel="tag"><i class="fas fa-tags"></i>CSS3</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/05/14/2021-3-10vue组件浅谈/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/05/14/2021-3-10vue组件浅谈/" itemprop="url">Vue组件</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-05-14T15:42:03+08:00">2020-05-14 15:42:03</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;!DOCTYPE html&gt;<br>&lt;html lang="en"&gt;<br>&lt;head&gt;<br>  &lt;meta charset="UTF-8"&gt;<br>  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>  &lt;title&gt;Document&lt;/title&gt;<br>  &lt;script src="https://unpkg.com/vue@next"&gt;&lt;/script&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>  &lt;div id="root"&gt;&lt;/div&gt;<br>  <br>  &lt;script&gt;<br>    const app = Vue.createApp(&#123;<br>      data() &#123;<br>        return &#123;<br>          message: 'hello',<br>        &#125;<br>      &#125;,<br>      template: `<br>      &lt;div&gt;<br>        &#123;&#123;message&#125;&#125;  <br>        &lt;counter /&gt;<br>      &lt;/div&gt;      <br>      `<br>    &#125;)<br>    <br>    app.component('counter', &#123;<br>      template: `counter全局组件`<br>    &#125;)<br><br>    const vm = app.mount('#root')<br>  &lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/框架/" rel="tag"><i class="fas fa-tags"></i>框架</a>
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/组件/" rel="tag"><i class="fas fa-tags"></i>组件</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2020/03/09/2020-03-09-了解vuex/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -524,7 +629,7 @@
     </div>
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/29/2019-10-29-js面向对象/" itemprop="url">JS中面向对象程序设计</a>
+        <a class="post-title-link post-title-link-external" href="/2019/10/29/2019-10-29-js面向对象/" itemprop="url">对象创建与继承</a>
       </h1>
       <div class="post-meta">
         
@@ -547,6 +652,21 @@
     <main class="post-main" itemprop="articleBody">
       
       <h1 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h1><p>我们看到的大多数引用类型值都是Object类型的实例，它的主要作用是在应用程序中存储和传输数据。</p>
+<p>本文提到的API</p>
+<ol>
+<li><p><code>hasOwnProperty()</code> 如果对象的属性来自实例返回true，否则false，可以用来判断属性来自实例对象还是原型对象</p>
+</li>
+<li><p><code>isPrototypeOf()</code>会在传入参数的Prototype指向调用它的对象时返回ture,返回true证明person1 的原型对象指向Person<br>console.log(Person.prototype.isPrototypeOf(person1)) // true</p>
+</li>
+<li><p><code>getPrototypeOf()</code>返回参数内部特性[[Prototype]]的值</p>
+</li>
+<li><p><code>instanceof</code>检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上</p>
+</li>
+<li><p><code>in</code> 单独使用in 操作符时，会在可以通过访问对象指定属性时返回true</p>
+</li>
+<li><p><code>Object.keys</code>返回对象可枚举的属性</p>
+</li>
+</ol>
 <h2 id="对象的创建方式"><a href="#对象的创建方式" class="headerlink" title="对象的创建方式"></a>对象的创建方式</h2><h3 id="构造函数方式创建"><a href="#构造函数方式创建" class="headerlink" title="构造函数方式创建"></a>构造函数方式创建</h3><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> smallDog = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br><br>            smallDog.eat = <span class="hljs-string">"吃骨头"</span>;<br><br>            smallDog.walk = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">"不想走路"</span>);<br><br>            &#125;<br></code></pre></td></tr></table></figure>
       
     </main>
@@ -557,6 +677,8 @@
         <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
         
         <a class="post-tag button" href="/tags/Object/" rel="tag"><i class="fas fa-tags"></i>Object</a>
+        
+        <a class="post-tag button" href="/tags/原型/" rel="tag"><i class="fas fa-tags"></i>原型</a>
         
       </div>
       
@@ -674,119 +796,6 @@
         <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
         
         <a class="post-tag button" href="/tags/Nodejs/" rel="tag"><i class="fas fa-tags"></i>Nodejs</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2019/10/22/2019-10-22-node-01/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/10/22/2019-10-22-node-01/" itemprop="url">Nodejs入门介绍</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-10-22T10:47:26+08:00">2019-10-22 10:47:26</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/Node/" itemprop="url" rel="index"><span itemprop="name">Node</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><h2 id="Node-js是什么"><a href="#Node-js是什么" class="headerlink" title="Node.js是什么?"></a><code>Node.js</code>是什么?</h2><p>在node官网的介绍中看到</p>
-<ol>
-<li><strong>Node.js® is a JavaScript runtime built on <a href="https://v8.dev/" target="_blank" rel="noopener">Chrome’s V8 JavaScript engine</a>.</strong></li>
-</ol>
-<ul>
-<li>Nodejs不是一门语言，不是库和框架，是一个<code>Javascript</code>运行环境</li>
-<li>以前只有浏览器可以解析执行Javascript代码，由于Node的出现现在js可以脱离浏览器运行</li>
-<li>Node中没有BOM和DOM，在Ecmascript的基础上增加了一些服务器级别的操作API</li>
-<li>例如：文件读写，网络服务的构建，网络通信，http服务器</li>
-</ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/Nodejs/" rel="tag"><i class="fas fa-tags"></i>Nodejs</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2019/07/29/2019-07-26-jQuery总结二/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/07/29/2019-07-26-jQuery总结二/" itemprop="url">jQuery总结二</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-07-29T22:09:29+08:00">2019-07-29 22:09:29</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JQuery/" itemprop="url" rel="index"><span itemprop="name">JQuery</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h2 id="jQuery节点操作"><a href="#jQuery节点操作" class="headerlink" title="jQuery节点操作"></a>jQuery节点操作</h2><h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// $(htmlStr)</span><br><span class="hljs-comment">// htmlStr：html格式的字符串</span><br>$(<span class="hljs-string">'&lt;span-这是一个span元素&lt;/span-'</span>);<br></code></pre></td></tr></table></figure>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
-        
-        <a class="post-tag button" href="/tags/jQuery/" rel="tag"><i class="fas fa-tags"></i>jQuery</a>
         
       </div>
       

@@ -245,10 +245,14 @@
 <p>如下代码，当目标对象自身的某个属性不可写的时候，那么set方法将不起作用</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> validator = &#123;<br>  <span class="hljs-attr">set</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">obj, prop, value</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (prop === <span class="hljs-string">'age'</span>) &#123;<br>      <span class="hljs-keyword">if</span> (value &lt; <span class="hljs-number">20</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">'the age is too young'</span>)<br>      &#125;<br>    &#125;<br>    obj[prop] = value<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> target = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">'lhj'</span><br>&#125;<br><br><span class="hljs-built_in">Reflect</span>.defineProperty(target, <span class="hljs-string">'age'</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-number">23</span>,<br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,<br><br>&#125;)<br><br><span class="hljs-keyword">let</span> person = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, validator)<br>person.age = <span class="hljs-number">30</span><br><span class="hljs-built_in">console</span>.log(person.age)<br></code></pre></td></tr></table></figure>
 
-<h4 id="apply-方法拦截函数调用"><a href="#apply-方法拦截函数调用" class="headerlink" title="apply()方法拦截函数调用"></a><code>apply()</code>方法拦截函数调用</h4><p>apply接受三个参数，分别是目标对象、目标对象的上下文对象（this）、和目标对象的数组</p>
+<h4 id="apply-方法拦截函数调用、call、apply操作"><a href="#apply-方法拦截函数调用、call、apply操作" class="headerlink" title="apply()方法拦截函数调用、call、apply操作"></a><code>apply()</code>方法拦截函数调用、<code>call</code>、<code>apply</code>操作</h4><p>apply接受三个参数，分别是目标对象、目标对象的上下文对象（this）、和目标对象的数组</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> target = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">'I am the target'</span><br>&#125;<br><br><span class="hljs-keyword">var</span> handler = &#123;<br>  <span class="hljs-attr">apply</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">'I am the proxy'</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">var</span> proxy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, handler)<br></code></pre></td></tr></table></figure>
 
-<h3 id="待续。。。"><a href="#待续。。。" class="headerlink" title="待续。。。"></a>待续。。。</h3><h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><p><code>Reflect</code>对象与<code>Proxy</code>对象一样，也是为了ES6操作对象而提供的API。也叫反射对象</p>
+<h4 id="has-方法，用来拦截HasProperty操作，即判断对象是否具有某个属性时，这个方法会生效，典型的操作就是in操作符"><a href="#has-方法，用来拦截HasProperty操作，即判断对象是否具有某个属性时，这个方法会生效，典型的操作就是in操作符" class="headerlink" title="has()方法，用来拦截HasProperty操作，即判断对象是否具有某个属性时，这个方法会生效，典型的操作就是in操作符"></a><code>has()</code>方法，用来拦截HasProperty操作，即判断对象是否具有某个属性时，这个方法会生效，典型的操作就是<code>in</code>操作符</h4><p><code>has()</code>方法接受两个参数，分别是目标对象、需查询的属性名</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> handler = &#123;<br>  has (target, key) &#123;<br>    <span class="hljs-keyword">if</span> (key[<span class="hljs-number">0</span>] === <span class="hljs-string">'_'</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> key <span class="hljs-keyword">in</span> target<br>  &#125;<br>&#125;<br><span class="hljs-keyword">var</span> target  = &#123; <span class="hljs-attr">_prop</span>: <span class="hljs-string">'foo'</span>, <span class="hljs-attr">prop</span>: <span class="hljs-string">'foo'</span>&#125;<br><span class="hljs-keyword">var</span> proxy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, handler);<br><span class="hljs-string">'_prop'</span> <span class="hljs-keyword">in</span> proxy <span class="hljs-comment">// fasle</span><br></code></pre></td></tr></table></figure>
+
+<p>has方法对in操作符进行了拦截，将有’_’的属性隐藏，不会被<code>in</code>发现</p>
+<h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><p><code>Reflect</code>对象与<code>Proxy</code>对象一样，也是为了ES6操作对象而提供的API。也叫反射对象</p>
 <p><strong>反射机制：指的是程序在运行时能活够获取自身的信息</strong></p>
 <p>设计<code>Reflect</code>对象的目的：</p>
 <p>将<code>Object</code>对象的一些明显属于语言内部的方法（例如<code>Obejct.defineProperty()</code>）放到<code>Proxy</code>上，现在某些这些方法在两者都可以访问，未来将只部署在<code>Reflect</code>上。</p>
@@ -259,6 +263,22 @@
 <p>使用Reflect</p>
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> myObject = Obejct.create(<span class="hljs-literal">null</span>)<br><span class="hljs-built_in">Reflect</span>.ownKeys(myObject)<br></code></pre></td></tr></table></figure>
 
+<p><code>Reflect</code>对象一共有13个静态方法，他们大部分与<code>Object</code>对象的同名方法作用是相同的，而且与`Proxy对象的方法是一一对应的</p>
+<ul>
+<li>Reflect.apply(target, thisArg, args)</li>
+<li>Reflect.construct(target, args)</li>
+<li>Reflect.get(target, name, receiver)</li>
+<li>Reflect.set(target, name, value, receiver)</li>
+<li>Reflect.defineProperty(target, name, desc)</li>
+<li>Reflect.deleteProperty(target, name)</li>
+<li>Reflect.has(target, name)</li>
+<li>Reflect.ownKeys(target)</li>
+<li>Reflect.isExtensible(target)</li>
+<li>Reflect.preventExtensions(target)</li>
+<li>Reflect.getOwnPropertyDescriptor(target, name)</li>
+<li>Reflect.getPrototypeOf(target)</li>
+<li>Reflect.setPrototypeOf(target, prototype)</li>
+</ul>
 
     </main>
     <footer class="post-footer">
@@ -284,6 +304,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2021/03/30/2021-3-30-对象的迭代/" rel="prev" title="对象的迭代"><span class="nav-title">对象的迭代</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -339,7 +361,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#代理基础"><span class="toc-text">代理基础</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#代理对象Proxy"><span class="toc-text">代理对象Proxy</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代理操作"><span class="toc-text">代理操作</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代理捕获器"><span class="toc-text">代理捕获器</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#例如定义一个get-捕获器拦截对象属性的读取"><span class="toc-text">例如定义一个get()捕获器拦截对象属性的读取</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#set-方法拦截某个属性的赋值操作，可以接受四个参数：-目标对象，属性名，属性值，和proxy实例本身"><span class="toc-text">set()方法拦截某个属性的赋值操作，可以接受四个参数： 目标对象，属性名，属性值，和proxy实例本身</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#apply-方法拦截函数调用"><span class="toc-text">apply()方法拦截函数调用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#待续。。。"><span class="toc-text">待续。。。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Reflect"><span class="toc-text">Reflect</span></a></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#代理基础"><span class="toc-text">代理基础</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#代理对象Proxy"><span class="toc-text">代理对象Proxy</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代理操作"><span class="toc-text">代理操作</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代理捕获器"><span class="toc-text">代理捕获器</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#例如定义一个get-捕获器拦截对象属性的读取"><span class="toc-text">例如定义一个get()捕获器拦截对象属性的读取</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#set-方法拦截某个属性的赋值操作，可以接受四个参数：-目标对象，属性名，属性值，和proxy实例本身"><span class="toc-text">set()方法拦截某个属性的赋值操作，可以接受四个参数： 目标对象，属性名，属性值，和proxy实例本身</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#apply-方法拦截函数调用、call、apply操作"><span class="toc-text">apply()方法拦截函数调用、call、apply操作</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#has-方法，用来拦截HasProperty操作，即判断对象是否具有某个属性时，这个方法会生效，典型的操作就是in操作符"><span class="toc-text">has()方法，用来拦截HasProperty操作，即判断对象是否具有某个属性时，这个方法会生效，典型的操作就是in操作符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Reflect"><span class="toc-text">Reflect</span></a></li></ol></li></ol></div>
     </div>
     
     

@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Category: JavaScript | Yo_huanjun - Practice makes perfect.</title>
+    <title>对象的迭代 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -193,143 +193,91 @@
         <div class="main-container">
           <div class="content">
             
-<div id="category" class="category page">
-  <h1 class="page-title">JavaScript</h1>
+<div id="post" class="page">
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2021/03/30/2021-3-21-observer/" itemprop="url">observer</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-30T17:51:19+08:00">03-30</time>
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/30/2021-3-30-对象的迭代/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/avatar.jpg">
       </span>
-      
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2021/03/30/2021-3-30-对象的迭代/" itemprop="url">对象的迭代</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-30T11:28:12+08:00">03-30</time>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
       </span>
-      
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">对象的迭代</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-30T11:28:12+08:00">2021-03-30 11:28:12</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
+        </span>
+        
+        
+      </div>
     </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2021/03/26/2021-03-26-proxy与Reflect/" itemprop="url">proxy与Reflect</a>
-      </h1>
+    <main class="post-main" itemprop="articleBody">
+      <p>在JavaScript有史以来的大部分时间内，迭代对象属性都是一个难题</p>
+<p><code>Object.entries()</code>接收一个对象，返回对象的键值对数组</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> obj = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">'lhj'</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">23</span>,<br>  sayName() &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name)<br>  &#125;<br>&#125;<br><br>obj.sayName()<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.entries(obj))<br><span class="hljs-comment">/*[<br>  [ 'name', 'lhj' ],<br>  [ 'age', 23 ],<br>  [ 'sayName', [Function: sayName] ]<br>]*/</span><br></code></pre></td></tr></table></figure>
+
+<p><code>Obejct.values()</code>接收一个对象返回对象的值数组，不包括键</p>
+<a id="more"></a>
+
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> obj = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">'lhj'</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">23</span>,<br>  sayName() &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name)<br>  &#125;<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.values(obj)) <span class="hljs-comment">//  [ 'lhj', 23, [Function: sayName] ]</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>这两个方法执行对象的浅复制，并且非字符串属性会被转化为字符串</strong></p>
+<p><code>for in</code>以<strong>任意</strong>顺序便利对象的除<code>Symbol</code>以外的<code>可枚举</code>属性</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> txt: string = <span class="hljs-string">''</span><br><span class="hljs-keyword">let</span> person: object = &#123;<span class="hljs-attr">fname</span>: <span class="hljs-string">'Bill'</span>, <span class="hljs-attr">lname</span>: <span class="hljs-string">'Gates'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">62</span>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> person) &#123;<br>    txt += person[i] + <span class="hljs-string">' '</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(txt) <span class="hljs-comment">// Bill Gates 62</span><br></code></pre></td></tr></table></figure>
+
+<p><code>**Object.keys()**</code> 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，*<em>数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致 *</em>。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>];<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.keys(arr)); <span class="hljs-comment">// console: ['0', '1', '2']</span><br><span class="hljs-keyword">var</span> obj = &#123; <span class="hljs-number">0</span>: <span class="hljs-string">'a'</span>, <span class="hljs-number">1</span>: <span class="hljs-string">'b'</span>, <span class="hljs-number">2</span>: <span class="hljs-string">'c'</span> &#125;;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.keys(obj)); <span class="hljs-comment">// console: ['0', '1', '2']</span><br></code></pre></td></tr></table></figure>
+
+<p><code>**Object.assign()**</code> 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> target1 = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> &#125;<br><span class="hljs-keyword">const</span> target2 = &#123; <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;<br><span class="hljs-keyword">const</span> target3 = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> &#125;<br><br><span class="hljs-built_in">Object</span>.assign(target1, target2, target3)<br><span class="hljs-built_in">console</span>.log(target1) &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;<br></code></pre></td></tr></table></figure>
+
+
+    </main>
+    <footer class="post-footer">
       
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-26T17:31:31+08:00">03-26</time>
-      </span>
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/Object/" rel="tag"><i class="fas fa-tags"></i>Object</a>
+        
+        <a class="post-tag button" href="/tags/迭代/" rel="tag"><i class="fas fa-tags"></i>迭代</a>
+        
+      </div>
       
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2021/03/25/2021-03-25Objedct-defineProperty/" itemprop="url">Object.defineProperty与Reflect.definProperty</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-25T13:48:53+08:00">03-25</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/27/2021-08-27Promise/" itemprop="url">Promise</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-27T14:32:23+08:00">08-27</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/26/2020-08-26-迭代器Iterator/" itemprop="url">迭代器Iterator</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-26T06:34:10+08:00">08-26</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/20/2020-8-20深拷贝与浅拷贝/" itemprop="url">深拷贝与浅拷贝</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-20T21:28:09+08:00">08-20</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/17/2020-8-17-Date函数/" itemprop="url">Date函数</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-17T17:40:18+08:00">08-17</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/01/2020-08-01记this的指向/" itemprop="url">记this的指向</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-01T21:27:39+08:00">08-01</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2019/11/27/2019-11-27-js作用域/" itemprop="url">js作用域</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2019-11-27T13:10:57+08:00">11-27</time>
-      </span>
-      
-    </header>
+    </footer>
   </article>
   
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/前端/JavaScript/page/2/">2</a><a class="extend next" rel="next" href="/categories/前端/JavaScript/page/2/"><i class="fas fa-angle-right" aria-label="Next Page"></i></a>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2021/03/26/2021-03-26-proxy与Reflect/" rel="next" title="proxy与Reflect"><i class="fas fa-angle-left"></i><span class="nav-title">proxy与Reflect</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2021/03/30/2021-3-21-observer/" rel="prev" title="observer"><span class="nav-title">observer</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
   </nav>
+  
   
 </div>
 
@@ -373,6 +321,11 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
     
     
     <hr>
