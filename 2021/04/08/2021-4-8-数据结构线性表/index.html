@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head><meta name="generator" content="Hexo 3.9.0">
@@ -158,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>分类 | Yo_huanjun - Practice makes perfect.</title>
+    <title>线性表 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -179,7 +178,7 @@
         
         <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
         
-        <li role="menuitem"><a href="/categories/" class="current"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
         
         <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
         
@@ -194,23 +193,87 @@
         <div class="main-container">
           <div class="content">
             
-<div id="categories" class="categories page">
-  <article class="article post card">
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/04/08/2021-4-8-数据结构线性表/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">分类</h1>
-    </header>
-    <main class="post-main">
-      <h2 class="page-counter">
+      <h1 class="post-title" itemprop="name headline">线性表</h1>
+      <div class="post-meta">
         
-        You have 14 categories!
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-04-08T21:40:48+08:00">2021-04-08 21:40:48</time></span>
+        </span>
         
-      </h2>
-      <div class="categories-list">
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">29</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/JQuery/">JQuery</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/JavaScript/">JavaScript</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/JavaScript/对象/">对象</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/JavaScript/对象/控制抽象对象/">控制抽象对象</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Vue/">Vue</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/Node/">Node</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/线性表/">线性表</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a><span class="category-list-count">1</span></li></ul>
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/线性表/" itemprop="url" rel="index"><span itemprop="name">线性表</span></a></span>
+        </span>
+        
+        
       </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>线性表的联想：当学校组织外出旅游，班级的人数很多，那么我们怎么记住每一个同学并区分，这不是件容易的事，所以老师想到一个办法，热昂同学们按照一个约定好的方式排成一队，以后大家只要记住自己前面的同学，这样老师也可以很快的清点人数，万一有人走丢也可以很快的发现，因为只需要哪位同学告诉老师他前面的同学不见了即可。</p>
+<p>关于线性表的定义：<strong>由零个或多个数据元素组成的有序数列</strong></p>
+<ol>
+<li>首先它是一个序列，也就是元素之前有先来后到</li>
+<li>若元素存在多个，则第一个元素无前驱，而最后一个元素无后继，其他元素都有且只有一个前驱和后继</li>
+<li>另外线性表强调是有限的，事实上计算机发展至今它处理的元素都是有限的。无限的概念只存在于数学的理论中。</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="关于数据类型"><a href="#关于数据类型" class="headerlink" title="关于数据类型"></a>关于数据类型</h2><p>是指一组性质相同的值的集合及定义在此集合上的一些操作的总称</p>
+<p>看不懂，官方定义</p>
+<p>例如很多编程语言的整型，浮点型，字符型这些指的就是数据类型。那么设计计算机语言的人为什么会考虑到数据类型呢？</p>
+<p>因为在计算机中，内存也不是无限大的，要计算1+1=2这样的整型数字加减乘除运算显然不需要开辟很大的内存空间，而计算1.234455+2.24324这样的带大量小数的浮点型肯定需要开辟比较大的内存空间。</p>
+<p>通过数据类型牵引出<strong>抽象数据类型</strong></p>
+<p>抽象是相对于具体来说的，当你看到一个美女，你说哇哦，美女！那么一堆女生会回头看你，因为你给出的概念是抽象的，大家都认为自己是美女，当你说哇，美女范冰冰，那么只有范冰冰会转过来。</p>
+<p>抽象是指抽取出事物具有的普遍性的本质，他要求指出问题的特征而忽略非本质的细节，是对具体事物的一个概括。抽象是一种思考问题的方式，它隐藏了繁杂的细节。它的意义在于数据类型的数学抽象特征。</p>
+<p>我们对已有的数据类型进行抽象，就有了抽象数据类型（Abstract Data Type , ADT）是指一个数学模型及定义在该模型上的一组操作。</p>
+<p>待续….</p>
+
     </main>
-    <footer class="post-footer"></footer>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/线性表/" rel="tag"><i class="fas fa-tags"></i>线性表</a>
+        
+      </div>
+      
+    </footer>
   </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2021/03/31/2021-03-31-原型链/" rel="next" title="原型链与继承"><i class="fas fa-angle-left"></i><span class="nav-title">原型链与继承</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
 </div>
 
           </div>
@@ -257,6 +320,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#关于数据类型"><span class="toc-text">关于数据类型</span></a></li></ol></div>
+    </div>
     
     
     
@@ -331,5 +400,3 @@
 
   </body>
 </html>
-
-
