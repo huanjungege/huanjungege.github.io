@@ -198,6 +198,60 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/05/16/2021-05-16预编译与变量提升/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content>
+        <meta itemprop="description" content="Either stand out or kicked out.">
+        <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/05/16/2021-05-16预编译与变量提升/" itemprop="url">预编译与变量提升</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-05-16T15:37:00+08:00">2021-05-16 15:37:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h1 id="JavaScript的预编译"><a href="#JavaScript的预编译" class="headerlink" title="JavaScript的预编译"></a>JavaScript的预编译</h1><h2 id="编译的流程"><a href="#编译的流程" class="headerlink" title="编译的流程"></a>编译的流程</h2><p>首先在js文件中输入一条语句</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">conosle.log(a); <span class="hljs-comment">//Uncaught ReferenceError: a is not defined</span><br>conosle.log(a); <br>conosle.log(a);<br></code></pre></td></tr></table></figure>
+
+<p>js运行时并不是解释一行执行一行，而是先通篇检查语法的错误然后，我们可以发现两个现象</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(); <span class="hljs-comment">// 1</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>&#125;<br><span class="hljs-comment">// 我们先调用了函数，后声明函数，是可以打印出来1的</span><br><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// undefined</span><br><span class="hljs-keyword">var</span> a;<br><span class="hljs-comment">// 先打印变量a，在声明变量a，没有报错，输出了undefined</span><br><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// undefined</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>先打印变量a，在声明并赋值变量a，打印的还是<span class="hljs-literal">undefined</span><br></code></pre></td></tr></table></figure>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript-预编译/" rel="tag"><i class="fas fa-tags"></i>javaScript 预编译</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/04/08/2021-4-8-数据结构线性表/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content>
@@ -686,69 +740,6 @@
       <div class="post-tags">
         
         <a class="post-tag button" href="/tags/slot/" rel="tag"><i class="fas fa-tags"></i>slot</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/14/2021-3-14CSS简写/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content>
-        <meta itemprop="description" content="Either stand out or kicked out.">
-        <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Yo_huanjun">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2021/03/14/2021-3-14CSS简写/" itemprop="url">2021-3-14CSS简写</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-14T19:46:40+08:00">2021-03-14 19:46:40</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <p>关于合理的简写：</p>
-<figure class="hljs highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">blue</span>;<br><span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-tag">blue</span>;<br></code></pre></td></tr></table></figure>
-
-<p>前者是简写，可以确保你得到一个蓝色的纯色背景，但是如果你使用展开式的单个属性，那么这个元素的背景最终可能显示为一个粉红色的图案，一张图片，或者其他任何东西，因为同时可能会有一条<code>background-image</code>在其作用，展开式的写法不会帮助我们清空所有其他相关的属性，<strong>你设置了一个蓝色背景，又在下面几行设置了一张背景图片，那么你永远也看不到这个蓝色的背景图片!</strong></p>
-{% asset_img 1.png %}
-
-<p>比如我们要实现li前面的背景图片可以设置</p>
-<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CSS">background:  #badcfe url(./images/icon2.gif) no-repeat left center;<br></code></pre></td></tr></table></figure>
-
-<p>但是这个是我在设置<code>list-style-image</code>无效的情况下的无奈之举</p>
-<p>当时使用的是dl自定义列表，那么要使用</p>
-<figure class="hljs highlight CSS"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs CSS"><span class="hljs-selector-tag">display</span>: <span class="hljs-selector-tag">list-item</span>;<br><span class="hljs-selector-tag">list-style</span>: <span class="hljs-selector-tag">url</span>()<br></code></pre></td></tr></table></figure>
-
-
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/CSS3/" rel="tag"><i class="fas fa-tags"></i>CSS3</a>
         
       </div>
       
