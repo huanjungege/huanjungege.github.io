@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Yo_huanjun" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">Copy</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"Copy\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">Copy</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"Copy\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Object.defineProperty与Reflect.definProperty | Yo_huanjun - Practice makes perfect.</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Yo_huanjun</a></h1>
+        <h2 class="subtitle">Practice makes perfect.</h2>
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://www.lhjailj.top/2021/03/25/2021-03-25Objedct-defineProperty/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content>
+       <meta itemprop="description" content="Either stand out or kicked out.">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Yo_huanjun">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Object.defineProperty与Reflect.definProperty</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-25T13:48:53+08:00">2021-03-25 13:48:53</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/JavaScript/对象/" itemprop="url" rel="index"><span itemprop="name">对象</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="JavaScript中的对象"><a href="#JavaScript中的对象" class="headerlink" title="JavaScript中的对象"></a>JavaScript中的对象</h1><p>对象是js中的一种数据类型，到目前为止引用值的示例大多使用的是<code>Obejct</code>类型，并且ECMAScript中还定义了一个最特别的对象Global对象，代码不会显式的访问它，它所针对的是不属于任何对象的属性和方法，事实上不存在全局变量与全局函数这种东西，我们在全局作用域中定义的变量和函数都会变成Global对象的属性，包括<code>isNaN()</code>、<code>isFinite()</code>、<code>parseInt()</code>实际上都是Global对象的方法。</p>
+<h2 id="本篇记录的方法"><a href="#本篇记录的方法" class="headerlink" title="本篇记录的方法"></a>本篇记录的方法</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。<br><span class="hljs-built_in">Reflect</span>.defineProperty()<br><span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor()<span class="hljs-comment">// 读取对象属性的特征</span><br></code></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="对象的属性特征"><a href="#对象的属性特征" class="headerlink" title="对象的属性特征"></a>对象的属性特征</h2><p>ECMA5中定义只有内部才用的特性<strong>attribute</strong>，描述里属性<strong>property</strong>的各种特性。ECMA中有两种属性，数据属性和访问器属性</p>
+<h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><ol>
+<li><p>[Configurable]: 表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性，例如直接在对象上定义属性，这个特性默认为true</p>
+</li>
+<li><p>[Enumerable]: 表示能否通过for-in循环返回属性，默认为true</p>
+</li>
+<li><p>[Writable]: 表示能否修改属性值，默认为true</p>
+</li>
+<li><p>[Value]: 包含这个属性的数据值，读取属性值的时候从这个位置读，写入属性值的时候，把新值保存在这个位置。这个特性的默认值为undefined</p>
+</li>
+</ol>
+<p>下方我们通过字面的方式定义了一个<code>person</code>对象，我们可以使用Object.getOwnPropertyDescriptor()方法来看一下<code>person</code>对象的数据属性</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> person = &#123;<br>		name = <span class="hljs-string">'Jess'</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(Obejct.getOwnPropertyDescriptor(person, <span class="hljs-string">'name'</span>))<br><span class="hljs-comment">// &#123; value: 'Jess', writable: true, enumerable: true, configurable: true &#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到当我们创建了一个对象之后，<strong>前三个特性默认为true，[Value]被设置为指定的值</strong></p>
+<h4 id="修改数据属性"><a href="#修改数据属性" class="headerlink" title="修改数据属性"></a>修改数据属性</h4><p>通常我们不需要访问对象的数据属性，要修改属性的默认特性，就必须使用Object.defineProperty()方法，这个方法接收三个参数：<strong>要添加属性的对象，属性的名称，最后一个参数及对象拥有的四个数据属性，根据需要添加</strong></p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty(person, <span class="hljs-string">'age'</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-number">23</span><br>&#125;)<br><span class="hljs-keyword">let</span> descriptor = <span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(person, <span class="hljs-string">'age'</span>)<br><span class="hljs-built_in">console</span>.log(descriptor)<span class="hljs-comment">// &#123; value: 23, writable: false, enumerable: false, configurable: false &#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>我们使用<code>defineProperty()</code>方法为person对象添加一个age属性，并打印出age属性的特性，可以看到调用<code>defineProperty()</code>方法如果不指定<code>efineProperty()</code>、<code>enumerable</code>、 <code>configurable</code>默认为false</p>
+<h3 id="访问器属性也叫存取属性"><a href="#访问器属性也叫存取属性" class="headerlink" title="访问器属性也叫存取属性"></a>访问器属性也叫存取属性</h3><p><em>存取属性</em>是由 getter 函数和 setter 函数所描述的属性。一个描述符只能是这两者其中之一；不能同时是两者。</p>
+<p><code>get()</code>获取函数，在读取属性时调用，默认值为undefined</p>
+<p><code>set()</code>设置函数，在写入属性时调用，默认值为undefined</p>
+<h4 id="通过defineProperty定义访问器属性"><a href="#通过defineProperty定义访问器属性" class="headerlink" title="通过defineProperty定义访问器属性"></a>通过defineProperty定义访问器属性</h4><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> book = &#123;<br>  <span class="hljs-attr">year_</span>: <span class="hljs-number">2017</span>,<br>  <span class="hljs-attr">edition</span>: <span class="hljs-number">1</span><br>&#125;<br><span class="hljs-built_in">Object</span>.defineProperty(book, <span class="hljs-string">'year'</span>, &#123;<br>  <span class="hljs-keyword">get</span>() &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.year_<br>  &#125;,<br>  <span class="hljs-keyword">set</span>(newVal) &#123;<br>    <span class="hljs-keyword">if</span> (newVal &gt; <span class="hljs-number">2017</span>) &#123;<br>      <span class="hljs-keyword">this</span>.year_ = newVal;<br>      <span class="hljs-keyword">this</span>.edition = newVal - <span class="hljs-number">2017</span>;<br>    &#125;<br>  &#125;<br>&#125;) <br>book.year = <span class="hljs-number">2018</span>;<br><span class="hljs-built_in">console</span>.log(book.edition); <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Vue2中的双向数据绑定"><a href="#Vue2中的双向数据绑定" class="headerlink" title="Vue2中的双向数据绑定"></a>Vue2中的双向数据绑定</h2><p>我们都知道vue中的双向数据绑定是通过defineProperty实现的，查看vue源码</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty(obj, key, &#123;<br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>,   <span class="hljs-comment">// 可以通过for in 遍历</span><br>  <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">get</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reactiveGetter</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-keyword">if</span> (Dep.target) &#123;<br>      <span class="hljs-comment">// 收集依赖</span><br>      dep.depend()<br>    &#125;<br>    <span class="hljs-keyword">return</span> value<br>  &#125;,<br>  <span class="hljs-attr">set</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reactiveSetter</span> (<span class="hljs-params">newVal</span>) </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-comment">// 通知视图更新</span><br>    dep.notify()<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>所以vue中对象新增属性为什么不更新</p>
+<figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">data  () &#123;<br>  <span class="hljs-keyword">return</span>  &#123;<br>    <span class="hljs-attr">obj</span>: &#123;<br>      <span class="hljs-attr">a</span>: <span class="hljs-number">1</span><br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-attr">methods</span>: &#123;<br>  update () &#123;<br>    <span class="hljs-keyword">this</span>.obj.b = <span class="hljs-number">2</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面的代码中我们执行update更新obj时，预期视图也要随之更新，但实际是并不会，</p>
+<p>因为<code>vue</code>中<code>data init</code>是在生命周期<code>created</code>之前的操作，<code>init</code>时会为data对象绑定一个观察者<code>Observer</code>，之后<code>data</code>中的字段更新都会通知依赖收集器<code>Dep</code>，触发更新。</p>
+<p>然后，<code>definePropery</code>的访问器属性是对<strong>对象的属性进行操作</strong>，而非对象本身。所以当<code>Observer data</code>时新增属性并不存在，自然也不会有 <code>getter, setter</code>也就解释了为什么视图不更新 </p>
+<h2 id="Reflect-defineProperty"><a href="#Reflect-defineProperty" class="headerlink" title="Reflect.defineProperty"></a>Reflect.defineProperty</h2><figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyDate</span>(<span class="hljs-params"></span>) </span>&#123;&#125;<br><br><span class="hljs-built_in">Object</span>.defineProperty(MyDate, <span class="hljs-string">'now'</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Date</span>.now()<br>&#125;)<br><br><span class="hljs-comment">//等同于</span><br><span class="hljs-built_in">Reflect</span>.defineProperty(MyDate, <span class="hljs-string">'now'</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Date</span>.now()<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>使用<code>Reflect.defineProperty</code>方法时，结果会返回一个布尔值，而<code>Obejct.defineProperty</code>如果运行失败则会报错，这意味着，使用Reflect你将不必去麻烦的处理报错信息</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/javaScript/" rel="tag"><i class="fas fa-tags"></i>javaScript</a>
+        
+        <a class="post-tag button" href="/tags/Object/" rel="tag"><i class="fas fa-tags"></i>Object</a>
+        
+        <a class="post-tag button" href="/tags/defineProperty/" rel="tag"><i class="fas fa-tags"></i>defineProperty</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2021/03/21/2021-3-21-计算机是如何读懂我们的程序的呢/" rel="next" title="计算机是如何读懂我们的程序的呢"><i class="fas fa-angle-left"></i><span class="nav-title">计算机是如何读懂我们的程序的呢</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2021/03/26/2021-03-26-proxy与Reflect/" rel="prev" title="proxy与Reflect"><span class="nav-title">proxy与Reflect</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt>
+  
+  <h1 class="author-name"></h1>
+  <h2 class="author-description">Either stand out or kicked out.</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#JavaScript中的对象"><span class="toc-text">JavaScript中的对象</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#本篇记录的方法"><span class="toc-text">本篇记录的方法</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#对象的属性特征"><span class="toc-text">对象的属性特征</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#数据属性"><span class="toc-text">数据属性</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#修改数据属性"><span class="toc-text">修改数据属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#访问器属性也叫存取属性"><span class="toc-text">访问器属性也叫存取属性</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#通过defineProperty定义访问器属性"><span class="toc-text">通过defineProperty定义访问器属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Vue2中的双向数据绑定"><span class="toc-text">Vue2中的双向数据绑定</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Reflect-defineProperty"><span class="toc-text">Reflect.defineProperty</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>Social Links<p></p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:youremail@youremailhost" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>Blogroll</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author"></span><span class="year"><i class="far fa-copyright"></i>2021</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="Site Visit Count" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="Site User Count" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="Page Click Count" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
