@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>闭包与练习题 | Yo_huanjun - Practice makes perfect.</title>
+    <title>闭包与立即执行函数 | Yo_huanjun - Practice makes perfect.</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" data-spy="scroll" data-target=".list-group">
     
@@ -208,7 +208,7 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">闭包与练习题</h1>
+      <h1 class="post-title" itemprop="name headline">闭包与立即执行函数</h1>
       <div class="post-meta">
         
         <span class="post-date">
@@ -232,6 +232,8 @@
 <figure class="hljs highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test1</span>(<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test2</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> b = <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">console</span>.log(a)<br>      &#125;<br>      <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">return</span> test2()<br>    &#125;<br>    <span class="hljs-keyword">var</span> c = <span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">var</span> test3 = test1();<br>    test3()<br></code></pre></td></tr></table></figure>
 
 <p>理解代码是如何产生闭包的：程序运行，—&gt;生成GO，—-&gt;变量提升,变量c，变量test3，然后函数test1提升，函数test1就被定义了；</p>
+<a id="more"></a>
+
 <p>函数定义时，生成它的作用域scope，作用域中存储作用域链的地址，作用域链可以理解为一个数组，此时test1刚被定义，位于GO中，所以它的作用域链数组中的第0位指向GO；</p>
 <p>继续执行，给c赋值为3，运行test1将结果赋值给test3，test1在执行前，生成自己的AO，此时作用域链第二位GO后移变为第一位，0位变为test1自己的AO，AO中变量a提升，函数test2提升，</p>
 <p>函数test2在test1内部继承test1的作用域与作用域链，此时函数test2的的作用域链也是0位，test1的AO，1位GO，最后test1执行完毕，将test2return出去，test1执行完的时候，将test1的作用域链中与AO的链接切断，接下来AO也应该销毁，但是test2还在被test3引用，所以test1的AO并没有销毁，这就形成了闭包，也就是我们在test1作用域外面也能访问test1内部的变量。</p>
@@ -285,6 +287,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2021/05/26/2021-05-26-构造函数与this指向/" rel="prev" title="2021-05-26构造函数与this指向"><span class="nav-title">2021-05-26构造函数与this指向</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
